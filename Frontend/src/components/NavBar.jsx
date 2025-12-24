@@ -13,7 +13,7 @@ function NavBar(){
             </div>
             <div className={styles.Second_nav_container}>
             < input type="text" placeholder="You are Also Search here"/>
-            <span> Sign up </span>
+            <a href=""> Sign up </a>
             </div>
     </div>
 </nav>
