@@ -1,10 +1,8 @@
-import Carsoul from "./components/Carsoul";
-import NavBar from "./components/NavBar";
-
+import FAQSection from "./components/FAQ";
 function App(){
 return (
 <>
-<Carsoul/>
+<FAQSection/>
 </>
 );
 }
