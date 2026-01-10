@@ -12,10 +12,10 @@ function Footar(){
 <i>Twitter</i>
 <i>Facebook</i>
                     </div>
-                    <button>
+                    <button className={styles.button}>
                         <i>Top Icon</i>
-                        <span>Back on Top </span>
                     </button>
+                    <button className={styles.button}><span>Back on Top </span></button>
                 </div>
                 <div className={styles.subBox2}>
                     <h5>Website Links </h5>

@@ -1,85 +1,127 @@
-.container{
-    min-height:60vh;
-    width:50vw;
-    border-radius:15px;
-    border:2px solid black;
-
-    display:flex;
-    flex-wrap: wrap;                 /* next row allow */
-    justify-content: space-evenly;   /* row-wise space */
-    align-content: space-evenly;     /* column-wise space */
-
-    gap: 20px;  /* optional but recommended */
+.wrapper_Container {
+  min-height: 60vh;
+  width:100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
 }
-.box1{
-    height:13rem;
-    width:17rem;
-    border-radius:12px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:space-evenly;
-    align-items:center;
-    padding:12px;
-
-    position: relative;
-    background:white;
-    cursor:pointer;
-
-    /* SIZE + FLOAT ANIMATION */
-    animation: sizeFloat 3s ease-in-out infinite;
+.container {
+  min-height: 60vh;
+  width: 50vw;
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-evenly;
+  gap: 20px;
 }
-.box1::before{
-    content:"";
-    position:absolute;
-    inset:-4px;
-    border-radius:14px;
+.box1 {
+  height: 13rem;
+  width: 17rem;
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 12px;
+
+  position: relative;
+  background: white;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* 🌈 FLOWING BORDER */
+.box1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px;
+
+  background: linear-gradient(
+    120deg,
+    #ec4899,
+    /* pink */ #6366f1,
+    /* blue */ #8b5cf6,
+    /* purple */ #ec4899
+  );
+
+  background-size: 300% 300%;
+
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+
+  animation: borderFlow 3.8s linear infinite;
+}
+.heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+  text-align: center;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
+}
+.para {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #475569;
+  text-align: center;
+  line-height: 1.6;
+  padding: 0 8px;
+}
+.button {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: white;
 
     background: linear-gradient(
-        45deg,
-        red,
-        orange,
-        red
+        135deg,
+        #6366f1,
+        #8b5cf6,
+        #ec4899
     );
 
-    z-index:-1;
-    animation: borderGlow 2.5s linear infinite;
+    position: relative;
+    overflow: hidden;
 }
-.box1 > *{
-    animation: innerPulse 2.2s ease-in-out infinite;
+.card_btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.35),
+        transparent
+    );
 }
-@keyframes sizeFloat{
+
+/* hover animation */
+.card_btn:hover::before{
+    animation: shine 0.9s ease forwards;
+}
+
+/* click feel */
+.card_btn:active{
+    transform: scale(0.95);
+}
+
+@keyframes shine{
     0%{
-        transform: scale(1) translateY(0);
-    }
-    50%{
-        transform: scale(1.06) translateY(-10px);
+        left:-100%;
     }
     100%{
-        transform: scale(1) translateY(0);
-    }
-}
-@keyframes borderGlow{
-    0%{
-        filter: blur(4px);
-        transform: rotate(0deg);
-    }
-    100%{
-        filter: blur(6px);
-        transform: rotate(360deg);
-    }
-}
-@keyframes innerPulse{
-    0%{
-        transform: scale(1);
-        opacity:1;
-    }
-    50%{
-        transform: scale(1.05);
-        opacity:0.85;
-    }
-    100%{
-        transform: scale(1);
-        opacity:1;
+        left:100%;
     }
 }

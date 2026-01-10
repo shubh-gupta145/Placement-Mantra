@@ -5,7 +5,7 @@ function NavBar(){
 <nav>
     <div className={styles.nav_container}>
         <div className={styles.First_nav_container}>        
-        <img src="https://placementmantra.com/assets" alt="Placement Mantra Logo" />
+        <img src="/" alt="Placement Mantra Logo" />
             <a href="#home">Home</a>
             <a href="#home">Mocks</a>
             <a href="#home">Weekly Contest</a>

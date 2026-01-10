@@ -1,10 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 /* Navigation Bar */
-
 .nav_container {
   min-height: 5vh;
   width: 100vw;
@@ -22,7 +16,7 @@
 }
 .First_nav_container {
   height: 100%;
-  width: 40%;
+  width: 60%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,7 +25,7 @@
   height: 100%;
   width: 30%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 input {

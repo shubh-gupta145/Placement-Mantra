@@ -1,0 +1,55 @@
+.container{
+    min-height: 60vh;
+    width: 100vw;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    gap: 20px;
+    background-color: black;
+    color:white;
+}
+.suBox1{
+    height: 13rem;
+    width: 17rem;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 12px;
+
+    position: relative;
+    background: white;
+    cursor: pointer;
+    overflow: hidden;
+}
+.icon_container{
+    font-size: 1rem;
+    color: #8b5cf6;
+}
+.button{
+    padding: 10px 20px;
+    background: #8b5cf6;
+    border:none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.subBox2{
+    height: 13rem;
+    width: 17rem;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 12px;
+
+    position: relative;
+    background: white;
+    cursor: pointer;
+    overflow: hidden;
+}
