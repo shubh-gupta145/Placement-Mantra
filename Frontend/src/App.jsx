@@ -3,14 +3,17 @@ import NavBar from "./components/NavBar";
 import Carsoul from "./components/Carsoul";
 import Section from "./components/Section";
 import Footar from "./components/Footar";
+import MockInterview from "./components/MockInterview";
+import Mic from "./components/Mic";
 function App(){
 return (
 <>
-<NavBar/>
+<MockInterview/>
+{/* <NavBar/>
 <Carsoul/>
 <Section/>
 <FAQSection/>
-<Footar/>
+<Footar/> */}
 </>
 );
 }

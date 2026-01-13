@@ -1,0 +1,21 @@
+.searchBox{
+  height:44px;
+  width:44px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+
+  background: linear-gradient(135deg, #6a5cff, #ff4ecd);
+  box-shadow: 0 0 12px rgba(106,92,255,0.5);
+}
+
+.searchIcon{
+  font-size:22px;
+  color:white;
+}
+.searchBox:hover{
+  box-shadow: 0 0 22px rgba(255,78,205,0.8);
+  transform: scale(1.08);
+}
