@@ -61,3 +61,51 @@ a:hover {
   animation: increase 1s ease-in-out infinite;
   border-bottom: 2px solid purple;
 }
+/* ===== Hamburger Icon ===== */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 768px) {
+  .nav_container {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .First_nav_container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .Second_nav_container {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    display: none;
+  }
+
+  .First_nav_container a {
+    display: none;
+  }
+
+  .showMenu a {
+    display: block;
+    padding: 5px 0;
+  }
+
+  .showMenu {
+    display: flex;
+  }
+
+  input {
+    width: 90%;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

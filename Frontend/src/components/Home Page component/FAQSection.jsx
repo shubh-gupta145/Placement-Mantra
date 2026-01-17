@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FAQData from "../data/FAQData";
+import FAQData from "../../data/FAQData";
 import FAQItem from "./FAQItem";
 
 export default function FAQSection() {
