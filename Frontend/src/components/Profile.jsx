@@ -7,9 +7,9 @@ function Profile(){
 <div className={styles.imageContainer}>
 <img src="" alt="Profile Picture"/>
 </div>
-<span>shubh Gupta</span> 
+<span className={styles.span}>shubh Gupta</span> 
 <p>Hello coder my name is shubh gupta. I am the software developer I am create Very excited project like Placement Mantra Resume Craft and Pocket manger.</p>
-<button>Edit Profile</button>
+<button className={styles.button}>Edit Profile</button>
 <div className={styles.listContainer}>
 <ul>
     <li> India </li>
@@ -18,7 +18,7 @@ function Profile(){
     <li> Linkdin Profile</li>
     <li> Leetcode Profile</li>
 </ul>
-<span>Skills java python</span>
+<span className={styles.span}>Skills java python</span>
 </div>
 </div>
 <div className={styles.Second_container}>

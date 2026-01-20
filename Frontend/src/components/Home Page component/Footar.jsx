@@ -1,47 +1,58 @@
-import styles from "./Footar.module.css";    
-function Footar(){
-    return(
-        <footer className={styles.footer}>
-            <div className={styles.container}>
-                <div className={styles.subBox1}>
-                    <h3>Placement Mantra</h3>
-                    <p>Placement Mantra is a platform for students to find internships and jobs. And His Roadmaps</p>
-                    <div className={styles.icon_container}>
-<i>Linkdin</i>
-<i>Instagram</i>
-<i>Twitter</i>
-<i>Facebook</i>
-                    </div>
-                    <button className={styles.button}>
-                        <i>Top Icon</i>
-                    </button>
-                    <button className={styles.button}><span>Back on Top </span></button>
-                </div>
-                <div className={styles.subBox2}>
-                    <h5>Website Links </h5>
-                    <ul>
-                        <li>Home</li>
-                        <li>Mocks</li>
-                        <li>Weekly Contest</li>
-                        <li>ChatBot</li>
-                        <li>Roadmaps</li>
-                        <li>Log in</li>
-                        <li>Internship</li>
-                    </ul>
-                </div>
-                <div className={styles.subBox3}>
-                    <h5>Contact us</h5>
-                    <ul>
-                        <li>Email ID :-- beastboyshubh145@gmail.com</li>
-                        <li>Contact Number :-- 8433052037</li>
-                        <li>Linkdin ID :--</li>
-                    </ul>
-                </div>
-            </div>
-                            <div className={styles.small_container}>
-                    <p>© 2024 Placement Mantra. All rights reserved.</p>
-                </div>
-        </footer>
-    );
+import { motion } from "framer-motion";
+import { FaGithub, FaLinkedin, FaInstagram, FaGlobe } from "react-icons/fa";
+
+function Footer() {
+  return (
+    <motion.footer 
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white py-10 mt-20"
+    >
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        {/* Logo / Brand */}
+        <div>
+          <h1 className="text-2xl font-bold tracking-wide">PlacementMantra<span className="text-yellow-300">.</span></h1>
+          <p className="text-sm mt-2 text-gray-200">
+We are here To Solve All Your Placement Related Problems.
+          </p>
+        </div>
+
+        {/* Footer Links */}
+        <div className="flex flex-col space-y-2 text-sm">
+          <h2 className="text-lg font-semibold mb-2">Quick Links</h2>
+          <a href="#" className="hover:text-yellow-300 transition-all">Home</a>
+          <a href="#" className="hover:text-yellow-300 transition-all">Mock Interview</a>
+          <a href="#" className="hover:text-yellow-300 transition-all">About Us</a>
+          <a href="#" className="hover:text-yellow-300 transition-all">Contact</a>
+        </div>
+
+        {/* Social Icons */}
+        <div>
+          <h2 className="text-lg font-semibold mb-3">Follow Us</h2>
+          <div className="flex space-x-4 text-2xl">
+            {[FaGithub, FaLinkedin, FaInstagram, FaGlobe].map((Icon, i) => (
+              <motion.a
+                key={i}
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="hover:text-yellow-300 cursor-pointer"
+              >
+                <Icon />
+              </motion.a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <hr className="border-gray-300 my-6 opacity-30" />
+
+      <p className="text-center text-sm text-gray-200">
+        © {new Date().getFullYear()} ResumeBuilder. All rights reserved.
+      </p>
+    </motion.footer>
+  );
 }
-export default Footar;
+export default Footer;

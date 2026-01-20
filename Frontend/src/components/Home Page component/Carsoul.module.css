@@ -63,6 +63,8 @@
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
+    height:50px;
+    width:280px;
 }
 
 /* 🔥 hover animation start */

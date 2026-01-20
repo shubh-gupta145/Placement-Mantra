@@ -81,7 +81,8 @@
     border: none;
     cursor: pointer;
     color: white;
-
+height:50px;
+width:200px;
     background: linear-gradient(
         135deg,
         #6366f1,

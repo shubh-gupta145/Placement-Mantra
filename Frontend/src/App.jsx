@@ -4,19 +4,13 @@ import LoginForm from "./components/Form";
 import Profile from "./components/Profile";
 import ContributionGraph from "./components/ContributionGraph";
 import Home from "./components/Main compoments/Home";
+import CGPA from "./components/CGPA";
 function App(){
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
 return (
 <>
- {/* {isLoggedIn ? (
-        <>
-          <ContributionGraph isLoggedIn={isLoggedIn} />
-          <button onClick={() => setIsLoggedIn(false)}>Logout</button>
-        </>
-      ) : (
-        <Login setIsLoggedIn={setIsLoggedIn} />
-      )} */}
-<Home/>
+{/* <Home/> */}
+{/* <CGPA/> */}
+<MockInterview/>
 </>
 );
 }
