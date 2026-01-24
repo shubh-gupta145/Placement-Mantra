@@ -1,4 +1,4 @@
-import Mic from "./Mic";
+import Mic from "./Mock Interview Page/Mic";
 import styles from "./MockInterview.module.css";
 import { FaMicrophone } from "react-icons/fa"; 
 import Search_button from "./search_button";

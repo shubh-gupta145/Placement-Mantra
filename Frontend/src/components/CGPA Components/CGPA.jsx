@@ -1,6 +1,6 @@
 import styles from "./CGPA.module.css";
-import FAQSection from "./Home Page component/FAQSection";
-import NavBar from "./Home Page component/NavBar";
+import FAQSection from "../Home Page component/FAQSection";
+import NavBar from "../Home Page component/NavBar";
 function CGPA(){
 return(
 <>

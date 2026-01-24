@@ -5,6 +5,7 @@ import NavBar from "../Home Page component/NavBar";
 import Section from "../Home Page component/Section";
 import ResumeCarsoul from "../Home Page component/ResumeCarsoul";
 import styles from "./Home.module.css";
+import Friday from "../Friday A.I/Friday";
 function Home(){
     return (
 <>
@@ -12,6 +13,7 @@ function Home(){
 <NavBar/>
 <Carsoul/>
 <Section/>
+<Friday/>
 <ResumeCarsoul/>
 <FAQSection/>
 <Footar/>

@@ -1,16 +1,15 @@
-import MockInterview from "./components/MockInterview";
-import Mic from "./components/Mic";
-import LoginForm from "./components/Form";
-import Profile from "./components/Profile";
-import ContributionGraph from "./components/ContributionGraph";
+import Friday from "./components/Friday A.I/Friday";
+import FridayInterFace from "./components/Friday A.I/FridayInterface";
 import Home from "./components/Main compoments/Home";
-import CGPA from "./components/CGPA";
+// import MockInterview from "./components/Mock Interview Page/MockInterview";
+import Profile from "./components/Profile Components/Profile";
 function App(){
 return (
 <>
+{/* <MockInterview/> */}
+{/* <Profile/> */}
 {/* <Home/> */}
-{/* <CGPA/> */}
-<MockInterview/>
+<FridayInterFace/>
 </>
 );
 }

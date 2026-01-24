@@ -4,8 +4,11 @@
   border-radius:10px;
   width:fit-content;
   color:white;
+  width:95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 .title{
   margin-bottom:10px;
   font-size:14px;

@@ -1,0 +1,201 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  padding: 10px;
+  border: 2px solid red;
+  color: white;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+.FirstContainer {
+  height: 90vh;
+  width: 25vw;
+  background-color: rgba(15, 23, 42, 0.8);
+  border: 2px solid black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+
+  border-radius: 10px;
+  padding: 15px;
+
+  animation: slideFade 0.6s ease-out;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.imageContainer {
+  height: 120px;
+  width: 120px;
+  border: 3px solid pink;
+  border-radius: 12px;
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.imageContainer img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.imageContainer:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.5);
+}
+
+.UserName {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.UserName:hover {
+  color: #22c55e;
+  transform: translateX(4px);
+}
+
+.description {
+  color: white;
+  line-height: 1.4;
+}
+
+.listContainer {
+  height: 70%;
+  width: 90%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-self: center;
+
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
+
+ul li {
+  color: white;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+ul li i {
+  display: inline-block;
+}
+ul li:hover {
+  transform: translateX(6px);
+  color: #22c55e;
+}
+
+/* SKILLS */
+.span {
+  color: white;
+  margin-top: 10px;
+}
+
+/* EDIT PROFILE BUTTON – PERFECT GREEN */
+.button {
+  background-color: #22c55e;
+  color: white;
+
+  width: 100%;
+  height: 42px;
+
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #16a34a;
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+/* ENTRY ANIMATION */
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.SecondContainer {
+  height: 90vh;
+  width: 70vw;
+  border: 2px solid black;
+  background-color: rgba(0, 0, 0, 0.551);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.subContainer1 {
+  height: 30%;
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+.subContainer2 {
+  height: 65%;
+  width: 95%;
+  border: 2px solid black;
+  margin-top: 20px;
+  background-color: rgba(15, 23, 42, 0.8);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.UserTasks {
+  height: 90%;
+  width: 95%;
+  border: 2px solid black;
+  margin-top: 10px;
+  background-color: rgba(15, 23, 42, 0.8);
+  border-radius: 10px;
+}   
