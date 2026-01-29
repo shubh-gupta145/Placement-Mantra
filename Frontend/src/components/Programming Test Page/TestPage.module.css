@@ -1,0 +1,101 @@
+.Container {
+  min-height: 60vh;
+  width:40vw;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #cbd5e1;
+}
+
+.QuestionContainer {
+  width: 500px;
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 18px;
+}
+
+.QuestionContainer p {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1e293b;
+}
+.AnswerContainer {
+  width: 500px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 options per row */
+  gap: 12px;
+}
+.OptionContainer {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+.Navigation {
+  width: 500px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.OptionContainer span {
+  font-size: 15px;
+  color: #334155;
+  font-weight: 500;
+}
+
+/* Hover effect */
+.OptionContainer:hover {
+  border-color: #6366f1;
+  background: #eef2ff;
+}
+
+/* Selected option (future use) */
+.OptionContainer.active {
+  border-color: #6366f1;
+  background: #6366f1;
+}
+
+.OptionContainer.active span {
+  color: #ffffff;
+}
+.LeftButtons {
+  display: flex;
+  gap: 10px;
+
+}
+
+.LeftButtons button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.LeftButtons button:hover {
+  background: #eef2ff;
+  border-color: #6366f1;
+}
+.NextButton {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #6366f1;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.NextButton:hover {
+  background: #4f46e5;
+}

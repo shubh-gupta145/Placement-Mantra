@@ -1,0 +1,69 @@
+.Container {
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+.Form {
+  width: 420px;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.subContainer {
+  margin-bottom: 22px;
+}
+
+.subContainer p {
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  color: #6366f1;
+  font-size: 20px;
+}
+
+select {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  transition: border 0.2s ease;
+}
+
+select:focus {
+  border-color: #6366f1;
+}
+
+.SubmitButton {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #6366f1;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.SubmitButton:hover {
+  background: #4f46e5;
+}
