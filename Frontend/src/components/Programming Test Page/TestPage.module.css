@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   border: 2px solid #cbd5e1;
+border-radius:10px;
 }
 
 .QuestionContainer {
@@ -28,6 +29,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 options per row */
   gap: 12px;
+  margin-bottom:30px;
+  margin-top: 20px;
 }
 .OptionContainer {
   background: #ffffff;

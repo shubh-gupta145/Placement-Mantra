@@ -5,6 +5,7 @@ import LogInSignUp from "./components/Login Components/LogInSignUp";
 import Home from "./components/Main compoments/Home";
 import MockInterview from "./components/Mock Interview Components/MockInterview";
 import Profile from "./components/Profile Components/Profile";
+import ProfileEditPage from "./components/Profile Components/ProfileEditPage";
 import InterFace from "./components/Programming Test Page/InterFace";
 import ProgrammingCarsoul from "./components/Programming Test Page/ProgrammingCarsoul";
 import TestPage from "./components/Programming Test Page/TestPage";
@@ -12,7 +13,8 @@ import TestPage from "./components/Programming Test Page/TestPage";
 function App(){
     return (
     <>
-    <TestPage/>
+    <ProfileEditPage/>
+    {/* <TestPage/> */}
     {/* <InterFace/> */}
     {/* <ProgrammingCarsoul/> */}
 {/* <FridayInterFace/> */}
