@@ -7,7 +7,7 @@ function Footer() {
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white py-10 mt-20"
+      className="w-full bg-linear-to-r from-purple-600 via-indigo-600 to-blue-600 text-white py-10 mt-20"
     >
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
         

@@ -5,7 +5,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-h2{
+.heading{
     color:purple;
     font-size:30px;
     font-weight: 600;

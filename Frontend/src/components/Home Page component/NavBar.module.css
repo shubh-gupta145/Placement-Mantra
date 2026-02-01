@@ -37,8 +37,7 @@ input {
 input::placeholder {
   padding-left: 10px;
 }
-a,
-span {
+.links{
   text-decoration: none;
   color: black;
 }
@@ -56,7 +55,7 @@ span {
     transform: scale(1.4);
   }
 }
-a:hover {
+.links:hover {
   color: purple;
   animation: increase 1s ease-in-out infinite;
   border-bottom: 2px solid purple;

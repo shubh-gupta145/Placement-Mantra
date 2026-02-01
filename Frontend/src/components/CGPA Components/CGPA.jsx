@@ -5,7 +5,7 @@ function CGPA(){
 return(
 <>
 <div className={styles.container}>
-    <NavBar/>
+    
             <h1 className={styles.heading}>How we are increasing CGPA</h1>
     <div className={styles.FirstContainer}>
         <p className={styles.para}> To increase your CGPA, you should prioritize high-credit subjects and ensure you score maximum marks in internal assessments, assignments, and attendance, as these provide a vital safety net for your overall grade. Rather than passive reading, utilize active learning techniques like Active Recall and Spaced Repetition, while consistently practicing with previous years' question papers to understand exam patterns. During exams, focus on clear presentation by using diagrams and headings to make your answers more readable for the examiner. Ultimately, maintaining a consistent study routine rather than last-minute cramming will help you achieve a higher SGPA each term, which is the most effective way to steadily lift your cumulative average.</p>

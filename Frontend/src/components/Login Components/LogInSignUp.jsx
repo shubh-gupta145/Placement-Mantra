@@ -4,7 +4,7 @@ function LogInSignUp() {
 
     return (
     <div className={styles.Container}>
-        <h2>Sign Up</h2>
+        <h2 classnName={styles.heading}>Sign Up</h2>
         <div className={styles.InputContainer}>
 <input type="text" placeholder="Username" className={styles.InputField}/>
         </div>

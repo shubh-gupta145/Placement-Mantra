@@ -10,7 +10,6 @@ function Home(){
     return (
 <>
 <div className={styles.container}>
-<NavBar/>
 <Carsoul/>
 <Section/>
 <Friday/>
