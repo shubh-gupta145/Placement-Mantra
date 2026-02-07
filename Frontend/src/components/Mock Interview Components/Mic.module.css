@@ -1,7 +1,7 @@
 .micWrapper{
   position: relative;
-  width:90px;
-  height:90px;
+  width:52px;   /* 65 → 52 */
+  height:52px;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -18,7 +18,7 @@
     #ff4ecd,
     #5cc9ff
   );
-  filter: blur(10px);
+  filter: blur(8px); /* 10 → 8 */
   animation: micWave 2.5s ease-in-out infinite;
 }
 
@@ -26,16 +26,15 @@
 .micBtn{
   position: relative;
   z-index:2;
-  height:60px;
-  width:60px;
+  height:48px;   /* 60 → 48 */
+  width:48px;
   border-radius:50%;
   border:none;
-  cursor:pointer;
 
   background: linear-gradient(145deg, #6a5cff, #ff4ecd);
   box-shadow:
-    0 0 18px rgba(255,78,205,0.7),
-    inset 0 0 10px rgba(255,255,255,0.25);
+    0 0 14px rgba(255,78,205,0.65),
+    inset 0 0 8px rgba(255,255,255,0.25);
 
   display:flex;
   justify-content:center;
@@ -44,7 +43,7 @@
 
 /* MIC ICON */
 .micIcon{
-  font-size:28px;
+  font-size:20px; /* 25 → 20 */
   color:white;
 }
 

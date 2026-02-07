@@ -4,7 +4,7 @@ import { FaUpload } from "react-icons/fa";
 function FridayInterFace() {
   return (
     <div className={styles.wrapper}>
-        <div className={styles.SettingPannel}>
+        <div className={styles.SettingPannel}> 
 <div className={styles.NewChat}>
     <div className={styles.NewChatIcon}>
         <FaPlus className="text-xl" />

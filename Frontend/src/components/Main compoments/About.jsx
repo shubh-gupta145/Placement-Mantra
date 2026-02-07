@@ -9,7 +9,7 @@ function AboutUs() {
         <p>
 We are Here To Solve Fresher Placement Related All Problems Our Site Give The Best Resources And Solution.
         </p>
-         <Link className={styles.styledLink} to="/home">Home</Link>
+         <Link className={styles.styledLink} to="/">Home</Link>
       </section>
 
       {/* INTRO */}

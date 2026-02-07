@@ -1,4 +1,5 @@
 import styles from "./Friday.module.css";
+import {Link} from "react-router-dom";
 function Friday() {
   return (
     <div className={styles.wrapper}>
@@ -8,17 +9,13 @@ function Friday() {
       </div>
 
       <div className={styles.helpCircle}>
-        <a
-          href="/help"          // 👉 apna link yahan
-          target="_blank"       // same tab chahiye to hata do
-          rel="noreferrer"
-        >
+        <Link  className={styles.links} to="/Friday">
           <img
             src="/images/ChatBotPicture.avif"
             alt="Help"
             className={styles.helpImage}
           />
-        </a>
+          </Link>
       </div>
 
     </div>

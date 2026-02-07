@@ -1,5 +1,4 @@
 import styles from './LogInSignUp.module.css';
-import React from 'react';
 function LogInSignUp() {
 
     return (
