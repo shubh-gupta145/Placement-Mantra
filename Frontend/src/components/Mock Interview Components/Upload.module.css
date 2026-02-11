@@ -1,0 +1,23 @@
+.uploadWrapper {
+  display: inline-block;
+}
+
+/* Hide default file input */
+.fileInput {
+  display: none;
+}
+
+.UploadIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #6a5cff;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(106, 92, 255, 0.4);
+}

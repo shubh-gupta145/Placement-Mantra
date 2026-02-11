@@ -1,4 +1,6 @@
 import styles from "./MockInterview.module.css";
+import Mic from "../Mic";
+import Search_button from "../search_button";
 function MockInterview(){
 return(
 <>

@@ -1,0 +1,30 @@
+.SkillsContainer{
+    height:50vh;
+    width:40vw;
+    border:2px solid pink;
+display: flex;
+justify-content: center;
+align-items: center;
+gap:25px;
+flex-wrap:wrap;
+}
+.Skill {
+  padding: 8px 16px;
+  border-radius: 20px;
+
+  background: linear-gradient(135deg, #f5f7fa, #e4e7eb);
+  color: #333;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+.Skill:hover {
+  background: linear-gradient(135deg, #6a5cff, #ff4ecd);
+  color: #ffffff;
+}

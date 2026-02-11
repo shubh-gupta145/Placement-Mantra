@@ -1,44 +1,17 @@
 .container {
-  height: 1200px;
+  height: 94vh;
   width: 100vw;
   border: 2px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+align-items:center;
   box-sizing: border-box;
+  background-color: linear-gradient(90deg,white,grey);
 }
 .sub_container {
   display: flex;
   justify-content: space-evenly;
   align-self: flex-end;
 }
-.heading {
-  padding-left: 30px;
-  padding-bottom: 20px;
-  font-family: sans-serif;
-}
-.InfoContainer {
-  height:35vh;
-  width:99.4vw;
-  padding:32px 28px 32px 28px;
-  font-family: 'Georgia', 'Times New Roman', Times, serif;
-  align-self:flex-start;
-  background: linear-gradient(90deg, rgb(53, 80, 80) 70%, #ff4ecd 100%);
-  color:white;
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-  border: 2px solid #ff4ecd;
-  letter-spacing: 1px;
-  font-size: 1.25rem;
-  transition: box-shadow 0.3s, border-color 0.3s;
-}
-.InfoContainer:hover {
-  box-shadow: 0 8px 32px rgba(255, 78, 205, 0.25);
-  border-color: #fff;
-}
-.MockContainer {
-  display: flex;
-  height: 50vh;
-  width: 100vw;
-}
+

@@ -1,72 +1,66 @@
-.container{
-    height:40vh;
-    width:100vw;
-    background-color: purple;
-    color:bisque;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-
-    /* animation added */
-    animation: fadeUp 1s ease-in-out;
+.wrapper {
+  height: 40vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #1e1e2f, #3a0ca3);
+  margin-top:20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.heading{
-    font-size:18px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.card {
+  width: 90%;
+  padding: 35px 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  color: #fff;
+  animation: fadeUp 1s ease-in-out;
 }
 
-/* new paragraph style (needed for industry feel) */
-.description{
-    max-width: 600px;
-    text-align: center;
-    font-size: 14px;
-    line-height: 1.6;
-    opacity: 0.9;
-
-    animation: fadeUp 1.2s ease-in-out;
+/* heading */
+.heading {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 
-.btn{
-    height:50px;
-    width:100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    color:red;
-    background-color: lightgreen;
-    border: 2px solid darkgreen;
-    cursor: pointer;
-
-    /* smooth interaction */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* paragraph */
+.description {
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin-bottom: 25px;
 }
 
-/* button hover animation */
-.btn:hover{
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+/* button */
+.btn {
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #f72585, #b5179e);
+  transition: all 0.35s ease;
 }
 
-/* keyframes animation */
+.btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(247, 37, 133, 0.5);
+}
+
+/* animation */
 @keyframes fadeUp {
-    from{
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to{
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.paraContainer{
-    height:40%;
-    width:38%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

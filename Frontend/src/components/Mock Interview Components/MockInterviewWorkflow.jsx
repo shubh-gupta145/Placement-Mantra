@@ -3,6 +3,7 @@ function MockInterviewWorkFlow(){
 return(
 <>
 <div className={styles.container}>
+        <h1 className={styles.heading}>How Our Software Work</h1>
 <div className={styles.subContainer}>
     <p><span className={styles.steps}> Step 1 </span> You Give a Resume To Our Sofware This Step is Optional. You Can Jumped To the Next Step. But If You Give Your Resume So Our System Can Give You a better And more Accurate Answer.</p>
 </div>

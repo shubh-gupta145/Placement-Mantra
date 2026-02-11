@@ -7,8 +7,8 @@
   padding: 40px 0;
 }
 .container {
-  min-height: 60vh;
-  width: 50vw;
+  height: 60vh;
+  width: 60vw;
   border-radius: 15px;
   display: flex;
   flex-wrap: wrap;

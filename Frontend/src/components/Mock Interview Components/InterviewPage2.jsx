@@ -1,4 +1,4 @@
-import styles from "./InterviewPage.module.css";
+import styles from "./InterviewPage2.module.css";
 import { MdCallEnd } from "react-icons/md";
 import { MdPause } from "react-icons/md";
 import Mic from "./Mic";

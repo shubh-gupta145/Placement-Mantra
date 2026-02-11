@@ -1,0 +1,17 @@
+.InfoContainer {
+  min-height:40%;
+  width:99.4vw;
+  color:black;
+  border:2px solid black;
+}
+.heading {
+padding:20px 0px 20px 30px;
+  font-family: sans-serif;
+  font-size:30px;
+}
+.para{
+  color:black;
+  font-size:17px;
+  padding-left:25px;
+  padding-right:25px;
+}

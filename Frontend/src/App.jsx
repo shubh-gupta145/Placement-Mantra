@@ -9,17 +9,18 @@ import MockInterFace from "./components/Mock Interview Components/MockInterFace"
 import Friday from "./components/Friday A.I/Friday";
 import FridayInterFace from "./components/Friday A.I/FridayInterFace"
 import MockEntry from "./components/Mock Interview Components/MockEntry";
-import InterviewPage from "./components/Mock Interview Components/InterviewPage";
+import InterviewPage from "./components/Mock Interview Components/InterviewPage2";
+import InterviewPage1 from "./components/Mock Interview Components/InterviewPage1";
 import CameraView from "./components/Mock Interview Components/CameraView";
 import SpeechToText from "./components/Mock Interview Components/SpeechToText";
+import SkillsBtn from "./components/Friday A.I/SkillsBtn";
+import InterviewPage2 from "./components/Mock Interview Components/InterviewPage1";
+import MockInterview from "./components/Mock Interview Components/Mobile Version/MockInterview";
 
 function App(){
     return (
       <>
-      {/* <SpeechToText/> */}
-       {/* <InterviewPage/> */}
-       {/* <CameraView/> */}
-        {/* <BrowserRouter>
+        <BrowserRouter>
           <NavBar/>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -29,9 +30,10 @@ function App(){
             <Route path="/about" element={<AboutUs />} />
             <Route path="/SignUp" element={<LogInSignUp />} />
             <Route path="/Friday" element={<FridayInterFace/>}/>
+            <Route path="/MockInterview" element={<InterviewPage1/>}/>
           </Routes>
-        </BrowserRouter> */}
-      </>
+        </BrowserRouter>
+      </> 
     );
 }
 export default App;

@@ -1,6 +1,5 @@
 import styles from "./FridayInterFace.module.css";
 import { FaPlus } from "react-icons/fa";
-import { FaUpload } from "react-icons/fa";
 function FridayInterFace() {
   return (
     <div className={styles.wrapper}>
@@ -20,9 +19,6 @@ function FridayInterFace() {
 
       </div>
 <div className={styles.InputPannel}>
-    <div className={styles.UploadIcon}>
-<FaUpload size={20} />
-</div>
 <div className={styles.InputContainer}>
 <input type="text" placeholder="Type your message here..." className={styles.InputBox}/>
 </div>
