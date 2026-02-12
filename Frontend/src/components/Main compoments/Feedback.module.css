@@ -1,0 +1,202 @@
+/* Background Container */
+.container {
+  height: 40vh;
+  width: 99vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #4f46e5, #7e22ce);
+  border-radius: 20px;
+}
+
+/* Wrapper for left + right */
+.mainWrapper {
+  height: 95%;
+  width: 60%;
+  display: flex;
+  gap: 30px;
+}
+
+/* Card */
+.card {
+  height:98%;
+  flex: 1;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: fadeUp 0.8s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Heading */
+.heading {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Input */
+.input {
+  height: 48px;
+  width: 70%;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: 0.3s;
+  font-size: 15px;   /* increased */
+}
+
+.input:focus {
+  border-color: #7e22ce;
+  box-shadow: 0 0 5px rgba(126, 34, 206, 0.5);
+}
+
+/* Submit Button */
+.submitBtn {
+  height: 48px;
+  width: 120px;
+  background: #7e22ce;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;   /* increased */
+}
+
+.submitBtn:hover {
+  transform: scale(1.05);
+  background: #5b0fbf;
+}
+
+/* RIGHT SIDE REPLY SECTION */
+.replySide {
+   height:98%;
+  flex: 1;
+  background: rgba(31, 41, 55, 0.95);
+  border-radius: 20px;
+  padding: 25px;
+  color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeUp 0.6s ease-in-out;
+}
+
+/* Feedback Text */
+.feedbackText {
+  font-size: 15px;   /* increased */
+  margin-bottom: 15px;
+}
+/* Reply Button */
+.replyBtn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 20px;
+  background: #4f46e5;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 12px;
+}
+
+.replyBtn:hover {
+  background: #372fcf;
+  transform: scale(1.05);
+}
+
+/* Reply Message */
+.replyMessage {
+  margin-top: 12px;
+  padding: 10px;
+  background: rgba(224, 231, 255, 0.9);
+  border-radius: 10px;
+  font-size: 11.5px;
+  color: #1f2937;
+}
+
+/* Popup overlay */
+.popupOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Popup Box */
+.popupBox {
+  width: 90%;
+  max-width: 400px;
+  padding: 25px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+  animation: scaleUp 0.4s ease-in-out;
+}
+
+.popupHeading {
+  font-size: 20px;
+  font-weight: bold;
+  color: #7e22ce;
+  margin-bottom: 10px;
+}
+
+.popupText {
+  color: #555;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

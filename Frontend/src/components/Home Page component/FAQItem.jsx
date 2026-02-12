@@ -1,3 +1,4 @@
+import styles from "./FAqItem.module.css"
 function FAQItem({ faq, index, openIndex, setOpenIndex, isLastVisible, handleArrowClick }) {
   const isOpen = openIndex === index;
 
@@ -15,7 +16,7 @@ function FAQItem({ faq, index, openIndex, setOpenIndex, isLastVisible, handleArr
         className="w-full flex items-center justify-between gap-4 text-left"
         onClick={onArrowClick}
       >
-        <span className="text-lg font-medium text-gray-900">{faq.q}</span>
+        <span className={`${styles.s} text-lg font-medium text-gray-900`}>{faq.q}</span>
 
         <span
           className={`w-9 h-9 flex items-center justify-center rounded-full transform transition-all duration-300 ${
@@ -37,7 +38,7 @@ function FAQItem({ faq, index, openIndex, setOpenIndex, isLastVisible, handleArr
         </span>
       </button>
 
-      {isOpen && <p className="mt-4 text-gray-600 leading-relaxed">{faq.a}</p>}
+      {isOpen && <p className={` ${styles.p} mt-4 text-gray-600 leading-relaxed`}>{faq.a}</p>}
     </div>
   );
 }

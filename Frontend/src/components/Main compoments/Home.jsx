@@ -6,6 +6,7 @@ import Section from "../Home Page component/Section";
 import ResumeCarsoul from "../Home Page component/ResumeCarsoul";
 import styles from "./Home.module.css";
 import Friday from "../Friday A.I/Friday";
+import Feedback from "./feedback";
 function Home(){
     return (
 <>
@@ -15,6 +16,7 @@ function Home(){
 <Friday/>
 <ResumeCarsoul/>
 <FAQSection/>
+<Feedback/>
 <Footar/>
 </div>
 </>

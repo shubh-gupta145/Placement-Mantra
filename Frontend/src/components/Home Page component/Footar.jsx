@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaInstagram, FaGlobe } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 function Footer() {
   return (
     <motion.footer 
@@ -22,10 +22,10 @@ We are here To Solve All Your Placement Related Problems.
         {/* Footer Links */}
         <div className="flex flex-col space-y-2 text-sm">
           <h2 className="text-lg font-semibold mb-2">Quick Links</h2>
-          <a href="#" className="hover:text-yellow-300 transition-all">Home</a>
-          <a href="#" className="hover:text-yellow-300 transition-all">Mock Interview</a>
-          <a href="#" className="hover:text-yellow-300 transition-all">About Us</a>
-          <a href="#" className="hover:text-yellow-300 transition-all">Contact</a>
+        <Link  className="hover:text-yellow-300 transition-all" to="/">Home</Link>
+        <Link  className="hover:text-yellow-300 transition-all" to="/Mocks">Mocks</Link>
+        <Link  className="hover:text-yellow-300 transition-all" to="/CGPA">CGPA</Link>
+        <Link  className="hover:text-yellow-300 transition-all" to="/Tests">Tests</Link>
         </div>
 
         {/* Social Icons */}

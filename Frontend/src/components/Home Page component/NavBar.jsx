@@ -7,7 +7,7 @@ function NavBar(){
     <div className={styles.nav_container}>
         <div className={styles.First_nav_container}>        
         <img src="/" alt="Placement Mantra Logo" />
-        <Link  className={styles.links} to="/home">Home</Link>
+        <Link  className={styles.links} to="/">Home</Link>
         <Link className={styles.links} to="/Mocks">Mocks</Link>
         <Link className={styles.links} to="/CGPA">CGPA</Link>
         <Link className={styles.links} to="/Tests">Tests</Link>
