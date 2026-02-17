@@ -10,8 +10,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: whitesmoke;
-  color: rgba(0, 0, 0, 0.384);
+background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .First_nav_container {
@@ -39,7 +39,7 @@ input::placeholder {
 }
 .links{
   text-decoration: none;
-  color: black;
+color: #ffffff;
 }
 
 /* Animation of Links */
@@ -56,18 +56,37 @@ input::placeholder {
   }
 }
 .links:hover {
-  color: purple;
+color:#ff4d6d;
   animation: increase 1s ease-in-out infinite;
-  border-bottom: 2px solid purple;
+  border-bottom: 2px solid #ff4d6d;
 }
-/* ===== Hamburger Icon ===== */
+.SearchBar {
+  padding: 8px 18px;
+  width: 220px;
+  border-radius: 7px;
+  border: 1px solid #334155;
+  outline: none;
+  background-color: #1e293b;
+  color: #f1f5f9;
+  transition: 0.3s ease;
+  font-size: 14px;
+}
+
+.SearchBar::placeholder {
+  color: #94a3b8;
+}
+
+.SearchBar:focus {
+  width: 260px;
+  border-color: #3b82f6;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
 .hamburger {
   display: none;
   font-size: 28px;
   cursor: pointer;
 }
-
-/* ===== Mobile Responsive ===== */
 @media (max-width: 768px) {
   .nav_container {
     flex-wrap: wrap;
@@ -107,4 +126,11 @@ input::placeholder {
   .hamburger {
     display: block;
   }
+}
+.Image{
+height:40px;
+width:40px;
+display: flex;
+justify-content: center;
+align-self: center;
 }

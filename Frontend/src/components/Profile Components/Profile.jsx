@@ -3,6 +3,7 @@ import { SiLeetcode } from "react-icons/si";
 import { MdLocationOn } from "react-icons/md";
 import styles from "./Profile.module.css";
 import ContributionGraph from "./ContributionGraph";
+import {Link} from "react-router-dom"
 function Profile(){
     return(
 <>
@@ -12,10 +13,10 @@ function Profile(){
 <div className={styles.imageContainer}>
 <img src="" alt="Profile Picture"/>
 </div>
-<span className={styles.UserName}>shubh Gupta</span> 
+<span className={styles.UserName}>Shubh Gupta</span> 
     </div>
-<p>Hello coder my name is shubh gupta. I am the software developer I am create Very excited project like Placement Mantra Resume Craft and Pocket manger.</p>
-<button className={styles.button}>Edit Profile</button>
+<p className={styles.para}>Hello coder my name is shubh gupta. I am the software developer I am create Very excited project like Placement Mantra Resume Craft and Pocket manger.</p>
+<Link  className={styles.links} to="/EditProfile"><button className={styles.Button}>Edit Profile</button></Link>
 <div className={styles.listContainer}>
 <ul>
     <li>  <MdLocationOn />India</li>

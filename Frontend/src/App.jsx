@@ -9,6 +9,8 @@ import AboutUs from "./components/Main compoments/About";
 import MockInterFace from "./components/Mock Interview Components/MockInterFace";
 import Friday from "./components/Friday A.I/Friday";
 import FridayInterFace from "./components/Friday A.I/FridayInterFace"
+import Profile from "./components/Profile Components/Profile"
+import ProfileEditPage from "./components/Profile Components/ProfileEditPage"
 import VideoPlaylist from "./components/Coding Video Playlist Page/VideoPlaylist"
 import MockEntry from "./components/Mock Interview Components/MockEntry";
 import InterviewPage from "./components/Mock Interview Components/InterviewPage2";
@@ -30,7 +32,7 @@ function App(){
           <NavBar/>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Mocks" element={<MockInterFace />} />
+            <Route path="/Mocks" element={<InterviewPage />} />
             <Route path="/CGPA" element={<CGPA />} />
             <Route path="/Tests" element={<TestPage />} />
             <Route path="/about" element={<AboutUs />} />
@@ -42,6 +44,8 @@ function App(){
             <Route path="/Internship" element={<InterFaceInPl/>}/>
             <Route path='/Tests' element={<InterFace/>}/>
             <Route path="/TechNewes" element={<News/>}/>
+            <Route path="/profile" element={<Profile/>}/>
+            <Route path="EditProfile" element={<ProfileEditPage/>}/>
           </Routes>
         </BrowserRouter>
       </> 

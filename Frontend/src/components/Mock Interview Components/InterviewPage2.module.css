@@ -1,5 +1,5 @@
 .Container{
-    height:100vh;
+    height:95vh;
     width:100vw;
     display: flex;
     justify-content: space-evenly;
@@ -7,7 +7,7 @@
     background-color: black;
 }
 .ScreenPannel{
-    height:95vh;
+    height:92vh;
     width:67vw;
     border:2px solid purple;
     border-radius: 10px;
@@ -91,7 +91,8 @@ background-color: #424242;
     border:2px solid pink;
     background-color: white;
     overflow-y: auto;
-}.wrapper {
+}
+.wrapper {
   display: flex;
   justify-content: center;
   align-items: center;

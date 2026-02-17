@@ -1,48 +1,84 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./SpeechToText.module.css";
 
-const SpeechToText = () => {
+const SpeechToText = ({ interviewState }) => {
   const [text, setText] = useState("");
+  const recognitionRef = useRef(null);
+  const isRunningRef = useRef(false);
 
   useEffect(() => {
-    // Browser support check
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
-      alert("Your browser does not support Speech Recognition");
+      alert("Browser not supported");
       return;
     }
 
     const recognition = new SpeechRecognition();
-
-    recognition.continuous = true;   // lagataar sunta rahe
-    recognition.interimResults = true; // bolte waqt text dikhata rahe
-    recognition.lang = "en-IN"; // English (India)
+    recognition.continuous = true;
+    recognition.interimResults = false;
+    recognition.lang = "en-IN";
 
     recognition.onresult = (event) => {
-      let finalText = "";
+      let transcript = "";
 
       for (let i = event.resultIndex; i < event.results.length; i++) {
-        finalText += event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+          transcript += event.results[i][0].transcript + " ";
+        }
       }
 
-      setText(finalText);
+      setText((prev) => prev + transcript);
     };
 
-    recognition.start();
-
-    return () => {
-      recognition.stop();
+    recognition.onend = () => {
+      isRunningRef.current = false;
     };
+
+    recognitionRef.current = recognition;
   }, []);
+
+  useEffect(() => {
+    const recognition = recognitionRef.current;
+    if (!recognition) return;
+
+    // START
+    if (interviewState === "running" && !isRunningRef.current) {
+      try {
+        recognition.start();
+        isRunningRef.current = true;
+      } catch (err) {
+        console.log("Start error:", err);
+      }
+    }
+
+    // PAUSE
+    if (interviewState === "paused" && isRunningRef.current) {
+      try {
+        recognition.stop();
+        isRunningRef.current = false;
+      } catch (err) {
+        console.log("Pause error:", err);
+      }
+    }
+
+    // STOP (Complete Reset)
+    if (interviewState === "stopped") {
+      try {
+        recognition.stop();
+      } catch (err) {
+        console.log("Stop error:", err);
+      }
+      isRunningRef.current = false;
+      setText("");
+    }
+
+  }, [interviewState]);
 
   return (
     <div className={styles.wrapper}>
-      <h3>Live Speech to Text</h3>
-      <div className={styles.textContainer}>
-        {text || "Start speaking..."}
-      </div>
+      {text || "Interview not started..."}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 .wrapper_Container {
   min-height: 60vh;
+  background: linear-gradient(135deg, #f5f3ff, #eef2ff);
   width:100vw;
   display: flex;
   justify-content: center;

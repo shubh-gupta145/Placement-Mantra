@@ -1,12 +1,14 @@
 /* Background Container */
 .container {
   height: 40vh;
-  width: 99vw;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #4f46e5, #7e22ce);
-  border-radius: 20px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed, #9333ea);
+  border-radius: 5px;
+  margin: 40px 0px 10px 0px ;
+
 }
 
 /* Wrapper for left + right */
@@ -33,7 +35,7 @@
 
 /* Heading */
 .heading {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 20px;

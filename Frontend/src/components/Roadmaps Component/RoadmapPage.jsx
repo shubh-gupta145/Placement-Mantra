@@ -1,9 +1,15 @@
+import SkillsBtn from "../Friday A.I/SkillsBtn";
 import styles from "./RoadmapPage.module.css";
 function RoadmapPage(){
 return(
     <>
     <div className={styles.Container}>
-        <h1>This Page For Roadmaps</h1>
+        <div className={styles.JobTitleContainer}>
+<SkillsBtn/>
+        </div>
+        <div className={styles.replyContainer}>
+
+        </div>
     </div>
     </>
 );

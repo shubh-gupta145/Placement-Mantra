@@ -1,12 +1,12 @@
 .SkillsContainer{
-    height:50vh;
-    width:40vw;
-    border:2px solid pink;
+    height:95%;
+    width:95%;
 display: flex;
 justify-content: center;
 align-items: center;
 gap:25px;
 flex-wrap:wrap;
+border-radius:10px;
 }
 .Skill {
   padding: 8px 16px;
