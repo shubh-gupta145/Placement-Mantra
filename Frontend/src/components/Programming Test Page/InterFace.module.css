@@ -1,69 +1,205 @@
 .Container {
-  height: 40vh;
+  height: 99vh;
+  width:100vw;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+.SecondContainer {
+  padding: 80px 10%;
+  text-align: center;
+  background: #f9fafb;
+}
+
+.sectionTitle {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.sectionSubtitle {
+  color: #6b7280;
+  margin-bottom: 50px;
+  font-size: 16px;
+}
+/* ===== Process Section Wrapper ===== */
+
+.stepsWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 80px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+/* Connecting line */
+.stepsWrapper::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(to right, #2563eb, #3b82f6);
+  z-index: 0;
+}
+
+/* ===== Step Card ===== */
+
+.stepCard {
+  width: 280px;
+  background: white;
+  padding: 40px 25px;
+  border-radius: 18px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: 0.4s ease;
+  z-index: 1;
+}
+
+.stepCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(37, 99, 235, 0.25);
+}
+
+/* Step Number Circle */
+
+.stepNumber {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2563eb;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 5px 15px rgba(37,99,235,0.4);
+}
+
+/* Icon */
+
+.icon {
+  font-size: 35px;
+  color: #2563eb;
+  margin: 25px 0 15px 0;
+}
+
+/* Text */
+
+.stepCard h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.stepCard p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+/* ================= PREMIUM TEST CONTAINER ================= */
+
+.TestContainer {
+  width: 100%;
+  padding: 50px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  background: linear-gradient(135deg, #0f172a, #1e293b);
 }
 
-.Form {
-  width: 420px;
-  padding: 30px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.subContainer {
-  margin-bottom: 22px;
-}
-
-.subContainer p {
-  margin-bottom: 10px;
-  font-size: 15px;
-  font-weight: 500;
-  color: #334155;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.icon {
-  color: #6366f1;
-  font-size: 20px;
-}
-
-select {
-  flex: 1;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #cbd5e1;
-  font-size: 14px;
-  outline: none;
-  cursor: pointer;
-  transition: border 0.2s ease;
-}
-
-select:focus {
-  border-color: #6366f1;
-}
-
-.SubmitButton {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  background: #6366f1;
+.TestContainerContent {
+  width: 40%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 50px 40px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  text-align: center;
   color: white;
+  transition: 0.4s ease;
+}
+
+.TestContainerContent:hover {
+  transform: translateY(-8px);
+}
+
+.TestContainerContent h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+/* INPUTS */
+
+.inputField,
+.selectField {
+  height:7vh;
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: white;
+    appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   font-size: 15px;
+  outline: none;
+  transition: 0.3s ease;
+}
+.selectField option {
+  background-color: black;
+  color: white;
+}
+.selectField:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+.inputField::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.inputField:focus,
+.selectField:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 15px rgba(59,130,246,0.4);
+}
+
+/* BUTTON */
+
+.submitButton {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: white;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: 0.4s ease;
+  position: relative;
 }
 
-.SubmitButton:hover {
-  background: #4f46e5;
+/* Glow Effect */
+.submitButton:hover {
+  box-shadow: 
+    0 0 15px #3b82f6,
+    0 0 35px #2563eb,
+    0 0 60px rgba(59,130,246,0.7);
+  transform: translateY(-3px);
 }

@@ -1,115 +1,142 @@
 .container {
-  width: 97vw;
-  height: 40vh;
-  background: linear-gradient(135deg, #4e3ac7, #8e2de2);
+  padding: 20px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
   border-radius: 20px;
-  padding: 12px;
-  box-sizing: border-box;
-  overflow: hidden;
-margin-top:25px;
-  display: flex;
-  flex-direction: column;
+  overflow-y: hidden;
 }
 
-/* HEADER */
 .header {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.title {
-  color: white;
-  font-size: 1.6rem;
-  font-weight: 600;
-}
-
-/* ARROWS */
-.arrow {
-  background: white;
-  border: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.arrow:hover {
-  transform: scale(1.1);
-  background: #f1f1f1;
-}
-
-/* WHITE CONTAINER (ONE ROW - 6 MONTHS) */
-.SecondContainer {
-  height: 80%;
-  width: 100%;
-  margin-top: 10px;
-  display: flex;
-  flex-wrap: nowrap;              /* single row */
   justify-content: space-between;
   align-items: center;
-
-  padding: 10px;
-  box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
-/* MONTH CARD */
-.monthCard {
-  width: 15%;                     /* small width */
-  height: 90%;
+.header h1 {
+  font-size: 24px;
+}
 
-  background: #f6f6f6;
-  border-radius: 12px;
-  padding: 6px;
-  font-size: 2rem;
+.header button {
+  padding: 8px 14px;
+  border: none;
+  background: #00eaff;
+  color: black;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
+.SecondContainer {
   display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  gap: 15px;
+  flex-wrap: nowrap;
 }
 
-/* MONTH TITLE */
+.monthCard {
+  flex: 1;
+  background: rgba(255,255,255,0.08);
+  padding: 15px;
+  border-radius: 15px;
+}
+
 .monthTitle {
   text-align: center;
-  font-size: 0.9rem;
+  margin-bottom: 8px;
   font-weight: 600;
-  margin-bottom: 4px;
-  color: #6a00ff;
+  color: #00eaff;
 }
 
-/* WEEK HEADER */
-.weekRow {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 2px;
-  text-align: center;
-}
-
-/* DAYS GRID */
+.weekRow,
 .daysGrid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
-  row-gap: 2px;
-  font-size: 0.8rem;
-}
-/* DAY CELL STYLE */
-.daysGrid div {
-  padding: 2px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-/* HOVER EFFECT */
-.daysGrid div:hover {
-  background-color: #6a00ff;
-  color: white;
+.daysGrid {
+  gap: 5px;
+}
+
+.dayBox {
+  position: relative;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.08);
+  transition: 0.2s;
+}
+
+.dayBox:hover {
   transform: scale(1.1);
+  background: rgba(0,234,255,0.3);
+}
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.dayBox:hover .tooltip {
+  visibility: visible;
+}
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: #1f2933;
+  padding: 20px;
+  border-radius: 15px;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal input,
+.modal select {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modalButtons button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modalButtons button:first-child {
+  background: #00eaff;
+}
+
+.modalButtons button:last-child {
+  background: #f44336;
+  color: white;
 }

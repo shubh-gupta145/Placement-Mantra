@@ -2,7 +2,6 @@
   height: 94vh;
   width: 100vw;
   padding: 10px;
-  border: 2px solid red;
   color: white;
   display: flex;
   gap: 20px;
@@ -182,6 +181,8 @@ padding-left:10px;
 }
 /* Result section */
 .subContainer2 {
+  min-height:40vw;
+  width:98%;
   background: linear-gradient(135deg, #0f172a, #1e293b);
   border-radius: 15px;
   padding: 25px;

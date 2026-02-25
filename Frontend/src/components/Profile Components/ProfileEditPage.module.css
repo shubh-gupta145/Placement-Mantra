@@ -1,24 +1,25 @@
 .Container{
-    height: 93vh;
-    width: 100vw;
+    height:100vh;
+    width:100vw;
 }
+
+/* ================= HEADER ================= */
+
 .ProfileCarsoul {
     height:40vh;
-    width:100vw;
-    background-color: #0e0d0dce;
-    border-radius: px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    width:100%;
+    background-color:#0e0d0dce;
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
 }
+
 .ImageWrapper {
   position: relative;
   width: 180px;
   height: 180px;
 }
 
-/* Profile Image */
 .ProfileImage {
   width: 100%;
   height: 100%;
@@ -28,151 +29,136 @@
   box-shadow: 0 8px 25px rgba(0,0,0,0.5);
 }
 
-/* 🔥 NEW STYLED PLUS ICON */
 .PlusIcon {
   position: absolute;
-  top: 20px;      /* 👈 20px from top */
-  left: 20px;     /* 👈 20px from left */
-
+  top: 20px;
+  left: 20px;
   width: 42px;
   height: 42px;
-
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  border: 2px solid rgba(255,255,255,0.3);
-
-  border-radius: 12px;  /* modern rounded square */
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: #22c55e;
-  font-size: 18px;
-
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.6);
+  border-radius: 12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#22c55e;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-/* Hover Effect */
-.PlusIcon:hover {
-  background: #22c55e;
-  color: white;
-  transform: scale(1.1) rotate(90deg);
-  box-shadow: 0 6px 20px rgba(34,197,94,0.6);
+.PlusIcon:hover{
+  background:#22c55e;
+  color:white;
+  transform:scale(1.1) rotate(90deg);
 }
 
 .ProfileName{
-    color: white;
-    font-size: 30px;
-    font-weight: 600;
+    color:white;
+    font-size:30px;
+    font-weight:600;
 }
+
 .ProfileId{
-    color:rgba(0, 255, 85, 0.6);
+    color:rgba(0,255,85,0.6);
     font-size:17px;
 }
+
 .NameContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
-    margin-right:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
 }
-.UserInfoContainer{
-height:900px;
-width:100%;
-background-color: azure;
-display: flex;
-justify-content: space-evenly;
-align-items: flex-start;
-border:2px solid black;
-margin-top:20px;
-}
-.EditContainer{
-    height:800px;
-width:60%;
-background-color: azure;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-align-items: center;
-border:2px solid black;
-margin-top:20px;
-}
-.subContainer{
-    height: 70vh;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    padding:30px;
-    border:2px solid rgb(0, 255, 255);
-    margin:30px;
-    border-radius: 10px;
-}
-.subContainer2{
-    height: 7vh;
-    width: 95%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+
+/* ================= MAIN WRAPPER ================= */
+
+.MainInfoWrapper{
+    width:100%;
+    display:flex;
+    justify-content:space-evenly;
+    align-items:flex-start;
     margin-top:20px;
-    border:2px solid rgba(128, 128, 128, 0.538);
-    border-radius:10px;
 }
-.InfoHeaders{
-    font-size: 20px;
-    font-weight: 400;
-    height:90%;
+
+/* ================= SMALL CONTAINER ================= */
+
+.UserInfoContainer{
     width:30%;
-}
-.InfoValue{
-    font-size: 15px;
-    font-weight: 400;
-    height:85%;
-    min-width:25vw;
-margin-right:10px;
-border-radius: 10px;
-border:2px solid gray;
-padding:10px;
-}
-.EditButton{
-    height: 40px;
-    width: 100px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.valueContainer{
-    height: 90%;
-    min-width: 40%;
-    display: flex;
-    flex-wrap: wrap;
-justify-content: center;
-align-items: center;
-}
-h4{
-    font-size:18px;
-    width:90%;
-    height:10%;
-    background-color: turquoise;
+    background-color:azure;
+    border:2px solid black;
     border-radius:10px;
-    display: flex;
-    align-items: center;
-    padding-left:10px;
+    padding:20px;
 }
-h4:hover{
-    background-color: aqua;
-    cursor: pointer;
-    border:2px solid rgb(105, 105, 254)
+
+.subContainer{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:20px;
+}
+
+.IDContainer{
+    margin:10px 0;
+}
+
+.IDContainer .InfoValue{
+    width:100%;
+}
+
+/* ================= BIG CONTAINER ================= */
+
+.EditContainer{
+    width:55%;
+    background-color:azure;
+    border:2px solid black;
+    border-radius:10px;
+    padding:20px;
+}
+
+.subContainer2{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+    border:1px solid rgba(128,128,128,0.4);
+    border-radius:10px;
+    padding:10px;
+}
+
+.InfoHeaders{
+    width:25%;
+    font-size:18px;
+}
+
+.valueContainer{
+    width:50%;
+    border-radius:20px;
+    height:5vh;
+}
+
+.InfoValue{
+    width:100%;
+    padding:8px;
+    border-radius:8px;
+    border:1px solid gray;
+}
+
+.EditButton{
+    width:80px;
+    height:35px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:#4CAF50;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.EditButton:hover{
+    background-color:#45a049;
+}
+
+h4{
+    background-color:turquoise;
+    padding:8px;
+    border-radius:8px;
 }

@@ -16,7 +16,7 @@ function NavBar(){
         <Link  className={styles.links} to="/">Home</Link>
         <Link className={styles.links} to="/Mocks">Mocks</Link>
         <Link className={styles.links} to="/CGPA">CGPA</Link>
-        <Link className={styles.links} to="/Tests">Tests</Link>
+        <Link className={styles.links} to="/TestInterFace">Tests</Link>
         <Link className={styles.links} to="/about">About Us</Link>
             </div>
             <div className={styles.Second_nav_container}>

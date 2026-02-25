@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CGPA from "./components/CGPA Components/CGPA";
-import LogInSignUp from "./components/Login Components/LogInSignUp";
 import Home from "./components/Main compoments/Home";
 import TestPage from "./components/Programming Test Page/TestPage";
 import InterFace from "./components/Programming Test Page/InterFace";
@@ -23,6 +22,8 @@ import RoadmapPage from "./components/Roadmaps Component/RoadmapPage";
 import InterFaceInPl from "./components/Internship And Placemnet Calaender/InterFaceIn&Pl";
 import News from "./components/Tech News Page/News";
 import Feedback from "./components/Main compoments/feedback";
+import SignIn from "./components/Login Components/SignIn";
+import SignUp from "./components/Login Components/SignUp";
 function App(){
     return (
       <>
@@ -31,16 +32,18 @@ function App(){
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Mocks" element={<InterviewPage />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp/>} />
             <Route path="/CGPA" element={<CGPA />} />
-            <Route path="/Tests" element={<TestPage />} />
+            <Route path="/Tests" element={<InterFace />} />
             <Route path="/about" element={<AboutUs />} />
-            <Route path="/SignUp" element={<LogInSignUp />} />
             <Route path="/Friday" element={<FridayInterFace/>}/>
             <Route path="/MockInterview" element={<InterviewPage1/>}/>
             <Route path="/Roadmaps" element={<RoadmapPage/>}/>
             <Route path="/FreeCoursePlaylist" element={<VideoPlaylist/>}/>
             <Route path="/Internship" element={<InterFaceInPl/>}/>
-            <Route path='/Tests' element={<InterFace/>}/>
+            <Route path='/TestInterFace' element={<InterFace/>}/>
+            <Route path='/Tests' element={<TestPage/>}/>
             <Route path="/TechNewes" element={<News/>}/>
             <Route path="/profile" element={<Profile/>}/>
             <Route path="EditProfile" element={<ProfileEditPage/>}/>
