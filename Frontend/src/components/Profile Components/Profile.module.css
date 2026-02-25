@@ -8,15 +8,15 @@
   gap: 20px;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: rgb(34, 30, 30);
 }
 
 .FirstContainer {
   height: 90vh;
   width: 25vw;
-  background-color: rgba(15, 23, 42, 0.8);
-  border: 2px solid black;
-
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  padding: 30px;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -35,11 +35,12 @@
 }
 
 .imageContainer {
-  height: 120px;
-  width: 120px;
-  border: 3px solid pink;
-  border-radius: 12px;
-  overflow: hidden;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #00f5c4;
+  box-shadow: 0 0 20px rgba(0, 245, 196, 0.4);
 
   transition:
     transform 0.3s ease,
@@ -61,7 +62,7 @@
   color: white;
   font-size: 1.3rem;
   font-weight: 600;
-
+padding-left:10px;
   transition:
     color 0.3s ease,
     transform 0.3s ease;
@@ -73,7 +74,7 @@
 }
 
 .description {
-  color: white;
+  color: #cbd5e1;
   line-height: 1.4;
 }
 
@@ -85,13 +86,11 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-self: center;
-
-  border: 2px solid black;
   padding: 10px;
   border-radius: 8px;
 }
 
-ul {
+.Profiles {
   list-style-type: none;
   display: flex;
   flex-direction: column;
@@ -99,28 +98,36 @@ ul {
   padding: 0;
 }
 
-ul li {
-  color: white;
-  transition:
-    transform 0.2s ease,
-    color 0.2s ease;
+.Profiles li {
   display: flex;
   align-items: center;
   gap: 10px;
-  white-space: nowrap;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.3s;
+  cursor: pointer;
 }
-ul li i {
+.Profiles li i {
   display: inline-block;
 }
-ul li:hover {
+.Profiles li:hover {
   transform: translateX(6px);
   color: #22c55e;
 }
 
 /* SKILLS */
-.span {
+.Skill {
   color: white;
   margin-top: 10px;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.Skill:hover {
+  transform: translateX(6px);
+  color: #22c55e;
 }
 
 /* EDIT PROFILE BUTTON – PERFECT GREEN */
@@ -164,45 +171,120 @@ ul li:hover {
   }
 }
 .SecondContainer {
-  height: 90vh;
-  width: 70vw;
-  border: 2px solid black;
-  background-color: rgba(0, 0, 0, 0.551);
+  width: 75vw;
+  min-height: 90vh;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
+  gap: 25px;
 }
-.subContainer1 {
-  height: 30%;
-  width: 95%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-}
+/* Result section */
 .subContainer2 {
-  height: 65%;
-  width: 95%;
-  border: 2px solid black;
-  margin-top: 20px;
-  background-color: rgba(15, 23, 42, 0.8);
-  border-radius: 10px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.heading {
+  text-align: center;
+  color: white;
+  margin-bottom: 25px;
+}
+
+/* Task wrapper */
+.UserTasks {
+  height:90%;
+  width:100%;
   display: flex;
   flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  gap: 15px;
 }
-.UserTasks {
-  height: 90%;
-  width: 95%;
-  border: 2px solid black;
-  margin-top: 10px;
-  background-color: rgba(15, 23, 42, 0.8);
-  border-radius: 10px;
-}   
+
+/* 🔥 Card Design */
+.TaskCard {
+  height:20%;
+  width:90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.TaskCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Left */
+.ProgressCircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 4px solid #22c55e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #22c55e;
+  font-size: 18px;
+}
+
+/* Middle */
+.MiddleSection h3 {
+  color: white;
+  margin: 0;
+}
+
+.MiddleSection p {
+  color: #94a3b8;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+/* Right */
+.RightSection {
+  display: flex;
+  gap: 10px;
+}
+
+.ViewBtn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ViewBtn:hover {
+  background: #1d4ed8;
+}
+
+.DeleteBtn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: #dc2626;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.DeleteBtn:hover {
+  background: #b91c1c;
+}
 .para{
   font-size: 16px;
   padding: 20px 10px 20px 10px;
+}
+.heading{
+  font-size:20px;
+  margin:20px;
 }

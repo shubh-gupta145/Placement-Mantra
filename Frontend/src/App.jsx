@@ -17,14 +17,12 @@ import InterviewPage from "./components/Mock Interview Components/InterviewPage2
 import InterviewPage1 from "./components/Mock Interview Components/InterviewPage1";
 import CameraView from "./components/Mock Interview Components/CameraView";
 import SpeechToText from "./components/Mock Interview Components/SpeechToText";
-import SkillsBtn from "./components/Friday A.I/SkillsBtn";
 import InterviewPage2 from "./components/Mock Interview Components/InterviewPage1";
 import MockInterview from "./components/Mock Interview Components/Mobile Version/MockInterview";
 import RoadmapPage from "./components/Roadmaps Component/RoadmapPage";
 import InterFaceInPl from "./components/Internship And Placemnet Calaender/InterFaceIn&Pl";
 import News from "./components/Tech News Page/News";
 import Feedback from "./components/Main compoments/feedback";
-
 function App(){
     return (
       <>

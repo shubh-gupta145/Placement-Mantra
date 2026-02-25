@@ -1,50 +1,68 @@
+import { useState } from "react";
 import styles from "./VideoPlaylist.module.css";
+import videoData from "./videoData";
 
 function VideoPlaylist() {
+
+  const topics = Object.keys(videoData);
+
+  const [activeTopic, setActiveTopic] = useState(topics[0]);
+  const [visibleCount, setVisibleCount] = useState(4);
+
+  const handleTopicClick = (topic) => {
+    setActiveTopic(topic);
+    setVisibleCount(4);
+  };
+
+  const handleViewMore = () => {
+    setVisibleCount(prev => prev + 3);
+  };
+
   return (
     <div className={styles.Container}>
-      
+
       <div className={styles.TopicContainer}>
-        {[
-          "Roadmaps",
-          "Profile Management",
-          "Resume Guidance",
-          "Machine Learning",
-          "DSA With Java",
-          "MERN",
-          "React",
-          "Projects",
-          "Interview In Phases",
-          "AI & AI Models",
-          "Prompt Engineering",
-          "Online Exams",
-          "Others"
-        ].map((topic, index) => (
-          <div key={index} className={styles.Topic}>
+        {topics.map((topic, index) => (
+          <div
+            key={index}
+            className={`${styles.Topic} ${
+              activeTopic === topic ? styles.Active : ""
+            }`}
+            onClick={() => handleTopicClick(topic)}
+          >
             <span>{topic}</span>
           </div>
         ))}
       </div>
 
       <div className={styles.VideoContainer}>
-        <div className={styles.PlaylistContainer}>
-          
-          <div className={styles.VideoInfoContainer}>
-            <h2>React Full Course</h2>
-            <p className={styles.description}>
-              Complete beginner to advanced React playlist.
-            </p>
-            <span className={styles.Rating}>⭐ 4.8 Rating</span>
-          </div>
 
-          <div className={styles.imageContainer}>
-            <img
-              src="https://i.ytimg.com/vi/bMknfKXIFA8/maxresdefault.jpg"
-              alt="Video thumbnail"
-            />
-          </div>
+        {videoData[activeTopic]
+          .slice(0, visibleCount)
+          .map((video, index) => (
+            <div key={index} className={styles.PlaylistContainer}>
 
-        </div>
+              <div className={styles.VideoInfoContainer}>
+                <h3>{video.title}</h3>
+                <p>{video.description}</p>
+                <span>⭐ {video.rating}</span>
+              </div>
+
+              <div className={styles.imageContainer}>
+                <a href={video.link} target="_blank" rel="noopener noreferrer">
+                  <img src={video.img} alt="thumbnail" />
+                </a>
+              </div>
+
+            </div>
+        ))}
+
+        {visibleCount < videoData[activeTopic].length && (
+          <button onClick={handleViewMore} className={styles.ViewMoreBtn}>
+            View More
+          </button>
+        )}
+
       </div>
 
     </div>

@@ -1,121 +1,108 @@
 .Container {
-  height: 100vh;
-  width: 100vw;
   display: flex;
-  gap: 20px;
-  padding: 20px;
-  background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-  font-family: 'Poppins', sans-serif;
-  box-sizing: border-box;
+  height: 94vh;
 }
 
-/* LEFT SIDE TOPIC PANEL */
+/* Topics */
 .TopicContainer {
-  width: 25%;
-  background: #121212;
-  border-radius: 16px;
-  padding: 15px;
+  width: 250px;
+  background: #111;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+/* Scrollbar width */
+.TopicContainer::-webkit-scrollbar {
+  width: 5px;
+  height:10px;
 }
 
+/* Track */
+.TopicContainer::-webkit-scrollbar-track {
+  background: #1e293b;
+  border-radius: 10px;
+}
+
+/* Thumb */
+.TopicContainer::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #2563eb);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+/* Thumb hover */
+.TopicContainer::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #60a5fa, #3b82f6);
+}
+.TopicContainer::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #2563eb);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+/* Thumb hover */
+.TopicContainer::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #60a5fa, #3b82f6);
+}
 .Topic {
-  padding: 14px 18px;
-  margin-bottom: 12px;
-  background: #1e1e1e;
-  border-radius: 12px;
+  padding: 15px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
+  color: white;
+  transition: 0.3s;
 }
 
 .Topic:hover {
-  background: #252525;
-  transform: translateX(5px);
-  border: 1px solid #00f2ff;
+  background: #222;
 }
 
-.Topic span {
-  color: #ffffff;
-  font-size: 16px;
-  letter-spacing: 0.5px;
+.Active {
+  background: #0f62fe;
 }
 
-/* RIGHT SIDE VIDEO PANEL */
+/* Videos */
 .VideoContainer {
-  width: 75%;
-  background: #121212;
-  border-radius: 16px;
+  flex: 1;
   padding: 20px;
   overflow-y: auto;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+   background: linear-gradient(135deg, #141e30, #243b55);
 }
 
-/* PLAYLIST CARD */
 .PlaylistContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #1c1c1c;
-  border-radius: 16px;
   padding: 20px;
-  margin-bottom: 20px;
-  transition: 0.3s ease;
-}
-
-.PlaylistContainer:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-}
-
-/* VIDEO INFO */
-.VideoInfoContainer {
-  width: 55%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.VideoInfoContainer h2 {
-  color: #ffffff;
-  font-size: 22px;
-}
-
-.description {
-  color: #b0b0b0;
-  font-size: 14px;
-}
-
-.Rating {
-  background: #00f2ff;
-  color: #000;
-  padding: 6px 12px;
-  border-radius: 20px;
-  width: fit-content;
-  font-weight: 600;
-  font-size: 13px;
-}
-
-/* IMAGE */
-.imageContainer {
-  width: 40%;
-}
-
-.imageContainer img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
   border-radius: 12px;
 }
 
-/* SCROLLBAR STYLING */
-.TopicContainer::-webkit-scrollbar,
-.VideoContainer::-webkit-scrollbar {
-  width: 6px;
+.VideoInfoContainer {
+  color: white;
 }
 
-.TopicContainer::-webkit-scrollbar-thumb,
-.VideoContainer::-webkit-scrollbar-thumb {
-  background: #00f2ff;
+.imageContainer img {
+  width: 220px;
   border-radius: 10px;
+}
+.BtnContainer {
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.ViewMoreBtn {
+  height: 40px;
+  width:100px;
+  text-align: center;
+  padding: 12px;
+  background: #0f62fe;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
