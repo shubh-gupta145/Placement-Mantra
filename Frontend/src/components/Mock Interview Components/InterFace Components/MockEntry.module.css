@@ -1,0 +1,108 @@
+/* Wrapper */
+.wrapper{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#0f172a,#1e293b);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Card */
+.card{
+    width: 420px;
+    padding: 40px 35px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Heading */
+.heading{
+    text-align: center;
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+/* Form */
+.Form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input */
+.Search{
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #334155;
+    background-color: #1e293b;
+    color: white;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.Search:focus{
+    border: 1px solid #3b82f6;
+    box-shadow: 0 0 8px #3b82f6;
+}
+
+/* Select */
+select{
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #334155;
+    background-color: #1e293b;
+    color: white;
+    outline: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+select:focus{
+    border: 1px solid #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+}
+
+/* Resume Text */
+span{
+    font-size: 13px;
+    color: #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Button */
+.btn{
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    background: linear-gradient(135deg,#22c55e,#16a34a);
+    color: white;
+    transition: 0.3s ease;
+}
+
+.btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Optional Link style if needed */
+.links{
+    text-decoration: none;
+    color: white;
+}

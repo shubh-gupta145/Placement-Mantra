@@ -6,7 +6,7 @@ import Mic from "./Mic";
 import CameraView from "./CameraView";
 import SpeechToText from "./SpeechToText";
 
-function InterviewPage() {
+function InterviewPage2() {
 
   const [interviewState, setInterviewState] = useState("stopped");
   // stopped | running | paused
@@ -95,4 +95,4 @@ function InterviewPage() {
   );
 }
 
-export default InterviewPage;
+export default InterviewPage2;

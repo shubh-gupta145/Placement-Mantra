@@ -13,10 +13,9 @@ import ProfileEditPage from "./components/Profile Components/ProfileEditPage"
 import VideoPlaylist from "./components/Coding Video Playlist Page/VideoPlaylist"
 import MockEntry from "./components/Mock Interview Components/MockEntry";
 import InterviewPage from "./components/Mock Interview Components/InterviewPage2";
-import InterviewPage1 from "./components/Mock Interview Components/InterviewPage1";
 import CameraView from "./components/Mock Interview Components/CameraView";
 import SpeechToText from "./components/Mock Interview Components/SpeechToText";
-import InterviewPage2 from "./components/Mock Interview Components/InterviewPage1";
+import InterviewPage2 from "./components/Mock Interview Components/InterviewPage2";
 import MockInterview from "./components/Mock Interview Components/Mobile Version/MockInterview";
 import RoadmapPage from "./components/Roadmaps Component/RoadmapPage";
 import InterFaceInPl from "./components/Internship And Placemnet Calaender/InterFaceIn&Pl";
@@ -31,14 +30,14 @@ function App(){
           <NavBar/>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Mocks" element={<InterviewPage />} />
+            <Route path="/MockInterFace" element={<MockInterFace />} />
+            <Route path="/MockInterview" element={<InterviewPage2/>} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp/>} />
             <Route path="/CGPA" element={<CGPA />} />
             <Route path="/Tests" element={<InterFace />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/Friday" element={<FridayInterFace/>}/>
-            <Route path="/MockInterview" element={<InterviewPage1/>}/>
             <Route path="/Roadmaps" element={<RoadmapPage/>}/>
             <Route path="/FreeCoursePlaylist" element={<VideoPlaylist/>}/>
             <Route path="/Internship" element={<InterFaceInPl/>}/>

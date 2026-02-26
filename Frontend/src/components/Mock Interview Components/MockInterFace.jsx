@@ -1,6 +1,5 @@
 import styles from "./MockInterFace.module.css";
-import Mic from "./Mic"
-import Search_button from "./search_button";
+import Footar from "../Home Page component/Footar";
 import MockInterviewWorkFlow from "./MockInterviewWorkflow";
 import MockEntry from "./MockEntry";
 import Header from "./header";
@@ -13,6 +12,8 @@ function MockInterFace(){
   <MockInterviewWorkFlow/>
   <MockEntry/>
 <FAQSection/>
+<Footar/>
+
 </div>
 </>
     );

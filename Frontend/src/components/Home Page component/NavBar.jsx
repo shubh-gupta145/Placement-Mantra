@@ -14,7 +14,7 @@ function NavBar(){
   />
 </Link>
         <Link  className={styles.links} to="/">Home</Link>
-        <Link className={styles.links} to="/Mocks">Mocks</Link>
+        <Link className={styles.links} to="/MockInterFace">Mocks</Link>
         <Link className={styles.links} to="/CGPA">CGPA</Link>
         <Link className={styles.links} to="/TestInterFace">Tests</Link>
         <Link className={styles.links} to="/about">About Us</Link>
