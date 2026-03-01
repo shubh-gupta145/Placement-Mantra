@@ -2,9 +2,9 @@ import { useState } from "react";
 import styles from "./InterviewPage2.module.css";
 import { MdCallEnd } from "react-icons/md";
 import { MdPause } from "react-icons/md";
-import Mic from "./Mic";
-import CameraView from "./CameraView";
-import SpeechToText from "./SpeechToText";
+import Mic from "../Sub Components/Mic";
+import CameraView from "../Sub Components/CameraView";
+import SpeechToText from "../Sub Components/SpeechToText";
 
 function InterviewPage2() {
 

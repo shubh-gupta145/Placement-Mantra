@@ -1,11 +1,17 @@
 import styles from "./MockEntry.module.css";
-import UploadFile from "./UploadFile";
+import { useNavigate } from "react-router-dom";
+import UploadFile from "../Sub Components/UploadFile";
 function MockEntry() {
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/MockInterview");
+  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.card}>
         <h1 className={styles.heading}>Explore Our Mock Interviews</h1>
-<form action="/MockInterview" method="post" className={styles.Form}>
+<form onSubmit={handleSubmit} className={styles.Form}>
         <input className={styles.Search} type="text" placeholder="Enter The Your Name" required />
         <span>Please Sunbmit Your Resume 
           <UploadFile/>

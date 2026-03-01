@@ -1,6 +1,6 @@
 import styles from "./MockInterview.module.css";
-import Mic from "../Mic";
-import Search_button from "../search_button";
+import Mic from "../Sub Components/Mic";
+import Search_button from "../Sub Components/Search_button";
 function MockInterview(){
 return(
 <>
