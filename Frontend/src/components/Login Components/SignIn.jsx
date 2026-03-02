@@ -17,8 +17,6 @@ function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Login Data:", loginData);
-
-    // Later connect backend login API
   };
 
   return (
