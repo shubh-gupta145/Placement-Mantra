@@ -1,76 +1,67 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./SpeechToText.module.css";
+function SpeechToText({ interviewState }) {
 
-const SpeechToText = ({ interviewState }) => {
   const [text, setText] = useState("");
   const recognitionRef = useRef(null);
-  const isRunningRef = useRef(false);
 
   useEffect(() => {
+
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
-      alert("Browser not supported");
+      alert("Use Google Chrome Browser");
       return;
     }
 
     const recognition = new SpeechRecognition();
+
     recognition.continuous = true;
-    recognition.interimResults = false;
+    recognition.interimResults = true;
     recognition.lang = "en-IN";
 
     recognition.onresult = (event) => {
       let transcript = "";
 
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        if (event.results[i].isFinal) {
-          transcript += event.results[i][0].transcript + " ";
-        }
+      for (let i = 0; i < event.results.length; i++) {
+        transcript += event.results[i][0].transcript + " ";
       }
 
-      setText((prev) => prev + transcript);
+      setText(transcript);
+    };
+
+    recognition.onerror = (event) => {
+      console.log("Speech Error:", event.error);
     };
 
     recognition.onend = () => {
-      isRunningRef.current = false;
+      // Auto restart when running
+      if (interviewState === "running") {
+        recognition.start();
+      }
     };
 
     recognitionRef.current = recognition;
+
   }, []);
 
   useEffect(() => {
-    const recognition = recognitionRef.current;
-    if (!recognition) return;
 
-    // START
-    if (interviewState === "running" && !isRunningRef.current) {
+    if (!recognitionRef.current) return;
+
+    if (interviewState === "running") {
       try {
-        recognition.start();
-        isRunningRef.current = true;
-      } catch (err) {
-        console.log("Start error:", err);
-      }
+        recognitionRef.current.start();
+      } catch (err) {}
     }
 
-    // PAUSE
-    if (interviewState === "paused" && isRunningRef.current) {
-      try {
-        recognition.stop();
-        isRunningRef.current = false;
-      } catch (err) {
-        console.log("Pause error:", err);
-      }
+    if (interviewState === "paused") {
+      recognitionRef.current.stop();
     }
 
-    // STOP (Complete Reset)
     if (interviewState === "stopped") {
-      try {
-        recognition.stop();
-      } catch (err) {
-        console.log("Stop error:", err);
-      }
-      isRunningRef.current = false;
+      recognitionRef.current.stop();
       setText("");
     }
 
@@ -78,9 +69,16 @@ const SpeechToText = ({ interviewState }) => {
 
   return (
     <div className={styles.wrapper}>
-      {text || "Interview not started..."}
+      
+      <h2 className={styles.heading}>
+        Live Speech Transcript
+      </h2>
+
+      <div className={styles.textContainer}>
+        {text ? text : "Click on Mic and start speaking..."}
+      </div>
     </div>
   );
-};
+}
 
 export default SpeechToText;
