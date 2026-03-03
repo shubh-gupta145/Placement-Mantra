@@ -1,17 +1,20 @@
 .container{
-    height:50vh;
-    width:100vw;
+    min-height: 60vh;
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border:2px solid black;
     background-image:url("/images/CarsoulBackground Image.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
 }
+
+/* LEFT SECTION */
 .First_container{
-    height:40vh;
-    width:40vw;
+    width: 45%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,40 +23,40 @@
     color:white;
 }
 
-.quicksand-heading {
-  font-family: "Quicksand", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
+.heading{
+    font-size:36px;
 }
+
+.para{
+    font-size:18px;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+/* RIGHT SECTION */
 .Second_container{
-    height:40vh;
-    width:40vw;
+    width:45%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.poster_image{
-    height:100%;
-    width:100%;
-    object-fit: cover;
-    border-radius:30px;
 
+.poster_image{
+    width:100%;
+    max-width:450px;
+    border-radius:30px;
+    object-fit: cover;
     animation: imageFloat 6s ease-in-out infinite;
 }
 
-/* 🕊️ image floating */
+/* Floating Animation */
 @keyframes imageFloat {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
+
+/* BUTTON */
 .button{
     padding:10px 22px;
     font-size:16px;
@@ -65,16 +68,15 @@
     font-weight: 600;
     height:50px;
     width:280px;
+    transition: 0.3s ease;
 }
 
-/* 🔥 hover animation start */
 .button:hover{
     background-color: rgb(52, 58, 246);
     color: white;
     animation: glowPulse 1.6s ease-in-out infinite;
 }
 
-/* ✨ glow animation */
 @keyframes glowPulse {
     0% {
         box-shadow:
@@ -96,14 +98,98 @@
     }
 }
 
-/* click feedback */
 .button:active{
     transform: scale(0.95);
 }
-.para{
-    font-size:18px;
-    font-weight: 500;
-}   
-.heading{
-    font-size:36px;
+
+
+/* ========================= */
+/* 📱 RESPONSIVE SECTION */
+/* ========================= */
+
+@media (max-width: 992px){
+
+    .container{
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .First_container{
+        width: 100%;
+        align-items: center;
+    }
+
+    .Second_container{
+        width: 100%;
+    }
+
+    .heading{
+        font-size:30px;
+    }
+
+    .para{
+        font-size:16px;
+        max-width: 600px;
+    }
+
+    .button{
+        width: 240px;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 576px){
+
+    .heading{
+        font-size:24px;
+    }
+
+    .para{
+        font-size:14px;
+    }
+
+    .poster_image{
+        max-width: 300px;
+    }
+
+    .button{
+        width: 200px;
+        font-size:14px;
+    }
+}
+/* ========================= */
+/* 📱 Hide Image on Tablet & Mobile */
+/* ========================= */
+
+@media (max-width: 992px){
+
+    .container{
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .First_container{
+        width: 100%;
+        align-items: center;
+    }
+
+    /* 🔥 Image Completely Hidden */
+    .Second_container{
+        display: none;
+    }
+
+    .heading{
+        font-size:28px;
+    }
+
+    .para{
+        font-size:16px;
+        max-width: 600px;
+    }
+
+    .button{
+        width: 240px;
+    }
 }

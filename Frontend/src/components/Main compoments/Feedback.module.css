@@ -202,3 +202,86 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+@media (max-width: 992px) {
+
+  .container {
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .mainWrapper {
+    width: 85%;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .card,
+  .replySide {
+    width: 100%;
+    height: auto;
+  }
+
+  .heading {
+    font-size: 26px;
+  }
+
+  .input {
+    width: 90%;
+  }
+
+  .submitBtn {
+    width: 140px;
+  }
+}
+@media (max-width: 600px) {
+
+  .container {
+    padding: 30px 10px;
+  }
+
+  .mainWrapper {
+    width: 95%;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .replySide {
+    padding: 20px;
+  }
+
+  .heading {
+    font-size: 22px;
+  }
+
+  .feedbackText {
+    font-size: 14px;
+  }
+
+  .replyBtn {
+    font-size: 11px;
+  }
+
+  .replyMessage {
+    font-size: 11px;
+  }
+
+  .input {
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .submitBtn {
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .popupBox {
+    padding: 20px;
+  }
+
+  .popupHeading {
+    font-size: 18px;
+  }
+}

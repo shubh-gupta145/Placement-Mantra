@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styles from "./Auth.module.css";
-
+import { useNavigate } from "react-router-dom";
 function SignUp() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,14 +15,11 @@ function SignUp() {
       [e.target.name]: e.target.value,
     });
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Sign Up Data:", formData);
-
-    // Later you can connect backend API here
-    // fetch("/api/register", { method: "POST", body: JSON.stringify(formData) })
-  };
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log("Sign Up Data:", formData);
+  navigate("/SignUp");   // yaha apna path daalo
+};
 
   return (
     <div className={styles.container}>

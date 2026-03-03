@@ -1,65 +1,56 @@
 /* Navigation Bar */
 .nav_container {
-  min-height: 5vh;
-  width: 100vw;
+  height: 8vh;
+  width: 100%;
   font-family: "Quicksand", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-background: linear-gradient(135deg, #1e1e2f, #2b2b45);
-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
+
+/* Left Section */
 .First_nav_container {
-  height: 100%;
   width: 60%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 25px;
 }
+
+/* Right Section */
 .Second_nav_container {
-  height: 100%;
   width: 30%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
-input {
-  height: 4vh;
-  min-width: 60%;
-  border: 2px solid rgb(247, 34, 247);
-  border-radius: 15px;
-}
-input::placeholder {
-  padding-left: 10px;
-}
-.links{
+
+/* Links */
+.links {
   text-decoration: none;
-color: #ffffff;
+  color: #ffffff;
+  transition: 0.3s ease;
 }
 
-/* Animation of Links */
-
+/* Hover Animation */
 @keyframes increase {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1.4);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1.15); }
 }
+
 .links:hover {
-color:#ff4d6d;
-  animation: increase 1s ease-in-out infinite;
+  color: #ff4d6d;
+  animation: increase 0.6s ease-in-out;
   border-bottom: 2px solid #ff4d6d;
 }
+
+/* Search Bar */
 .SearchBar {
   padding: 8px 18px;
   width: 220px;
@@ -78,59 +69,77 @@ color:#ff4d6d;
 
 .SearchBar:focus {
   width: 260px;
-  border-color: #3b82f6;
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  border-color: #ff4d6d;
+  box-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
 }
 
+/* Logo Image */
+.Image {
+  height: 40px;
+  width: 40px;
+}
+
+/* Hamburger */
 .hamburger {
   display: none;
   font-size: 28px;
   cursor: pointer;
+  color: white;
 }
+
+/* ========================= */
+/* ✅ Responsive Section */
+/* ========================= */
+
 @media (max-width: 768px) {
+
   .nav_container {
-    flex-wrap: wrap;
-    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .First_nav_container {
     width: 100%;
     justify-content: space-between;
+    align-items: flex-start;
+    background-color:#1e1e2f
+  }
+
+  /* Hide Links Initially */
+  .First_nav_container a:not(:first-child) {
+    display: none;
   }
 
   .Second_nav_container {
+    display: none;
     width: 100%;
     flex-direction: column;
+    align-items: flex-start;
     gap: 10px;
     margin-top: 10px;
-    display: none;
+    padding: 10px 0;
   }
 
-  .First_nav_container a {
-    display: none;
-  }
-
+  /* When Menu Active */
   .showMenu a {
-    display: block;
-    padding: 5px 0;
+    display: block !important;
+    padding: 8px 0;
   }
 
   .showMenu {
-    display: flex;
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
   }
 
-  input {
+  .SearchBar {
     width: 90%;
   }
 
   .hamburger {
     display: block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
   }
-}
-.Image{
-height:40px;
-width:40px;
-display: flex;
-justify-content: center;
-align-self: center;
 }
