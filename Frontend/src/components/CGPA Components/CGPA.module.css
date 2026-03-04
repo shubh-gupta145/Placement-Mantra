@@ -1,6 +1,6 @@
 /* PAGE BASE */
 .container {
-  height: 87vh;
+  min-height: 87vh;
   width: 100%;
   padding-bottom: 4rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI";
@@ -112,23 +112,21 @@ font-size:16px;
   color: #475569;
   line-height: 1.7rem;
 }
-
 /* THIRD SECTION */
 .ThirdContainer {
-  width: 100vw;
-  height:60vh;
-  display:flex;
+  width: 100%;
+  min-height: auto;
+  display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
   margin: 4rem auto 0;
-  padding: 2.5rem;
+  padding: 3rem 2rem;
   background: #020617;
   color: white;
   border-radius: 5px;
 }
+
 .ThirdContainer h2 {
-  height:20vh;
   text-align: center;
   font-size: 2rem;
   margin-bottom: 2rem;
@@ -136,16 +134,18 @@ font-size:16px;
 
 /* VIDEOS */
 .VideoContainer {
-  height:45vh;
-  width:100vw;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  align-items: stretch;
+  flex-wrap: wrap;   /* 🔥 Important */
+  gap: 2rem;
 }
-
 .Video1Container,
 .Video2Container,
 .Video3Container {
+  width: 300px;   /* Fixed clean size */
+  max-width: 100%;
   background: #020617;
   border: 1px solid #1e293b;
   border-radius: 16px;
@@ -195,4 +195,75 @@ font-size:16px;
 }
 .image{
   object-fit: cover;
+}
+@media (max-width: 1024px) {
+
+  .container {
+    padding: 30px 40px;
+  }
+
+  .FirstContainer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .SecondContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .VideoContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+@media (max-width: 600px) {
+
+  .container {
+    padding: 20px;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .para {
+    font-size: 15px;
+  }
+
+  .VideoContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .image {
+    max-width: 100%;
+  }
+
+}
+@media (max-width: 1024px) {
+  .ImageContainer {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .para {
+    font-size: 0.95rem;
+    line-height: 1.6rem;
+  }
+
+  .VideoContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Video1Container,
+  .Video2Container,
+  .Video3Container {
+    width: 90%;
+  }
+
 }

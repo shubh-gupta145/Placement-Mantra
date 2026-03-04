@@ -162,3 +162,104 @@ h4{
     padding:8px;
     border-radius:8px;
 }
+@media (max-width: 1024px) {
+
+  .ProfileCarsoul {
+    height: auto;
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .MainInfoWrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .UserInfoContainer {
+    width: 85%;
+  }
+
+  .EditContainer {
+    width: 85%;
+  }
+
+}
+@media (max-width: 768px) {
+
+  .Container {
+    height: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .ImageWrapper {
+    width: 140px;
+    height: 140px;
+  }
+
+  .ProfileName {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .ProfileId {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .UserInfoContainer,
+  .EditContainer {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .subContainer2 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .InfoHeaders {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .valueContainer {
+    width: 100%;
+    height: auto;
+  }
+
+  .EditButton {
+    align-self: flex-end;
+  }
+
+}
+@media (max-width: 480px) {
+
+  .ImageWrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  .PlusIcon {
+    width: 35px;
+    height: 35px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .ProfileName {
+    font-size: 20px;
+  }
+
+  .ProfileId {
+    font-size: 13px;
+  }
+
+  .InfoValue {
+    font-size: 14px;
+  }
+
+}

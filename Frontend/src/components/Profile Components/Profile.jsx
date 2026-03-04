@@ -26,7 +26,6 @@ function Profile(){
 <span className={styles.Skill}>Skills java python</span>
 </div>
 </div>
-<div className={styles.SecondContainer}>
   <div className={styles.subContainer2}>
     <h1 className={styles.heading}>Your Previous Tests Result</h1>
 
@@ -51,7 +50,6 @@ function Profile(){
       </div>
     </div>
   </div>
-</div>
 </div>
 </>
     );
