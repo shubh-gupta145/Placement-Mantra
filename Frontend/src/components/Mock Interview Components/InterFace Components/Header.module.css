@@ -1,17 +1,57 @@
 .InfoContainer {
-  height:35vh;
-  width:99.4vw;
-  color:black;
-  border:2px solid black;
+  width: 100%;
+  min-height: 35vh;
+  color: black;
+  border: 2px solid black;
+  padding: 20px;
+  box-sizing: border-box;
 }
+
+/* Heading */
+
 .heading {
-padding:20px 0px 20px 30px;
   font-family: sans-serif;
-  font-size:30px;
-}
-.para{
+  font-size: 30px;
+  margin-bottom: 15px;
   color:black;
-  font-size:17px;
-  padding-left:25px;
-  padding-right:25px;
+}
+
+/* Paragraph */
+
+.para {
+  font-size: 17px;
+  line-height: 1.6;
+  color:black;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .InfoContainer {
+    padding: 18px;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .para {
+    font-size: 15px;
+  }
+
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+
+  .heading {
+    font-size: 20px;
+  }
+
+  .para {
+    font-size: 14px;
+  }
+
 }

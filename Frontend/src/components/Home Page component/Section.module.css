@@ -8,7 +8,9 @@
   padding: 60px 20px;
   box-sizing: border-box;
 }
-
+.box1::before {
+  pointer-events: none;   /* 🔥 IMPORTANT FIX */
+}
 /* GRID CONTAINER */
 .container {
   width: 80%;
@@ -96,7 +98,9 @@
   color: white;
   height: 45px;
   width: 180px;
-
+  display:flex;
+  justify-content:center;
+  align-items:center;
   background: linear-gradient(
     135deg,
     #6366f1,

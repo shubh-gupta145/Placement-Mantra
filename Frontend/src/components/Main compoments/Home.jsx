@@ -8,11 +8,11 @@ import Feedback from "./feedback";
 import React, { useEffect } from "react";
 function Home(){
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/test")
-      .then(res => res.json())
-      .then(data => console.log(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/api/test")
+  //     .then(res => res.json())
+  //     .then(data => console.log(data));
+  // }, []);
     return (
 <>
 <div className={styles.container}>

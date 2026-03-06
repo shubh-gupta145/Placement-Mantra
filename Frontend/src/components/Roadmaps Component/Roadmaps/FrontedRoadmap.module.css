@@ -36,9 +36,9 @@
   text-align: left;
 }
 
-/* 🔥 Card Style */
+/* Card */
 .Details {
-  height: 80vh;
+  min-height: 500px;
   width: 97%;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 15px;
@@ -48,64 +48,56 @@
   flex-direction: column;
   gap: 20px;
   align-items: flex-start;
+  padding-bottom: 20px;
 }
+
 .heading {
   font-size: 25px;
   font-weight: 600;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding: 15px;
 }
+
 .para {
   font-size: 15px;
   padding-left: 15px;
 }
+
 .Span {
   font-size: 18px;
   font-weight: 600;
   padding-left: 10px;
 }
-.htmlDetails:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-  border-color: #22c55e;
-}
 
 /* List */
 .Infolist {
   margin-top: 10px;
-  padding-left: 20px;
-  height: 200px;
+  padding-left: 30px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  padding-left: 30px;
+  gap: 8px;
 }
 
 .Infolist li {
   font-size: 14px;
-  margin-bottom: 6px;
   color: white;
   font-weight: 600;
   list-style: circle;
 }
 
-/* 🔥 Video Section Using FLEX */
+/* VIDEO SECTION */
 .VideoContainer {
   width: 100%;
-  height: 30%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  align-items: center;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  gap: 15px;
+  margin-top: 10px;
 }
 
 .Video {
-  max-width: 30%;
-  height: 95%;
+  width: 30%;
+  min-height: 150px;
   background: #1e293b;
   border-radius: 10px;
   overflow: hidden;
@@ -124,44 +116,34 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .Container {
-    padding: 20px;
-  }
-
-  .Title {
-    font-size: 24px;
-  }
-
-  .Video {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
+/* Heading container */
+.headingContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.headingContainer{
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.OurContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.OurContainer{
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-}
+
+/* Resources */
 .Resources {
-  margin-top:40px;
+  margin-top: 40px;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 15px;
+  flex-wrap: wrap;
   padding-left: 20px;
 }
+
 .Links {
   color: white;
   font-weight: 600;
@@ -175,4 +157,76 @@
   color: #22c55e;
   text-decoration: underline;
   background: rgba(34, 197, 94, 0.1);
+}
+
+/* ===================== */
+/* Tablet Responsive */
+/* ===================== */
+
+@media (max-width: 992px) {
+
+  .Container {
+    padding: 30px;
+  }
+
+  .Video {
+    width: 45%;
+  }
+
+  .Details {
+    width: 100%;
+  }
+
+}
+
+/* ===================== */
+/* Mobile Responsive */
+/* ===================== */
+
+@media (max-width: 768px) {
+
+  .Container {
+    padding: 20px;
+  }
+
+  .Title {
+    font-size: 24px;
+  }
+
+  .Steps {
+    font-size: 18px;
+  }
+
+  .heading {
+    font-size: 20px;
+  }
+
+  .Video {
+    width: 100%;
+  }
+
+  .Resources {
+    justify-content: center;
+  }
+
+}
+
+/* ===================== */
+/* Small Mobile */
+/* ===================== */
+
+@media (max-width: 480px) {
+
+  .Title {
+    font-size: 20px;
+  }
+
+  .para {
+    font-size: 14px;
+  }
+
+  .Infolist li {
+    font-size: 13px;
+  }
+
 }

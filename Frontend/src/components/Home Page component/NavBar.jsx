@@ -25,7 +25,7 @@ function NavBar() {
           <Link className={styles.links} to="/MockInterFace">Mocks</Link>
           <Link className={styles.links} to="/CGPA">CGPA</Link>
           <Link className={styles.links} to="/TestInterFace">Tests</Link>
-          <Link className={styles.links} to="/about">About Us</Link>
+          <Link className={styles.links} to="/About">About Us</Link>
         </div>
 
         {/* Right Section */}

@@ -17,7 +17,6 @@ function SkillsBtn(){
 <div className={styles.Skill}>Prompt Engineer</div>
 <div className={styles.Skill}>BlockChain Developer</div>
 <div className={styles.Skill}>App Developer</div>
-<div className={styles.Skill}>DevOps Engineer</div>
 <div className={styles.Skill}>Cloud Engineer</div>
 <div className={styles.Skill}>UI Designer</div>
 <div className={styles.Skill}>UX Designer</div>

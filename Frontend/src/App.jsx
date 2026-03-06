@@ -12,10 +12,10 @@ import ProfileEditPage from "./components/Profile Components/ProfileEditPage";
 import VideoPlaylist from "./components/Coding Video Playlist Page/VideoPlaylist";
 import InterviewPage2 from "./components/Mock Interview Components/InterFace Components/InterviewPage2";
 import RoadmapPage from "./components/Roadmaps Component/RoadmapPage";
-import InterFaceInPl from "./components/Internship And Placemnet Calaender/InterFaceIn&Pl";
 import News from "./components/Tech News Page/News";
 import SignIn from "./components/Login Components/SignIn";
 import SignUp from "./components/Login Components/SignUp";
+import InterFaceIntern from "./components/Internship And Placemnet Calaender/InterFaceIntern";
 
 function App() {
   return (
@@ -29,11 +29,11 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/CGPA" element={<CGPA />} />
         <Route path="/Tests" element={<TestPage />} />
-        <Route path="/about" element={<AboutUs />} />
+        <Route path="/About" element={<AboutUs />} />
         <Route path="/Friday" element={<FridayInterFace />} />
         <Route path="/Roadmaps" element={<RoadmapPage />} />
         <Route path="/FreeCoursePlaylist" element={<VideoPlaylist />} />
-        <Route path="/Internship" element={<InterFaceInPl />} />
+        <Route path="/Internship" element={<InterFaceIntern/>} />
         <Route path="/TestInterFace" element={<InterFace />} />
         <Route path="/TechNewes" element={<News />} />
         <Route path="/profile" element={<Profile />} />

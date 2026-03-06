@@ -3,7 +3,8 @@
   height: 94vh;
 }
 
-/* Topics */
+/* ================= TOPICS ================= */
+
 .TopicContainer {
   width: 250px;
   background: #111;
@@ -11,39 +12,26 @@
   flex-direction: column;
   overflow-y: auto;
 }
-/* Scrollbar width */
+
+/* Scrollbar */
 .TopicContainer::-webkit-scrollbar {
   width: 5px;
-  height:10px;
 }
 
-/* Track */
 .TopicContainer::-webkit-scrollbar-track {
   background: #1e293b;
   border-radius: 10px;
 }
 
-/* Thumb */
 .TopicContainer::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #3b82f6, #2563eb);
   border-radius: 10px;
-  transition: 0.3s;
 }
 
-/* Thumb hover */
 .TopicContainer::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #60a5fa, #3b82f6);
 }
-.TopicContainer::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3b82f6, #2563eb);
-  border-radius: 10px;
-  transition: 0.3s;
-}
 
-/* Thumb hover */
-.TopicContainer::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #60a5fa, #3b82f6);
-}
 .Topic {
   padding: 15px;
   cursor: pointer;
@@ -59,21 +47,25 @@
   background: #0f62fe;
 }
 
-/* Videos */
+/* ================= VIDEOS ================= */
+
 .VideoContainer {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
+
   display: flex;
   flex-direction: column;
   gap: 20px;
-   background: linear-gradient(135deg, #141e30, #243b55);
+
+  background: linear-gradient(135deg, #141e30, #243b55);
 }
 
 .PlaylistContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   background: #1c1c1c;
   padding: 20px;
   border-radius: 12px;
@@ -87,22 +79,76 @@
   width: 220px;
   border-radius: 10px;
 }
+
 .BtnContainer {
   width:100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
 }
+
 .ViewMoreBtn {
-  height: 40px;
+  height:40px;
   width:100px;
-  text-align: center;
-  padding: 12px;
-  background: #0f62fe;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  text-align:center;
+  padding:12px;
+  background:#0f62fe;
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+
+  .TopicContainer {
+    width: 200px;
+  }
+
+  .imageContainer img {
+    width: 180px;
+  }
+
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .Container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .TopicContainer {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .Topic {
+    min-width: 150px;
+    text-align: center;
+  }
+
+  .VideoContainer {
+    padding: 15px;
+  }
+
+  .PlaylistContainer {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .imageContainer img {
+    width: 100%;
+    max-width: 300px;
+  }
+
 }

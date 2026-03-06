@@ -1,133 +1,212 @@
 .Container{
     height:95vh;
     width:100vw;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: black;
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    background-color:black;
 }
+
+/* ================= DESKTOP STRUCTURE SAME ================= */
+
 .ScreenPannel{
     height:92vh;
     width:67vw;
     border:2px solid purple;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: rgb(72, 70, 70);
+    border-radius:10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    align-items:center;
+    background-color:rgb(72,70,70);
 }
+
+.OutputPannel{
+    height:95vh;
+    width:27vw;
+    border:2px solid black;
+    border-radius:10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    align-items:center;
+    background-color:#424242;
+}
+
+/* ================= EXISTING CSS SAME ================= */
+
 .HrContainer{
     height:75%;
     width:95%;
     border:2px solid red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-      flex-wrap: wrap;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
 }
+
 .HrLogo{
     height:50%;
     width:30%;
-    border-radius: 50%;
+    border-radius:50%;
 }
+
 .images{
-    object-fit: cover;
-    border-radius: 50%;
+    object-fit:cover;
+    border-radius:50%;
 }
+
 .timeContainer{
     height:10%;
     width:95%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
+    display:flex;
+    justify-content:end;
+    align-items:center;
     padding-right:30px;
 }
+
 p{
     color:white;
-    font-size: 25px;
+    font-size:25px;
 }
+
 .ControllerPannel{
     height:13%;
     width:95%;
     border:2px solid green;
-        display:flex;
-    justify-content: center;
-    align-items: center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     border-radius:10px;
 }
+
 .BtnContainer{
     height:80%;
     width:50%;
     border:2px solid white;
     display:flex;
     gap:20px;
-justify-content: center;
-    align-items: center;
+    justify-content:center;
+    align-items:center;
     border-radius:10px;
 }
-.OutputPannel{
-    height:95vh;
-width:27vw;
-border:2px solid black;
-border-radius: 10px;
-display: flex;
-flex-direction: column;
-justify-content: space-evenly;
-align-items: center;
-background-color: #424242;
-}
+
 .StudentPannel{
     height:40%;
     width:95%;
     border:2px solid yellow;
     display:flex;
-    justify-content: center;
-    align-items: center;
+    justify-content:center;
+    align-items:center;
 }
+
 .TextPannel{
     height:55%;
     width:95%;
     border:2px solid pink;
-    background-color: white;
-    overflow-y: auto;
+    background-color:white;
+    overflow-y:auto;
 }
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Call Cut Button */
-.callCutBtn {
-  width: 44px;      /* 55 → 44 */
-  height: 44px;
-  border-radius: 50%;
-  background: #e53935;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 22px rgba(229, 57, 53, 0.4);
-}
-
-.callIcon {
-  font-size: 30px;  /* 38 → ~30 */
-  color: #ffffff;
-}
-
-/* Pause Button */
 .pauseBtn {
-  width: 51px;      /* 64 → ~51 */
-  height: 51px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: linear-gradient(145deg, #f5f5f5, #e0e0e0);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pauseBtn:hover {
+  transform: scale(1.1);
 }
 
 .pauseIcon {
-  font-size: 27px;  /* 34 → ~27 */
+  font-size: 26px;
   color: #424242;
+}
+.callCutBtn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #e53935;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 22px rgba(229, 57, 53, 0.4);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.callCutBtn:hover {
+  transform: scale(1.1);
+}
+
+/* icon */
+
+.callIcon {
+  font-size: 28px;
+  color: white;
+}
+/* ================= TABLET ================= */
+
+@media (max-width:1024px){
+
+.Container{
+    flex-direction:column;
+    height:auto;
+    padding:20px;
+}
+
+.ScreenPannel{
+    width:90vw;
+    height:70vh;
+}
+
+.OutputPannel{
+    width:90vw;
+    height:50vh;
+}
+
+.BtnContainer{
+    width:70%;
+}
+
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:600px){
+
+.Container{
+    flex-direction:column;
+    height:auto;
+}
+
+.ScreenPannel{
+    width:95vw;
+    height:65vh;
+}
+
+.OutputPannel{
+    width:95vw;
+    height:50vh;
+}
+
+.HrLogo{
+    width:40%;
+    height:40%;
+}
+
+p{
+    font-size:18px;
+}
+
+.BtnContainer{
+    width:90%;
+}
+
 }

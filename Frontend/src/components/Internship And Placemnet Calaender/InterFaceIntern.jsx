@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Calendar from "./Calaender";
-import styles from "./InterFaceIn&Pl.module.css";
+import styles from "./InterFaceIntern.module.css";
 
-function InterFaceInPl() {
+function InterFaceIntern() {
   const [internships, setInternships] = useState([]);
   const [placements, setPlacements] = useState([]);
   const [active, setActive] = useState("intern");
@@ -125,4 +125,4 @@ function InterFaceInPl() {
   );
 }
 
-export default InterFaceInPl;
+export default InterFaceIntern;

@@ -1,30 +1,78 @@
+/* ================= SKILLS CONTAINER ================= */
+
 .SkillsContainer{
-    height:95%;
-    width:95%;
-display: flex;
-justify-content: center;
-align-items: center;
-gap:25px;
-flex-wrap:wrap;
-border-radius:10px;
+  width:95%;
+  min-height:95%;
+
+  display:grid;
+  grid-template-columns: repeat(2, 1fr); /* Desktop 2 per row */
+  gap:20px;
+
+  padding:15px;
+  box-sizing:border-box;
+  border-radius:10px;
 }
-.Skill {
-  padding: 8px 16px;
-  border-radius: 20px;
+
+
+/* ================= SKILL BUTTON ================= */
+
+.Skill{
+  padding:10px 16px;
+  border-radius:20px;
 
   background: linear-gradient(135deg, #f5f7fa, #e4e7eb);
-  color: #333;
+  color:#333;
 
-  font-size: 14px;
-  font-weight: 500;
+  font-size:14px;
+  font-weight:500;
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  width:100%;
+
+  box-shadow:0 4px 10px rgba(0,0,0,0.12);
+  transition:0.3s ease;
 }
-.Skill:hover {
-  background: linear-gradient(135deg, #6a5cff, #ff4ecd);
-  color: #ffffff;
+
+.Skill:hover{
+  background: linear-gradient(135deg,#6a5cff,#ff4ecd);
+  color:#ffffff;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width:1024px){
+
+  .SkillsContainer{
+    grid-template-columns: repeat(2,1fr); /* still 2 */
+    gap:18px;
+  }
+
+  .Skill{
+    font-size:13px;
+    padding:8px 14px;
+  }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width:600px){
+
+  .SkillsContainer{
+    grid-template-columns:1fr; /* 🔥 1 per row */
+    width:100%;
+    gap:12px;
+    padding:10px;
+  }
+
+  .Skill{
+    font-size:12px;
+    padding:8px 12px;
+  }
+
 }
