@@ -1,32 +1,46 @@
 const videoData = {
   React: [
     {
-      title: "React JS Crash Course",   
-        description: "Learn React JS in one video.",
-        img: "https://i.ytimg.com/vi/w7ejDZ8SWv8/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=w7ejDZ8SWv8",
-        rating: "4.8"
+      title: "Code With Harry React JS Tutorial",   
+        description: "Comprehensive React JS tutorial for beginners.",
+        img: "./images/VideoPlaylist/Code With Harry React.png",
+        link: "https://www.youtube.com/watch?v=RGKi6LSPDLU&pp=ygUOcmVhY3QgdHV0b3JpYWw%3D",
+        rating: "3.9"
     },
     {
-      title: "React Hooks Explained",
-      description: "Understand React Hooks deeply.",
-        img: "https://i.ytimg.com/vi/f687hBjwFcM/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=f687hBjwFcM",
+      title: "Sheryians Coding School React JS Course",
+      description: "In-depth React course covering all fundamentals.",
+        img: "./images/VideoPlaylist/React Part-2.png",
+        link: "https://www.youtube.com/watch?v=3LRZRSIh_KE&t=70s&pp=ygUOcmVhY3QgdHV0b3JpYWw%3D",
+        rating: "4.0"
+    },
+    {
+      title: "SuperSimpleDev React JS Tutorial",
+      description: "Easy-to-follow React tutorial for beginners.",
+        img: "./images/VideoPlaylist/React Part-3.png",
+        link: "https://www.youtube.com/watch?v=TtPXvEcE11E&pp=ygUOcmVhY3QgdHV0b3JpYWw%3D",
+        rating: "4.1"
+    },
+    {
+        title: "KG Coding React JS Advanced Patterns",
+        description: "Learn advanced React patterns and best practices.",
+        img: "./images/VideoPlaylist/React Part-4.png",
+        link: "https://www.youtube.com/watch?v=eILUmCJhl64&t=16378s&pp=ygUSa2cgY29kaW5nIHJlYWN0Lmpz",
         rating: "4.7"
     },
-    {
-      title: "React Projects for Beginners",
-      description: "Build real-world React projects.",
-        img: "https://i.ytimg.com/vi/Ke90Tje7VS0/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=Ke90Tje7VS0",
-        rating: "4.6"
+        {
+      title: "Tech Gun React JS Projects",
+      description: "Build real-world projects using React JS.",
+        img: "./images/VideoPlaylist/React Part-5.png",
+        link: "https://www.youtube.com/watch?v=F18Rxw6ftcM&pp=ygUOdGVjaCBndW4gcmVhY3Q%3D",
+        rating: "4.0"
     },
     {
-        title: "Advanced React Patterns",
-        description: "Learn advanced patterns in React.",
-        img: "https://i.ytimg.com/vi/0mYBSwU2a3I/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=0mYBSwU2a3I",
-        rating: "4.9"
+        title: "Apna College React JS Advanced Concepts",
+        description: "Learn advanced concepts in React.",
+        img: "./images/VideoPlaylist/React Part-6.png",
+        link: "https://www.youtube.com/watch?v=gY5sGvq-8h8&pp=ygUSYXBuYSBjb2xsZWdlIHJlYWN0",
+        rating: "3.5"
     }
   ],
 
@@ -92,11 +106,11 @@ const videoData = {
   ],
   AI: [
     {
-        title: "AI for Everyone",
-        description: "Understand AI concepts without coding.",
-        img: "https://i.ytimg.com/vi/aircAruvnKk/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=aircAruvnKk",
-        rating: "4.8"
+        title: "Apna College AI Concepts Explained",
+        description: "Understand AI concepts in simple terms.",
+        img: "./images/VideoPlaylist/A.I Part-1.png",
+        link: "https://www.youtube.com/watch?v=D1eL1EnxXXQ&pp=ygUMYS5pIHR1dG9yaWFs",
+        rating: "4.0"
     },
     {
         title: "Python for AI",

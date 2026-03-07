@@ -57,11 +57,13 @@ function VideoPlaylist() {
             </div>
         ))}
 
-        {visibleCount < videoData[activeTopic].length && (
-          <button onClick={handleViewMore} className={styles.ViewMoreBtn}>
-            View More
-          </button>
-        )}
+{visibleCount < videoData[activeTopic].length && (
+  <div className={styles.BtnContainer}>
+    <button onClick={handleViewMore} className={styles.ViewMoreBtn}>
+      View More
+    </button>
+  </div>
+)}
 
       </div>
 
