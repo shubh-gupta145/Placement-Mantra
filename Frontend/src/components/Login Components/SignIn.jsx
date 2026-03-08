@@ -1,53 +1,77 @@
 import { useState } from "react";
 import styles from "./Auth.module.css";
+import { useNavigate } from "react-router-dom";
 
 function SignIn() {
-  const [loginData, setLoginData] = useState({
-    email: "",
-    password: "",
-  });
 
-  const handleChange = (e) => {
-    setLoginData({
-      ...loginData,
-      [e.target.name]: e.target.value,
-    });
-  };
+const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Login Data:", loginData);
-  };
+const [loginData,setLoginData] = useState({
+email:"",
+password:""
+});
 
-  return (
-    <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <h2>Welcome Back</h2>
+const handleChange = (e)=>{
+setLoginData({
+...loginData,
+[e.target.name]:e.target.value
+});
+};
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter Your Email"
-          onChange={handleChange}
-          required
-        />
+const handleSubmit = async (e) => {
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter Password"
-          onChange={handleChange}
-          required
-        />
+e.preventDefault();
 
-        <button type="submit">Sign In</button>
+const response = await fetch("http://localhost:5000/signin",{
 
-        <p>
-          Don't have an account? <a href="/signup">Sign Up</a>
-        </p>
-      </form>
-    </div>
-  );
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(loginData)
+
+});
+
+const data = await response.json();
+
+if(data.message === "Login Successful"){
+navigate("/");   // Home page
+}else{
+alert(data.message);
+}
+
+};
+
+return (
+<div className={styles.container}>
+<form className={styles.form} onSubmit={handleSubmit}>
+
+<h2>Welcome Back</h2>
+
+<input
+type="email"
+name="email"
+placeholder="Enter Your Email"
+onChange={handleChange}
+required
+/>
+
+<input
+type="password"
+name="password"
+placeholder="Enter Password"
+onChange={handleChange}
+required
+/>
+
+<button type="submit">Sign In</button>
+
+</form>
+</div>
+);
+
 }
 
 export default SignIn;
