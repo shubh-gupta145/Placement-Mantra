@@ -1,10 +1,53 @@
 import { FaArrowRight } from "react-icons/fa";
+import { useState } from "react";
 import { FaUserEdit, FaSearch, FaChartLine, FaCheckCircle } from "react-icons/fa";
 import styles from './InterFace.module.css';
 import Footar from "../Home Page component/Footar";
 import HeroCarousel from "./Carsoul";
-
+import { useNavigate } from "react-router-dom";
 function InterFace(){
+
+const [topic, setTopic] = useState("");
+const [difficulty, setDifficulty] = useState("");
+const [name,setName] = useState("");
+const navigate = useNavigate();
+
+const handleSubmit = async(e) => {
+
+e.preventDefault();
+
+try{
+
+const response = await fetch("http://localhost:5000/start-test",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+name,
+topic,
+difficulty
+})
+
+});
+
+const data = await response.json();
+
+console.log(data); // debug
+
+navigate("/Tests",{state:data});
+
+}
+catch(error){
+
+console.log("Error:",error);
+
+}
+
+};
   return(
     <div className={styles.Container}>
       
@@ -42,24 +85,33 @@ function InterFace(){
 <div className={styles.TestContainer}>
   <div className={styles.TestContainerContent}>
     <h1>Fill The Following Details</h1>
-<form action="/Tests" className={styles.form} method="post">
-    <input type="text"  placeholder="Enter Your Name" className={styles.inputField}/>
+<form onSubmit={handleSubmit} className={styles.form}>
 
-    <select className={styles.selectField}>
-      <option>DSA Based Theory Question</option>
-      <option>Web Development</option>
-      <option>Aptitue</option>
-      <option>Programming Language Question</option>
-    </select>
+<input type="text" placeholder="Enter Your Name"className={styles.inputField} onChange={(e)=>setName(e.target.value)}/>
 
-    <select className={styles.selectField}>
-      <option>Easy</option>
-      <option>Medium</option>
-      <option>Hard</option>
-      <option>Expert</option>
-      <option>Random</option>
-    </select>
+<select
+className={styles.selectField}
+onChange={(e)=>setTopic(e.target.value)}
+>
 
+<option value="">Select Topic</option>
+<option value="DSA">DSA Based Theory Question</option>
+<option value="Web">Web Development</option>
+<option value="Aptitude">Aptitue</option>
+<option value="Programming">Programming Language Question</option>
+
+</select>
+<select
+className={styles.selectField}
+onChange={(e)=>setDifficulty(e.target.value)}
+>
+<option value="">Select Difficulty</option>
+<option value="easy">Easy</option>
+<option value="medium">Medium</option>
+<option value="hard">Hard</option>
+<option value="expert">Expert</option>
+
+</select>
     <button type="Submit" className={styles.submitButton}>
       Submit <FaArrowRight/>
     </button>
