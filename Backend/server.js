@@ -1,35 +1,28 @@
 const express = require("express");
 const cors = require("cors");
-
+const dsa = require("./questions/dsaQuestions");
+const web = require("./questions/webQuestions");
+const aptitude = require("./questions/aptitudeQuestions");
+const programming = require("./questions/programmingQuestions");
 const app = express();
-
+const questions = {
+DSA: dsa,
+Web: web,
+Aptitude: aptitude,
+Programming: programming
+};
 app.use(cors());
 app.use(express.json());
-
-const questions = require("./questions");
-
-
-// Start Test
 app.post("/start-test",(req,res)=>{
-
 const {topic,difficulty} = req.body;
-
 if(!questions[topic] || !questions[topic][difficulty]){
 return res.status(400).json({message:"Invalid topic or difficulty"});
 }
-
 const selected = questions[topic][difficulty];
-
 res.json(selected);
-
 });
-
-
-// Submit Test
 app.post("/submit-test",(req,res)=>{
-
 const {answers,questions:qs} = req.body;
-
 if(!answers || !qs){
 return res.status(400).json({message:"Invalid data"});
 }
