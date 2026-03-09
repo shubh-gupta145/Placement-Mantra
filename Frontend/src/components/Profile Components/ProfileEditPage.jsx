@@ -1,28 +1,136 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import styles from "./ProfileEditPage.module.css";
 
 function ProfileEditPage() {
+
+  const navigate = useNavigate();
+
+  const [profileData, setProfileData] = useState({
+    name:"",
+    email:"",
+    phone:"",
+    gender:"",
+    birthday:"",
+    location:"",
+    summary:"",
+    github:"",
+    linkedin:"",
+    leetcode:"",
+    image:""
+  });
+
   const fileInputRef = useRef(null);
   const [image, setImage] = useState(null);
+
+  /* ================= LOAD PROFILE DATA ================= */
+
+  useEffect(()=>{
+
+    const email = localStorage.getItem("email") || localStorage.getItem("userEmail");
+
+    if(!email) return;
+
+    fetch(`http://localhost:5000/get-profile/${email}`)
+    .then(res=>res.json())
+    .then(data=>{
+
+      if(data){
+
+        setProfileData({
+          ...data,
+          email: email
+        });
+
+        setImage(data.image);
+
+      }
+
+    });
+
+  },[]);
+
+  /* ================= INPUT CHANGE ================= */
+
+  const handleChange = (e)=>{
+
+    setProfileData({
+      ...profileData,
+      [e.target.name]: e.target.value
+    });
+
+  };
+
+  /* ================= IMAGE ================= */
 
   const handleImageClick = () => {
     fileInputRef.current.click();
   };
 
   const handleImageChange = (e) => {
+
     const file = e.target.files[0];
-    if (file) {
-      setImage(URL.createObjectURL(file));
+
+    if(file){
+
+      const imageURL = URL.createObjectURL(file);
+
+      setImage(imageURL);
+
+      setProfileData({
+        ...profileData,
+        image:imageURL
+      });
+
     }
+
+  };
+
+  /* ================= SAVE PROFILE ================= */
+
+  const handleSubmit = async ()=>{
+
+    const email = localStorage.getItem("email") || localStorage.getItem("userEmail");
+
+    try{
+
+      const res = await fetch(`http://localhost:5000/update-profile/${email}`,{
+
+        method:"PUT",
+
+        headers:{
+          "Content-Type":"application/json"
+        },
+
+        body: JSON.stringify(profileData)
+
+      });
+
+      await res.json();
+
+      alert("Profile Updated Successfully ✅");
+
+      // redirect to profile page
+      navigate("/profile");
+
+    }
+
+    catch(error){
+      console.log(error);
+    }
+
   };
 
   return (
     <div className={styles.Container}>
       
-      {/* ================= PROFILE HEADER ================= */}
+      {/* PROFILE HEADER */}
+
       <div className={styles.ProfileCarsoul}>
+
         <div className={styles.ImageWrapper}>
+
           <img
             src={image || "/default-profile.png"}
             alt="Profile"
@@ -40,18 +148,21 @@ function ProfileEditPage() {
             accept="image/*"
             style={{ display: "none" }}
           />
+
         </div>
 
         <div className={styles.NameContainer}>
-          <span className={styles.ProfileName}>Shubh Gupta</span>
-          <span className={styles.ProfileId}>Profile ID: iQ1451546</span>
+          <span className={styles.ProfileName}>{profileData.name}</span>
+          <span className={styles.ProfileId}>Profile ID</span>
         </div>
+
       </div>
 
-      {/* ================= MAIN CONTENT ================= */}
+
+      {/* MAIN CONTENT */}
+
       <div className={styles.MainInfoWrapper}>
 
-        {/* -------- SMALL CONTAINER -------- */}
         <div className={styles.UserInfoContainer}>
 
           <div className={styles.subContainer}>
@@ -60,104 +171,110 @@ function ProfileEditPage() {
 
           <div className={styles.subContainer}>
             <span className={styles.InfoHeaders}>LinkedIn ID</span>
+
             <div className={styles.IDContainer}>
               <input
                 type="text"
+                name="linkedin"
+                value={profileData.linkedin}
+                onChange={handleChange}
                 placeholder="Enter Your LinkedIn ID"
                 className={styles.InfoValue}
               />
             </div>
-            <span className={styles.EditButton}>Edit</span>
+
           </div>
 
           <div className={styles.subContainer}>
             <span className={styles.InfoHeaders}>Leetcode ID</span>
+
             <div className={styles.IDContainer}>
               <input
                 type="text"
+                name="leetcode"
+                value={profileData.leetcode}
+                onChange={handleChange}
                 placeholder="Enter Your Leetcode ID"
                 className={styles.InfoValue}
               />
             </div>
-            <span className={styles.EditButton}>Edit</span>
+
           </div>
 
           <div className={styles.subContainer}>
             <span className={styles.InfoHeaders}>GitHub ID</span>
+
             <div className={styles.IDContainer}>
               <input
                 type="text"
+                name="github"
+                value={profileData.github}
+                onChange={handleChange}
                 placeholder="Enter Your GitHub ID"
                 className={styles.InfoValue}
               />
             </div>
-            <span className={styles.EditButton}>Edit</span>
+
           </div>
 
         </div>
 
-        {/* -------- BIG CONTAINER -------- */}
+
         <div className={styles.EditContainer}>
 
-          <div className={styles.subContainer2}>
-            <span className={styles.InfoHeaders}>Name</span>
-            <div className={styles.valueContainer}>
-              <input type="text" placeholder="Enter Your Name" className={styles.InfoValue} />
-            </div>
-            <span className={styles.EditButton}>Edit</span>
-          </div>
+          {["name","email","phone","location","summary"].map((field)=>(
+            <div key={field} className={styles.subContainer2}>
+              <span className={styles.InfoHeaders}>
+                {field.charAt(0).toUpperCase()+field.slice(1)}
+              </span>
 
-          <div className={styles.subContainer2}>
-            <span className={styles.InfoHeaders}>Email</span>
-            <div className={styles.valueContainer}>
-              <input type="email" placeholder="Enter Your Email" className={styles.InfoValue} />
+              <div className={styles.valueContainer}>
+                <input
+                  type="text"
+                  name={field}
+                  value={profileData[field]}
+                  onChange={handleChange}
+                  placeholder={`Enter Your ${field}`}
+                  className={styles.InfoValue}
+                />
+              </div>
             </div>
-            <span className={styles.EditButton}>Edit</span>
-          </div>
-
-          <div className={styles.subContainer2}>
-            <span className={styles.InfoHeaders}>Phone</span>
-            <div className={styles.valueContainer}>
-              <input type="number" placeholder="Enter Your Phone Number" className={styles.InfoValue} />
-            </div>
-            <span className={styles.EditButton}>Edit</span>
-          </div>
+          ))}
 
           <div className={styles.subContainer2}>
             <span className={styles.InfoHeaders}>Gender</span>
+
             <div className={styles.valueContainer}>
-              <select className={styles.InfoValue}>
+              <select
+                name="gender"
+                value={profileData.gender}
+                onChange={handleChange}
+                className={styles.InfoValue}
+              >
                 <option>Select Gender</option>
                 <option>Male</option>
                 <option>Female</option>
               </select>
             </div>
-            <span className={styles.EditButton}>Edit</span>
           </div>
 
           <div className={styles.subContainer2}>
             <span className={styles.InfoHeaders}>Birthday</span>
+
             <div className={styles.valueContainer}>
-              <input type="date" className={styles.InfoValue} />
+              <input
+                type="date"
+                name="birthday"
+                value={profileData.birthday}
+                onChange={handleChange}
+                className={styles.InfoValue}
+              />
             </div>
-            <span className={styles.EditButton}>Edit</span>
           </div>
 
-          <div className={styles.subContainer2}>
-            <span className={styles.InfoHeaders}>Location</span>
-            <div className={styles.valueContainer}>
-              <input type="text" placeholder="Enter Your Location" className={styles.InfoValue} />
-            </div>
-            <span className={styles.EditButton}>Edit</span>
-          </div>
-
-          <div className={styles.subContainer2}>
-            <span className={styles.InfoHeaders}>Summary</span>
-            <div className={styles.valueContainer}>
-              <input type="text" placeholder="Enter Your Summary" className={styles.InfoValue} />
-            </div>
-            <span className={styles.EditButton}>Edit</span>
-          </div>
+          <button onClick={handleSubmit} className={styles.saveBtn}>
+            Save Profile
+          </button>
 
         </div>
 

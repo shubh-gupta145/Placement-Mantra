@@ -6,19 +6,35 @@ function Feedback() {
   const [submittedData, setSubmittedData] = useState(null);
   const [showReply, setShowReply] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!feedback) return;
+  if (!feedback) return;
+
+  try {
+
+    await fetch("http://localhost:5000/api/feedback",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify({
+        message: feedback
+      })
+    });
 
     setSubmittedData({
-      message: feedback,
+      message: feedback
     });
 
     setShowPopup(true);
     setFeedback("");
     setShowReply(false);
-  };
+
+  } catch(error){
+    console.log(error);
+  }
+};
 
   return (
     <div className={styles.container}>

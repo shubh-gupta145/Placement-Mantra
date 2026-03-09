@@ -37,7 +37,12 @@ body:JSON.stringify(loginData)
 const data = await response.json();
 
 if(data.message === "Login Successful"){
+
+// ⭐ EMAIL LOCAL STORAGE ME SAVE KARO
+localStorage.setItem("email", loginData.email);
+
 navigate("/");   // Home page
+
 }else{
 alert(data.message);
 }

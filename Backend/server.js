@@ -3,16 +3,31 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const Profile = require("./models/Profile");
+
+/* =========================
+   PROFILE MODEL
+   File Name: ProfileUser.js
+========================= */
+
+const Profile = require("./models/ProfileUser");
+
 const dsa = require("./questions/dsaQuestions");
 const web = require("./questions/webQuestions");
 const aptitude = require("./questions/aptitudeQuestions");
 const programming = require("./questions/programmingQuestions");
+const feedbackRoute = require("./routing/feedback");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/api", feedbackRoute);
+
+
+/* =========================
+   SAVE PROFILE
+========================= */
 
 app.post("/save-profile", async (req,res)=>{
 
@@ -29,7 +44,13 @@ res.json({message:"Profile Saved Successfully"});
 catch(error){
 res.status(500).json({error:error.message});
 }
+
 });
+
+
+/* =========================
+   GET PROFILE
+========================= */
 
 app.get("/get-profile/:email", async (req,res)=>{
 
@@ -47,19 +68,37 @@ res.status(500).json({error:error.message});
 
 });
 
+
+/* =========================
+   UPDATE PROFILE
+   (Auto create if not exist)
+========================= */
+
 app.put("/update-profile/:email", async (req,res)=>{
 
 try{
 
-const profile = await Profile.findOneAndUpdate(
+let profile = await Profile.findOne({email:req.params.email});
+
+if(!profile){
+
+profile = new Profile(req.body);
+
+await profile.save();
+
+}
+
+else{
+
+profile = await Profile.findOneAndUpdate(
 
 {email:req.params.email},
-
 req.body,
-
 {new:true}
 
 );
+
+}
 
 res.json(profile);
 
@@ -71,6 +110,7 @@ res.status(500).json({error:error.message});
 
 });
 
+
 /* =========================
    MongoDB Connection
 ========================= */
@@ -81,7 +121,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 /* =========================
-   User Schema
+   USER SCHEMA (Login System)
 ========================= */
 
 const userSchema = new mongoose.Schema({
@@ -108,7 +148,7 @@ const User = mongoose.model("User",userSchema);
 
 
 /* =========================
-   Sign Up API
+   SIGN UP API
 ========================= */
 
 app.post("/signup", async (req,res)=>{
@@ -143,7 +183,7 @@ res.status(500).json({error:error.message});
 
 
 /* =========================
-   Sign In API
+   SIGN IN API
 ========================= */
 
 app.post("/signin", async (req,res)=>{
@@ -174,7 +214,7 @@ res.status(500).json({error:error.message});
 
 
 /* =========================
-   Questions System
+   QUESTIONS SYSTEM
 ========================= */
 
 const questions = {
@@ -185,7 +225,9 @@ Programming: programming
 };
 
 
-/* Start Test */
+/* =========================
+   START TEST
+========================= */
 
 app.post("/start-test",(req,res)=>{
 
@@ -202,7 +244,9 @@ res.json(selected);
 });
 
 
-/* Submit Test */
+/* =========================
+   SUBMIT TEST
+========================= */
 
 app.post("/submit-test",(req,res)=>{
 
@@ -236,7 +280,7 @@ percentage
 
 
 /* =========================
-   Server Start
+   SERVER START
 ========================= */
 
 const PORT = process.env.PORT || 5000;
