@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-
+const Profile = require("./models/Profile");
 const dsa = require("./questions/dsaQuestions");
 const web = require("./questions/webQuestions");
 const aptitude = require("./questions/aptitudeQuestions");
@@ -13,6 +13,63 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.post("/save-profile", async (req,res)=>{
+
+try{
+
+const profile = new Profile(req.body);
+
+await profile.save();
+
+res.json({message:"Profile Saved Successfully"});
+
+}
+
+catch(error){
+res.status(500).json({error:error.message});
+}
+});
+
+app.get("/get-profile/:email", async (req,res)=>{
+
+try{
+
+const profile = await Profile.findOne({email:req.params.email});
+
+res.json(profile);
+
+}
+
+catch(error){
+res.status(500).json({error:error.message});
+}
+
+});
+
+app.put("/update-profile/:email", async (req,res)=>{
+
+try{
+
+const profile = await Profile.findOneAndUpdate(
+
+{email:req.params.email},
+
+req.body,
+
+{new:true}
+
+);
+
+res.json(profile);
+
+}
+
+catch(error){
+res.status(500).json({error:error.message});
+}
+
+});
 
 /* =========================
    MongoDB Connection
