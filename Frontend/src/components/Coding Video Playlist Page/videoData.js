@@ -46,39 +46,53 @@ const videoData = {
 
   Projects: [
     {
-      title: "Top 10 React Projects",
-        description: "Build these React projects to master the library.",
-        img: "https://i.ytimg.com/vi/Ke90Tje7VS0/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=Ke90Tje7VS0",
+      title: "Apna College React Projects",
+        description: "Build practical React projects to enhance your skills.",
+        img: "./images/VideoPlaylist/Projects Part-1.png",
+        link: "https://www.youtube.com/watch?v=J11Qme3vAio&pp=ygUQQ29kaW5nIFByb2plY3RzIA%3D%3D",
         rating: "4.8"
     },
     {
-        title: "JavaScript Projects for Beginners",
-        description: "Start your coding journey with these JS projects.",
-        img: "https://i.ytimg.com/vi/hdI2bqOjy3c/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=hdI2bqOjy3c",
+        title: "Coding With Sagar Python Projects",
+        description: "Start your coding journey with these Python projects.",
+        img: "./images/VideoPlaylist/Projects Part-2.png",
+        link: "https://www.youtube.com/watch?v=DWjEqKLDUXQ&pp=ygUQQ29kaW5nIFByb2plY3RzIA%3D%3D",
         rating: "4.7"       
     },
     {
-        title: "Full Stack Project Tutorial",
-        description: "Build a full stack application step-by-step.",
-        img: "https://i.ytimg.com/vi/7CqJlxBYj-M/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=7CqJlxBYj-M",
+        title: "Nishant Chahar Project Ideas",
+        description: "2026 project ideas for developers to work on.",
+        img: "./images/VideoPlaylist/Projects Part-3.png",
+        link: "https://www.youtube.com/watch?v=MHLTvbaeHVs&pp=ygUcbmlzaGFudCBjaGFoYXIgcHJvamVjdCBpZGVhcw%3D%3D",
         rating: "4.6"
     },
     {
-        title: "Python Projects for Beginners",
-        description: "Learn Python by building these projects.",
-        img: "https://i.ytimg.com/vi/_uQrJ0TkZlc/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=_uQrJ0TkZlc",
+        title: "College Wallah HTML & CSS Projects",
+        description: "Learn HTML and CSS by building these projects.",
+        img: "./images/VideoPlaylist/Projects Part-4.png",
+        link: "https://www.youtube.com/watch?v=HBqWsrqK89U&pp=ygUdQ29sbGVnZSB3YWxsYWggUHJvamVjdHMgSWRlYXM%3D",
         rating: "4.9"
+    },
+        {
+        title: "Geeks For Geeks Project Ideas",
+        description: "Explore project ideas from Geeks For Geeks to enhance your portfolio.",
+        img: "./images/VideoPlaylist/Projects Part-5.png",
+        link: "https://www.youtube.com/watch?v=5mw5IzWTFs0&pp=ygUfZ2Vla3MgRm9yIEdlZWtzIFByb2plY3RzIElkZWFzIA%3D%3D",
+        rating: "3.9"
+    },
+    {
+        title: "Harshit Trehen",
+        description: "Build impressive projects with Harshit Trehen's tutorials.",
+        img: "./images/VideoPlaylist/Projects Part-6.png",
+        link: "https://www.youtube.com/watch?v=IzZYgMawnpk&pp=ygUXaGFyc2hpdCB0cmVoYW4gcHJvamVjdHPSBwkJrgoBhyohjO8%3D",
+        rating: "4.3"
     }
     ],
     Interview: [
     {
       title: "Top 50 DSA Questions",   
         description: "Must-know DSA questions for interviews.",
-        img: "https://i.ytimg.com/vi/9Jry5-82I68/maxresdefault.jpg",
+        img: "./images/VideoPlaylist/Interview Part-1.png",
         link: "https://www.youtube.com/watch?v=9Jry5-82I68",
         rating: "4.8"   
     },
@@ -113,23 +127,37 @@ const videoData = {
         rating: "4.0"
     },
     {
-        title: "Python for AI",
-        description: "Learn Python essentials for AI development.",
-        img: "https://i.ytimg.com/vi/_uQrJ0TkZlc/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=_uQrJ0TkZlc",
+        title: "IntelliPath AI Python Tutorial",
+        description: "Learn AI programming with Python in this tutorial.",
+        img: "./images/VideoPlaylist/A.I Part-2.png",
+        link: "https://www.youtube.com/watch?v=9tbaiFIm0HU&pp=ygUMYS5pIHR1dG9yaWFs",
         rating: "4.7"
     },
     {
+        title: "The iScale AI Crash Courses",
+        description: "Get a quick introduction to AI concepts and applications.",
+        img: "./images/VideoPlaylist/A.I Part-3.png",
+        link: "https://www.youtube.com/watch?v=S2lj2ckQFhY&pp=ygUMYS5pIHR1dG9yaWFs",
+        rating: "4.6"
+    },
+    {
+        title: "",
+        description: "",
+        img: "./images/VideoPlaylist/A.I Part-4.png",
+        link: "",
+        rating: "4.9"
+    },
+        {
         title: "AI Projects for Beginners",
         description: "Build simple AI projects to get started.",
-        img: "https://i.ytimg.com/vi/8pR0o2fGyHg/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=8pR0o2fGyHg",
+        img: "./images/VideoPlaylist/A.I Part-5.png",
+        link: "https://www.youtube.com/watch?v=MqffbpjhriQ&pp=ygUMYS5pIHR1dG9yaWFs0gcJCa4KAYcqIYzv",
         rating: "4.6"
     },
     {
         title: "Deep Learning Crash Course",
         description: "Get started with deep learning concepts.",
-        img: "https://i.ytimg.com/vi/aircAruvnKk/maxresdefault.jpg",
+        img: "./images/VideoPlaylist/A.I Part-6.png",
         link: "https://www.youtube.com/watch?v=aircAruvnKk",
         rating: "4.9"
     }
@@ -138,8 +166,8 @@ const videoData = {
     {
         title: "Prompt Engineering Basics",
         description: "Learn the fundamentals of prompt engineering.",
-        img: "https://i.ytimg.com/vi/aircAruvnKk/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=aircAruvnKk",
+        img: "./images/VideoPlaylist/Prompt Part-1.png",
+        link: "",
         rating: "4.8"
     },
     {
