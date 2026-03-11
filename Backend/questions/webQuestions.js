@@ -22,92 +22,131 @@ options:[
 answer:1
 },
 {
-question:"HTML stands for?",
+question:"JavaScript is a _______ language?",
 options:[
-"Hyper Text Markup Language",
-"High Transfer Machine Language",
-"Home Tool Markup Language",
-"Hyperlink Tool Markup Language"
+"High-level programming language",
+"Low-level programming language",
+"Machine language",
+"Assembly language"
 ],
 answer:0
 },
 {
-question:"HTML stands for?",
+question:"Which CSS property is used to change the text color of an element?",
 options:[
-"Hyper Text Markup Language",
-"High Transfer Machine Language",
-"Home Tool Markup Language",
-"Hyperlink Tool Markup Language"
+"color",
+"font-style",
+"text-align",
+"background"
+],
+answer:0
+},
+{question:"Which HTML tag is used to define an unordered list?",
+options:[
+"<ul>",
+"<ol>",
+"<li>",
+"<list>"
 ],
 answer:0
 },
 {
-question:"HTML stands for?",
+question:"Which JavaScript keyword is used to declare a variable?",
 options:[
-"Hyper Text Markup Language",
-"High Transfer Machine Language",
-"Home Tool Markup Language",
-"Hyperlink Tool Markup Language"
+"var",
+"let",
+"const",
+"declare"
 ],
 answer:0
 },
 {
-question:"HTML stands for?",
+question:"What does SEO stand for in web development?",
 options:[
-"Hyper Text Markup Language",
-"High Transfer Machine Language",
-"Home Tool Markup Language",
-"Hyperlink Tool Markup Language"
+"Search Engine Optimization",
+"Search Engine Operation",
+"Systematic Evaluation of Online Presence",
+"Site Evaluation and Optimization"
 ],
 answer:0
 },
 {
-question:"HTML stands for?",
+question:"what is the Mean of responsive web design?",
 options:[
-"Hyper Text Markup Language",
-"High Transfer Machine Language",
-"Home Tool Markup Language",
-"Hyperlink Tool Markup Language"
+"Website design that adapts to different screen sizes",
+"Website mein animations hona",
+"Website ka fast load hona",
+"Server ka jaldi response dena "
 ],
 answer:0
 },
 {
-question:"HTML stands for?",
+question:"Who developed React?",
 options:[
-"Hyper Text Markup Language",
-"High Transfer Machine Language",
-"Home Tool Markup Language",
-"Hyperlink Tool Markup Language"
+"Facebook",
+"Google",
+"Microsoft",
+"Apple"
 ],
 answer:0
 },
 {
-question:"HTML stands for?",
+question:"What is the file extension used for React components?",
 options:[
-"Hyper Text Markup Language",
-"High Transfer Machine Language",
-"Home Tool Markup Language",
-"Hyperlink Tool Markup Language"
+".jsx",
+".js",
+".html",
+".css"
 ],
 answer:0
 },
 {
-question:"HTML stands for?",
+question:"Which method is used to render a React component to the DOM?",
 options:[
-"Hyper Text Markup Language",
-"High Transfer Machine Language",
-"Home Tool Markup Language",
-"Hyperlink Tool Markup Language"
+"ReactDOM.render()",
+"React.render()",
+"ReactDOM.create()",
+"React.create()"
 ],
 answer:0
 },
 {
-question:"HTML stands for?",
+question:"What is the virtual DOM in React?",
 options:[
-"Hyper Text Markup Language",
-"High Transfer Machine Language",
-"Home Tool Markup Language",
-"Hyperlink Tool Markup Language"
+"A lightweight copy of the actual DOM",
+"A new programming language",
+"A database for storing components",
+"A tool for optimizing performance"
+],
+answer:0
+},
+{
+question:"Which hook is used to manage state in functional components?",
+options:[
+"useState",
+"useEffect",
+"useRef",
+"useContext"
+],
+answer:0
+},
+{
+question:"Which hook is used to perform side effects in functional components?",
+options:[
+"useState",
+"useEffect",
+"useRef",
+"useContext"
+],
+answer:1
+},
+{
+question:"What does the 'useRef' hook do in React?",
+options:[
+"Creates a reference to a DOM element",
+"Manages state in functional components",
+"Performs side effects in functional components",
+"Provides context to components"
 ],
 answer:0
 },
@@ -128,15 +167,6 @@ options:["useEffect","useRef","useState","useMemo"],
 answer:2
 }
 ],
-
-extreme:[
-{
-question:"Which protocol is used for secure web communication?",
-options:["HTTP","FTP","HTTPS","SMTP"],
-answer:2
-}
-]
-
 };
 
 module.exports = webQuestions;

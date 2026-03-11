@@ -109,7 +109,6 @@ onChange={(e)=>setDifficulty(e.target.value)}
 <option value="easy">Easy</option>
 <option value="medium">Medium</option>
 <option value="hard">Hard</option>
-<option value="expert">Expert</option>
 
 </select>
     <button type="Submit" className={styles.submitButton}>
