@@ -1,88 +1,101 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./News.module.css";
 
-const generateNews = (category) => {
-  let newsArray = [];
-  for (let i = 1; i <= 15; i++) {
-    newsArray.push({
-      title: `${category.toUpperCase()} News ${i}`,
-      desc: `This is detailed description for ${category} news ${i}.`,
-      link: "https://example.com"
-    });
-  }
-  return newsArray;
-};
-
-const newsData = {
-  it: generateNews("it"),
-  job: generateNews("job"),
-  ai: generateNews("ai"),
-  programming: generateNews("programming")
-};
-
 const News = () => {
-  const [category, setCategory] = useState("it");
-  const [visibleCount, setVisibleCount] = useState(6);
 
-  const handleCategoryChange = (cat) => {
-    setCategory(cat);
-    setVisibleCount(6);
-  };
+const [newsData,setNewsData] = useState([]);
+const [visibleCount,setVisibleCount] = useState(6);
 
-  const handleViewMore = () => {
-    if (visibleCount < 15) {
-      setVisibleCount(visibleCount + 3);
-    }
-  };
+const fetchNews = async ()=>{
 
-  return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>🚀 Tech News Portal</h1>
+try{
 
-      {/* NAVIGATION */}
-      <div className={styles.nav}>
-        <button onClick={() => handleCategoryChange("it")}>I.T News</button>
-        <button onClick={() => handleCategoryChange("job")}>Job News</button>
-        <button onClick={() => handleCategoryChange("ai")}>A.I News</button>
-        <button onClick={() => handleCategoryChange("programming")}>
-          Programming News
-        </button>
-      </div>
+const res = await fetch(
+"https://newsdata.io/api/1/news?apikey=pub_2606e08bafc249ca83b78136a93a0155&q=technology&language=en"
+);
 
-      {/* NEWS CARDS */}
-      <div className={styles.newsContainer}>
-        {newsData[category]
-          .slice(0, visibleCount)
-          .map((news, index) => (
-            <div key={index} className={styles.card}>
-              <h3>{news.title}</h3>
-              <p>{news.desc}</p>
+const data = await res.json();
 
-              <a
-                href={news.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.detailBtn}
-              >
-                View Details
-              </a>
-            </div>
-          ))}
-      </div>
+if(Array.isArray(data.results)){
+setNewsData(data.results);
+}else{
+setNewsData([]);
+}
 
-      {/* VIEW MORE BUTTON */}
-      {visibleCount < 15 && (
-        <div className={styles.viewMoreContainer}>
-          <button
-            onClick={handleViewMore}
-            className={styles.viewMoreBtn}
-          >
-            View More
-          </button>
-        </div>
-      )}
-    </div>
-  );
+}catch(err){
+console.log("API Error:",err);
+}
+
+};
+
+useEffect(()=>{
+fetchNews();
+},[]);
+
+const handleViewMore = ()=>{
+setVisibleCount((prev)=>prev + 3);
+};
+
+return(
+
+<div className={styles.container}>
+
+<h1 className={styles.title}>🚀 Tech News Portal</h1>
+
+<div className={styles.newsContainer}>
+
+{newsData.length === 0 ? (
+
+<p>Loading news...</p>
+
+) : (
+
+newsData.slice(0,visibleCount).map((news,index)=>(
+<div key={index} className={styles.card}>
+
+<h3>{news.title}</h3>
+
+<p>{news.description}</p>
+
+<a
+href={news.link}
+target="_blank"
+rel="noopener noreferrer"
+className={styles.detailBtn}
+>
+View Details
+</a>
+
+</div>
+))
+
+)}
+
+</div>
+
+{/* VIEW MORE BUTTON */}
+
+{visibleCount < newsData.length && (
+
+<div className={styles.viewMoreContainer}>
+
+<button
+onClick={handleViewMore}
+className={styles.viewMoreBtn}
+>
+
+View More
+
+</button>
+
+</div>
+
+)}
+
+</div>
+
+);
+
 };
 
 export default News;

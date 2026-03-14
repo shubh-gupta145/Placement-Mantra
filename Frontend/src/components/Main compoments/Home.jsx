@@ -1,10 +1,11 @@
 import Carsoul from "../Home Page component/Carsoul";
-import FAQSection from "../Home Page component/FAQSection";
 import Footar from "../Home Page component/Footar";
 import Section from "../Home Page component/Section";
 import styles from "./Home.module.css";
 import Friday from "../Friday A.I/Friday";
 import Feedback from "./feedback";
+import FAQSection from "../Home Page component/FAQSection";
+import placementFAQ from "../../data/PlacementPageQues";
 import React, { useEffect } from "react";
 function Home(){
 
@@ -19,7 +20,7 @@ function Home(){
 <Carsoul/>
 <Section/>
 <Friday/>
-<FAQSection/>
+<FAQSection data={placementFAQ}/>
 <Feedback/>
 <Footar/>
 </div>

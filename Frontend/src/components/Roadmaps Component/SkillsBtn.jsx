@@ -1,30 +1,39 @@
 import styles from "./SkillsBtn.module.css";
-function SkillsBtn(){
-    return(
-<>
+
+function SkillsBtn({setSelectedSkill}){
+
+return(
+
 <div className={styles.SkillsContainer}>
-<div className={styles.Skill}>Fronted developer</div>
-<div className={styles.Skill}>Backend developer</div>
-<div className={styles.Skill}>Full Stack developer</div>
-<div className={styles.Skill}> A.I developer</div>
-<div className={styles.Skill}> ML  developer</div>
-<div className={styles.Skill}> Data Scientist</div>
-<div className={styles.Skill}>Data Analysis</div>
-<div className={styles.Skill}>Software Developer</div>
-<div className={styles.Skill}>Software Engineer</div>
-<div className={styles.Skill}>Hacker</div>
-<div className={styles.Skill}>Cyber Security Expert</div>
-<div className={styles.Skill}>Prompt Engineer</div>
-<div className={styles.Skill}>BlockChain Developer</div>
-<div className={styles.Skill}>App Developer</div>
-<div className={styles.Skill}>Cloud Engineer</div>
-<div className={styles.Skill}>UI Designer</div>
-<div className={styles.Skill}>UX Designer</div>
-<div className={styles.Skill}>Software Tester</div>
-<div className={styles.Skill}>Python Developer</div>
-<div className={styles.Skill}>Java Developer</div>
+
+<div className={styles.Skill} onClick={()=>setSelectedSkill("frontend")}>Frontend Developer</div>
+
+<div className={styles.Skill} onClick={()=>setSelectedSkill("backend")}>Backend Developer</div>
+
+<div className={styles.Skill} onClick={()=>setSelectedSkill("fullstack")}>Full Stack Developer</div>
+
+<div className={styles.Skill} onClick={()=>setSelectedSkill("ai")}>AI Developer</div>
+
+<div className={styles.Skill} onClick={()=>setSelectedSkill("ml")}>ML Developer</div>
+
+<div className={styles.Skill} onClick={()=>setSelectedSkill("datascientist")}>Data Scientist</div>
+
+<div className={styles.Skill} onClick={()=>setSelectedSkill("dataanalysis")}>Data Analysis</div>
+
+<div className={styles.Skill} onClick={()=>setSelectedSkill("hacker")}>Hacker</div>
+
+<div className={styles.Skill} onClick={()=>setSelectedSkill("cloud")}>Cloud Engineer</div>
+
+<div className={styles.Skill} onClick={()=>setSelectedSkill("ui")}>UI Designer</div>
+
+<div className={styles.Skill} onClick={()=>setSelectedSkill("python")}>Python Developer</div>
+
+<div className={styles.Skill} onClick={()=>setSelectedSkill("java")}>Java Developer</div>
+
 </div>
-</>
-    );
+
+)
+
 }
+
 export default SkillsBtn;

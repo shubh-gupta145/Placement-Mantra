@@ -1,6 +1,6 @@
 import styles from "./CGPA.module.css";
 import FAQSection from "../Home Page component/FAQSection";
-import NavBar from "../Home Page component/NavBar";
+import CGPAFAQ from "../../data/CGPAQues";
 function CGPA(){
 return(
 <>
@@ -32,7 +32,7 @@ return(
         <p className={styles.Tipspara}>Stick to a consistent study schedule rather than cramming at the last minute to ensure steady progress and better performance.</p>
     </div>
 </div>
-<FAQSection/>
+<FAQSection data={CGPAFAQ}/>
 <div className={styles.ThirdContainer}>
     <h2>Here Are the Some Video For Increasing CGPA In the Short Time </h2>
 <div className={styles.VideoContainer}>

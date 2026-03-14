@@ -25,11 +25,11 @@ function MockEntry() {
         </select>
                 <select>
                   <span>Select The Interview Timing</span>
-          <option value="2 Minitus">2 Minitus</option>
-          <option value="5 Minitus">5 Minitus</option>
-          <option value="10 Minitus">10 Minitus</option>
-          <option value="15 Minitus">15 Minitus</option>
-          <option value="30 Minitus">30 Minitus</option>
+  <option value="2">2 Minitus</option>
+  <option value="5">5 Minitus</option>
+  <option value="10">10 Minitus</option>
+  <option value="15">15 Minitus</option>
+  <option value="30">30 Minitus</option>
         </select>
         <button type="Submit" className={styles.btn}>        
             Get Started 🚀

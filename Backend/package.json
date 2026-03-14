@@ -1,4 +1,18 @@
 {
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "In thuis Project I am build And Write the Backend Code of Placement Manrtra And This is Also My First Time I am Write My Backend Practicce in real Project",
+  "main": "server.js",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+
+  "author": "Shubh Gupta",
+  "license": "ISC",
+  "keywords": [],
+
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
@@ -8,21 +22,12 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^8.23.0",
     "openai": "^6.27.0",
+    "pdf-parse": "^2.4.5",
     "react-markdown": "^10.1.0",
     "react-syntax-highlighter": "^16.1.1"
   },
+
   "devDependencies": {
     "nodemon": "^3.1.11"
-  },
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "In thuis Project I am build And Write the Backend Code of Placement Manrtra And This is Also My First Time I am Write My Backend Practicce in real Project",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
-  },
-  "author": "Shubh Gupta",
-  "license": "ISC",
-  "keywords": []
+  }
 }
