@@ -4,6 +4,7 @@ import MockInterviewWorkFlow from "./InterFace Components/MockInterviewWorkflow"
 import MockEntry from "./InterFace Components/MockEntry";
 import Header from "./InterFace Components/Header";
 import FAQSection from "../Home Page component/FAQSection";
+import MockFAQ from "../../data/MocksQues";
 function MockInterFace(){
     return(
 <>
@@ -11,7 +12,7 @@ function MockInterFace(){
   <Header/>
   <MockInterviewWorkFlow/>
   <MockEntry/>
-<FAQSection/>
+<FAQSection data={MockFAQ}/>
 <Footar/>
 
 </div>

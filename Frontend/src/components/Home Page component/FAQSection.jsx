@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FAQItem from "./FAQItem";
 
- function FAQSection({ data }) {
+function FAQSection({ data = [] }) {
 
   const [visibleCount, setVisibleCount] = useState(5);
   const [openIndex, setOpenIndex] = useState(null);
@@ -12,11 +12,13 @@ import FAQItem from "./FAQItem";
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
+
       <h2 className="text-3xl font-bold text-center mb-10">
         FAQ Section
       </h2>
 
       <div className="space-y-4">
+
         {data.slice(0, visibleCount).map((faq, index) => (
           <FAQItem
             key={index}
@@ -28,8 +30,10 @@ import FAQItem from "./FAQItem";
             handleArrowClick={handleArrowClick}
           />
         ))}
+
       </div>
     </div>
   );
 }
+
 export default FAQSection;

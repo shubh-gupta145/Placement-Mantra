@@ -7,6 +7,7 @@ import Feedback from "./feedback";
 import FAQSection from "../Home Page component/FAQSection";
 import placementFAQ from "../../data/PlacementPageQues";
 import React, { useEffect } from "react";
+import EnglishSpeaking from "../English Speaking page/EnglishSpeaking,";
 function Home(){
 
   // useEffect(() => {
@@ -19,6 +20,7 @@ function Home(){
 <div className={styles.container}>
 <Carsoul/>
 <Section/>
+<EnglishSpeaking/>
 <Friday/>
 <FAQSection data={placementFAQ}/>
 <Feedback/>

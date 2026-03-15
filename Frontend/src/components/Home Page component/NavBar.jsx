@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import styles from './NavBar.module.css';
+import SearchBar from "./SearchBar";
 
 function NavBar() {
 
@@ -29,14 +30,7 @@ function NavBar() {
         </div>
 
         {/* Right Section */}
-        <div className={`${styles.Second_nav_container} ${menuOpen ? styles.showMenu : ""}`}>
-          <input
-            className={styles.SearchBar}
-            type="text"
-            placeholder="You are Also Search here"
-          />
-          <Link className={styles.links} to="/SignUp">Sign Up</Link>
-        </div>
+<SearchBar/>
 
         {/* Hamburger */}
         <div

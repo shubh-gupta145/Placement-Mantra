@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const Groq = require("groq-sdk");
 const resumeRoutes = require("./routing/resumeRoutes");
+const englishSpeakingRoutes = require("./routing/englishSpeaking");
 /* =========================
    PROFILE MODEL
 ========================= */
@@ -32,7 +33,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", resumeRoutes);
 app.use("/api", feedbackRoute);
-
+app.use("/api/english-speaking", englishSpeakingRoutes);
 /* =========================
    ENV DEBUG
 ========================= */
