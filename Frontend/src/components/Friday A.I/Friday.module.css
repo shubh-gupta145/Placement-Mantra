@@ -162,3 +162,34 @@
         box-shadow: 0 0 8px rgba(34,197,94,0.3);
     }
 }
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 500px){
+
+.wrapper{
+    bottom: 40px;   /* bottom space as you wanted */
+    right: 15px;
+
+    width: 100px;
+    height: 100px;
+}
+
+.helpCircle{
+    height: 85px;
+    width: 85px;
+}
+
+.helpImage{
+    height: 70px;
+    width: 70px;
+}
+
+.message{
+    top: -34px;
+    left: -8px;
+
+    font-size: 11px;
+    padding: 5px 10px;
+}
+
+}

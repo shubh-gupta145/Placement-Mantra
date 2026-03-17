@@ -22,7 +22,7 @@ function FrontedRoadmap(){
         <span className={styles.Span}>Suggested Video</span>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="html First Video"/></a>
+                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/RoadMap Images/Apna College Html.png" alt="html First Video"/></a>
             </div>
             <div className={styles.Video}>  
                 <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="html Second Video"/></a>

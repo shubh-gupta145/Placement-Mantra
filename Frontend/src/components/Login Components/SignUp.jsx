@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Auth.module.css";
 import { useNavigate } from "react-router-dom";
-
+import {Link} from "react-router-dom";
 function SignUp() {
 
 const navigate = useNavigate();
@@ -77,7 +77,7 @@ required
 <button type="submit">Sign Up</button>
 
 <p>
-Already have an account? <a href="/signin">Sign In</a>
+Already have an account? <Link to="/signin">Sign In</Link>
 </p>
 
 </form>

@@ -1,212 +1,196 @@
-.Container{
-    height:95vh;
-    width:100vw;
-    display:flex;
-    justify-content:space-evenly;
-    align-items:center;
-    background-color:black;
-}
+/* InterviewPage2.module.css — Updated for Placement Mantra */
 
-/* ================= DESKTOP STRUCTURE SAME ================= */
-
-.ScreenPannel{
-    height:92vh;
-    width:67vw;
-    border:2px solid purple;
-    border-radius:10px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-evenly;
-    align-items:center;
-    background-color:rgb(72,70,70);
-}
-
-.OutputPannel{
-    height:95vh;
-    width:27vw;
-    border:2px solid black;
-    border-radius:10px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-evenly;
-    align-items:center;
-    background-color:#424242;
-}
-
-/* ================= EXISTING CSS SAME ================= */
-
-.HrContainer{
-    height:75%;
-    width:95%;
-    border:2px solid red;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-}
-
-.HrLogo{
-    height:50%;
-    width:30%;
-    border-radius:50%;
-}
-
-.images{
-    object-fit:cover;
-    border-radius:50%;
-}
-
-.timeContainer{
-    height:10%;
-    width:95%;
-    display:flex;
-    justify-content:end;
-    align-items:center;
-    padding-right:30px;
-}
-
-p{
-    color:white;
-    font-size:25px;
-}
-
-.ControllerPannel{
-    height:13%;
-    width:95%;
-    border:2px solid green;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:10px;
-}
-
-.BtnContainer{
-    height:80%;
-    width:50%;
-    border:2px solid white;
-    display:flex;
-    gap:20px;
-    justify-content:center;
-    align-items:center;
-    border-radius:10px;
-}
-
-.StudentPannel{
-    height:40%;
-    width:95%;
-    border:2px solid yellow;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.TextPannel{
-    height:55%;
-    width:95%;
-    border:2px solid pink;
-    background-color:white;
-    overflow-y:auto;
-}
-.pauseBtn {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #f5f5f5, #e0e0e0);
+/* ── Layout ──────────────────────────────────────────── */
+.Container {
   display: flex;
-  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: #0f172a;
+  overflow: hidden;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.ScreenPannel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #111827;
+  border-right: 1px solid #1e293b;
+  position: relative;
+}
+
+.OutputPannel {
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  background: #0f172a;
+}
+
+/* ── HR Section ──────────────────────────────────────── */
+.HrContainer {
+  flex: 1;
+  display: flex;
   align-items: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
-  cursor: pointer;
-  transition: 0.3s;
+  justify-content: center;
+  position: relative;
+  border: 2px solid #dc2626;
+  margin: 12px;
+  border-radius: 12px;
+  background: #0d1117;
+  overflow: hidden;
 }
 
-.pauseBtn:hover {
-  transform: scale(1.1);
+.HrLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
-.pauseIcon {
-  font-size: 26px;
-  color: #424242;
+.images {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
 }
+
+/* Timer */
+.timeContainer {
+  position: absolute;
+  bottom: 14px;
+  right: 18px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.5s ease;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Question Badge */
+.questionBadge {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(99, 102, 241, 0.25);
+  color: #a5b4fc;
+  border: 1px solid #6366f1;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── Controls ─────────────────────────────────────────── */
+.ControllerPannel {
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid #1e293b;
+}
+
+.BtnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background: #1e293b;
+  padding: 12px 28px;
+  border-radius: 50px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.btnLabel {
+  font-size: 0.68rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .callCutBtn {
-  width: 45px;
-  height: 45px;
+  width: 48px;
+  height: 48px;
+  background: #dc2626;
   border-radius: 50%;
-  background: #e53935;
   display: flex;
-  justify-content: center;
   align-items: center;
-  box-shadow: 0 10px 22px rgba(229, 57, 53, 0.4);
+  justify-content: center;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.callCutBtn:hover { transform: scale(1.08); opacity: 0.9; }
+.callIcon { color: #fff; font-size: 1.3rem; }
+
+.Mic {
+  cursor: pointer;
 }
 
-.callCutBtn:hover {
-  transform: scale(1.1);
+.pauseBtn {
+  width: 48px;
+  height: 48px;
+  background: #334155;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.15s;
+}
+.pauseBtn:hover { background: #475569; transform: scale(1.08); }
+.pauseIcon { color: #fff; font-size: 1.3rem; }
+
+.startHint {
+  font-size: 0.8rem;
+  color: #475569;
+  text-align: center;
+  margin: 0;
 }
 
-/* icon */
-
-.callIcon {
-  font-size: 28px;
-  color: white;
-}
-/* ================= TABLET ================= */
-
-@media (max-width:1024px){
-
-.Container{
-    flex-direction:column;
-    height:auto;
-    padding:20px;
+/* ── Output Panel ─────────────────────────────────────── */
+.StudentPannel {
+  height: 260px;
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+  position: relative;
+  overflow: hidden;
 }
 
-.ScreenPannel{
-    width:90vw;
-    height:70vh;
+.TextPannel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 12px;
+  gap: 10px;
 }
 
-.OutputPannel{
-    width:90vw;
-    height:50vh;
+/* HR Question Box */
+.QuestionBox {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 14px;
+  min-height: 80px;
 }
 
-.BtnContainer{
-    width:70%;
+.QuestionBox p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  line-height: 1.6;
 }
 
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width:600px){
-
-.Container{
-    flex-direction:column;
-    height:auto;
-}
-
-.ScreenPannel{
-    width:95vw;
-    height:65vh;
-}
-
-.OutputPannel{
-    width:95vw;
-    height:50vh;
-}
-
-.HrLogo{
-    width:40%;
-    height:40%;
-}
-
-p{
-    font-size:18px;
-}
-
-.BtnContainer{
-    width:90%;
-}
-
+.placeholderText {
+  color: #475569 !important;
+  font-style: italic;
 }

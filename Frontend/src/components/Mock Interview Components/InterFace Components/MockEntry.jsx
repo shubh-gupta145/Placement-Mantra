@@ -1,14 +1,24 @@
+import { useState } from "react";
 import styles from "./MockEntry.module.css";
 import { useNavigate } from "react-router-dom";
 import UploadFile from "../Sub Components/UploadFile";
 
 function MockEntry() {
-
   const navigate = useNavigate();
+
+  const [userName, setUserName] = useState("");
+  const [role, setRole] = useState("Frontend Developer");
+  const [timing, setTiming] = useState("2");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/MockInterview");
+    navigate("/MockInterview", {
+      state: {
+        userName,
+        role,
+        timing,
+      },
+    });
   };
 
   return (
@@ -21,13 +31,17 @@ function MockEntry() {
 
         <form onSubmit={handleSubmit} className={styles.Form}>
 
+          {/* Name */}
           <input
             className={styles.Search}
             type="text"
             placeholder="Enter Your Name"
             required
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
           />
 
+          {/* Resume Upload */}
           <span>
             Please Submit Your Resume
             <UploadFile />
@@ -35,7 +49,11 @@ function MockEntry() {
 
           {/* Job Title */}
           <span>Select The Job Title</span>
-          <select>
+          <select
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className={styles.Select}
+          >
             <option value="Frontend Developer">Frontend Developer</option>
             <option value="Backend Developer">Backend Developer</option>
             <option value="Full Stack Developer">Full Stack Developer</option>
@@ -44,7 +62,11 @@ function MockEntry() {
 
           {/* Interview Timing */}
           <span>Select The Interview Timing</span>
-          <select>
+          <select
+            value={timing}
+            onChange={(e) => setTiming(e.target.value)}
+            className={styles.Select}
+          >
             <option value="2">2 Minutes</option>
             <option value="5">5 Minutes</option>
             <option value="10">10 Minutes</option>

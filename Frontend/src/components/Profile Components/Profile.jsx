@@ -96,11 +96,6 @@ function Profile(){
 </li>
 
 </ul>
-
-<span className={styles.Skill}>
-{profile?.skills || "No skills added"}
-</span>
-
 </div>
 </div>
 

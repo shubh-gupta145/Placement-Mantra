@@ -1,113 +1,188 @@
-  .bodyContainer {
-    height:100vh;
-    width:100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #eef2ff, #f8fafc);
-    overflow:scroll;
-  }
-.Container {
-  min-height: 60vh;
-  width:40vw;
-  background: linear-gradient(135deg, #eef2ff, #f8fafc);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid #cbd5e1;
-border-radius:10px;
+.bodyContainer{
+  min-height:100vh;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  overflow-y:auto;
 }
 
-.QuestionContainer {
-  width: 500px;
-  background: #ffffff;
-  padding: 20px 24px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  margin-bottom: 18px;
+/* MAIN CARD */
+
+.Container{
+  min-height:60vh;
+  width:90%;
+  max-width:600px;
+
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  border:2px solid #cbd5e1;
+  border-radius:10px;
+  padding:20px;
 }
 
-.QuestionContainer p {
-  font-size: 17px;
-  font-weight: 600;
-  color: #1e293b;
-}
-.AnswerContainer {
-  width: 500px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 options per row */
-  gap: 12px;
-  margin-bottom:30px;
-  margin-top: 20px;
-}
-.OptionContainer {
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  padding: 14px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  text-align: center;
-}
-.Navigation {
-  width: 500px;
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.OptionContainer span {
-  font-size: 15px;
-  color: #334155;
-  font-weight: 500;
+/* QUESTION */
+
+.QuestionContainer{
+  width:100%;
+  background:#ffffff;
+
+  padding:20px;
+  border-radius:12px;
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  margin-bottom:18px;
 }
 
-/* Hover effect */
-.OptionContainer:hover {
-  border-color: #6366f1;
-  background: #eef2ff;
+.QuestionContainer p{
+  font-size:17px;
+  font-weight:600;
+  color:#1e293b;
+  text-align:center;
 }
 
-/* Selected option (future use) */
-.OptionContainer.active {
-  border-color: #6366f1;
-  background: #6366f1;
+/* ANSWERS */
+
+.AnswerContainer{
+  width:100%;
+
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+
+  gap:12px;
+  margin:20px 0;
 }
 
-.OptionContainer.active span {
-  color: #ffffff;
+.OptionContainer{
+  background:#ffffff;
+  border:1px solid #cbd5e1;
+  border-radius:10px;
+
+  padding:14px;
+  cursor:pointer;
+
+  transition:all 0.25s ease;
+  text-align:center;
 }
-.LeftButtons {
-  display: flex;
-  gap: 10px;
+
+.OptionContainer span{
+  font-size:15px;
+  color:#334155;
+  font-weight:500;
+}
+
+/* Hover */
+
+.OptionContainer:hover{
+  border-color:#6366f1;
+  background:#eef2ff;
+}
+
+/* Active */
+
+.OptionContainer.active{
+  border-color:#6366f1;
+  background:#6366f1;
+}
+
+.OptionContainer.active span{
+  color:#ffffff;
+}
+
+/* NAVIGATION */
+
+.Navigation{
+  width:100%;
+  margin-top:20px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.LeftButtons{
+  display:flex;
+  gap:10px;
+}
+
+.LeftButtons button{
+  padding:8px 14px;
+  border-radius:8px;
+  border:1px solid #cbd5e1;
+  background:#ffffff;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.LeftButtons button:hover{
+  background:#eef2ff;
+  border-color:#6366f1;
+}
+
+.NextButton{
+  padding:10px 20px;
+  border-radius:10px;
+  border:none;
+  background:#6366f1;
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.NextButton:hover{
+  background:#4f46e5;
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width:768px){
+
+.AnswerContainer{
+  grid-template-columns:1fr 1fr;
+}
 
 }
 
-.LeftButtons button {
-  padding: 8px 14px;
-  border-radius: 8px;
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
-  cursor: pointer;
-  font-size: 20px;
+/* ================= MOBILE ================= */
+
+@media (max-width:500px){
+
+.Container{
+  width:95%;
+  padding:16px;
 }
 
-.LeftButtons button:hover {
-  background: #eef2ff;
-  border-color: #6366f1;
-}
-.NextButton {
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  background: #6366f1;
-  color: white;
-  font-size: 17px;
-  font-weight: 600;
-  cursor: pointer;
+.QuestionContainer p{
+  font-size:15px;
 }
 
-.NextButton:hover {
-  background: #4f46e5;
+.AnswerContainer{
+  grid-template-columns:1fr; /* 1 option per row */
+}
+
+.OptionContainer{
+  padding:12px;
+}
+
+.Navigation{
+  flex-direction:column;
+  gap:14px;
+}
+
+.LeftButtons{
+  width:100%;
+  justify-content:center;
+}
+
+.NextButton{
+  width:100%;
+}
+
 }

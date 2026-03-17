@@ -12,6 +12,9 @@ const [question,setQuestion] = useState("");
 const [messages,setMessages] = useState([]);
 const [typing,setTyping] = useState(false);
 
+const [history,setHistory] = useState([]);
+const [currentChatId,setCurrentChatId] = useState(null);
+
 const chatEndRef = useRef(null);
 
 /* AUTO SCROLL */
@@ -20,10 +23,37 @@ useEffect(()=>{
 chatEndRef.current?.scrollIntoView({behavior:"smooth"});
 },[messages,typing]);
 
+/* LOAD USER HISTORY */
+
+useEffect(()=>{
+
+const userId = localStorage.getItem("userId");
+
+if(!userId) return;
+
+const savedHistory = localStorage.getItem(`history_${userId}`);
+
+if(savedHistory){
+const parsed = JSON.parse(savedHistory);
+setHistory(parsed);
+}
+
+},[]);
+
 /* NEW CHAT */
 
 const handleNewChat = ()=>{
+
+const newChat = {
+id:Date.now(),
+messages:[]
+};
+
+setCurrentChatId(newChat.id);
 setMessages([]);
+
+setHistory(prev=>[newChat,...prev]);
+
 };
 
 /* SEND MESSAGE */
@@ -32,11 +62,13 @@ const handleSend = async () => {
 
 if(question.trim()==="") return;
 
+const userQuestion = question;
+
 /* Show Question */
 
 setMessages(prev=>[
 ...prev,
-{type:"question",text:question}
+{type:"question",text:userQuestion}
 ]);
 
 setQuestion("");
@@ -49,17 +81,46 @@ method:"POST",
 headers:{
 "Content-Type":"application/json"
 },
-body:JSON.stringify({question})
+body:JSON.stringify({question:userQuestion})
 });
 
 const data = await res.json();
 
 setTyping(false);
 
+const answerText = data.answer;
+
+/* Show Answer */
+
 setMessages(prev=>[
 ...prev,
-{type:"answer",text:data.answer}
+{type:"answer",text:answerText}
 ]);
+
+/* SAVE HISTORY */
+
+const userId = localStorage.getItem("userId");
+
+setHistory(prev=>{
+
+const updated = prev.map(chat =>
+chat.id === currentChatId
+? {
+...chat,
+messages:[
+...chat.messages,
+{type:"question",text:userQuestion},
+{type:"answer",text:answerText}
+]
+}
+: chat
+);
+
+localStorage.setItem(`history_${userId}`,JSON.stringify(updated));
+
+return updated;
+
+});
 
 }
 
@@ -98,7 +159,24 @@ return (
 </div>
 
 <div className={styles.HistoryChats}>
-<span>This is your History</span>
+
+{history.map(chat=>(
+
+<div
+key={chat.id}
+className={styles.historyItem}
+onClick={()=>{
+setCurrentChatId(chat.id);
+setMessages(chat.messages);
+}}
+>
+
+Chat {chat.id}
+
+</div>
+
+))}
+
 </div>
 
 </div>
@@ -120,6 +198,12 @@ msg.type==="question"
 >
 
 {msg.type==="answer" ? (
+
+<div>
+
+<h2 className={styles.answerHeading}>
+AI Answer
+</h2>
 
 <ReactMarkdown
 components={{
@@ -168,8 +252,9 @@ PreTag="div"
 }}
 >
 {msg.text}
-
 </ReactMarkdown>
+
+</div>
 
 ) : (
 

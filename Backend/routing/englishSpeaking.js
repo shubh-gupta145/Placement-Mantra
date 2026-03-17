@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const Anthropic = require("@anthropic-ai/sdk");
+const Groq = require("groq-sdk");
 
-const client = new Anthropic();
+const client = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
+});
 
 const CATEGORY_LABEL = {
   hr:   "HR Interview",
@@ -53,16 +55,26 @@ Scoring rubric:
 Keep all tips short, practical, and encouraging. Return ONLY the JSON object.`;
 
   try {
-    const message = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+    const completion = await client.chat.completions.create({
+      model: "llama-3.3-70b-versatile",
       max_tokens: 700,
-      messages: [{ role: "user", content: prompt }],
+      messages: [
+        {
+          role: "system",
+          content: "You are an English speaking evaluator. Always respond with valid JSON only.",
+        },
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
     });
 
-    const raw = message.content[0].text.trim();
+    const raw = completion.choices[0].message.content.trim();
     const clean = raw.replace(/```json|```/g, "").trim();
     const result = JSON.parse(clean);
 
+    // Sanitize & clamp all scores
     const numFields = ["pronunciation", "fluency", "grammar", "vocab", "confidence", "overall"];
     numFields.forEach((k) => {
       result[k] = Math.max(0, Math.min(100, Math.round(Number(result[k]) || 0)));
@@ -72,11 +84,13 @@ Keep all tips short, practical, and encouraging. Return ONLY the JSON object.`;
     if (!Array.isArray(result.aiSuggestions)) result.aiSuggestions = [];
     if (typeof result.feedback !== "string")  result.feedback      = "";
 
+    console.log("✅ Groq AI evaluation success!");
     return res.json({ result });
 
   } catch (err) {
-    console.error("AI evaluation failed:", err.message);
+    console.error("❌ Groq evaluation failed:", err.message);
 
+    // Fallback local scoring
     const words     = answer.trim().split(/\s+/).length;
     const sentences = answer.split(/[.!?]+/).filter((s) => s.trim()).length;
     const unique    = new Set(answer.toLowerCase().split(/\s+/)).size;
@@ -89,7 +103,10 @@ Keep all tips short, practical, and encouraging. Return ONLY the JSON object.`;
     const grammar       = clamp(50 + (avgWPS > 5 ? 20 : 8) + rand(12));
     const vocab         = clamp(50 + unique * 0.85 + rand(8));
     const confidence    = clamp(45 + Math.min(words, 60) * 0.5 + rand(10));
-    const overall       = clamp(pronunciation*0.20 + fluency*0.25 + grammar*0.20 + vocab*0.15 + confidence*0.20);
+    const overall       = clamp(
+      pronunciation * 0.20 + fluency * 0.25 +
+      grammar * 0.20 + vocab * 0.15 + confidence * 0.20
+    );
 
     const suggestions = [];
     if (pronunciation < 70) suggestions.push("Slow down and articulate each word clearly.");
@@ -105,7 +122,11 @@ Keep all tips short, practical, and encouraging. Return ONLY the JSON object.`;
       "Keep practicing. Complete sentences and steady pacing will help a lot.";
 
     return res.json({
-      result: { pronunciation, fluency, grammar, vocab, confidence, overall, feedback, suggestions, aiSuggestions: [] }
+      result: {
+        pronunciation, fluency, grammar, vocab,
+        confidence, overall, feedback,
+        suggestions, aiSuggestions: []
+      }
     });
   }
 });

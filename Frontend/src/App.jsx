@@ -15,8 +15,10 @@ import RoadmapPage from "./components/Roadmaps Component/RoadmapPage";
 import News from "./components/Tech News Page/News";
 import SignIn from "./components/Login Components/SignIn";
 import SignUp from "./components/Login Components/SignUp";
+import ForgetPassword from "./components/Login Components/ForgetPassword";
+import ResetPassword from "./components/Login Components/ResetPassword";
 import InterFaceIntern from "./components/Internship And Placemnet Calaender/InterFaceIntern";
-
+import InterviewResult from "./components/Mock Interview Components/InterFace Components/InterviewResult";
 function App() {
   return (
     <>
@@ -25,6 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/MockInterFace" element={<MockInterFace />} />
         <Route path="/MockInterview" element={<InterviewPage2 />} />
+<Route path="/InterviewResult" element={<InterviewResult />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/CGPA" element={<CGPA />} />
@@ -38,6 +41,8 @@ function App() {
         <Route path="/TechNewes" element={<News />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/EditProfile" element={<ProfileEditPage />} />
+        <Route path="/forgot-password" element={<ForgetPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
     </>
   );

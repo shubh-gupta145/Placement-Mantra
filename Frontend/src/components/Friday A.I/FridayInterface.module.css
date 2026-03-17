@@ -1,15 +1,17 @@
 .wrapper{
 display:flex;
-height:92vh;
+min-height:100vh;
 width:100%;
 background:#0f172a;
 overflow:hidden;
+flex-wrap:nowrap;
 }
 
 /* LEFT PANEL */
 
 .SettingPannel{
-width:22%;
+width:260px;
+min-width:200px;
 background:#020617;
 padding:20px;
 display:flex;
@@ -34,54 +36,80 @@ background:#0f172a;
 padding:10px;
 border-radius:8px;
 color:#94a3b8;
+overflow-y:auto;
 }
 
 /* RIGHT PANEL */
 
+
 .OutputPannel{
-width:78%;
+flex:1;
 display:flex;
 flex-direction:column;
+position:relative;
 }
+
+/* CHAT DISPLAY */
 
 .DisplayScreen{
 flex:1;
 padding:20px;
 overflow-y:auto;
+
 display:flex;
 flex-direction:column;
-gap:10px;
+gap:10px; /* space for input */
 }
-
 /* USER MESSAGE */
 
 .userMessage{
 align-self:flex-end;
-background:#22c55e;
-padding:10px 15px;
-border-radius:12px;
+background:#2563eb;
 color:white;
-max-width:60%;
+padding:12px 14px;
+border-radius:10px;
+max-width:70%;
+margin:6px 0;
+animation:fadeIn 0.3s ease;
 }
 
 /* BOT MESSAGE */
 
 .botMessage{
 align-self:flex-start;
-background:#1e293b;
-padding:10px 15px;
-border-radius:12px;
+background:#111827;
 color:white;
-max-width:60%;
+padding:14px;
+border-radius:10px;
+max-width:75%;
+margin:6px 0;
+animation:fadeIn 0.3s ease;
+}
+
+.botMessage p{
+font-size:14px;
+line-height:1.6;
+}
+
+.answerHeading{
+font-size:18px;
+font-weight:600;
+margin-bottom:6px;
 }
 
 /* INPUT */
 
 .InputPannel{
+position:absolute;
+bottom:67px;
+left:0;
+width:100%;
+
 display:flex;
+gap:10px;
+
 padding:15px;
 background:#020617;
-gap:10px;
 }
 
 .InputBox{
@@ -92,57 +120,124 @@ border:none;
 outline:none;
 background:#1e293b;
 color:white;
+font-size:14px;
 }
 
 .SendButton{
 background:#84cc16;
 border:none;
-padding:10px 20px;
+padding:10px 18px;
 border-radius:8px;
 cursor:pointer;
 font-weight:600;
 }
+
 .SendButton:hover{
 transform:scale(1.05);
 transition:0.2s;
 }
 
-.userMessage{
-animation:fadeIn 0.3s ease;
+/* HISTORY */
+
+.historyItem{
+padding:8px;
+cursor:pointer;
+color:white;
+border-bottom:1px solid #334155;
 }
 
-.botMessage{
-animation:fadeIn 0.3s ease;
+.historyItem:hover{
+background:#1e293b;
 }
+
+/* ANIMATION */
 
 @keyframes fadeIn{
-
 from{
 opacity:0;
 transform:translateY(10px);
 }
-
 to{
 opacity:1;
 transform:translateY(0);
 }
-
 }
-.botMessage{
-background:#111827;
-color:white;
+
+/* ================= TABLET ================= */
+
+@media (max-width:900px){
+
+.SettingPannel{
+width:200px;
 padding:15px;
-border-radius:10px;
-margin:10px 0;
-max-width:80%;
 }
 
-.userMessage{
-background:#2563eb;
-color:white;
+.DisplayScreen{
+padding:15px;
+}
+
+.userMessage,
+.botMessage{
+max-width:85%;
+}
+
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width:600px){
+
+.wrapper{
+flex-direction:column;
+}
+
+/* Sidebar top par aa jayega */
+
+.SettingPannel{
+width:100%;
+flex-direction:row;
+overflow-x:auto;
+border-right:none;
+border-bottom:1px solid #1e293b;
+}
+
+.HistoryChats{
+display:flex;
+gap:10px;
+overflow-x:auto;
+}
+
+.historyItem{
+border:none;
+background:#1e293b;
+border-radius:6px;
+padding:6px 10px;
+white-space:nowrap;
+}
+
+/* Chat area */
+
+.OutputPannel{
+width:100%;
+}
+
+.DisplayScreen{
 padding:12px;
-border-radius:10px;
-margin:10px 0;
-margin-left:auto;
-max-width:70%;
+}
+
+.userMessage,
+.botMessage{
+max-width:95%;
+}
+
+/* Input */
+
+.InputPannel{
+flex-direction:column;
+}
+
+.SendButton{
+width:100%;
+}
+
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Auth.module.css";
 import { useNavigate } from "react-router-dom";
-
+import {Link} from "react-router-dom";
 function SignIn() {
 
 const navigate = useNavigate();
@@ -70,6 +70,9 @@ placeholder="Enter Password"
 onChange={handleChange}
 required
 />
+<p>
+<Link to="/forgot-password">Forgot Password?</Link>
+</p>
 
 <button type="submit">Sign In</button>
 

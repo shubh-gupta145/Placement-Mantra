@@ -90,32 +90,46 @@ const videoData = {
     ],
     Interview: [
     {
-      title: "Top 50 DSA Questions",   
-        description: "Must-know DSA questions for interviews.",
+      title: "Apna College Google & MicroSoft Interview Experience",   
+        description: "This Girl Tell Us about Youself How he Does Crack Both Fang Company Interview",
         img: "./images/VideoPlaylist/Interview Part-1.png",
-        link: "https://www.youtube.com/watch?v=9Jry5-82I68",
-        rating: "4.8"   
+        link: "https://www.youtube.com/watch?v=64N1nNk0WuQ&t=333s&pp=ygURR29vZ2xlIEludGVydmlldyA%3D",
+        rating: "4.9"   
     },
     {
-        title: "System Design Interview Guide",
-        description: "Master system design interviews with this guide.",
-        img: "https://i.ytimg.com/vi/UzLMhqg3_Wc/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=UzLMhqg3_Wc",
-        rating: "4.7"
+        title: "Apna College Oracle Interview",
+        description: "How this Boy Select In the Oracle",
+        img: "./images/VideoPlaylist/Interview Part-2.png",
+        link: "https://www.youtube.com/watch?v=zk_8gJqrlxY&t=644s&pp=ygURT3JhY2xlIEludGVydmlldyA%3D",
+        rating: "4.1"
     },
     {
-        title: "Behavioral Interview Tips",
-        description: "Ace your behavioral interviews with these tips.",
-        img: "https://i.ytimg.com/vi/1u90yR8r2I8/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=1u90yR8r2I8",
-        rating: "4.6"
+        title: "Apna College MicroSoft Interview",
+        description: "This Girl Successfully Crack Microsoft and J.P.Morgan Interview",
+        img: "./images/VideoPlaylist/Interview Part-3.png",
+        link: "https://www.youtube.com/watch?v=IOt3kQP93SY&t=101s&pp=ygUrbWljcm9zb2Z0IGludGVydmlldyBleHBlcmllbmNlIGFwbmEgY29sbGVnZQ%3D%3D",
+        rating: "4.0"
     },
     {
-        title: "Coding Interview Preparation",
-        description: "Comprehensive coding interview prep guide.",
-        img: "https://i.ytimg.com/vi/8hly31xKli0/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=8hly31xKli0",
-        rating: "4.9"
+        title: "Apna College Zomato Interview",
+        description: "This Boy Successfully Crack Zomato Sofware Engineering Intern",
+        img: "./images/VideoPlaylist/Interview Part-4.png",
+        link: "https://www.youtube.com/watch?v=tkJdbRDtktk&pp=ygUpem9tYXRhbyBpbnRlcnZpZXcgZXhwZXJpZW5jZSBhcG5hIGNvbGxlZ2U%3D",
+        rating: "4.1"
+    },
+        {
+        title: "Apna College Meesho Interview",
+        description: "This Girl SuccessFully Crack Intership in Meesho ",
+        img: "./images/VideoPlaylist/Interview Part-5.png",
+        link: "https://www.youtube.com/watch?v=5S0z61DLz6M&pp=ygUlSWJtIGludGVydmlldyBleHBlcmllbmNlIGFwbmEgY29sbGVnZQ%3D%3D",
+        rating: "4.0"
+    },
+    {
+        title: "Apna College IBM Interview",
+        description: "How this Girl Crack IBM Interview",
+        img: "./images/VideoPlaylist/Interview Part-6.png",
+        link: "https://www.youtube.com/watch?v=IAuG0_sIf4Y&t=1563s&pp=ygUlSWJtIGludGVydmlldyBleHBlcmllbmNlIGFwbmEgY29sbGVnZQ%3D%3D",
+        rating: "4.4"
     }
   ],
   AI: [
@@ -141,10 +155,10 @@ const videoData = {
         rating: "4.6"
     },
     {
-        title: "",
-        description: "",
+        title: "This is AI 2025Crash Course",
+        description: "In this Course You are Learn Multiple A.I Algorthim",
         img: "./images/VideoPlaylist/A.I Part-4.png",
-        link: "",
+        link: "https://www.youtube.com/watch?v=mEsleV16qdo&pp=ygUZYWkgdHV0b3JpYWwgZm9yIGJlZ2lubmVycw%3D%3D",
         rating: "4.9"
     },
         {
@@ -156,18 +170,18 @@ const videoData = {
     },
     {
         title: "Deep Learning Crash Course",
-        description: "Get started with deep learning concepts.",
+        description: "Get started with A.I learning concepts.",
         img: "./images/VideoPlaylist/A.I Part-6.png",
-        link: "https://www.youtube.com/watch?v=aircAruvnKk",
+        link: "https://www.youtube.com/watch?v=4jmsHaJ7xEA&list=PL9ooVrP1hQOGHNaCT7_fwe9AabjZI1RjI",
         rating: "4.9"
     }
     ],
     Promp: [  
     {
         title: "Prompt Engineering Basics",
-        description: "Learn the fundamentals of prompt engineering.",
+        description: "In this Video You are Learn How We write a Prompt.",
         img: "./images/VideoPlaylist/Prompt Part-1.png",
-        link: "",
+        link: "https://www.youtube.com/watch?v=YhRfgYH_AoU&pp=ygUecHJvbXB0IGVuZ2luZWVyaW5nIGZ1bGwgY291cnNl",
         rating: "4.8"
     },
     {
