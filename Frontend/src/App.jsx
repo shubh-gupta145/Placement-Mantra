@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import ProtectedRoute from "./components/Login Components/ProtectedRoute"; 
 import CGPA from "./components/CGPA Components/CGPA";
 import Home from "./components/Main compoments/Home";
 import TestPage from "./components/Programming Test Page/TestPage";
@@ -19,59 +20,60 @@ import ForgetPassword from "./components/Login Components/ForgetPassword";
 import ResetPassword from "./components/Login Components/ResetPassword";
 import InterFaceIntern from "./components/Internship And Placemnet Calaender/InterFaceIntern";
 import InterviewResult from "./components/Mock Interview Components/InterFace Components/InterviewResult";
-import AdminLayout  from './components/Admin Panel/AdminLayout';
-import AdminLogin   from './components/Admin Panel/AdminLogin';
-import Dashboard    from './components/Admin Panel/Dashboard';
+import AdminLayout from './components/Admin Panel/AdminLayout';
+import AdminLogin from './components/Admin Panel/AdminLogin';
+import Dashboard from './components/Admin Panel/Dashboard';
 import Notifications from './components/Admin Panel/Notifications';
-import Users        from './components/Admin Panel/Users';
-import Attendance   from './components/Admin Panel/Attendance';
-import Analytics    from './components/Admin Panel/Analytics';
+import Users from './components/Admin Panel/Users';
+import Attendance from './components/Admin Panel/Attendance';
+import Analytics from './components/Admin Panel/Analytics';
 import FeedbackPage from './components/Admin Panel/FeedbackPage';
+import NotFoundPage from "./components/Main compoments/404";
+
 const AdminGuard = ({ children }) => {
   const token = localStorage.getItem('pm_admin_token');
-  const user  = JSON.parse(localStorage.getItem('pm_admin_user') || '{}');
+  const user = JSON.parse(localStorage.getItem('pm_admin_user') || '{}');
   if (!token || user?.role !== 'admin') {
     return <Navigate to="/admin/login" replace />;
   }
   return children;
 };
+
 function App() {
   return (
     <>
       <NavBar />
       <Routes>
         <Route path="/admin/login" element={<AdminLogin />} />
-<Route path="/admin" element={
-  <AdminGuard>
-    <AdminLayout />
-  </AdminGuard>
-}>
-  <Route index            element={<Dashboard />}     />
-  <Route path="notifications" element={<Notifications />} />
-  <Route path="users"         element={<Users />}         />
-  <Route path="attendance"    element={<Attendance />}    />
-  <Route path="analytics"     element={<Analytics />}     />
-  <Route path="feedback"      element={<FeedbackPage />}  />
-</Route>
+        <Route path="/admin" element={<AdminGuard><AdminLayout /></AdminGuard>}>
+          <Route index element={<Dashboard />} />
+          <Route path="notifications" element={<Notifications />} />
+          <Route path="users" element={<Users />} />
+          <Route path="attendance" element={<Attendance />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="feedback" element={<FeedbackPage />} />
+        </Route>
+
         <Route path="/" element={<Home />} />
-        <Route path="/MockInterFace" element={<MockInterFace />} />
-        <Route path="/MockInterview" element={<InterviewPage2 />} />
-<Route path="/InterviewResult" element={<InterviewResult />} />
+        <Route path="/MockInterFace" element={<ProtectedRoute><MockInterFace /></ProtectedRoute>} />
+        <Route path="/MockInterview" element={<ProtectedRoute><InterviewPage2 /></ProtectedRoute>} />
+        <Route path="/InterviewResult" element={<ProtectedRoute><InterviewResult /></ProtectedRoute>} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/CGPA" element={<CGPA />} />
         <Route path="/Tests" element={<TestPage />} />
         <Route path="/About" element={<AboutUs />} />
-        <Route path="/Friday" element={<FridayInterFace />} />
-        <Route path="/Roadmaps" element={<RoadmapPage />} />
-        <Route path="/FreeCoursePlaylist" element={<VideoPlaylist />} />
-        <Route path="/Internship" element={<InterFaceIntern/>} />
-        <Route path="/TestInterFace" element={<InterFace />} />
-        <Route path="/TechNewes" element={<News />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/EditProfile" element={<ProfileEditPage />} />
+        <Route path="/Friday" element={<ProtectedRoute><FridayInterFace /></ProtectedRoute>} />
+        <Route path="/Roadmaps" element={<ProtectedRoute><RoadmapPage /></ProtectedRoute>} />
+        <Route path="/FreeCoursePlaylist" element={<ProtectedRoute><VideoPlaylist /></ProtectedRoute>} />
+        <Route path="/Internship" element={<ProtectedRoute><InterFaceIntern /></ProtectedRoute>} />
+        <Route path="/TestInterFace" element={<ProtectedRoute><InterFace /></ProtectedRoute>} />
+        <Route path="/TechNewes" element={<ProtectedRoute><News /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/EditProfile" element={<ProtectedRoute><ProfileEditPage /></ProtectedRoute>} />
         <Route path="/forgot-password" element={<ForgetPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="*" element={<NotFoundPage/>} />
       </Routes>
     </>
   );

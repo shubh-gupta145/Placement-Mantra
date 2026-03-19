@@ -38,7 +38,8 @@ const app = express();
    MIDDLEWARE
 ========================= */
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "10mb" }));        // ✅ JSON limit badha do
+app.use(express.urlencoded({ limit: "10mb", extended: true })); // ✅ Yeh bhi add karo
 
 /* =========================
    AAPKI EXISTING ROUTES

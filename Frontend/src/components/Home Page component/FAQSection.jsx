@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import FAQItem from "./FAQItem";
+import styles from "./FAQSection.module.css";
 
 function FAQSection({ data = [] }) {
-
   const [visibleCount, setVisibleCount] = useState(5);
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -11,14 +11,9 @@ function FAQSection({ data = [] }) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
-
-      <h2 className="text-3xl font-bold text-center mb-10">
-        FAQ Section
-      </h2>
-
-      <div className="space-y-4">
-
+    <div className={styles.container}>
+      <h2 className={styles.heading}>FAQ Section</h2>
+      <div className={styles.list}>
         {data.slice(0, visibleCount).map((faq, index) => (
           <FAQItem
             key={index}
@@ -30,7 +25,6 @@ function FAQSection({ data = [] }) {
             handleArrowClick={handleArrowClick}
           />
         ))}
-
       </div>
     </div>
   );

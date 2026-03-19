@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import styles from "./Navbar.module.css";
+import styles from "./NavBar.module.css";
 
 function Navbar({ menuOpen }) {
 
@@ -56,9 +56,6 @@ value={query}
 onChange={(e)=>setQuery(e.target.value)}
 onKeyDown={handleSearch}
 />
-
-<Link className={styles.links} to="/SignUp">Sign Up</Link>
-
 </div>
 
 );

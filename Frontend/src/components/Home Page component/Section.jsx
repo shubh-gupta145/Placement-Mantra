@@ -22,7 +22,7 @@ function Section() {
     {
       title: "Test Your Skill",
       desc: "In this Page You Will Give Tests To Improve Your Skills.",
-      path: "/Tests"
+      path: "/TestInterFace"
     },
     {
       title: "Good CGPA Tricks",

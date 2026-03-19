@@ -54,9 +54,9 @@
 /* Search Bar */
 .SearchBar {
   padding: 8px 18px;
-  width: 220px;
+  width: 320px;
   border-radius: 7px;
-  border: 1px solid #334155;
+  border: 2px solid #334155f4;
   outline: none;
   background-color: #1e293b;
   color: #f1f5f9;

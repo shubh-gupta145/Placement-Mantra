@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";  // useEffect add karo
 import styles from './NavBar.module.css';
 import SearchBar from "./SearchBar";
 
@@ -8,8 +8,23 @@ function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
   const navigate = useNavigate();
 
+  // ✅ Yeh add karo - login hone par auto update hoga
+  useEffect(() => {
+    const checkLogin = () => {
+      setIsLoggedIn(!!localStorage.getItem("token"));
+    };
+
+    window.addEventListener("storage", checkLogin);
+    
+    // Har route change par bhi check karo
+    checkLogin();
+
+    return () => window.removeEventListener("storage", checkLogin);
+  }, []);
+
   const handleSignOut = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("email");
     setIsLoggedIn(false);
     navigate("/");
   };
@@ -17,8 +32,6 @@ function NavBar() {
   return (
     <nav>
       <div className={styles.nav_container}>
-
-        {/* Left Section */}
         <div className={`${styles.First_nav_container} ${menuOpen ? styles.showMenu : ""}`}>
           
           <Link to="/profile">
@@ -35,7 +48,7 @@ function NavBar() {
           <Link className={styles.links} to="/TestInterFace">Tests</Link>
           <Link className={styles.links} to="/About">About Us</Link>
 
-          {/* Auth Links */}
+          {/* ✅ Login hone par Sign Out, warna Sign Up */}
           {isLoggedIn ? (
             <button className={styles.links} onClick={handleSignOut}>Sign Out</button>
           ) : (
@@ -43,17 +56,11 @@ function NavBar() {
           )}
         </div>
 
-        {/* Right Section */}
         <SearchBar />
 
-        {/* Hamburger */}
-        <div
-          className={styles.hamburger}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
+        <div className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)}>
           ☰
         </div>
-
       </div>
     </nav>
   );

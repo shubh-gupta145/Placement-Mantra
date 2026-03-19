@@ -27,39 +27,23 @@ function ProfileEditPage() {
   /* ================= LOAD PROFILE DATA ================= */
 
   useEffect(()=>{
-
     const email = localStorage.getItem("email") || localStorage.getItem("userEmail");
-
     if(!email) return;
 
     fetch(`http://localhost:5000/get-profile/${email}`)
     .then(res=>res.json())
     .then(data=>{
-
       if(data){
-
-        setProfileData({
-          ...data,
-          email: email
-        });
-
+        setProfileData({ ...data, email: email });
         setImage(data.image);
-
       }
-
     });
-
   },[]);
 
   /* ================= INPUT CHANGE ================= */
 
   const handleChange = (e)=>{
-
-    setProfileData({
-      ...profileData,
-      [e.target.name]: e.target.value
-    });
-
+    setProfileData({ ...profileData, [e.target.name]: e.target.value });
   };
 
   /* ================= IMAGE ================= */
@@ -68,69 +52,55 @@ function ProfileEditPage() {
     fileInputRef.current.click();
   };
 
+  // ✅ FIXED - Base64 conversion
   const handleImageChange = (e) => {
-
     const file = e.target.files[0];
 
-    if(file){
+    if (file) {
+      const reader = new FileReader();
 
-      const imageURL = URL.createObjectURL(file);
+      reader.onloadend = () => {
+        const base64Image = reader.result; // ✅ Permanent base64 string
 
-      setImage(imageURL);
+        setImage(base64Image);
+        setProfileData(prev => ({
+          ...prev,
+          image: base64Image // ✅ Server pe save hoga
+        }));
+      };
 
-      setProfileData({
-        ...profileData,
-        image:imageURL
-      });
-
+      reader.readAsDataURL(file); // ✅ File ko base64 mein convert karo
     }
-
   };
 
   /* ================= SAVE PROFILE ================= */
 
   const handleSubmit = async ()=>{
-
     const email = localStorage.getItem("email") || localStorage.getItem("userEmail");
 
     try{
-
       const res = await fetch(`http://localhost:5000/update-profile/${email}`,{
-
         method:"PUT",
-
-        headers:{
-          "Content-Type":"application/json"
-        },
-
+        headers:{ "Content-Type":"application/json" },
         body: JSON.stringify(profileData)
-
       });
 
       await res.json();
-
       alert("Profile Updated Successfully ✅");
-
-      // redirect to profile page
       navigate("/profile");
-
     }
-
     catch(error){
       console.log(error);
     }
-
   };
 
   return (
     <div className={styles.Container}>
       
       {/* PROFILE HEADER */}
-
       <div className={styles.ProfileCarsoul}>
 
         <div className={styles.ImageWrapper}>
-
           <img
             src={image || "/default-profile.png"}
             alt="Profile"
@@ -148,7 +118,6 @@ function ProfileEditPage() {
             accept="image/*"
             style={{ display: "none" }}
           />
-
         </div>
 
         <div className={styles.NameContainer}>
@@ -158,9 +127,7 @@ function ProfileEditPage() {
 
       </div>
 
-
       {/* MAIN CONTENT */}
-
       <div className={styles.MainInfoWrapper}>
 
         <div className={styles.UserInfoContainer}>
@@ -171,7 +138,6 @@ function ProfileEditPage() {
 
           <div className={styles.subContainer}>
             <span className={styles.InfoHeaders}>LinkedIn ID</span>
-
             <div className={styles.IDContainer}>
               <input
                 type="text"
@@ -182,12 +148,10 @@ function ProfileEditPage() {
                 className={styles.InfoValue}
               />
             </div>
-
           </div>
 
           <div className={styles.subContainer}>
             <span className={styles.InfoHeaders}>Leetcode ID</span>
-
             <div className={styles.IDContainer}>
               <input
                 type="text"
@@ -198,12 +162,10 @@ function ProfileEditPage() {
                 className={styles.InfoValue}
               />
             </div>
-
           </div>
 
           <div className={styles.subContainer}>
             <span className={styles.InfoHeaders}>GitHub ID</span>
-
             <div className={styles.IDContainer}>
               <input
                 type="text"
@@ -214,11 +176,9 @@ function ProfileEditPage() {
                 className={styles.InfoValue}
               />
             </div>
-
           </div>
 
         </div>
-
 
         <div className={styles.EditContainer}>
 
@@ -227,7 +187,6 @@ function ProfileEditPage() {
               <span className={styles.InfoHeaders}>
                 {field.charAt(0).toUpperCase()+field.slice(1)}
               </span>
-
               <div className={styles.valueContainer}>
                 <input
                   type="text"
@@ -243,7 +202,6 @@ function ProfileEditPage() {
 
           <div className={styles.subContainer2}>
             <span className={styles.InfoHeaders}>Gender</span>
-
             <div className={styles.valueContainer}>
               <select
                 name="gender"
@@ -260,7 +218,6 @@ function ProfileEditPage() {
 
           <div className={styles.subContainer2}>
             <span className={styles.InfoHeaders}>Birthday</span>
-
             <div className={styles.valueContainer}>
               <input
                 type="date"

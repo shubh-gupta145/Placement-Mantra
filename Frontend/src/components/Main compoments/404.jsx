@@ -22,7 +22,7 @@ const NotFoundPage = () => {
 
       {/* Go Back Home Button */}
       <Link
-        to="/home"
+        to="/"
         className="mt-6 px-5 sm:px-6 py-2 sm:py-3 bg-gray-900 text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:bg-gray-800 transition-all duration-300"
       >
         Go Back Home

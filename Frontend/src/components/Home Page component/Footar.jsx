@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaInstagram, FaGlobe } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import styles from "./Footer.module.css";
 
 function Footer() {
   return (
@@ -8,49 +9,39 @@ function Footer() {
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white py-10 mt-10"
+      className={styles.footer}
     >
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+      <div className={styles.grid}>
 
         {/* Logo / Brand */}
-        <div className="space-y-3">
-          <h1 className="text-2xl md:text-3xl font-bold tracking-wide">
-            PlacementMantra<span className="text-yellow-300">.</span>
+        <div className={styles.brand}>
+          <h1 className={styles.logo}>
+            PlacementMantra<span className={styles.dot}>.</span>
           </h1>
-          <p className="text-sm md:text-base text-gray-200">
+          <p className={styles.tagline}>
             We are here To Solve All Your Placement Related Problems.
           </p>
         </div>
 
         {/* Quick Links */}
-        <div className="flex flex-col space-y-2 text-sm md:text-base items-center md:items-start">
-          <h2 className="text-lg font-semibold mb-2">Quick Links</h2>
-
-          <Link className="hover:text-yellow-300 transition-all duration-300" to="/">
-            Home
-          </Link>
-          <Link className="hover:text-yellow-300 transition-all duration-300" to="/Mocks">
-            Mocks
-          </Link>
-          <Link className="hover:text-yellow-300 transition-all duration-300" to="/CGPA">
-            CGPA
-          </Link>
-          <Link className="hover:text-yellow-300 transition-all duration-300" to="/Tests">
-            Tests
-          </Link>
+        <div className={styles.links}>
+          <h2 className={styles.heading}>Quick Links</h2>
+          <Link className={styles.link} to="/">Home</Link>
+          <Link className={styles.link} to="/MockInterFace">Mocks</Link>
+          <Link className={styles.link} to="/CGPA">CGPA</Link>
+          <Link className={styles.link} to="/TestInterFace">Tests</Link>
         </div>
 
         {/* Social Icons */}
-        <div className="space-y-3">
-          <h2 className="text-lg font-semibold">Follow Us</h2>
-
-          <div className="flex justify-center md:justify-start space-x-6 text-2xl">
+        <div className={styles.social}>
+          <h2 className={styles.heading}>Follow Us</h2>
+          <div className={styles.icons}>
             {[FaGithub, FaLinkedin, FaInstagram, FaGlobe].map((Icon, i) => (
               <motion.a
                 key={i}
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="hover:text-yellow-300 cursor-pointer"
+                className={styles.icon}
               >
                 <Icon />
               </motion.a>
@@ -60,9 +51,9 @@ function Footer() {
 
       </div>
 
-      <hr className="border-gray-300 my-6 opacity-30 mx-6" />
+      <hr className={styles.divider} />
 
-      <p className="text-center text-xs md:text-sm text-gray-200 px-4">
+      <p className={styles.copyright}>
         © {new Date().getFullYear()} ResumeBuilder. All rights reserved.
       </p>
     </motion.footer>

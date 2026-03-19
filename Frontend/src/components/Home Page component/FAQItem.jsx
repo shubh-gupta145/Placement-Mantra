@@ -1,4 +1,5 @@
-import styles from "./FAqItem.module.css"
+import styles from "./FAQItem.module.css";
+
 function FAQItem({ faq, index, openIndex, setOpenIndex, isLastVisible, handleArrowClick }) {
   const isOpen = openIndex === index;
 
@@ -10,19 +11,10 @@ function FAQItem({ faq, index, openIndex, setOpenIndex, isLastVisible, handleArr
   };
 
   return (
-    <div className="border rounded-2xl p-5 bg-white shadow-sm">
-      <button
-        type="button"
-        className="w-full flex items-center justify-between gap-4 text-left"
-        onClick={onArrowClick}
-      >
-        <span className={`${styles.s} text-lg font-medium text-gray-900`}>{faq.q}</span>
-
-        <span
-          className={`w-9 h-9 flex items-center justify-center rounded-full transform transition-all duration-300 ${
-            isOpen ? "rotate-180 bg-gray-900 text-white" : "bg-gray-200 text-gray-700"
-          }`}
-        >
+    <div className={styles.card}>
+      <button className={styles.button} onClick={onArrowClick}>
+        <span className={styles.question}>{faq.q}</span>
+        <span className={`${styles.icon} ${isOpen ? styles.iconOpen : ""}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -31,14 +23,15 @@ function FAQItem({ faq, index, openIndex, setOpenIndex, isLastVisible, handleArr
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="w-4 h-4"
+            width="16"
+            height="16"
           >
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </span>
       </button>
 
-      {isOpen && <p className={` ${styles.p} mt-4 text-gray-600 leading-relaxed`}>{faq.a}</p>}
+      {isOpen && <p className={styles.answer}>{faq.a}</p>}
     </div>
   );
 }
