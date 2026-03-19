@@ -176,7 +176,7 @@ const videoData = {
         rating: "4.9"
     }
     ],
-    Promp: [  
+    PromptEngineering: [  
     {
         title: "Prompt Engineering Basics",
         description: "In this Video You are Learn How We write a Prompt.",
@@ -185,24 +185,38 @@ const videoData = {
         rating: "4.8"
     },
     {
-        title: "Advanced Prompt Techniques",
+        title: "Great Learning Prompt Engineering",
         description: "Master advanced techniques in prompt engineering.",
-        img: "https://i.ytimg.com/vi/aircAruvnKk/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=aircAruvnKk",
-        rating: "4.7"
+        img: "./images/VideoPlaylist/Prompt Part-2.png",
+        link: "https://www.youtube.com/watch?v=5i2Hn8OG94o&pp=ygUecHJvbXB0IGVuZ2luZWVyaW5nIGZ1bGwgY291cnNl",
+        rating: "4.2"
     },
     {
-        title: "Prompt Engineering Projects",
-        description: "Build projects using prompt engineering.",
-        img: "https://i.ytimg.com/vi/8pR0o2fGyHg/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=8pR0o2fGyHg",
+        title: "Nishant Chaahar Prompt Engineering",
+        description: "Build Projects using Prompt Engineering.",
+        img: "./images/VideoPlaylist/Prompt Part-3.png",
+        link: "https://www.youtube.com/watch?v=IbVjxg9bHAw&pp=ygUecHJvbXB0IGVuZ2luZWVyaW5nIGZ1bGwgY291cnNl",
         rating: "4.6"
     },
     {
         title: "Prompt Engineering for AI",
         description: "Use prompt engineering to enhance AI models.",
-        img: "https://i.ytimg.com/vi/aircAruvnKk/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=aircAruvnKk",
+        img: "./images/VideoPlaylist/Prompt Part-4.png",
+        link: "https://www.youtube.com/watch?v=qBlX6FhDm2E&list=PLHmEk7iRj6dtq6AyJzDS1RKd_7pVJo767",
+        rating: "4.9"
+    },
+        {
+        title: "Prompt Engineering Course In Hindi",
+        description: "This Course provide a Propmpt Engineering Learning",
+        img: "./images/VideoPlaylist/Prompt Part-5.png",
+        link: "https://www.youtube.com/watch?v=engCIoHSSWA&list=PLgxOn93jfwHu7yJv6XN0QdwFZmHPm39CG",
+        rating: "4.6"
+    },
+    {
+        title: "5 Minitus Engineering Prompt Engineering Crash Course",
+        description: "Use prompt engineering to enhance AI models.",
+        img: "./images/VideoPlaylist/Prompt Part-6.png",
+        link: "https://www.youtube.com/watch?v=l6JHUln2llg&pp=ygUecHJvbXB0IGVuZ2luZWVyaW5nIGZ1bGwgY291cnNl",
         rating: "4.9"
     }
     ],
@@ -269,32 +283,46 @@ Online: [
     ],
   Roadmaps: [
     {
-      title: "Frontend Developer Roadmap 2026",
-      description: "Complete roadmap to become a frontend developer.",
-      img: "https://i.ytimg.com/vi/1Rs2ND1ryYc/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=1Rs2ND1ryYc",
+      title: "Web Development Roadmap 2025",
+      description: "Complete roadmap to become a Web Development",
+      img: "./images/VideoPlaylist/Roadmap Part-1.png",
+      link: "https://www.youtube.com/watch?v=4WjtQjPQGIs&pp=ygUbYXBuYSBjb2xsZWdlIE1FUm4gUm9hZG1hcHBz",
       rating: "4.8"
     },
     {
-      title: "Backend Developer Roadmap",
-      description: "Step-by-step backend learning path.",
-      img: "https://i.ytimg.com/vi/jBzwzrDvZ18/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=jBzwzrDvZ18",
+      title: "Frontend Developer Roadmap",
+      description: "Step-by-step Frontend learning path.",
+      img: "./images/VideoPlaylist/Roadmap Part-2.png",
+      link: "https://www.youtube.com/watch?v=DbRXv5TXMEE&pp=ygUaRnJvbnRlbmQgZGV2ZWxvcGVyIFJvYWRtYXDSBwkJwwoBhyohjO8%3D",
       rating: "4.7"
     },
     {
-      title: "Full Stack Developer Guide",
-      description: "Complete full stack journey explained.",
-      img: "https://i.ytimg.com/vi/nu_pCVPKzTk/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=nu_pCVPKzTk",
+      title: "Backend Developer Roadmap",
+      description: "Step-by-Step Backend Roadmap.",
+      img: "./images/VideoPlaylist/Roadmap Part-3.png",
+      link: "https://www.youtube.com/watch?v=nuRKzG0Pkjg&pp=ygUZQmFja2VuZCBkZXZlbG9wZXIgUm9hZG1hcA%3D%3D",
       rating: "4.6"
     },
     {
-      title: "AI & ML Roadmap",
-      description: "Start your Artificial Intelligence career.",
-      img: "https://i.ytimg.com/vi/aircAruvnKk/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=aircAruvnKk",
+      title: "Geeks For Geeks Dsa Guidence",
+      description: "This video Provide Proper Roadmap",
+      img: "./images/VideoPlaylist/Roadmap Part-4.png",
+      link: "https://www.youtube.com/watch?v=Yu73bNO0ITU&pp=ygUQZHNhIHJvYWRtYXAgamF2YQ%3D%3D",
       rating: "4.9"
+    },
+        {
+      title: "A.I Developer Roadmap",
+      description: "Apna College Guidence of A.I Developer",
+      img: "./images/VideoPlaylist/Roadmap Part-5.png",
+      link: "https://www.youtube.com/watch?v=t9MJ1gxcJ4w&pp=ygUUbWwgZGV2ZWxvcGVyIHJvYWRtYXA%3D",
+      rating: "4.6"
+    },
+    {
+      title: "Nishant Chahar ML Roadmap",
+      description: "Start your ML Career",
+      img: "./images/VideoPlaylist/Roadmap Part-6.png",
+      link: "https://www.youtube.com/watch?v=quTX3fevt3s&pp=ygUUbWwgZGV2ZWxvcGVyIHJvYWRtYXA%3D",
+      rating: "4.5"
     }
   ],
 
@@ -328,38 +356,6 @@ Online: [
       rating: "4.8"
     }
   ],
-
-  "Resume Guidance": [
-    {
-      title: "How to Build ATS Friendly Resume",
-      description: "Create resume that passes ATS systems.",
-      img: "https://i.ytimg.com/vi/Tt08KmFfIYQ/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=Tt08KmFfIYQ",
-      rating: "4.9"
-    },
-    {
-      title: "Resume Mistakes to Avoid",
-      description: "Common resume mistakes developers make.",
-      img: "https://i.ytimg.com/vi/4YHn3xvP7pM/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=4YHn3xvP7pM",
-      rating: "4.7"
-    },
-    {
-      title: "Tech Resume Format Guide",
-      description: "Best resume format for tech roles.",
-      img: "https://i.ytimg.com/vi/6dZ9z8F4PzQ/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=6dZ9z8F4PzQ",
-      rating: "4.8"
-    },
-    {
-      title: "Resume Projects Section Guide",
-      description: "How to showcase projects effectively.",
-      img: "https://i.ytimg.com/vi/4Qk2A6j2m2I/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=4Qk2A6j2m2I",
-      rating: "4.6"
-    }
-  ],
-
   "Machine Learning": [
     {
       title: "Machine Learning for Beginners",

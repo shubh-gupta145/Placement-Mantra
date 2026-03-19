@@ -19,11 +19,40 @@ import ForgetPassword from "./components/Login Components/ForgetPassword";
 import ResetPassword from "./components/Login Components/ResetPassword";
 import InterFaceIntern from "./components/Internship And Placemnet Calaender/InterFaceIntern";
 import InterviewResult from "./components/Mock Interview Components/InterFace Components/InterviewResult";
+import AdminLayout  from './components/Admin Panel/AdminLayout';
+import AdminLogin   from './components/Admin Panel/AdminLogin';
+import Dashboard    from './components/Admin Panel/Dashboard';
+import Notifications from './components/Admin Panel/Notifications';
+import Users        from './components/Admin Panel/Users';
+import Attendance   from './components/Admin Panel/Attendance';
+import Analytics    from './components/Admin Panel/Analytics';
+import FeedbackPage from './components/Admin Panel/FeedbackPage';
+const AdminGuard = ({ children }) => {
+  const token = localStorage.getItem('pm_admin_token');
+  const user  = JSON.parse(localStorage.getItem('pm_admin_user') || '{}');
+  if (!token || user?.role !== 'admin') {
+    return <Navigate to="/admin/login" replace />;
+  }
+  return children;
+};
 function App() {
   return (
     <>
       <NavBar />
       <Routes>
+        <Route path="/admin/login" element={<AdminLogin />} />
+<Route path="/admin" element={
+  <AdminGuard>
+    <AdminLayout />
+  </AdminGuard>
+}>
+  <Route index            element={<Dashboard />}     />
+  <Route path="notifications" element={<Notifications />} />
+  <Route path="users"         element={<Users />}         />
+  <Route path="attendance"    element={<Attendance />}    />
+  <Route path="analytics"     element={<Analytics />}     />
+  <Route path="feedback"      element={<FeedbackPage />}  />
+</Route>
         <Route path="/" element={<Home />} />
         <Route path="/MockInterFace" element={<MockInterFace />} />
         <Route path="/MockInterview" element={<InterviewPage2 />} />
