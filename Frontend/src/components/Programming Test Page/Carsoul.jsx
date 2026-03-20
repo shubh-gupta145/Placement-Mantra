@@ -2,6 +2,18 @@ import { useState } from "react";
 import styles from "./Carsoul.module.css";
 
 function HeroCarousel() {
+
+  // ── Test form pe scroll karo ──
+  const handleStartTest = () => {
+    const testForm = document.getElementById('test-form-section');
+    if (testForm) {
+      testForm.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.slide}>
@@ -12,7 +24,8 @@ function HeroCarousel() {
             your problem solving skills step by step.
           </p>
 
-          <button className={styles.btn}>
+          {/* ✅ onClick add kiya */}
+          <button className={styles.btn} onClick={handleStartTest}>
             Start Test
           </button>
         </div>

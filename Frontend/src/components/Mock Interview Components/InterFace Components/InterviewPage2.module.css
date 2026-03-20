@@ -1,15 +1,16 @@
-/* InterviewPage2.module.css — Updated for Placement Mantra */
-
-/* ── Layout ──────────────────────────────────────────── */
+/* ══════════════════════════════════
+   BASE LAYOUT
+══════════════════════════════════ */
 .Container {
   display: flex;
   width: 100vw;
   height: 100vh;
   background: #0f172a;
-  overflow: hidden;
   font-family: "Inter", "Segoe UI", sans-serif;
+  overflow: hidden;
 }
 
+/* ── LEFT — HR PANEL ── */
 .ScreenPannel {
   flex: 1;
   display: flex;
@@ -17,16 +18,21 @@
   background: #111827;
   border-right: 1px solid #1e293b;
   position: relative;
+  min-width: 0;
+  overflow: hidden;
 }
 
+/* ── RIGHT — OUTPUT PANEL ── */
 .OutputPannel {
-  width: 340px;
+  width: 320px;
   display: flex;
   flex-direction: column;
   background: #0f172a;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
-/* ── HR Section ──────────────────────────────────────── */
+/* ── HR VIDEO SECTION ── */
 .HrContainer {
   flex: 1;
   display: flex;
@@ -38,6 +44,7 @@
   border-radius: 12px;
   background: #0d1117;
   overflow: hidden;
+  min-height: 0;
 }
 
 .HrLogo {
@@ -49,13 +56,13 @@
 }
 
 .images {
-  width: 220px;
-  height: 220px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-/* Timer */
+/* ── TIMER ── */
 .timeContainer {
   position: absolute;
   bottom: 14px;
@@ -67,13 +74,15 @@
   text-shadow: 0 2px 6px rgba(0,0,0,0.6);
 }
 
-/* Question Badge */
+.timeContainer p { margin: 0; }
+
+/* ── QUESTION BADGE ── */
 .questionBadge {
   position: absolute;
   top: 14px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(99, 102, 241, 0.25);
+  background: rgba(99,102,241,0.25);
   color: #a5b4fc;
   border: 1px solid #6366f1;
   padding: 4px 14px;
@@ -83,14 +92,16 @@
   white-space: nowrap;
 }
 
-/* ── Controls ─────────────────────────────────────────── */
+/* ── CONTROLS ── */
 .ControllerPannel {
-  padding: 16px 20px 20px;
+  padding: 14px 20px 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   border-top: 1px solid #1e293b;
+  flex-shrink: 0;
+  background: #111827;
 }
 
 .BtnContainer {
@@ -131,9 +142,7 @@
 .callCutBtn:hover { transform: scale(1.08); opacity: 0.9; }
 .callIcon { color: #fff; font-size: 1.3rem; }
 
-.Mic {
-  cursor: pointer;
-}
+.Mic { cursor: pointer; }
 
 .pauseBtn {
   width: 48px;
@@ -150,31 +159,33 @@
 .pauseIcon { color: #fff; font-size: 1.3rem; }
 
 .startHint {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #475569;
   text-align: center;
   margin: 0;
 }
 
-/* ── Output Panel ─────────────────────────────────────── */
+/* ── OUTPUT PANEL ── */
 .StudentPannel {
-  height: 260px;
+  height: 220px;
   background: #1e293b;
   border-bottom: 1px solid #334155;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .TextPannel {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: auto;
   padding: 12px;
   gap: 10px;
+  min-height: 0;
 }
 
-/* HR Question Box */
+/* ── QUESTION BOX ── */
 .QuestionBox {
   background: #1e293b;
   border: 1px solid #334155;
@@ -193,4 +204,253 @@
 .placeholderText {
   color: #475569 !important;
   font-style: italic;
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE — TABLET (900px)
+══════════════════════════════════ */
+@media (max-width: 900px) {
+
+  .OutputPannel {
+    width: 260px;
+  }
+
+  .images {
+    width: 160px;
+    height: 160px;
+  }
+
+  .StudentPannel {
+    height: 180px;
+  }
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE — MOBILE (768px)
+══════════════════════════════════ */
+@media (max-width: 768px) {
+
+  .Container {
+    flex-direction: column;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  /* HR Panel — top 55% */
+  .ScreenPannel {
+    flex: none;
+    height: 55dvh;
+    border-right: none;
+    border-bottom: 1px solid #1e293b;
+    overflow: hidden;
+  }
+
+  /* Output Panel — bottom 45% — COLUMN + CENTER */
+  .OutputPannel {
+    width: 100%;
+    height: 45dvh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  /* Camera — full width top */
+  .StudentPannel {
+    width: 100%;
+    height: 150px;
+    border-right: none;
+    border-bottom: 1px solid #334155;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Text — center */
+  .TextPannel {
+    flex: 1;
+    width: 100%;
+    padding: 10px 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  /* Question box center */
+  .QuestionBox {
+    width: 100%;
+    min-height: 50px;
+    padding: 10px 14px;
+    text-align: center;
+  }
+
+  .QuestionBox p {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  /* HR Video */
+  .HrContainer {
+    margin: 8px 8px 6px;
+    border-radius: 10px;
+  }
+
+  .images {
+    width: 130px;
+    height: 130px;
+  }
+
+  /* Timer */
+  .timeContainer {
+    font-size: 1.2rem;
+    bottom: 8px;
+    right: 12px;
+  }
+
+  /* Badge */
+  .questionBadge {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    top: 8px;
+  }
+
+  /* Controls */
+  .ControllerPannel {
+    padding: 10px 16px 12px;
+    gap: 6px;
+  }
+
+  .BtnContainer {
+    gap: 20px;
+    padding: 10px 22px;
+    border-radius: 40px;
+  }
+
+  .callCutBtn,
+  .pauseBtn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .callIcon,
+  .pauseIcon {
+    font-size: 1.1rem;
+  }
+
+  .startHint {
+    font-size: 0.72rem;
+  }
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (480px)
+══════════════════════════════════ */
+@media (max-width: 480px) {
+
+  .ScreenPannel {
+    height: 58dvh;
+  }
+
+  .OutputPannel {
+    height: 42dvh;
+  }
+
+  .images {
+    width: 110px;
+    height: 110px;
+  }
+
+  .timeContainer {
+    font-size: 1rem;
+    bottom: 6px;
+    right: 8px;
+  }
+
+  .questionBadge {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+  }
+
+  .BtnContainer {
+    gap: 14px;
+    padding: 8px 16px;
+  }
+
+  .callCutBtn,
+  .pauseBtn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .callIcon,
+  .pauseIcon {
+    font-size: 1rem;
+  }
+
+  .btnLabel {
+    font-size: 0.58rem;
+  }
+
+  /* Camera full width */
+  .StudentPannel {
+    width: 100%;
+    height: 120px;
+  }
+
+  .TextPannel {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+
+  .QuestionBox {
+    padding: 8px;
+    min-height: 40px;
+  }
+
+  .QuestionBox p {
+    font-size: 0.75rem;
+  }
+
+  .HrContainer {
+    margin: 6px;
+  }
+
+  .startHint {
+    font-size: 0.68rem;
+  }
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE — TINY (360px)
+══════════════════════════════════ */
+@media (max-width: 360px) {
+
+  .images {
+    width: 90px;
+    height: 90px;
+  }
+
+  .BtnContainer {
+    gap: 10px;
+    padding: 6px 12px;
+  }
+
+  .callCutBtn,
+  .pauseBtn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .StudentPannel {
+    height: 100px;
+  }
+
+  .QuestionBox p {
+    font-size: 0.7rem;
+  }
 }

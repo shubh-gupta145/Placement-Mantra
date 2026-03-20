@@ -15,6 +15,7 @@
   width: 30%;
   border: 2px solid red;
   border-radius: 10px;
+  overflow-y: auto;
 }
 
 /* RIGHT SIDE */
@@ -24,72 +25,75 @@
   border: 2px solid rgb(18, 24, 19);
   border-radius: 10px;
   overflow-y: auto;
-  
 }
 
 /* Scrollbar */
-.replyContainer::-webkit-scrollbar {
-  width: 10px;
-}
-
+.replyContainer::-webkit-scrollbar { width: 10px; }
 .replyContainer::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 10px;
 }
-
 .replyContainer::-webkit-scrollbar-thumb {
   background: rgb(22, 29, 24);
   border-radius: 10px;
 }
-
 .replyContainer::-webkit-scrollbar-thumb:hover {
   background: rgb(14, 20, 16);
 }
 
-/* ======================= */
-/* TABLET RESPONSIVE */
-/* ======================= */
-
+/* ══════════════════════════════════
+   TABLET (992px)
+══════════════════════════════════ */
 @media (max-width: 992px) {
 
   .Container {
     flex-direction: column;
     height: auto;
+    min-height: 100vh;
     gap: 20px;
     padding: 20px;
+    align-items: center;
   }
 
   .JobTitleContainer {
     width: 90%;
-    height: 200px;
+    height: auto;          /* ✅ Fixed height hatao */
+    max-height: 300px;     /* ✅ Max height do */
+    overflow-y: auto;
   }
 
   .replyContainer {
     width: 90%;
     height: 60vh;
   }
-
 }
 
-/* ======================= */
-/* MOBILE RESPONSIVE */
-/* ======================= */
-
+/* ══════════════════════════════════
+   MOBILE (600px)
+══════════════════════════════════ */
 @media (max-width: 600px) {
 
   .Container {
     flex-direction: column;
+    height: auto;
+    min-height: 100vh;
     gap: 15px;
+    padding: 15px;
+    align-items: center;
   }
 
+  /* ✅ Fixed height bilkul nahi — saare options dikhenge ── */
   .JobTitleContainer {
     width: 95%;
-    height: 180px;
+    height: auto;
+    max-height: none;      /* ✅ No max height */
+    overflow-y: visible;
+    border-radius: 10px;
+    padding: 8px 0;
   }
 
   .replyContainer {
     width: 95%;
     height: 55vh;
   }
-
 }

@@ -1,243 +1,429 @@
-.wrapper{
-display:flex;
-min-height:100vh;
-width:100%;
-background:#0f172a;
-overflow:hidden;
-flex-wrap:nowrap;
+/* ══════════════════════════════════
+   BASE LAYOUT
+══════════════════════════════════ */
+.wrapper {
+  display: flex;
+  height: calc(100vh - 8vh);
+  width: 100%;
+  background: #0f172a;
+  overflow: hidden;
+  position: relative;
 }
 
-/* LEFT PANEL */
-
-.SettingPannel{
-width:260px;
-min-width:200px;
-background:#020617;
-padding:20px;
-display:flex;
-flex-direction:column;
-gap:20px;
-border-right:1px solid #1e293b;
+/* ══════════════════════════════════
+   LEFT PANEL — SIDEBAR
+══════════════════════════════════ */
+.SettingPannel {
+  width: 260px;
+  min-width: 220px;
+  background: #020617;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-right: 1px solid #1e293b;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.NewChat{
-display:flex;
-align-items:center;
-gap:10px;
-background:#22c55e;
-padding:10px;
-border-radius:8px;
-cursor:pointer;
-font-weight:600;
+/* ── NEW CHAT ── */
+.NewChat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #22c55e;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+  transition: background 0.2s;
 }
 
-.HistoryChats{
-background:#0f172a;
-padding:10px;
-border-radius:8px;
-color:#94a3b8;
-overflow-y:auto;
+.NewChat:hover { background: #16a34a; }
+
+/* ── HISTORY ── */
+.HistoryChats {
+  background: #0f172a;
+  padding: 10px;
+  border-radius: 8px;
+  color: #94a3b8;
+  overflow-y: auto;
+  flex: 1;
 }
 
-/* RIGHT PANEL */
-
-
-.OutputPannel{
-flex:1;
-display:flex;
-flex-direction:column;
-position:relative;
+.HistoryChats::-webkit-scrollbar { width: 4px; }
+.HistoryChats::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
 }
 
-/* CHAT DISPLAY */
-
-.DisplayScreen{
-flex:1;
-padding:20px;
-overflow-y:auto;
-
-display:flex;
-flex-direction:column;
-gap:10px; /* space for input */
-}
-/* USER MESSAGE */
-
-.userMessage{
-align-self:flex-end;
-background:#2563eb;
-color:white;
-padding:12px 14px;
-border-radius:10px;
-max-width:70%;
-margin:6px 0;
-animation:fadeIn 0.3s ease;
+.historyItem {
+  padding: 8px 10px;
+  cursor: pointer;
+  color: #e2e8f0;
+  border-bottom: 1px solid #334155;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  transition: background 0.15s;
 }
 
-/* BOT MESSAGE */
+.historyItem:last-child { border-bottom: none; }
+.historyItem:hover { background: #1e293b; }
 
-.botMessage{
-align-self:flex-start;
-background:#111827;
-color:white;
-padding:14px;
-border-radius:10px;
-max-width:75%;
-margin:6px 0;
-animation:fadeIn 0.3s ease;
+/* ── CLOSE BUTTON — mobile only ── */
+.closeBtn {
+  display: none;
+  background: #1e293b;
+  border: none;
+  color: #94a3b8;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  align-self: flex-end;
+  transition: background 0.2s;
 }
 
-.botMessage p{
-font-size:14px;
-line-height:1.6;
+.closeBtn:hover {
+  background: #334155;
+  color: #fff;
 }
 
-.answerHeading{
-font-size:18px;
-font-weight:600;
-margin-bottom:6px;
+/* ══════════════════════════════════
+   RIGHT PANEL
+══════════════════════════════════ */
+.OutputPannel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
 }
 
-/* INPUT */
-
-.InputPannel{
-position:absolute;
-bottom:67px;
-left:0;
-width:100%;
-
-display:flex;
-gap:10px;
-
-padding:15px;
-background:#020617;
+/* ── MOBILE HEADER — hidden on desktop ── */
+.mobileHeader {
+  display: none;
+  padding: 10px 16px;
+  background: #020617;
+  border-bottom: 1px solid #1e293b;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  z-index: 10;
 }
 
-.InputBox{
-flex:1;
-padding:12px;
-border-radius:8px;
-border:none;
-outline:none;
-background:#1e293b;
-color:white;
-font-size:14px;
+.sidebarToggle {
+  background: #1e293b;
+  border: none;
+  color: #94a3b8;
+  padding: 7px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
 }
 
-.SendButton{
-background:#84cc16;
-border:none;
-padding:10px 18px;
-border-radius:8px;
-cursor:pointer;
-font-weight:600;
+.sidebarToggle:hover {
+  background: #334155;
+  color: #fff;
 }
 
-.SendButton:hover{
-transform:scale(1.05);
-transition:0.2s;
+.mobileTitle {
+  color: #84cc16;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
-/* HISTORY */
-
-.historyItem{
-padding:8px;
-cursor:pointer;
-color:white;
-border-bottom:1px solid #334155;
+/* ── DISPLAY SCREEN ── */
+.DisplayScreen {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 80px;
 }
 
-.historyItem:hover{
-background:#1e293b;
+.DisplayScreen::-webkit-scrollbar { width: 5px; }
+.DisplayScreen::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
 }
 
-/* ANIMATION */
-
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(10px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* ================= TABLET ================= */
-
-@media (max-width:900px){
-
-.SettingPannel{
-width:200px;
-padding:15px;
+/* ── USER MESSAGE ── */
+.userMessage {
+  align-self: flex-end;
+  background: #2563eb;
+  color: white;
+  padding: 12px 14px;
+  border-radius: 10px;
+  max-width: 70%;
+  margin: 4px 0;
+  animation: fadeIn 0.3s ease;
+  word-break: break-word;
 }
 
-.DisplayScreen{
-padding:15px;
+/* ── BOT MESSAGE ── */
+.botMessage {
+  align-self: flex-start;
+  background: #111827;
+  color: white;
+  padding: 14px;
+  border-radius: 10px;
+  max-width: 75%;
+  margin: 4px 0;
+  animation: fadeIn 0.3s ease;
+  word-break: break-word;
 }
 
-.userMessage,
-.botMessage{
-max-width:85%;
+.botMessage p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
 }
 
+.answerHeading {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #84cc16;
 }
 
-/* ================= MOBILE ================= */
-
-@media (max-width:600px){
-
-.wrapper{
-flex-direction:column;
+/* ── INPUT PANEL ── */
+.InputPannel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  padding: 14px 16px;
+  background: #020617;
+  border-top: 1px solid #1e293b;
+  box-sizing: border-box;
+  z-index: 10;
 }
 
-/* Sidebar top par aa jayega */
-
-.SettingPannel{
-width:100%;
-flex-direction:row;
-overflow-x:auto;
-border-right:none;
-border-bottom:1px solid #1e293b;
+.InputBox {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
+  outline: none;
+  background: #1e293b;
+  color: white;
+  font-size: 14px;
+  transition: border-color 0.2s;
+  min-width: 0;
 }
 
-.HistoryChats{
-display:flex;
-gap:10px;
-overflow-x:auto;
+.InputBox:focus { border-color: #84cc16; }
+.InputBox::placeholder { color: #475569; }
+
+.SendButton {
+  background: #84cc16;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #0f172a;
+  white-space: nowrap;
+  transition: transform 0.2s, background 0.2s;
+  flex-shrink: 0;
 }
 
-.historyItem{
-border:none;
-background:#1e293b;
-border-radius:6px;
-padding:6px 10px;
-white-space:nowrap;
+.SendButton:hover {
+  transform: scale(1.05);
+  background: #65a30d;
 }
 
-/* Chat area */
-
-.OutputPannel{
-width:100%;
+/* ── OVERLAY ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 150;
+  animation: overlayIn 0.2s ease;
 }
 
-.DisplayScreen{
-padding:12px;
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.userMessage,
-.botMessage{
-max-width:95%;
+/* ── ANIMATION ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Input */
+/* ══════════════════════════════════
+   RESPONSIVE — TABLET (900px)
+══════════════════════════════════ */
+@media (max-width: 900px) {
 
-.InputPannel{
-flex-direction:column;
+  .SettingPannel {
+    width: 220px;
+    min-width: 180px;
+    padding: 16px;
+  }
+
+  .DisplayScreen {
+    padding: 15px;
+    padding-bottom: 80px;
+  }
+
+  .userMessage,
+  .botMessage {
+    max-width: 85%;
+  }
 }
 
-.SendButton{
-width:100%;
+/* ══════════════════════════════════
+   RESPONSIVE — MOBILE (768px)
+══════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* wrapper — full height minus navbar */
+  .wrapper {
+    height: calc(100vh - 8vh);
+  }
+
+  /* Mobile header dikhao */
+  .mobileHeader {
+    display: flex;
+  }
+
+  /* Close button dikhao */
+  .closeBtn {
+    display: block;
+  }
+
+  /* Sidebar — fixed, slide out */
+  .SettingPannel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
+    z-index: 200;
+    transform: translateX(-100%);
+    padding: 16px;
+    overflow-y: auto;
+    gap: 12px;
+  }
+
+  /* Sidebar open */
+  .sidebarOpen {
+    transform: translateX(0) !important;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.6);
+  }
+
+  /* Output full width */
+  .OutputPannel {
+    width: 100%;
+    flex: 1;
+  }
+
+  .DisplayScreen {
+    padding: 12px 14px;
+    padding-bottom: 75px;
+  }
+
+  .userMessage {
+    max-width: 90%;
+    font-size: 0.9rem;
+  }
+
+  .botMessage {
+    max-width: 95%;
+    font-size: 0.88rem;
+    padding: 12px;
+  }
+
+  .answerHeading {
+    font-size: 15px;
+  }
+
+  .InputPannel {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .InputBox {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .SendButton {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
 }
 
+/* ══════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (480px)
+══════════════════════════════════ */
+@media (max-width: 480px) {
+
+  .SettingPannel {
+    width: 240px;
+  }
+
+  .userMessage,
+  .botMessage {
+    max-width: 98%;
+    font-size: 0.85rem;
+  }
+
+  .InputPannel {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .InputBox {
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+
+  .SendButton {
+    padding: 9px 12px;
+  }
+
+  .answerHeading {
+    font-size: 14px;
+  }
+
+  .DisplayScreen {
+    padding: 10px;
+    padding-bottom: 72px;
+  }
+
+  .mobileHeader {
+    padding: 8px 12px;
+  }
+
+  .sidebarToggle {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  .mobileTitle {
+    font-size: 0.88rem;
+  }
+}
+/* ── ACTIVE HISTORY ITEM ── */
+.historyItemActive {
+  background: #1e293b !important;
+  border-left: 3px solid #22c55e;
+  padding-left: 7px;
 }
