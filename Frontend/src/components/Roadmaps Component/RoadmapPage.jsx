@@ -13,42 +13,45 @@ import CloudEngineerRoadmap from "./Roadmaps/CloudEngineerRoadmap";
 import UIDesignerRoadmap from "./Roadmaps/UIDesignerRoadmap";
 import PythonDeveloperRoadmap from "./Roadmaps/PythonDeveloperRoadmap";
 import JavaDeveloperRoadmap from "./Roadmaps/JavaDeveloperRoadmap";
+import useFeatureTrack from '../../utils/useFeatureTrack';
 
-function RoadmapPage(){
+function RoadmapPage() {
 
-const [selectedSkill,setSelectedSkill] = useState("frontend");
+  // ✅ Feature track — Roadmap
+  useFeatureTrack('roadmap');
 
-const roadmapComponents = {
-frontend: <FrontendRoadmap/>,
-backend: <BackendRoadmap/>,
-fullstack: <FullStackRoadmap/>,
-ai: <AIDeveloperRoadmap/>,
-ml: <MLDeveloperRoadmap/>,
-datascientist: <DataScientistRoadmap/>,
-dataanalysis: <DataAnalysisRoadmap/>,
-hacker: <HackerRoadmap/>,
-cloud: <CloudEngineerRoadmap/>,
-ui: <UIDesignerRoadmap/>,
-python: <PythonDeveloperRoadmap/>,
-java: <JavaDeveloperRoadmap/>
-};
+  const [selectedSkill, setSelectedSkill] = useState("frontend");
 
-return(
-<>
-<div className={styles.Container}>
+  const roadmapComponents = {
+    frontend:    <FrontendRoadmap />,
+    backend:     <BackendRoadmap />,
+    fullstack:   <FullStackRoadmap />,
+    ai:          <AIDeveloperRoadmap />,
+    ml:          <MLDeveloperRoadmap />,
+    datascientist: <DataScientistRoadmap />,
+    dataanalysis:  <DataAnalysisRoadmap />,
+    hacker:      <HackerRoadmap />,
+    cloud:       <CloudEngineerRoadmap />,
+    ui:          <UIDesignerRoadmap />,
+    python:      <PythonDeveloperRoadmap />,
+    java:        <JavaDeveloperRoadmap />
+  };
 
-<div className={styles.JobTitleContainer}>
-<SkillsBtn setSelectedSkill={setSelectedSkill}/>
-</div>
+  return (
+    <>
+      <div className={styles.Container}>
 
-<div className={styles.replyContainer}>
-{roadmapComponents[selectedSkill]}
-</div>
+        <div className={styles.JobTitleContainer}>
+          <SkillsBtn setSelectedSkill={setSelectedSkill} />
+        </div>
 
-</div>
-</>
-);
+        <div className={styles.replyContainer}>
+          {roadmapComponents[selectedSkill]}
+        </div>
 
+      </div>
+    </>
+  );
 }
 
 export default RoadmapPage;

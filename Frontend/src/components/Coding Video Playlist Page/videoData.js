@@ -358,31 +358,45 @@ Online: [
   ],
   "Machine Learning": [
     {
-      title: "Machine Learning for Beginners",
-      description: "Start your ML journey from scratch.",
-      img: "https://i.ytimg.com/vi/GwIo3gDZCVQ/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=GwIo3gDZCVQ",
+      title: "Beginner Friendly Playlist",
+      description: "In This video you learn about the ML Into Scratch",
+      img: "./images/VideoPlaylist/Machine Learning .png",
+      link: "https://www.youtube.com/watch?v=gmvvaobm7eQ&list=PLeo1K3hjS3uvCeTYTeyfe0-rN5r8zn9rw&pp=0gcJCbUEOCosWNin",
       rating: "4.8"
     },
     {
       title: "Python for ML",
-      description: "Learn Python essentials for ML.",
-      img: "https://i.ytimg.com/vi/_uQrJ0TkZlc/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=_uQrJ0TkZlc",
+      description: "Learn Python essentials for ML",
+      img: "./images/VideoPlaylist/MachineLearning2.png",
+      link: "https://www.youtube.com/watch?v=LvC68w9JS4Y&pp=ygUZbWFjaGluZSBsZWFybmluZyB0dXRvcmlhbA%3D%3D",
       rating: "4.7"
     },
     {
       title: "Deep Learning Basics",
       description: "Introduction to Neural Networks.",
-      img: "https://i.ytimg.com/vi/aircAruvnKk/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=aircAruvnKk",
+      img: "./images/VideoPlaylist/MachineLearning3.png",
+      link: "https://www.youtube.com/watch?v=ukzFI9rgwfU&list=PLEiEAq2VkUULYYgj13YHUWmRePqiu8Ddy",
       rating: "4.9"
+    },
+    {
+      title: "Full ML Tutorial",
+      description: "Lern with Scratch To Advanced",
+      img: "./images/VideoPlaylist/MachineLearning4.png",
+      link: "https://www.youtube.com/watch?v=ie4oGI85SAE&pp=ygUZbWFjaGluZSBsZWFybmluZyB0dXRvcmlhbA%3D%3Dy",
+      rating: "4.6"
+    },
+        {
+      title: "Machine Learning Basics",
+      description: "Introduction to Machine Learning",
+      img: "./images/VideoPlaylist/MachineLearning5.png",
+      link: "https://www.youtube.com/watch?v=1L420xXpDTg&pp=ygUZbWFjaGluZSBsZWFybmluZyB0dXRvcmlhbA%3D%3D",
+      rating: "3.9"
     },
     {
       title: "ML Projects for Beginners",
       description: "Build real-world ML projects.",
-      img: "https://i.ytimg.com/vi/8pR0o2fGyHg/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=8pR0o2fGyHg",
+      img: "./images/VideoPlaylist/MachineLearning6.png",
+      link: "https://www.youtube.com/watch?v=N8svLoC2eNA&pp=ygUZbWFjaGluZSBsZWFybmluZyB0dXRvcmlhbA%3D%3D",
       rating: "4.6"
     }
   ],
@@ -420,30 +434,44 @@ Online: [
 
   MERN: [
     {
-      title: "MERN Stack Complete Tutorial",
+      title: "MERN Stack Complete Tutorial By Babbar",
       description: "Build full stack apps.",
-      img: "https://i.ytimg.com/vi/7CqJlxBYj-M/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=7CqJlxBYj-M",
+      img: "./images/VideoPlaylist//MERN1.png",
+      link: "https://www.youtube.com/watch?v=Vi9bxu-M-ag&list=PLDzeHZWIZsTo0wSBcg4-NMIbC0L8evLrD",
       rating: "4.8"
     },
     {
-      title: "MongoDB Guide",
-      description: "Database fundamentals.",
-      img: "https://i.ytimg.com/vi/-56x56UppqQ/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=-56x56UppqQ",
+      title: "WsCude Tech Web Development",
+      description: "You Learn Lot's of thing In This Video",
+      img: "./images/VideoPlaylist//MERN2.png",
+      link: "https://www.youtube.com/watch?v=HVjjoMvutj4&pp=ygUbbWVybiB0dXRvcmlhbCBmb3IgYmVnaW5uZXJz",
       rating: "4.7"
     },
     {
       title: "Express JS Beginner Guide",
       description: "Build REST APIs.",
-      img: "https://i.ytimg.com/vi/L72fhGm1tfE/maxresdefault.jpg",
+      img: "./images/VideoPlaylist//MERN3.png",
+      link: "https://www.youtube.com/watch?v=AZzV3wZCvI4&list=PL78RhpUUKSwfeSOOwfE9x6l5jTjn5LbY3",
+      rating: "4.6"
+    },
+    {
+      title: "Node JS Crash Course",
+      description: "Backend development basics.",
+      img: "./images/VideoPlaylist//MERN4.png",
+      link: "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
+      rating: "4.8"
+    },
+        {
+      title: "Express JS Beginner Guide",
+      description: "Build REST APIs.",
+      img: "./images/VideoPlaylist//MERN5.png",
       link: "https://www.youtube.com/watch?v=L72fhGm1tfE",
       rating: "4.6"
     },
     {
       title: "Node JS Crash Course",
       description: "Backend development basics.",
-      img: "https://i.ytimg.com/vi/fBNz5xF-Kx4/maxresdefault.jpg",
+      img: "./images/VideoPlaylist//MERN6.png",
       link: "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
       rating: "4.8"
     }

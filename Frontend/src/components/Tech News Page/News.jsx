@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./News.module.css";
-
+import useFeatureTrack from '../../utils/useFeatureTrack';
 const News = () => {
-
+useFeatureTrack('it-news');
 const [newsData,setNewsData] = useState([]);
 const [visibleCount,setVisibleCount] = useState(6);
 

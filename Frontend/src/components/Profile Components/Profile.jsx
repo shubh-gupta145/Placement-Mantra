@@ -4,9 +4,9 @@ import { MdLocationOn } from "react-icons/md";
 import styles from "./Profile.module.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import useFeatureTrack from '../../utils/useFeatureTrack';
 function Profile(){
-
+ useFeatureTrack('mock-interview'); 
   const [profile,setProfile] = useState({});
 
   useEffect(()=>{

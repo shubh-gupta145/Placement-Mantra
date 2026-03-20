@@ -1,7 +1,9 @@
 import styles from "./CGPA.module.css";
 import FAQSection from "../Home Page component/FAQSection";
 import CGPAFAQ from "../../data/CGPAQues";
+import useFeatureTrack from '../../utils/useFeatureTrack';
 function CGPA(){
+    useFeatureTrack('cgpa-page');
 return(
 <>
 <div className={styles.container}>

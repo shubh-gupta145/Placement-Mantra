@@ -5,8 +5,9 @@ import styles from './InterFace.module.css';
 import Footar from "../Home Page component/Footar";
 import HeroCarousel from "./Carsoul";
 import { useNavigate } from "react-router-dom";
+import useFeatureTrack from '../../utils/useFeatureTrack';
 function InterFace(){
-
+ useFeatureTrack('mock-interview'); 
 const [topic, setTopic] = useState("");
 const [difficulty, setDifficulty] = useState("");
 const [name,setName] = useState("");

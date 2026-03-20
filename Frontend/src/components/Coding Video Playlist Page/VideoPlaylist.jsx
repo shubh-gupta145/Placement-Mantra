@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styles from "./VideoPlaylist.module.css";
 import videoData from "./videoData";
-
+import useFeatureTrack from '../../utils/useFeatureTrack';
 function VideoPlaylist() {
-
+ useFeatureTrack('free-resources');
   const topics = Object.keys(videoData);
 
   const [activeTopic, setActiveTopic] = useState(topics[0]);

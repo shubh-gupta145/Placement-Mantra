@@ -5,8 +5,12 @@ import { useNavigate, Link } from "react-router-dom";
 function SignUp() {
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
-  const [emailError, setEmailError] = useState(""); // ✅ Error state
+  const [formData, setFormData] = useState({ 
+    name: "", 
+    email: "", 
+    password: "" 
+  });
+  const [emailError, setEmailError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,21 +29,33 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ✅ Submit se pehle bhi check karo
+    // Email error check
     if (emailError) {
       alert("Please fix the errors before submitting!");
       return;
     }
 
-    const response = await fetch("http://localhost:5000/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      // ── Signup API call ──
+      const response = await fetch("http://localhost:5000/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData), // formData — loginData nahi
+      });
 
-    const data = await response.json();
-    alert(data.message);
-    navigate("/signin");
+      const data = await response.json();
+
+      if (data.message === "Signup Successful") {
+        alert("Account created successfully! Please sign in.");
+        navigate("/signin");
+      } else {
+        alert(data.message);
+      }
+
+    } catch (error) {
+      console.error("Signup error:", error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -47,6 +63,7 @@ function SignUp() {
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2>Create Account</h2>
 
+        {/* Name */}
         <input
           type="text"
           name="name"
@@ -55,7 +72,7 @@ function SignUp() {
           required
         />
 
-        {/* ✅ Email field */}
+        {/* Email */}
         <input
           type="email"
           name="email"
@@ -64,13 +81,13 @@ function SignUp() {
           required
           style={{ borderColor: emailError ? "red" : "" }}
         />
-        {/* ✅ Error message */}
         {emailError && (
           <p style={{ color: "red", fontSize: "13px", marginTop: "-10px" }}>
             {emailError}
           </p>
         )}
 
+        {/* Password */}
         <input
           type="password"
           name="password"

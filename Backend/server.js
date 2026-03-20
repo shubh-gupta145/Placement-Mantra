@@ -45,7 +45,6 @@ app.use(express.urlencoded({ limit: "10mb", extended: true })); // ✅ Yeh bhi a
    AAPKI EXISTING ROUTES
 ========================= */
 app.use("/api", resumeRoutes);
-app.use("/api", feedbackRoute);
 app.use("/api/english-speaking", englishSpeakingRoutes);
 
 /* =========================
@@ -57,7 +56,7 @@ app.use("/api/notifications", notificationRoutes);
 app.use("/api/attendance",    attendanceRoutes);
 app.use("/api/analytics",     analyticsRoutes);
 app.use("/api/track",         trackingRoutes);
-
+app.use("/api/feedback", require("./routing/feedback"));
 /* =========================
    ENV DEBUG
 ========================= */
@@ -207,34 +206,69 @@ app.put("/update-profile/:email", async (req, res) => {
 
 /* =========================
    SIGN UP
+   
    Aapka existing code — kuch nahi badla
 ========================= */
+app.post("/signup", async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.json({ message: "User already exists" });
+    }
+
+    // Plain password bhejo — model khud hash karega
+    const newUser = new User({
+      name,
+      email,
+      password,
+      role: 'student',
+      isBlocked: false
+    });
+
+    await newUser.save();
+
+    res.json({ message: "Signup Successful" });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.post("/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-
     if (!user) {
       return res.json({ message: "User not found" });
     }
 
-    // ── Plain text check (aapke purane users ke liye) ──
-    if (user.password !== password) {
+    // ── Bcrypt compare ──
+    const bcrypt = require('bcryptjs');
+    let isMatch = false;
+
+    try {
+      isMatch = await bcrypt.compare(password, user.password);
+    } catch {
+      // Purane plain text users ke liye fallback
+      isMatch = (user.password === password);
+    }
+
+    if (!isMatch) {
       return res.json({ message: "Wrong Password" });
     }
 
-    // ── Blocked check ──
     if (user.isBlocked) {
       return res.status(403).json({
         message: `Account blocked: ${user.blockReason}`
       });
     }
 
-    // ── Last seen update ──
     await User.findByIdAndUpdate(user._id, { lastSeen: new Date() });
 
-    // ── JWT Token banao ──
     const jwt = require('jsonwebtoken');
     const token = jwt.sign(
       { id: user._id },
@@ -242,7 +276,6 @@ app.post("/signin", async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    // ── Role bhi bhejo response mein ──
     res.json({
       message: "Login Successful",
       token,
@@ -250,7 +283,7 @@ app.post("/signin", async (req, res) => {
         id:    user._id,
         name:  user.name,
         email: user.email,
-        role:  user.role    // ← YE SABSE ZAROORI HAI
+        role:  user.role
       }
     });
 

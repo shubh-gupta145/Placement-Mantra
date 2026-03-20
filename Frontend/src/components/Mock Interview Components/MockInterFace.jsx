@@ -5,9 +5,11 @@ import MockEntry from "./InterFace Components/MockEntry";
 import Header from "./InterFace Components/Header";
 import FAQSection from "../Home Page component/FAQSection";
 import MockFAQ from "../../data/MocksQues";
+import useFeatureTrack from '../../utils/useFeatureTrack';
 function MockInterFace(){
+     useFeatureTrack('mock-interview'); 
     return(
-<>
+        <>
 <div className={styles.container}>
   <Header/>
   <MockInterviewWorkFlow/>

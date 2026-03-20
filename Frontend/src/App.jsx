@@ -44,15 +44,22 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin" element={<AdminGuard><AdminLayout /></AdminGuard>}>
-          <Route index element={<Dashboard />} />
-          <Route path="notifications" element={<Notifications />} />
-          <Route path="users" element={<Users />} />
-          <Route path="attendance" element={<Attendance />} />
-          <Route path="analytics" element={<Analytics />} />
-          <Route path="feedback" element={<FeedbackPage />} />
-        </Route>
+{/* Admin login page — ab seedha /signin se hoga */}
+{/* Agar koi /admin/login pe jaye toh /signin pe bhejo */}
+<Route path="/admin/login" element={<Navigate to="/signin" replace />} />
+
+<Route path="/admin" element={
+  <AdminGuard>
+    <AdminLayout />
+  </AdminGuard>
+}>
+  <Route index               element={<Dashboard />}     />
+  <Route path="notifications" element={<Notifications />} />
+  <Route path="users"         element={<Users />}         />
+  <Route path="attendance"    element={<Attendance />}    />
+  <Route path="analytics"     element={<Analytics />}     />
+  <Route path="feedback"      element={<FeedbackPage />}  />
+</Route>
 
         <Route path="/" element={<Home />} />
         <Route path="/MockInterFace" element={<ProtectedRoute><MockInterFace /></ProtectedRoute>} />

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "./EnglishSpeaking.module.css";
 import axios from "axios";
-
+import useFeatureTrack from '../../utils/useFeatureTrack';
 // ── Question Bank ──────────────────────────────────────────────────────────────
 const QUESTIONS = {
   hr: [
@@ -142,6 +142,7 @@ function localScore(text) {
 
 // ── Main Component ─────────────────────────────────────────────────────────────
 function EnglishSpeaking() {
+  useFeatureTrack('english-lab');
   // Setup
   const [view, setView]           = useState("setup");
   const [category, setCategory]   = useState("hr");

@@ -1,0 +1,271 @@
+/* ── CONTAINER ── */
+.container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed, #9333ea);
+  border-radius: 5px;
+  margin: 40px 0px 10px 0px;
+  padding: 40px 0;
+}
+
+/* ── MAIN WRAPPER ── */
+.mainWrapper {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── CARD ── */
+.card {
+  width: 100%;
+  background: white;
+  padding: 36px 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: fadeUp 0.8s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── TITLE ── */
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 6px;
+  color: #333;
+  font-family: 'Syne', sans-serif;
+}
+
+/* ── SUBTITLE ── */
+.subtitle {
+  font-size: .82rem;
+  color: #7c3aed;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ── SUCCESS ── */
+.success {
+  background: rgba(16, 185, 129, .1);
+  border: 1px solid rgba(16, 185, 129, .3);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #059669;
+  margin-bottom: 14px;
+  font-size: .85rem;
+  text-align: center;
+  width: 70%;
+}
+
+/* ── ERROR ── */
+.error {
+  background: rgba(239, 68, 68, .08);
+  border: 1px solid rgba(239, 68, 68, .3);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #dc2626;
+  margin-bottom: 14px;
+  font-size: .85rem;
+  text-align: center;
+  width: 70%;
+}
+
+/* ── FORM GROUP ── */
+.formGroup {
+  margin-bottom: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── LABEL ── */
+.label {
+  display: block;
+  font-size: .78rem;
+  color: #555;
+  margin-bottom: 6px;
+  font-weight: 500;
+  width: 70%;
+}
+
+/* ── SELECT ── */
+.select {
+  width: 70%;
+  height: 48px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 15px;
+  color: #333;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color .3s, box-shadow .3s;
+  cursor: pointer;
+}
+
+.select:focus {
+  border-color: #7e22ce;
+  box-shadow: 0 0 5px rgba(126, 34, 206, 0.5);
+}
+
+.select option {
+  background: #fff;
+  color: #333;
+}
+
+/* ── STAR RATING ── */
+.starsRow {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  width: 70%;
+}
+
+.star {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #ccc;
+  transition: color .15s, transform .15s;
+  user-select: none;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+.starFilled {
+  color: #f59e0b;
+}
+
+/* ── TEXTAREA ── */
+.textarea {
+  width: 70%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 15px;
+  color: #333;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  outline: none;
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color .3s, box-shadow .3s;
+  box-sizing: border-box;
+}
+
+.textarea:focus {
+  border-color: #7e22ce;
+  box-shadow: 0 0 5px rgba(126, 34, 206, 0.5);
+}
+
+.textarea::placeholder {
+  color: #aaa;
+}
+
+/* ── SUBMIT BUTTON ── */
+.submitBtn {
+  height: 48px;
+  width: 70%;
+  background: #7e22ce;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: .3s;
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.submitBtn:hover {
+  transform: scale(1.05);
+  background: #5b0fbf;
+}
+
+.submitBtn:disabled {
+  background: #a78bca;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── ANIMATION ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE TABLET ── */
+@media (max-width: 992px) {
+  .container {
+    padding: 40px 0;
+  }
+
+  .mainWrapper {
+    width: 85%;
+  }
+
+  .select,
+  .textarea,
+  .starsRow,
+  .submitBtn,
+  .label,
+  .success,
+  .error {
+    width: 90%;
+  }
+}
+
+/* ── RESPONSIVE MOBILE ── */
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 10px;
+  }
+
+  .mainWrapper {
+    width: 95%;
+  }
+
+  .card {
+    padding: 24px 16px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: .75rem;
+  }
+
+  .select,
+  .textarea,
+  .starsRow,
+  .submitBtn,
+  .label,
+  .success,
+  .error {
+    width: 95%;
+  }
+
+  .textarea {
+    font-size: 14px;
+    min-height: 80px;
+  }
+
+  .submitBtn {
+    height: 44px;
+    font-size: 14px;
+  }
+
+  .star {
+    font-size: 1.7rem;
+  }
+}

@@ -2,12 +2,12 @@ import { useState, useRef, useEffect } from "react";
 import styles from "./FridayInterFace.module.css";
 import { FaPlus } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
-
+import useFeatureTrack from '../../utils/useFeatureTrack';
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 function FridayInterFace() {
-
+useFeatureTrack('free-resources');
 const [question,setQuestion] = useState("");
 const [messages,setMessages] = useState([]);
 const [typing,setTyping] = useState(false);

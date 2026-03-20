@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Calendar from "./Calaender";
 import styles from "./InterFaceIntern.module.css";
-
+import useFeatureTrack from '../../utils/useFeatureTrack';
 function InterFaceIntern() {
+  useFeatureTrack('internship'); 
   const [internships, setInternships] = useState([]);
   const [placements, setPlacements] = useState([]);
   const [active, setActive] = useState("intern");

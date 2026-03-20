@@ -6,8 +6,9 @@ import Mic from "../Sub Components/Mic";
 import CameraView from "../Sub Components/CameraView";
 import SpeechToText from "../Sub Components/SpeechToText";
 import { generateInterviewQuestions } from "../../../data/questionEngine.js";
-
+import useFeatureTrack from '../../../utils/useFeatureTrack';
 function InterviewPage2() {
+   useFeatureTrack('mock-interview'); 
   const location = useLocation();
   const navigate = useNavigate();
   const { role = "Frontend Developer", timing = 2, userName = "Candidate" } =

@@ -3,13 +3,11 @@ import Footar from "../Home Page component/Footar";
 import Section from "../Home Page component/Section";
 import styles from "./Home.module.css";
 import Friday from "../Friday A.I/Friday";
-import Feedback from "./feedback";
 import FAQSection from "../Home Page component/FAQSection";
 import placementFAQ from "../../data/PlacementPageQues";
-import React, { useEffect } from "react";
-import EnglishSpeaking from "../English Speaking page/EnglishSpeaking,";
-function Home(){
-
+import EnglishSpeaking from "../English Speaking page/EnglishSpeaking";
+import FeedbackForm from '../Admin Panel/Feedback/FeedbackForm';
+function Home(){ 
   // useEffect(() => {
   //   fetch("http://localhost:5000/api/test")
   //     .then(res => res.json())
@@ -23,7 +21,7 @@ function Home(){
 <EnglishSpeaking/>
 <Friday/>
 <FAQSection data={placementFAQ}/>
-<Feedback/>
+<FeedbackForm/>
 <Footar/>
 </div>
 </>
