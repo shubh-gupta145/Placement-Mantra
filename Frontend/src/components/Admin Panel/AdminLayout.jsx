@@ -130,16 +130,6 @@ export default function AdminLayout() {
               <div className={s.topbarSub}>{meta.sub}</div>
             </div>
           </div>
-
-          <div className={s.topbarRight}>
-            <div className={s.tbBtn} title="Notifications">🔔</div>
-            <div
-              className={s.avatar}
-              style={{ borderRadius: 10, width: 36, height: 36 }}
-            >
-              {user?.name?.[0] || 'A'}
-            </div>
-          </div>
         </header>
 
         {/* ── PAGE CONTENT ── */}

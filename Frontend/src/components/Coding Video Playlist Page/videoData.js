@@ -176,7 +176,7 @@ const videoData = {
         rating: "4.9"
     }
     ],
-    PromptEngineering: [  
+    "Prompt Engineering": [  
     {
         title: "Prompt Engineering Basics",
         description: "In this Video You are Learn How We write a Prompt.",
@@ -220,67 +220,50 @@ const videoData = {
         rating: "4.9"
     }
     ],
-Online: [
+"Online Exams" : [
     {
-        title: "Top 10 Online Coding Platforms",
-        description: "Best platforms to practice coding online.",
-        img: "https://i.ytimg.com/vi/8hly31xKli0/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=8hly31xKli0",
+        title: "NIMCET Exam Details",
+        description: "Nimcet Exam All Details In This Video",
+        img: "./images/VideoPlaylist/NIMCET Part-1.png",
+        link: "https://www.youtube.com/watch?v=PFMNTdfOSSE&pp=ygUTbmltY2V0IGV4YW0gZGV0YWlscw%3D%3D",
         rating: "4.8"
     },
     {
-        title: "How to Prepare for Online Coding Tests",
-        description: "Effective strategies for online coding test preparation.",
-        img: "https://i.ytimg.com/vi/9Jry5-82I68/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=9Jry5-82I68",
+        title: "Can You Do MCA After BCA",
+        description: "Raghav Sir Guide What you Do After BCA",
+        img: "./images/VideoPlaylist/NIMCET Part-2.png",
+        link: "https://www.youtube.com/watch?v=1V8gOpApj-M&pp=ygUYQXBuYSBDb2xsZWdlIE5pbWNldCBwYWdl",
         rating: "4.7"
     },
     {
-        title: "Top 5 Online Coding Challenges",
-        description: "Participate in these coding challenges to improve your skills.",
-        img: "https://i.ytimg.com/vi/8hly31xKli0/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=8hly31xKli0",
+        title: "2026 CUET Exam Details",
+        description: "In ths Video You are all know About CUET",
+        img: "./images/VideoPlaylist/NIMCET Part-3.png",
+        link: "https://www.youtube.com/watch?v=hJEfcfELDqw&pp=ygUqb25saW5lIGV4YW1zIGZvciBjb21wdXRlciBzY2llbmNlIHN0dWRlbnRz",
         rating: "4.6"
     },
     {
-        title: "Online Coding Test Tips",
-        description: "Tips to perform well in online coding tests.",
-        img: "https://i.ytimg.com/vi/9Jry5-82I68/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=9Jry5-82I68",
+        title: "UGC Net Test Tips",
+        description: "Tips to perform well in UGC Net tests.",
+        img: "./images/VideoPlaylist/NIMCET Part-4.png",
+        link: "https://www.youtube.com/watch?v=UZ0-u8ed6m4&pp=ygUqb25saW5lIGV4YW1zIGZvciBjb21wdXRlciBzY2llbmNlIHN0dWRlbnRz",
+        rating: "4.9"
+    },
+        {
+        title: "CBT Exam Details",
+        description: "In this Video All Know About CBT Exam",
+        img: "./images/VideoPlaylist/NIMCET Part-5.png",
+        link: "https://www.youtube.com/watch?v=-k4oxPgn-qg&pp=ygUqb25saW5lIGV4YW1zIGZvciBjb21wdXRlciBzY2llbmNlIHN0dWRlbnRz",
+        rating: "4.6"
+    },
+    {
+        title: "Online Coding Test ",
+        description: "Computer Science online coding tests.",
+        img: "./images/VideoPlaylist/NIMCET Part-6.png",
+        link: "https://www.youtube.com/watch?v=Uef6hg2r0YQ&pp=ygUqb25saW5lIGV4YW1zIGZvciBjb21wdXRlciBzY2llbmNlIHN0dWRlbnRz",
         rating: "4.9"
     }
   ],
-
-  Others: [
-    {
-      title: "Time Management for Developers",
-        description: "Manage your time effectively as a developer.",
-        img: "https://i.ytimg.com/vi/1u90yR8r2I8/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=1u90yR8r2I8",
-        rating: "4.8"
-    },
-    {
-        title: "Effective Communication for Developers",
-        description: "Improve your communication skills as a developer.",
-        img: "https://i.ytimg.com/vi/1u90yR8r2I8/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=1u90yR8r2I8",
-        rating: "4.7"
-    },
-    {
-        title: "Career Growth Tips for Developers",
-        description: "Tips to grow your career in software development.",
-        img: "https://i.ytimg.com/vi/1u90yR8r2I8/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=1u90yR8r2I8",
-        rating: "4.6"
-    },
-    {
-        title: "Work-Life Balance for Developers",
-        description: "Achieve a healthy work-life balance as a developer.",
-        img: "https://i.ytimg.com/vi/1u90yR8r2I8/maxresdefault.jpg",
-        link: "https://www.youtube.com/watch?v=1u90yR8r2I8",
-        rating: "4.9"
-    }
-    ],
   Roadmaps: [
     {
       title: "Web Development Roadmap 2025",
@@ -449,30 +432,30 @@ Online: [
     },
     {
       title: "Express JS Beginner Guide",
-      description: "Build REST APIs.",
-      img: "./images/VideoPlaylist//MERN3.png",
+      description: "In this Video You are All Learn About Backend And MOngo DB",
+      img: "./images/VideoPlaylist//MERN Part-3.png",
       link: "https://www.youtube.com/watch?v=AZzV3wZCvI4&list=PL78RhpUUKSwfeSOOwfE9x6l5jTjn5LbY3",
       rating: "4.6"
     },
     {
-      title: "Node JS Crash Course",
-      description: "Backend development basics.",
-      img: "./images/VideoPlaylist//MERN4.png",
-      link: "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
+      title: "Full MERN Course Playlist",
+      description: "Frontend To Backend All Learning in there",
+      img: "./images/VideoPlaylist//MERN Part-4.png",
+      link: "https://www.youtube.com/watch?v=YZUYaIBHbO8&list=PLLUjkbOx5di5y1nGhbivWj0OLPU7u-3qA&pp=0gcJCbUEOCosWNin",
       rating: "4.8"
     },
         {
-      title: "Express JS Beginner Guide",
-      description: "Build REST APIs.",
+      title: "Basic OF MERN Playlist",
+      description: "In this Video All the Basic Concept is Present",
       img: "./images/VideoPlaylist//MERN5.png",
-      link: "https://www.youtube.com/watch?v=L72fhGm1tfE",
+      link: "https://www.youtube.com/watch?v=IymPq7ik29k&list=PLwGdqUZWnOp2Z3eFOgtOGvOWIk4e8Bsr_&pp=0gcJCbUEOCosWNin",
       rating: "4.6"
     },
     {
-      title: "Node JS Crash Course",
+      title: "MERN Course Playlist",
       description: "Backend development basics.",
       img: "./images/VideoPlaylist//MERN6.png",
-      link: "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
+      link: "https://www.youtube.com/watch?v=EsUL2bfKKLc&list=PLSDeUiTMfxW5vCie_cwsV6UPcZijHce8j&pp=0gcJCbUEOCosWNin4",
       rating: "4.8"
     }
   ]
