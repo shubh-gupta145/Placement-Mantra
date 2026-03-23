@@ -311,31 +311,45 @@ const videoData = {
 
   "Profile Management": [
     {
-      title: "LinkedIn Profile Optimization",
+      title: "Apna College Linkdin Guide",
       description: "Improve your LinkedIn profile professionally.",
-      img: "https://i.ytimg.com/vi/Wf4tT4G3bK0/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=Wf4tT4G3bK0",
+      img: "./images/VideoPlaylist/Profile Part-1.png",
+      link: "https://www.youtube.com/watch?v=lzuiuRgwwrc&pp=ygUcaG93IHRvIG1ha2UgbGlua2RpbiBhY2Njb3VudA%3D%3D",
       rating: "4.7"
     },
     {
-      title: "GitHub Profile Setup Guide",
-      description: "Make your GitHub look professional.",
-      img: "https://i.ytimg.com/vi/nhNq2kIvi9s/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=nhNq2kIvi9s",
+      title: "Apna College GSOC Guide",
+      description: "Make your GSOC Account look professional.",
+      img: "./images/VideoPlaylist/Profile Part-2.png",
+      link: "https://www.youtube.com/watch?v=sPM2WiwA1us&pp=ygUKR3NvYyBHdWlkZQ%3D%3D",
       rating: "4.8"
     },
     {
-      title: "Portfolio Website Tips",
+      title: "Apna College LeetCode Guide",
       description: "Create an impressive developer portfolio.",
-      img: "https://i.ytimg.com/vi/Zftx68K-1D4/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=Zftx68K-1D4",
+      img: "./images/VideoPlaylist/Profile Part-3.png",
+      link: "https://www.youtube.com/watch?v=qTph1pj_rCo&pp=ygUObGVldGNvZGUgZ3VpZGU%3D",
       rating: "4.6"
     },
     {
-      title: "Personal Branding for Developers",
+      title: "Leetcode Guide By Raghav Sir",
       description: "Build your online presence effectively.",
-      img: "https://i.ytimg.com/vi/zOjov-2OZ0E/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=zOjov-2OZ0E",
+      img: "./images/VideoPlaylist/Profile Part-4.png",
+      link: "https://www.youtube.com/watch?v=xpIPfrItO_I&pp=ygUObGVldGNvZGUgZ3VpZGU%3D",
+      rating: "4.8"
+    },
+        {
+      title: "Portfolio Tips By Nishant",
+      description: "Create an impressive developer portfolio.",
+      img: "./images/VideoPlaylist/Profile Part-5.png",
+      link: "https://www.youtube.com/watch?v=kh4hCUF_5y8&pp=ygUObGVldGNvZGUgZ3VpZGU%3D",
+      rating: "4.6"
+    },
+    {
+      title: "Git Hub Accoount Guide",
+      description: "Build your online presence effectively.",
+      img: "./images/VideoPlaylist/Profile Part-6.png",
+      link: "https://www.youtube.com/watch?v=ufKRYe8ZPaw&pp=ygUPR2l0IEh1YiBBY2NvdXQg",
       rating: "4.8"
     }
   ],
@@ -386,31 +400,45 @@ const videoData = {
 
   "DSA With Java": [
     {
-      title: "Java for DSA Complete Course",
+      title: "Java Basics for DSA Complete Course",
       description: "Master DSA using Java language.",
       img: "https://i.ytimg.com/vi/UmnCZ7-9yDY/maxresdefault.jpg",
       link: "https://www.youtube.com/watch?v=UmnCZ7-9yDY",
       rating: "4.9"
     },
     {
-      title: "Arrays & Strings in Java",
-      description: "Important DSA concepts.",
-      img: "https://i.ytimg.com/vi/8hly31xKli0/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=8hly31xKli0",
+      title: "DSA With Geeks For Geeks",
+      description: "Basic To Advanced Level DSA",
+      img: "./images/VideoPlaylist/DSA Part-4.png",
+      link: "https://www.youtube.com/watch?v=m3fg2PRY1u4&list=PLqM7alHXFySGwOTADxwHrgH8m_XpgrB-k",
       rating: "4.8"
     },
     {
-      title: "Recursion Explained",
-      description: "Understand recursion deeply.",
-      img: "https://i.ytimg.com/vi/IJDJ0kBx2LM/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=IJDJ0kBx2LM",
+      title: "DSA With College wallah",
+      description: "Lear Basic To Advanced DSA",
+      img: "./images/VideoPlaylist/DSA Part-2.png",
+      link: "https://www.youtube.com/watch?v=RJ733wzbNoA&list=PLxgZQoSe9cg00xyG5gzb5BMkOClkch7Gr",
       rating: "4.7"
     },
     {
-      title: "Binary Trees in Java",
-      description: "Tree data structure explained.",
-      img: "https://i.ytimg.com/vi/oSWTXtMglKE/maxresdefault.jpg",
-      link: "https://www.youtube.com/watch?v=oSWTXtMglKE",
+      title: "DSA With Apna College",
+      description: "Lear Advanced Level DSA",
+      img: "./images/VideoPlaylist/DSA Part-3.png",
+      link: "https://www.youtube.com/watch?v=yRpLlJmRo2w&list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop",
+      rating: "4.8"
+    },
+        {
+      title: "Apna College DSA In C++",
+      description: "Basic To Advanced Level DSA in C++",
+      img: "./images/VideoPlaylist/DSA Part-5.png",
+      link: "https://www.youtube.com/watch?v=VTLCoHnyACE&list=PLfqMhTWNBTe137I_EPQd34TsgV6IO55pt",
+      rating: "4.7"
+    },
+    {
+      title: "Prepare for MNC",
+      description: "Best Data Structures & Algorithms (DSA) Course - Clear Any FAANG Interview!",
+      img: "./images/VideoPlaylist/DSA Part-6.png",
+      link: "https://www.youtube.com/watch?v=rZ41y93P2Qo&list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyYqJ",
       rating: "4.8"
     }
   ],
