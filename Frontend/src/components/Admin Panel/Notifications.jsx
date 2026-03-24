@@ -29,30 +29,25 @@ export default function Notifications() {
 
   const [form, setForm] = useState({
     title: '', message: '', type: 'general',
-    frequency: 'once', sentTo: 'all'
+    frequency: 'once', sentTo: 'all',
+    recipientIds: []
   });
 
-  const [notifs,   setNotifs]   = useState([]);
-  const [sending,  setSending]  = useState(false);
-  const [filter,   setFilter]   = useState('all');
-  const [stats,    setStats]    = useState({ total: 0, thisWeek: 0 });
+  const [notifs,        setNotifs]        = useState([]);
+  const [sending,       setSending]       = useState(false);
+  const [filter,        setFilter]        = useState('all');
+  const [stats,         setStats]         = useState({ total: 0, thisWeek: 0 });
+  const [users,         setUsers]         = useState([]);  // ← saare students
+  const [userSearch,    setUserSearch]    = useState('');  // ← search filter
+  const [loadingUsers,  setLoadingUsers]  = useState(false);
 
-  // ── Mock data agar API se data na aaye ──
-  const MOCK = [
-    { _id: '1', title: 'Mock Interview Tips', message: 'Prepare for HR rounds this weekend!',
-      type: 'reminder', frequency: 'weekly',  sentTo: 'all', createdAt: new Date() },
-    { _id: '2', title: 'New Roadmap Added',   message: 'Check out the Data Science roadmap!',
-      type: 'update',   frequency: 'once',    sentTo: 'all', createdAt: new Date(Date.now() - 86400000) },
-    { _id: '3', title: 'System Maintenance',  message: 'Website down Sunday 2–4 AM.',
-      type: 'alert',    frequency: 'once',    sentTo: 'all', createdAt: new Date(Date.now() - 172800000) },
-  ];
-
+  // ── Load notifications + stats ──
   const loadNotifs = async () => {
     try {
       const r = await adminApi.get('/api/notifications');
       setNotifs(r.data);
     } catch {
-      setNotifs(MOCK);
+      setNotifs([]);
     }
   };
 
@@ -61,7 +56,21 @@ export default function Notifications() {
       const r = await adminApi.get('/api/notifications/stats');
       setStats(r.data);
     } catch {
-      setStats({ total: MOCK.length, thisWeek: 1 });
+      setStats({ total: 0, thisWeek: 0 });
+    }
+  };
+
+  // ── Load users jab Specific Users select karo ──
+  const loadUsers = async () => {
+    if (users.length > 0) return; // Already loaded
+    setLoadingUsers(true);
+    try {
+      const r = await adminApi.get('/api/users');
+      setUsers(r.data?.data || r.data || []);
+    } catch {
+      setUsers([]);
+    } finally {
+      setLoadingUsers(false);
     }
   };
 
@@ -70,27 +79,89 @@ export default function Notifications() {
     loadStats();
   }, []);
 
+  // ── Jab sentTo change ho ──
+  const handleSentToChange = (val) => {
+    setForm({ ...form, sentTo: val, recipientIds: [] });
+    if (val === 'specific') loadUsers();
+  };
+
+  // ── User select/deselect karo ──
+  const toggleUser = (userId) => {
+    setForm(prev => ({
+      ...prev,
+      recipientIds: prev.recipientIds.includes(userId)
+        ? prev.recipientIds.filter(id => id !== userId)
+        : [...prev.recipientIds, userId]
+    }));
+  };
+
+  // ── Select All / Deselect All ──
+  const toggleAll = () => {
+    const filtered = filteredUsers();
+    const allSelected = filtered.every(u =>
+      form.recipientIds.includes(u._id)
+    );
+    if (allSelected) {
+      setForm(prev => ({
+        ...prev,
+        recipientIds: prev.recipientIds.filter(
+          id => !filtered.map(u => u._id).includes(id)
+        )
+      }));
+    } else {
+      const newIds = filtered.map(u => u._id);
+      setForm(prev => ({
+        ...prev,
+        recipientIds: [...new Set([...prev.recipientIds, ...newIds])]
+      }));
+    }
+  };
+
+  const filteredUsers = () => {
+    return users.filter(u =>
+      u.name?.toLowerCase().includes(userSearch.toLowerCase()) ||
+      u.email?.toLowerCase().includes(userSearch.toLowerCase())
+    );
+  };
+
   const handleSend = async (e) => {
     e.preventDefault();
+
     if (!form.title.trim() || !form.message.trim()) {
       showToast('❌ Title aur message dono bharo', 'e');
       return;
     }
+
+    if (form.sentTo === 'specific' && form.recipientIds.length === 0) {
+      showToast('❌ Kam se kam ek user select karo', 'e');
+      return;
+    }
+
     setSending(true);
     try {
-      await adminApi.post('/api/notifications/send', form);
-      showToast('🚀 Notification sent successfully!', 's');
-      setForm({ title: '', message: '', type: 'general', frequency: 'once', sentTo: 'all' });
+      await adminApi.post('/api/notifications/send', {
+        title:        form.title,
+        message:      form.message,
+        type:         form.type,
+        frequency:    form.frequency,
+        sentTo:       form.sentTo,
+        recipientIds: form.sentTo === 'specific' ? form.recipientIds : []
+      });
+
+      const count = form.sentTo === 'all'
+        ? 'all students'
+        : `${form.recipientIds.length} student(s)`;
+
+      showToast(`🚀 Notification sent to ${count}!`, 's');
+      setForm({
+        title: '', message: '', type: 'general',
+        frequency: 'once', sentTo: 'all', recipientIds: []
+      });
+      setUserSearch('');
       loadNotifs();
       loadStats();
-    } catch {
-      // Mock mein add karo
-      const newN = { _id: Date.now().toString(), ...form,
-        createdAt: new Date(), recipients: [] };
-      setNotifs(prev => [newN, ...prev]);
-      setStats(prev => ({ ...prev, total: prev.total + 1 }));
-      showToast('🚀 Notification sent!', 's');
-      setForm({ title: '', message: '', type: 'general', frequency: 'once', sentTo: 'all' });
+    } catch (err) {
+      showToast('❌ Failed to send. Try again.', 'e');
     } finally {
       setSending(false);
     }
@@ -112,6 +183,7 @@ export default function Notifications() {
           <div className={s.cardB}>
             <form onSubmit={handleSend}>
 
+              {/* Title */}
               <div className={s.fg}>
                 <label className={s.fl}>Notification Title</label>
                 <input className={s.fi}
@@ -120,6 +192,7 @@ export default function Notifications() {
                   onChange={e => setForm({ ...form, title: e.target.value })} />
               </div>
 
+              {/* Message */}
               <div className={s.fg}>
                 <label className={s.fl}>Message</label>
                 <textarea className={s.fta}
@@ -128,6 +201,7 @@ export default function Notifications() {
                   onChange={e => setForm({ ...form, message: e.target.value })} />
               </div>
 
+              {/* Type + Frequency */}
               <div className={s.frow}>
                 <div className={s.fg}>
                   <label className={s.fl}>Type</label>
@@ -153,50 +227,241 @@ export default function Notifications() {
                 </div>
               </div>
 
+              {/* Send To */}
               <div className={s.fg}>
                 <label className={s.fl}>Send To</label>
                 <select className={s.fs}
                   value={form.sentTo}
-                  onChange={e => setForm({ ...form, sentTo: e.target.value })}>
+                  onChange={e => handleSentToChange(e.target.value)}>
                   <option value="all">All Students</option>
                   <option value="specific">Specific Users</option>
                 </select>
               </div>
 
-              <button className={`${s.btn} ${s.btnP}`}
+              {/* ── Specific Users List ── */}
+              {form.sentTo === 'specific' && (
+                <div className={s.fg}>
+                  <label className={s.fl}>
+                    Select Students
+                    {form.recipientIds.length > 0 && (
+                      <span style={{
+                        marginLeft: 8,
+                        background: 'var(--accentDim)',
+                        color: 'var(--accent)',
+                        padding: '2px 8px',
+                        borderRadius: 10,
+                        fontSize: '.72rem',
+                        fontWeight: 600,
+                      }}>
+                        {form.recipientIds.length} selected
+                      </span>
+                    )}
+                  </label>
+
+                  {/* Search box */}
+                  <input
+                    className={s.fi}
+                    placeholder="🔍 Search by name or email…"
+                    value={userSearch}
+                    onChange={e => setUserSearch(e.target.value)}
+                    style={{ marginBottom: 8 }}
+                  />
+
+                  {/* Select All button */}
+                  {filteredUsers().length > 0 && (
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginBottom: 8,
+                      padding: '4px 0',
+                    }}>
+                      <span style={{
+                        fontSize: '.75rem',
+                        color: 'var(--muted)'
+                      }}>
+                        {filteredUsers().length} students found
+                      </span>
+                      <button
+                        type="button"
+                        onClick={toggleAll}
+                        className={`${s.btn} ${s.btnS} ${s.btnSm}`}
+                      >
+                        {filteredUsers().every(u =>
+                          form.recipientIds.includes(u._id))
+                          ? '☐ Deselect All'
+                          : '☑ Select All'
+                        }
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Users list */}
+                  <div style={{
+                    maxHeight: 220,
+                    overflowY: 'auto',
+                    border: '1px solid var(--border2)',
+                    borderRadius: 10,
+                    background: 'var(--card2)',
+                  }}>
+                    {loadingUsers ? (
+                      <div style={{
+                        textAlign: 'center',
+                        padding: '20px',
+                        color: 'var(--muted)',
+                        fontSize: '.84rem'
+                      }}>
+                        ⏳ Loading users...
+                      </div>
+                    ) : filteredUsers().length === 0 ? (
+                      <div style={{
+                        textAlign: 'center',
+                        padding: '20px',
+                        color: 'var(--muted)',
+                        fontSize: '.84rem'
+                      }}>
+                        No students found
+                      </div>
+                    ) : (
+                      filteredUsers().map(u => {
+                        const isSelected = form.recipientIds.includes(u._id);
+                        return (
+                          <div
+                            key={u._id}
+                            onClick={() => toggleUser(u._id)}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 12,
+                              padding: '10px 14px',
+                              cursor: 'pointer',
+                              borderBottom: '1px solid var(--border)',
+                              background: isSelected
+                                ? 'rgba(249,115,22,0.08)'
+                                : 'transparent',
+                              transition: 'background .15s',
+                            }}
+                          >
+                            {/* Checkbox */}
+                            <div style={{
+                              width: 18, height: 18,
+                              borderRadius: 5,
+                              border: `2px solid ${isSelected
+                                ? 'var(--accent)'
+                                : 'var(--border2)'}`,
+                              background: isSelected
+                                ? 'var(--accent)'
+                                : 'transparent',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              flexShrink: 0,
+                              transition: 'all .15s',
+                            }}>
+                              {isSelected && (
+                                <span style={{
+                                  color: '#fff',
+                                  fontSize: '.65rem',
+                                  fontWeight: 700
+                                }}>✓</span>
+                              )}
+                            </div>
+
+                            {/* Avatar */}
+                            <div style={{
+                              width: 32, height: 32,
+                              borderRadius: '50%',
+                              background: 'linear-gradient(135deg, #3b82f6, #a855f7)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              color: '#fff',
+                              fontWeight: 700,
+                              fontSize: '.78rem',
+                              flexShrink: 0,
+                            }}>
+                              {u.name?.[0]?.toUpperCase() || '?'}
+                            </div>
+
+                            {/* Info */}
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <div style={{
+                                fontSize: '.84rem',
+                                fontWeight: 500,
+                                color: isSelected
+                                  ? 'var(--accent)'
+                                  : 'var(--text)',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                              }}>
+                                {u.name}
+                              </div>
+                              <div style={{
+                                fontSize: '.72rem',
+                                color: 'var(--muted)',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                              }}>
+                                {u.email}
+                              </div>
+                            </div>
+
+                          </div>
+                        );
+                      })
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Send Button */}
+              <button
+                className={`${s.btn} ${s.btnP}`}
                 type="submit"
-                style={{ width: '100%', justifyContent: 'center' }}
-                disabled={sending}>
-                {sending ? '⏳ Sending…' : '🚀 Send Notification'}
+                style={{ width: '100%', justifyContent: 'center', marginTop: 4 }}
+                disabled={sending}
+              >
+                {sending ? '⏳ Sending…' : (
+                  form.sentTo === 'specific'
+                    ? `🚀 Send to ${form.recipientIds.length} Student(s)`
+                    : '🚀 Send to All Students'
+                )}
               </button>
 
             </form>
           </div>
         </div>
 
-        {/* ── Right side stats + schedule ── */}
+        {/* ── Right Side ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 
+          {/* Stats */}
           <div className={s.card} style={{ marginBottom: 0 }}>
             <div className={s.cardH}>
               <span className={s.cardTitle}>📊 Overview</span>
             </div>
             <div className={s.cardB}>
               {[
-                { label: 'Total Sent',  value: stats.total,    color: 'var(--accent)' },
-                { label: 'This Week',   value: stats.thisWeek, color: 'var(--blue)'   },
-                { label: 'Recurring',   value: notifs.filter(n => n.frequency !== 'once').length, color: 'var(--green)' },
+                { label: 'Total Sent', value: stats.total,    color: 'var(--accent)' },
+                { label: 'This Week',  value: stats.thisWeek, color: 'var(--blue)'   },
+                { label: 'Recurring',  value: notifs.filter(n => n.frequency !== 'once').length, color: 'var(--green)' },
               ].map(item => (
                 <div key={item.label} style={{
                   display: 'flex', justifyContent: 'space-between',
                   alignItems: 'center', padding: '10px 0',
                   borderBottom: '1px solid var(--border)'
                 }}>
-                  <span style={{ color: 'var(--text2)', fontSize: '.85rem' }}>{item.label}</span>
+                  <span style={{ color: 'var(--text2)', fontSize: '.85rem' }}>
+                    {item.label}
+                  </span>
                   <span style={{
                     fontFamily: 'Syne,sans-serif', fontWeight: 700,
                     color: item.color, fontSize: '1.2rem'
-                  }}>{item.value}</span>
+                  }}>
+                    {item.value}
+                  </span>
                 </div>
               ))}
               <div style={{
@@ -209,6 +474,7 @@ export default function Notifications() {
             </div>
           </div>
 
+          {/* Auto Schedule */}
           <div className={s.card} style={{ marginBottom: 0 }}>
             <div className={s.cardH}>
               <span className={s.cardTitle}>🗓️ Auto Schedule</span>
@@ -225,8 +491,12 @@ export default function Notifications() {
                 }}>
                   <span style={{ fontSize: '1.2rem' }}>{item.icon}</span>
                   <div>
-                    <div style={{ fontSize: '.84rem', fontWeight: 500 }}>{item.freq}</div>
-                    <div style={{ fontSize: '.73rem', color: 'var(--muted)' }}>{item.desc}</div>
+                    <div style={{ fontSize: '.84rem', fontWeight: 500 }}>
+                      {item.freq}
+                    </div>
+                    <div style={{ fontSize: '.73rem', color: 'var(--muted)' }}>
+                      {item.desc}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -240,7 +510,7 @@ export default function Notifications() {
       <div className={s.card}>
         <div className={s.cardH}>
           <span className={s.cardTitle}>📋 Sent Notifications</span>
-          <div style={{ display: 'flex', gap: 6 }}>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
             {['all', 'general', 'reminder', 'update', 'alert'].map(f => (
               <button key={f}
                 className={`${s.tab} ${filter === f ? s.tabActive : ''}`}
@@ -266,30 +536,56 @@ export default function Notifications() {
             }}>
               <div style={{
                 width: 38, height: 38, borderRadius: 10, flexShrink: 0,
-                background: n.type === 'alert' ? 'var(--redDim)' :
+                background: n.type === 'alert'    ? 'var(--redDim)'    :
                             n.type === 'reminder' ? 'var(--accentDim)' :
-                            n.type === 'update' ? 'var(--greenDim)' : 'var(--blueDim)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '1.2rem'
+                            n.type === 'update'   ? 'var(--greenDim)'  : 'var(--blueDim)',
+                display: 'flex', alignItems: 'center',
+                justifyContent: 'center', fontSize: '1.2rem'
               }}>
                 {TYPE_ICON[n.type]}
               </div>
-              <div style={{ flex: 1 }}>
+              <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{
                   display: 'flex', justifyContent: 'space-between',
-                  alignItems: 'center', marginBottom: 5
+                  alignItems: 'center', marginBottom: 5,
+                  flexWrap: 'wrap', gap: 6
                 }}>
-                  <span style={{ fontWeight: 600, fontSize: '.88rem' }}>{n.title}</span>
-                  <div style={{ display: 'flex', gap: 8 }}>
-                    <span className={`${s.pill} ${TYPE_PILL[n.type]}`}>{n.type}</span>
-                    <span className={`${s.pill} ${s.pillGray}`}>{FREQ_LABEL[n.frequency] || n.frequency}</span>
+                  <span style={{ fontWeight: 600, fontSize: '.88rem' }}>
+                    {n.title}
+                  </span>
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    <span className={`${s.pill} ${TYPE_PILL[n.type]}`}>
+                      {n.type}
+                    </span>
+                    <span className={`${s.pill} ${s.pillGray}`}>
+                      {FREQ_LABEL[n.frequency] || n.frequency}
+                    </span>
+                    {n.sentTo === 'specific' && n.recipients?.length > 0 && (
+                      <span className={`${s.pill} ${s.pillPurple}`}>
+                        {n.recipients.length} users
+                      </span>
+                    )}
                   </div>
                 </div>
-                <p style={{ color: 'var(--text2)', fontSize: '.82rem', lineHeight: 1.4 }}>
+                <p style={{
+                  color: 'var(--text2)', fontSize: '.82rem', lineHeight: 1.4
+                }}>
                   {n.message}
                 </p>
-                <div style={{ marginTop: 5, fontSize: '.72rem', color: 'var(--muted)' }}>
+                <div style={{
+                  marginTop: 5, fontSize: '.72rem', color: 'var(--muted)'
+                }}>
                   {new Date(n.createdAt).toLocaleDateString('en-IN')}
+                  {n.sentTo === 'all' && (
+                    <span style={{ marginLeft: 8, color: 'var(--green)' }}>
+                      • Sent to all students
+                    </span>
+                  )}
+                  {n.sentTo === 'specific' && (
+                    <span style={{ marginLeft: 8, color: 'var(--purple)' }}>
+                      • Sent to {n.recipients?.length || 0} specific students
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
