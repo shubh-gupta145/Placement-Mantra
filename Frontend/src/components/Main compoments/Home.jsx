@@ -1,9 +1,9 @@
-import Carsoul from "../Home Page component/Carsoul";
-import Footar from "../Home Page component/Footar";
-import Section from "../Home Page component/Section";
+import Carsoul from "../HomePagecomponent/Carsoul";
+import Footar from "../HomePagecomponent/Footar";
+import Section from "../HomePagecomponent/Section";
 import styles from "./Home.module.css";
 import Friday from "../Friday A.I/Friday";
-import FAQSection from "../Home Page component/FAQSection";
+import FAQSection from "../HomePagecomponent/FAQSection";
 import placementFAQ from "../../data/PlacementPageQues";
 import EnglishSpeaking from "../English Speaking page/EnglishSpeaking";
 import FeedbackForm from '../Admin Panel/Feedback/FeedbackForm';

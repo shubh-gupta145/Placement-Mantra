@@ -4,7 +4,7 @@ import CGPA from "./components/CGPA Components/CGPA";
 import Home from "./components/Main compoments/Home";
 import TestPage from "./components/Programming Test Page/TestPage";
 import InterFace from "./components/Programming Test Page/InterFace";
-import NavBar from "./components/Home Page component/NavBar";
+import NavBar from "./components/HomePagecomponent/NavBar";
 import AboutUs from "./components/Main compoments/About";
 import MockInterFace from "./components/Mock Interview Components/MockInterFace";
 import FridayInterFace from "./components/Friday A.I/FridayInterFace";

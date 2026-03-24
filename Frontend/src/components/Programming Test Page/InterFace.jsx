@@ -2,7 +2,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { useState } from "react";
 import { FaUserEdit, FaSearch, FaCheckCircle } from "react-icons/fa";
 import styles from './InterFace.module.css';
-import Footar from "../Home Page component/Footar";
+import Footar from "../HomePagecomponent/Footar";
 import HeroCarousel from "./Carsoul";
 import { useNavigate } from "react-router-dom";
 import useFeatureTrack from '../../utils/useFeatureTrack';
