@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import styles from "./FridayInterFace.module.css";
+import styles from "./FridayInterface.module.css";
 import { FaPlus } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 import useFeatureTrack from '../../utils/useFeatureTrack';
