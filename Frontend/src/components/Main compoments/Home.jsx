@@ -6,7 +6,7 @@ import Friday from "../Friday A.I/Friday";
 import FAQSection from "../HomePagecomponent/FAQSection";
 import placementFAQ from "../../data/PlacementPageQues";
 import EnglishSpeaking from "../English Speaking page/EnglishSpeaking";
-import FeedbackForm from '../Admin Panel/Feedback/FeedbackForm';
+import Feedbackpopup from '../HomePagecomponent/Feedbackpopup';
 function Home(){ 
   // useEffect(() => {
   //   fetch("http://localhost:5000/api/test")
@@ -21,7 +21,7 @@ function Home(){
 <EnglishSpeaking/>
 <Friday/>
 <FAQSection data={placementFAQ}/>
-<FeedbackForm/>
+<Feedbackpopup currentFeature="aptitude" />
 <Footar/>
 </div>
 </>

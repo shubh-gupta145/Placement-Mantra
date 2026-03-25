@@ -1,3 +1,4 @@
+import Footer from "../HomePagecomponent/Footar";
 import styles from "./About.module.css";
 import { Link } from "react-router-dom";
 function AboutUs() {
@@ -58,19 +59,7 @@ Our mission is to make students job-ready by strengthening their technical skill
       </section>
 
       {/* FOOTER */}
-      <footer className={styles.footer}>
-        <div className={styles.footerContent}>
-          <h3>Placement Mantra</h3>
-          <p>
-           Intrested To Solve Stdudents Problem And Collabrate To World Peace.
-          </p>
-        </div>
-
-        <div className={styles.footerBottom}>
-          © {new Date().getFullYear()} Your Company. All rights reserved.
-        </div>
-      </footer>
-
+<Footer/>
     </div>
   );
 }

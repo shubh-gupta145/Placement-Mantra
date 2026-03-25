@@ -1,5 +1,4 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import ProtectedRoute from "./components/Login Components/ProtectedRoute"; 
 import CGPA from "./components/CGPA Components/CGPA";
 import Home from "./components/Main compoments/Home";
 import TestPage from "./components/Programming Test Page/TestPage";
@@ -21,7 +20,6 @@ import ResetPassword from "./components/Login Components/ResetPassword";
 import InterFaceIntern from "./components/Internship And Placemnet Calaender/InterFaceIntern";
 import InterviewResult from "./components/Mock Interview Components/InterFace Components/InterviewResult";
 import AdminLayout from './components/Admin Panel/AdminLayout';
-import AdminLogin from './components/Admin Panel/AdminLogin';
 import Dashboard from './components/Admin Panel/Dashboard';
 import Notifications from './components/Admin Panel/Notifications';
 import Users from './components/Admin Panel/Users';
@@ -60,27 +58,26 @@ function App() {
   <Route path="analytics"     element={<Analytics />}     />
   <Route path="feedback"      element={<FeedbackPage />}  />
 </Route>
-
-        <Route path="/" element={<Home />} />
-        <Route path="/MockInterFace" element={<ProtectedRoute><MockInterFace /></ProtectedRoute>} />
-        <Route path="/MockInterview" element={<ProtectedRoute><InterviewPage2 /></ProtectedRoute>} />
-        <Route path="/InterviewResult" element={<ProtectedRoute><InterviewResult /></ProtectedRoute>} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/CGPA" element={<CGPA />} />
-        <Route path="/Tests" element={<TestPage />} />
-        <Route path="/About" element={<AboutUs />} />
-        <Route path="/Friday" element={<ProtectedRoute><FridayInterFace /></ProtectedRoute>} />
-        <Route path="/Roadmaps" element={<ProtectedRoute><RoadmapPage /></ProtectedRoute>} />
-        <Route path="/FreeCoursePlaylist" element={<ProtectedRoute><VideoPlaylist /></ProtectedRoute>} />
-        <Route path="/Internship" element={<ProtectedRoute><InterFaceIntern /></ProtectedRoute>} />
-        <Route path="/TestInterFace" element={<ProtectedRoute><InterFace /></ProtectedRoute>} />
-        <Route path="/TechNewes" element={<ProtectedRoute><News /></ProtectedRoute>} />
-        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-        <Route path="/EditProfile" element={<ProtectedRoute><ProfileEditPage /></ProtectedRoute>} />
-        <Route path="/forgot-password" element={<ForgetPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="*" element={<NotFoundPage/>} />
+<Route path="/" element={<Home />} />
+<Route path="/MockInterFace" element={<MockInterFace />} />
+<Route path="/MockInterview" element={<InterviewPage2 />} />
+<Route path="/InterviewResult" element={<InterviewResult />} />
+<Route path="/signin" element={<SignIn />} />
+<Route path="/signup" element={<SignUp />} />
+<Route path="/CGPA" element={<CGPA />} />
+<Route path="/Tests" element={<TestPage />} />
+<Route path="/About" element={<AboutUs />} />
+<Route path="/Friday" element={<FridayInterFace />} />
+<Route path="/Roadmaps" element={<RoadmapPage />} />
+<Route path="/FreeCoursePlaylist" element={<VideoPlaylist />} />
+<Route path="/Internship" element={<InterFaceIntern />} />
+<Route path="/TestInterFace" element={<InterFace />} />
+<Route path="/TechNewes" element={<News />} />
+<Route path="/profile" element={<Profile />} />
+<Route path="/EditProfile" element={<ProfileEditPage />} />
+<Route path="/forgot-password" element={<ForgetPassword />} />
+<Route path="/reset-password" element={<ResetPassword />} />
+<Route path="*" element={<NotFoundPage/>} />
       </Routes>
     </>
   );

@@ -1,22 +1,21 @@
 /* ── CONTAINER ── */
 .container {
-  width: 100vw;
+  width: 100%;          /* 100vw ki jagah 100% */
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #4f46e5, #7c3aed, #9333ea);
   border-radius: 5px;
-  margin: 40px 0px 10px 0px;
+  margin: 0;            /* margin hatao */
   padding: 40px 0;
 }
 
 /* ── MAIN WRAPPER ── */
 .mainWrapper {
-  width: 60%;
+  width: 85%;           /* 60% ki jagah 85% - modal ke andar fit ho */
   display: flex;
   justify-content: center;
 }
-
 /* ── CARD ── */
 .card {
   width: 100%;

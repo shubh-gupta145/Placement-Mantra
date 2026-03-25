@@ -466,3 +466,67 @@ height:100%;
 object-fit:cover;
 border-radius:50%;
 }
+.FeedbackBtn {
+  margin-top: 16px;
+  background: transparent;
+  border: 1.5px solid #7e22ce;
+  color: #7e22ce;
+  padding: 8px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.FeedbackBtn:hover {
+  background: #7e22ce;
+  color: white;
+}
+
+/* ── Modal Overlay ── */
+.ModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* ── Modal Content ── */
+.ModalContent {
+  position: relative;
+  width: 60%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 16px;
+  background: white;
+}
+
+/* ── Close Button ── */
+.CloseBtn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #555;
+  z-index: 10;
+  transition: color 0.2s;
+}
+
+.CloseBtn:hover {
+  color: #7e22ce;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .ModalContent {
+    width: 95%;
+  }
+}

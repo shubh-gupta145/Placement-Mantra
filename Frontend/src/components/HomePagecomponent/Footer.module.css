@@ -1,117 +1,280 @@
+/* ──────────────────────────────────────────
+   Placement Mantra — Footer Theme
+   Purple-blue gradient, glassmorphism accents
+   ────────────────────────────────────────── */
+
 .footer {
-  width: 100%;
-  background: linear-gradient(to right, #9333ea, #4f46e5, #2563eb);
+  width:100vw;
+  position: relative;
+  background: linear-gradient(135deg, #1a0a4e 0%, #3b0f8c 28%, #6d28d9 58%, #1d4ed8 100%);
   color: #ffffff;
-  padding: 40px 0 20px 0;
-  margin-top: 40px;
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  overflow: hidden;
 }
 
-.grid {
-  max-width: 1100px;
+/* ── Grid texture overlay ── */
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Ambient glow blobs ── */
+.footer::after {
+  content: '';
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, transparent 65%);
+  top: -180px;
+  left: -120px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Top accent line ── */
+.accentLine {
+  position: relative;
+  z-index: 1;
+  height: 3px;
+  background: linear-gradient(90deg, #c084fc, #818cf8, #38bdf8, #c084fc);
+  background-size: 300% 100%;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 300% 0%; }
+}
+
+/* ── Inner wrapper ── */
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 40px;
+}
+
+/* ───────────────────────────────
+   TOP GRID: Brand + Contact + About
+   ─────────────────────────────── */
+.grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  text-align: left;
+  grid-template-columns: 2fr 1.2fr 1.8fr;
+  gap: 48px;
+  padding: 56px 0 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* Brand */
-.brand {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* ── Brand column ── */
+.brandCol {}
+
+.brandName {
+  font-family: 'Syne', 'Poppins', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin: 0 0 12px;
+  background: linear-gradient(90deg, #ffffff, #c4b5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.logo {
-  font-size: 26px;
+.brandTag {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.75;
+  margin: 0 0 28px;
+  max-width: 270px;
+}
+/* ── Contact column ── */
+.contactCol {}
+
+.colLabel {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #c084fc;
+  margin: 0 0 20px;
 }
 
-.dot {
-  color: #fde047;
-}
-
-.tagline {
-  font-size: 14px;
-  color: #e5e7eb;
-}
-
-/* Quick Links */
-.links {
+.contactList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 }
 
-.heading {
-  font-size: 17px;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.link {
-  font-size: 14px;
-  color: #ffffff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.link:hover {
-  color: #fde047;
-}
-
-/* Social Icons */
-.social {
+.contactItem {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
   gap: 10px;
+  font-size: 0.86rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.55;
 }
 
-.icons {
+.contactIcon {
+  width: 16px;
+  height: 16px;
+  fill: #a78bfa;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── About column ── */
+.aboutCol {}
+
+.aboutText {
+  font-size: 0.87rem;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.75;
+  margin: 0 0 28px;
+}
+
+/* ── Stats row ── */
+.statsRow {
   display: flex;
-  gap: 22px;
-  font-size: 22px;
+  align-items: center;
+  gap: 0;
 }
 
-.icon {
-  color: #ffffff;
-  cursor: pointer;
-  transition: color 0.3s ease;
+.statGroup {
+  display: flex;
+  align-items: center;
+  gap: 0;
 }
 
-.icon:hover {
-  color: #fde047;
+.statDivider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 20px;
 }
 
-/* Divider */
-.divider {
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  margin: 24px 24px;
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-/* Copyright */
+.statNum {
+  font-family: 'Syne', 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #e0c3fc, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.statLabel {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ───────────────────────────────
+   BOTTOM BAR
+   ─────────────────────────────── */
+.bottomBar {
+text-align: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 22px 0;
+}
+
 .copyright {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
   text-align: center;
-  font-size: 13px;
-  color: #e5e7eb;
-  padding: 0 16px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+.footerLink {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.footerLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #c084fc;
+  transition: width 0.2s;
+}
+
+.footerLink:hover,
+.footerLinkHover {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.footerLink:hover::after {
+  width: 100%;
+}
+
+/* ───────────────────────────────
+   RESPONSIVE
+   ─────────────────────────────── */
+@media (max-width: 900px) {
+  .inner {
+    padding: 0 24px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    padding: 40px 0 32px;
+  }
+
+  .aboutCol {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 580px) {
   .grid {
     grid-template-columns: 1fr;
-    text-align: center;
+    gap: 28px;
+    padding: 32px 0 24px;
   }
 
-  .icons {
-    justify-content: center;
+  .statsRow {
+    flex-wrap: wrap;
+    gap: 16px;
   }
 
-  .links {
-    align-items: center;
+  .statDivider {
+    display: none;
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .brandName {
+    font-size: 1.5rem;
   }
 }
