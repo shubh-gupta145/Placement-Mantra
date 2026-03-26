@@ -5,7 +5,7 @@ import Feedback from "../Admin Panel/Feedback/FeedbackForm"; // ✅ apna form im
 // ── Constants ──────────────────────────────────────────
 const STORAGE_KEY = "pm_feedback_submitted";
 const SNOOZE_KEY  = "pm_feedback_snoozed";
-const SNOOZE_MS   = 20 * 60 * 1000; // 20 minutes
+const SNOOZE_MS   = 10 * 60 * 1000; // 20 minutes
 
 // ── Helper ─────────────────────────────────────────────
 function shouldShow() {
