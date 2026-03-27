@@ -1,9 +1,11 @@
 import { useState } from "react";
 import styles from "./Auth.module.css";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "./useAuth"; // 👈 apna path check karo
 
 function SignIn() {
   const navigate = useNavigate();
+  const { login } = useAuth(); // 👈 context se login function
 
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [emailError, setEmailError] = useState("");
@@ -11,7 +13,6 @@ function SignIn() {
   const handleChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
 
-    // ✅ Real-time email validation
     if (e.target.name === "email") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(e.target.value)) {
@@ -39,13 +40,16 @@ function SignIn() {
 
       const data = await response.json();
 
-      if (data.message === "Login Successful") {
+      if (data.message === "Login Successful ✅") {
 
-        // ✅ Aapka existing code
+        // 👇 AuthContext update — yahi MockEntry mein user check karega
+        login(data.user, data.token);
+
+        // Purane localStorage keys — existing code ke saath compatibility
         localStorage.setItem("email", loginData.email);
         localStorage.setItem("token", "loggedIn");
 
-        // ── Admin Panel ke liye ──
+        // Admin panel keys
         if (data.token) {
           localStorage.setItem("pm_admin_token", data.token);
         }
@@ -53,24 +57,23 @@ function SignIn() {
           localStorage.setItem("pm_admin_user", JSON.stringify(data.user));
         }
 
-        // ── Attendance Checkin ──
-        // Sirf student ka track karo — admin ka nahi
+        // Attendance checkin — sirf student ke liye
         const userRole = data.user?.role;
-        if (userRole !== 'admin' && data.token) {
+        if (userRole !== "admin" && data.token) {
           try {
             await fetch("http://localhost:5000/api/attendance/checkin", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${data.token}`
-              }
+                Authorization: `Bearer ${data.token}`,
+              },
             });
             console.log("Attendance checkin ✅");
           } catch (err) {
             console.log("Attendance error:", err);
           }
 
-          // ── Heartbeat — har 30 second mein time track ──
+          // Heartbeat — har 30 second mein
           const heartbeat = setInterval(async () => {
             const token = localStorage.getItem("pm_admin_token");
             if (!token) {
@@ -82,15 +85,14 @@ function SignIn() {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
-                  "Authorization": `Bearer ${token}`
-                }
+                  Authorization: `Bearer ${token}`,
+                },
               });
             } catch (err) {
               console.log("Heartbeat error:", err);
             }
           }, 30000);
 
-          // Heartbeat ID save karo — logout pe band karne ke liye
           localStorage.setItem("heartbeat_id", String(heartbeat));
         }
 
@@ -112,7 +114,6 @@ function SignIn() {
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2>Welcome Back</h2>
 
-        {/* Email */}
         <input
           type="email"
           name="email"
@@ -127,7 +128,6 @@ function SignIn() {
           </p>
         )}
 
-        {/* Password */}
         <input
           type="password"
           name="password"

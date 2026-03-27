@@ -51,6 +51,8 @@ function App() {
     <AdminLayout />
   </AdminGuard>
 }>
+
+  
   <Route index               element={<Dashboard />}     />
   <Route path="notifications" element={<Notifications />} />
   <Route path="users"         element={<Users />}         />
