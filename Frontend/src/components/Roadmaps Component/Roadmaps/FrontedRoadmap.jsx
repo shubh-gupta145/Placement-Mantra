@@ -71,13 +71,13 @@ function FrontedRoadmap(){
                 <span className={styles.Span}>Suggested Video</span>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html First Video"/></a>
+                <a href="https://www.youtube.com/watch?v=ajdRvxDWH4w&list=PLGjplNEQ1it_oTvuLRNqXfz_v_0pq6unW" target="_main"><img src="./images/RoadMap Images/JS Part-1.png" alt="html First Video"/></a>
             </div>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html Second Video"/></a>
+                <a href="https://www.youtube.com/watch?v=427pAhy9dI8&t=425s&pp=ygUTamF2YXNjcmlwdCB0dXRvcmlhbA%3D%3D" target="_main"><img src="./images/RoadMap Images/JS Part-2.png" alt="html Second Video"/></a>
             </div>
              <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html Third Video"/></a>
+                <a href="https://www.youtube.com/watch?v=ER9SspLe4Hg&list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" target="_main"><img src="./images/RoadMap Images/JS Part-3.png" alt="html Third Video"/></a>
             </div>
         </div>
         </div>
@@ -95,13 +95,13 @@ function FrontedRoadmap(){
                 <span className={styles.Span}>Suggested Video</span>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html First Video"/></a>
+                <a href="https://www.youtube.com/watch?v=Ez8F0nW6S-w&pp=ygUTZ2l0aHViIGxlYXJuIGNvZGluZw%3D%3D" target="_main"><img src="./images/RoadMap Images/Git Part-1.png" alt="html First Video"/></a>
             </div>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html Second Video"/></a>
+                <a href="https://www.youtube.com/watch?v=ufKRYe8ZPaw&pp=ygUTZ2l0aHViIGxlYXJuIGNvZGluZ9IHCQnbCgGHKiGM7w%3D%3D" target="_main"><img src="./images/RoadMap Images/Git Part-2.png" alt="html Second Video"/></a>
             </div>
              <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html Third Video"/></a>
+                <a href="https://www.youtube.com/watch?v=r8QQOAicu8Y&pp=ygUTZ2l0aHViIGxlYXJuIGNvZGluZw%3D%3D" target="_main"><img src="./images/RoadMap Images/Git Part-3.png" alt="html Third Video"/></a>
             </div>
         </div>
         </div>
@@ -118,13 +118,13 @@ function FrontedRoadmap(){
                 <span className={styles.Span}>Suggested Video</span>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html First Video"/></a>
+                <a href="https://www.youtube.com/watch?v=RGKi6LSPDLU&pp=ygUOcmVhY3QgdHV0b3JpYWw%3D" target="_main"><img src="./images/RoadMap Images/React Part-1.png" alt="html First Video"/></a>
             </div>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html Second Video"/></a>
+                <a href="https://www.youtube.com/watch?v=3LRZRSIh_KE&t=70s&pp=ygUOcmVhY3QgdHV0b3JpYWw%3D" target="_main"><img src="./images/RoadMap Images/React Part-2.png" alt="html Second Video"/></a>
             </div>
              <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html Third Video"/></a>
+                <a href="https://www.youtube.com/watch?v=F18Rxw6ftcM&pp=ygUOcmVhY3QgdHV0b3JpYWw%3D" target="_main"><img src="./images/RoadMap Images/React Part-3.png" alt="html Third Video"/></a>
             </div>
         </div>
         </div>
@@ -141,13 +141,13 @@ function FrontedRoadmap(){
                 <span className={styles.Span}>Suggested Video</span>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html First Video"/></a>
+                <a href="https://www.youtube.com/watch?v=_9mTJ84uL1Q&pp=ygUVdGFpbHdpbmQgY3NzIHR1dG9yaWFs" target="_main"><img src="./images/RoadMap Images/tailwind Part-1.png" alt="html First Video"/></a>
             </div>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html Second Video"/></a>
+                <a href="https://www.youtube.com/watch?v=-g969furGik&pp=ygUVdGFpbHdpbmQgY3NzIHR1dG9yaWFs" target="_main"><img src="./images/RoadMap Images/tailwind Part-2.png" alt="html Second Video"/></a>
             </div>
              <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html Third Video"/></a>
+                <a href="https://www.youtube.com/watch?v=QE5oQh63gGE&pp=ygUgYm9vdHN0cmFwIHR1dG9yaWFsIGZvciBiZWdpbm5lcnM%3D" target="_main"><img src="./images/RoadMap Images/Bootstrap Part-3.png" alt="html Third Video"/></a>
             </div>
         </div>
         </div>
