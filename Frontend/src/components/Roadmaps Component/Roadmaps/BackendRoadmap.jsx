@@ -19,18 +19,6 @@ function BackendRoadmap(){
         <li>C++</li>
         <li>Go</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="html Third Video"/></a>
-            </div>
-        </div>
         </div>
                 <div className={styles.Details}>
         <h3 className={styles.heading}>Core Concepts</h3>
@@ -44,18 +32,6 @@ function BackendRoadmap(){
         <li>Server-Side Programming</li>
         <li>Security Basics</li>
         </ul>
-                <span className={styles.Span}>Suggested Video</span>
-                        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="html Third Video"/></a>
-            </div>
-        </div>
         </div>
         <h1 className={styles.Steps}>Level 2  Backend Basics</h1>
                 <div className={styles.Details}>
@@ -69,18 +45,6 @@ function BackendRoadmap(){
         <li>Status Code</li>
         <li> Rest API</li>
         </ul>
-                <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="html Third Video"/></a>
-            </div>
-        </div>
         </div>
         <h2 className={styles.Steps}>Level 3 Database Concepts</h2>
                 <div className={styles.Details}>
@@ -95,18 +59,6 @@ function BackendRoadmap(){
         <li>Normalization</li>
         <li>Query Optimization</li>
         </ul>
-                <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="html Third Video"/></a>
-            </div>
-        </div>
         </div>
                 <div className={styles.Details}>
         <h3 className={styles.heading}>Level 4 Authentication and Authorization</h3>
@@ -118,18 +70,6 @@ function BackendRoadmap(){
         <li>Access Control Lists (ACLs)</li>
         <li>Cross-Origin Resource Sharing (CORS)</li>
         </ul>
-                <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="html Third Video"/></a>
-            </div>
-        </div>
         </div>
                 <div className={styles.Details}>
         <h3 className={styles.heading}>Advanced Backend</h3>
@@ -142,18 +82,6 @@ function BackendRoadmap(){
         <li>WebSockets</li>
          <li>Logging</li>
         </ul>
-                <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="html Third Video"/></a>
-            </div>
-        </div>
         </div>
                 <div className={styles.Details}>
         <h3 className={styles.heading}>Backend Projects</h3>
@@ -165,18 +93,6 @@ function BackendRoadmap(){
         <li>Payment Integration</li>
         <li>ATS System Backend</li>
             </ul>
-                <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="html Third Video"/></a>
-            </div>
-        </div>
         </div>
                 <div className={styles.Details}>
         <h3 className={styles.heading}>Bonus Learnings</h3>
@@ -188,18 +104,6 @@ function BackendRoadmap(){
         <li>Django</li>
         <li>Academic Projects</li>
             </ul>
-                <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="html Third Video"/></a>
-            </div>
-        </div>
         </div>
                 <div className={styles.Details}>
         <h3 className={styles.heading}>3 Month Plan For You</h3>
@@ -209,6 +113,33 @@ function BackendRoadmap(){
         < p className={styles.para} >Advanced Backend Concepts + Real-life Projects</ p >
         <span className={styles.Span}>Month 3</span>
         < p className={styles.para} >Portfolio Project</ p >
+        </div>
+
+        {/* ✅ Suggested Videos - Sabse Neeche, Also Try This se Pehle */}
+        <div className={styles.VideoDetails}>
+        <span className={styles.Span}>Suggested Videos</span>
+        <div className={styles.VideoContainer}>
+            <div className={styles.Video}>  
+                <a href="https://www.youtube.com/watch?v=t2_Q2BRzeEE&list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0" target="_main"><img src="./images/RoadMap Images/Python .png" alt="Video 1"/></a>
+            </div>
+            <div className={styles.Video}>  
+                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Video 2"/></a>
+            </div>
+            <div className={styles.Video}>  
+                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Video 3"/></a>
+            </div>
+            <div className={styles.Video}>  
+                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Video 4"/></a>
+            </div>
+            <div className={styles.Video}>  
+                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Video 5"/></a>
+            </div>
+            <div className={styles.Video}>  
+                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Video 6"/></a>
+            </div>
+        </div>
+        </div>
+
             <div className={styles.OurContainer}>
             <div className={styles.headingContainer}>
             <h2 className={styles.heading}>Also Try This</h2>
@@ -219,7 +150,6 @@ function BackendRoadmap(){
 <span className={styles.Span}><Link className={styles.Links}to="/FreeCoursePlaylist">Mock InterView</Link></span> 
             </div>
         </div>
-            </div>
         </div>
 </div>
         </div>
