@@ -23,24 +23,6 @@ function DataAnalyticsRoadmap(){
         <li>Data Types</li>
         <li>Basic Statistics</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/>
-                </a>
-            </div>
-            <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/>
-                </a>
-            </div>
-            <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/>
-                </a>
-            </div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -55,12 +37,6 @@ function DataAnalyticsRoadmap(){
         <li>Subqueries</li>
         <li>Aggregations</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <h1 className={styles.Steps}>Level 2  Data Analysis & Visualization</h1>
@@ -77,12 +53,6 @@ function DataAnalyticsRoadmap(){
         <li>Seaborn</li>
         <li>Exploratory Data Analysis (EDA)</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -97,12 +67,6 @@ function DataAnalyticsRoadmap(){
         <li>Dashboard Design</li>
         <li>Data Storytelling</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -117,12 +81,6 @@ function DataAnalyticsRoadmap(){
         <li>Business KPI Dashboard</li>
         <li>Data Cleaning Project</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -133,7 +91,47 @@ function DataAnalyticsRoadmap(){
         <p className={styles.para}>Data Analysis + Visualization Tools</p>
         <span className={styles.Span}>Month 3</span>
         <p className={styles.para}>End-to-End Analytics Project + Dashboard</p>
+        </div>
 
+        {/* ========== 6 Suggested Videos - Bottom Section ========== */}
+        <div className={styles.Details}>
+        <h3 className={styles.heading}>Suggested Videos</h3>
+        <p className={styles.para}>Watch these handpicked videos to strengthen your Data Analytics journey from basics to advanced concepts.</p>
+        <div className={styles.VideoContainer}>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Python Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Excel Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="SQL Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Pandas & NumPy Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Power BI Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Data Analytics Projects"/>
+                </a>
+            </div>
+        </div>
+        </div>
+
+        {/* ========== Also Try This Section ========== */}
         <div className={styles.OurContainer}>
             <div className={styles.headingContainer}>
             <h2 className={styles.heading}>Also Try This</h2>
@@ -143,8 +141,6 @@ function DataAnalyticsRoadmap(){
 <span className={styles.Span}><Link className={styles.Links} to="/FreeCoursePlaylist">Test Your Skill</Link></span>
 <span className={styles.Span}><Link className={styles.Links}to="/FreeCoursePlaylist">Mock InterView</Link></span> 
             </div>
-        </div>
-
         </div>
 
         </div>

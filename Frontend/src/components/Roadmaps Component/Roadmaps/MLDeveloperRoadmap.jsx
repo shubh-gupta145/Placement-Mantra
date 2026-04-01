@@ -23,24 +23,6 @@ function MLDeveloperRoadmap(){
         <li>Pandas</li>
         <li>Matplotlib</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/>
-                </a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/>
-                </a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/>
-                </a>
-            </div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -55,12 +37,6 @@ function MLDeveloperRoadmap(){
         <li>Calculus Basics</li>
         <li>Vectors & Matrices</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <h1 className={styles.Steps}>Level 2  Machine Learning Core</h1>
@@ -77,12 +53,6 @@ function MLDeveloperRoadmap(){
         <li>K-Nearest Neighbors</li>
         <li>Support Vector Machine</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -97,12 +67,6 @@ function MLDeveloperRoadmap(){
         <li>Overfitting & Underfitting</li>
         <li>Hyperparameter Tuning</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <h2 className={styles.Steps}>Level 3  Deep Learning & Projects</h2>
@@ -119,12 +83,6 @@ function MLDeveloperRoadmap(){
         <li>TensorFlow</li>
         <li>PyTorch</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -139,12 +97,6 @@ function MLDeveloperRoadmap(){
         <li>Customer Segmentation</li>
         <li>Resume Screening Model</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -155,7 +107,47 @@ function MLDeveloperRoadmap(){
         <p className={styles.para}>Machine Learning Algorithms + Mini Projects</p>
         <span className={styles.Span}>Month 3</span>
         <p className={styles.para}>Deep Learning + Final Portfolio Project</p>
+        </div>
 
+        {/* ========== 6 Suggested Videos - Bottom Section ========== */}
+        <div className={styles.Details}>
+        <h3 className={styles.heading}>Suggested Videos</h3>
+        <p className={styles.para}>Watch these handpicked videos to strengthen your Machine Learning journey from basics to advanced concepts.</p>
+        <div className={styles.VideoContainer}>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Python Programming Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Mathematics for ML"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="ML Algorithms Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Model Evaluation & Optimization"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Deep Learning Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="ML Projects"/>
+                </a>
+            </div>
+        </div>
+        </div>
+
+        {/* ========== Also Try This Section ========== */}
         <div className={styles.OurContainer}>
             <div className={styles.headingContainer}>
             <h2 className={styles.heading}>Also Try This</h2>
@@ -165,8 +157,6 @@ function MLDeveloperRoadmap(){
 <span className={styles.Span}><Link className={styles.Links} to="/FreeCoursePlaylist">Test Your Skill</Link></span>
 <span className={styles.Span}><Link className={styles.Links}to="/FreeCoursePlaylist">Mock InterView</Link></span> 
             </div>
-        </div>
-
         </div>
 
         </div>

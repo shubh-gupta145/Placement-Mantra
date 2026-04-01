@@ -23,18 +23,6 @@ function FullStackRoadmap(){
         <li>JavaScript Basics</li>
         <li>DOM Manipulation</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="html Second Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="html Third Video"/></a>
-            </div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -49,12 +37,6 @@ function FullStackRoadmap(){
         <li>State Management</li>
         <li>Routing</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <h1 className={styles.Steps}>Level 2  Backend Development</h1>
@@ -71,12 +53,6 @@ function FullStackRoadmap(){
         <li>REST API</li>
         <li>Error Handling</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <h2 className={styles.Steps}>Level 3  Database</h2>
@@ -93,12 +69,6 @@ function FullStackRoadmap(){
         <li>Indexing</li>
         <li>Relationships</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -113,12 +83,6 @@ function FullStackRoadmap(){
         <li>CORS</li>
         <li>Environment Variables</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -133,12 +97,6 @@ function FullStackRoadmap(){
         <li>Authentication System</li>
         <li>Resume + ATS System</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -149,7 +107,47 @@ function FullStackRoadmap(){
         <p className={styles.para}>Backend + Database Integration</p>
         <span className={styles.Span}>Month 3</span>
         <p className={styles.para}>Complete Full Stack Project</p>
+        </div>
 
+        {/* ========== 6 Suggested Videos - Bottom Section ========== */}
+        <div className={styles.Details}>
+        <h3 className={styles.heading}>Suggested Videos</h3>
+        <p className={styles.para}>Watch these handpicked videos to strengthen your Full Stack development journey from basics to advanced concepts.</p>
+        <div className={styles.VideoContainer}>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="HTML CSS JS Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="React.js Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Node.js & Express Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="MongoDB Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Authentication & Security"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Full Stack Projects"/>
+                </a>
+            </div>
+        </div>
+        </div>
+
+        {/* ========== Also Try This Section ========== */}
         <div className={styles.OurContainer}>
             <div className={styles.headingContainer}>
             <h2 className={styles.heading}>Also Try This</h2>
@@ -159,8 +157,6 @@ function FullStackRoadmap(){
 <span className={styles.Span}><Link className={styles.Links} to="/FreeCoursePlaylist">Test Your Skill</Link></span>
 <span className={styles.Span}><Link className={styles.Links}to="/FreeCoursePlaylist">Mock InterView</Link></span> 
             </div>
-        </div>
-
         </div>
 
         </div>

@@ -120,22 +120,22 @@ function BackendRoadmap(){
         <span className={styles.Span}>Suggested Videos</span>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=t2_Q2BRzeEE&list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0" target="_main"><img src="./images/RoadMap Images/Python .png" alt="Video 1"/></a>
+                <a href="https://www.youtube.com/watch?v=AZzV3wZCvI4&list=PL78RhpUUKSwfeSOOwfE9x6l5jTjn5LbY3" target="_main"><img src="./images/Roadmaps/Backend Part-1.png" alt="Video 1"/></a>
             </div>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Video 2"/></a>
+                <a href="https://www.youtube.com/watch?v=BLl32FvcdVM&pp=ygUQbm9kZSBqcyB0dXRvcmlhbA%3D%3D" target="_main"><img src="./images/Roadmaps/Backend Part-2.png" alt="Video 2"/></a>
             </div>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Video 3"/></a>
+                <a href="https://www.youtube.com/watch?v=pKJ4GGyDgJo&pp=ygUTZXhwcmVzcyBqcyB0dXRvcmlhbA%3D%3D" target="_main"><img src="./images/Roadmaps/Backend Part-3.png" alt="Video 3"/></a>
             </div>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Video 4"/></a>
+                <a href="https://www.youtube.com/watch?v=0IciwnJ6PJI&pp=ygUTZXhwcmVzcyBqcyB0dXRvcmlhbA%3D%3D" target="_main"><img src="./images/Roadmaps/Backend Part-4.png" alt="Video 4"/></a>
             </div>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=k2DSi1zGEc8&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Video 5"/></a>
+                <a href="https://www.youtube.com/watch?v=R11tvGM3nDY&pp=ygUTZXhwcmVzcyBqcyB0dXRvcmlhbNIHCQnZCgGHKiGM7w%3D%3D" target="_main"><img src="./images/Roadmaps/Backend Part-5.png" alt="Video 5"/></a>
             </div>
             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&pp=ygUEaHRtbA%3D%3D" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Video 6"/></a>
+                <a href="https://www.youtube.com/watch?v=nuRKzG0Pkjg&pp=ygUbYmFja2VuZCBkZXZlbG9wZXIgcm9hZG1hcHMg0gcJCdkKAYcqIYzv" target="_main"><img src="./images/Roadmaps/Backend Part-6.png" alt="Video 6"/></a>
             </div>
         </div>
         </div>

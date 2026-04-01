@@ -23,24 +23,6 @@ function JavaDeveloperRoadmap(){
         <li>Functions / Methods</li>
         <li>Arrays & Strings</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/>
-                </a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/>
-                </a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/>
-                </a>
-            </div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -55,12 +37,6 @@ function JavaDeveloperRoadmap(){
         <li>Polymorphism</li>
         <li>Abstraction</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <h1 className={styles.Steps}>Level 2  Advanced Java</h1>
@@ -77,12 +53,6 @@ function JavaDeveloperRoadmap(){
         <li>File Handling</li>
         <li>Multithreading</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <h2 className={styles.Steps}>Level 3  Java Backend Development</h2>
@@ -99,12 +69,6 @@ function JavaDeveloperRoadmap(){
         <li>JPA & Hibernate</li>
         <li>Security (Spring Security)</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -119,12 +83,6 @@ function JavaDeveloperRoadmap(){
         <li>ORM Concepts</li>
         <li>Transactions</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -139,12 +97,6 @@ function JavaDeveloperRoadmap(){
         <li>Authentication System</li>
         <li>Full Stack Java Project</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -155,7 +107,47 @@ function JavaDeveloperRoadmap(){
         <p className={styles.para}>Advanced Java + Collections + Multithreading</p>
         <span className={styles.Span}>Month 3</span>
         <p className={styles.para}>Spring Boot + Database + Major Project</p>
+        </div>
 
+        {/* ========== 6 Suggested Videos - Bottom Section ========== */}
+        <div className={styles.Details}>
+        <h3 className={styles.heading}>Suggested Videos</h3>
+        <p className={styles.para}>Watch these handpicked videos to strengthen your Java development journey from basics to advanced concepts.</p>
+        <div className={styles.VideoContainer}>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Java Basics Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="OOP in Java"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Collections & Exception Handling"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Spring Boot Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Database Integration"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Java Projects"/>
+                </a>
+            </div>
+        </div>
+        </div>
+
+        {/* ========== Also Try This Section ========== */}
         <div className={styles.OurContainer}>
             <div className={styles.headingContainer}>
             <h2 className={styles.heading}>Also Try This</h2>
@@ -165,8 +157,6 @@ function JavaDeveloperRoadmap(){
 <span className={styles.Span}><Link className={styles.Links} to="/FreeCoursePlaylist">Test Your Skill</Link></span>
 <span className={styles.Span}><Link className={styles.Links}to="/FreeCoursePlaylist">Mock InterView</Link></span> 
             </div>
-        </div>
-
         </div>
 
         </div>

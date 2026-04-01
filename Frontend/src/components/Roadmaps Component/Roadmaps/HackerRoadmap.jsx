@@ -23,24 +23,6 @@ function HackerRoadmap(){
         <li>File Systems</li>
         <li>Processes & Threads</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/>
-                </a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/>
-                </a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/>
-                </a>
-            </div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -55,12 +37,6 @@ function HackerRoadmap(){
         <li>HTTP / HTTPS</li>
         <li>Ports & Protocols</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <h1 className={styles.Steps}>Level 2  Cyber Security Core</h1>
@@ -77,12 +53,6 @@ function HackerRoadmap(){
         <li>Malware Types</li>
         <li>Social Engineering</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -97,12 +67,6 @@ function HackerRoadmap(){
         <li>Exploitation Basics</li>
         <li>Reporting</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -117,12 +81,6 @@ function HackerRoadmap(){
         <li>Metasploit</li>
         <li>Burp Suite</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="video"/></a></div>
-            <div className={styles.Video}><a href="https://www.youtube.com/" target="_main"><img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="video"/></a></div>
-        </div>
         </div>
 
         <div className={styles.Details}>
@@ -133,7 +91,47 @@ function HackerRoadmap(){
         <p className={styles.para}>Cyber Security Concepts + Tools Practice</p>
         <span className={styles.Span}>Month 3</span>
         <p className={styles.para}>Hands-on Labs + Capture The Flag Practice</p>
+        </div>
 
+        {/* ========== 6 Suggested Videos - Bottom Section ========== */}
+        <div className={styles.Details}>
+        <h3 className={styles.heading}>Suggested Videos</h3>
+        <p className={styles.para}>Watch these handpicked videos to strengthen your Ethical Hacking journey from basics to advanced concepts.</p>
+        <div className={styles.VideoContainer}>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Computer Basics Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Networking Fundamentals"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Cyber Security Basics"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Penetration Testing Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Kali Linux & Tools"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/" target="_main">
+                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Ethical Hacking Projects"/>
+                </a>
+            </div>
+        </div>
+        </div>
+
+        {/* ========== Also Try This Section ========== */}
         <div className={styles.OurContainer}>
             <div className={styles.headingContainer}>
                 <h2 className={styles.heading}>Also Try This</h2>
@@ -143,8 +141,6 @@ function HackerRoadmap(){
                 <span className={styles.Span}><Link className={styles.Links} to="/FreeCoursePlaylist">Test Your Skill</Link></span>
                 <span className={styles.Span}><Link className={styles.Links} to="/FreeCoursePlaylist">Mock InterView</Link></span> 
             </div>
-        </div>
-
         </div>
 
         </div>

@@ -19,20 +19,9 @@ function FrontedRoadmap(){
         <li>Audio / Video</li>
         <li>Accessibility basics</li>
         </ul>
-        <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&list=PLfqMhTWNBTe0PY9xunOzsP5kmYIz2Hu7i" target="_main"><img src="./images/RoadMap Images/Apna College Html.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=rklidcZ-aLU&t=1185s&pp=ygUHaHRtbCB0dQ%3D%3D" target="_main"><img src="./images/RoadMap Images/KGCoding html.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=-G7bJVAIiEI&t=212s&pp=ygUHaHRtbCB0dQ%3D%3D" target="_main"><img src="./images/RoadMap Images/html3.png" alt="html Third Video"/></a>
-            </div>
         </div>
-        </div>
-                <div className={styles.Details}>
+
+        <div className={styles.Details}>
         <h3 className={styles.heading}>CSS</h3>
         <p className={styles.para}>CSS (Cascading Style Sheets) is a stylesheet language used to control the appearance and layout of web pages.</ p >
         <ul className={styles.Infolist}>
@@ -44,20 +33,9 @@ function FrontedRoadmap(){
         <li>Animations</li>
         <li>Positions</li>
         </ul>
-                <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=OpWjt_wbV4E&t=973s&pp=ygUMY3NzIHR1dG9yaWFs" target="_main"><img src="./images/RoadMap Images/CSS1.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=ESnrn1kAD4E&pp=ygUMY3NzIHR1dG9yaWFs" target="_main"><img src="./images/RoadMap Images/CSS2.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=Edsxf_NBFrw&pp=ygUMY3NzIHR1dG9yaWFs" target="_main"><img src="./images/RoadMap Images/CSS3.png" alt="html Third Video"/></a>
-            </div>
         </div>
-        </div>
-                <div className={styles.Details}>
+
+        <div className={styles.Details}>
         <h3 className={styles.heading}>JavaScript</h3>
         < p className={styles.para}>JavaScript is a programming language that enables interactive web pages. It is an essential part of web applications and is used to create dynamic content.</ p >
         <ul className={styles.Infolist}>
@@ -68,21 +46,11 @@ function FrontedRoadmap(){
         <li>Objects</li>
         <li>Arrays</li>
         </ul>
-                <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=ajdRvxDWH4w&list=PLGjplNEQ1it_oTvuLRNqXfz_v_0pq6unW" target="_main"><img src="./images/RoadMap Images/JS Part-1.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=427pAhy9dI8&t=425s&pp=ygUTamF2YXNjcmlwdCB0dXRvcmlhbA%3D%3D" target="_main"><img src="./images/RoadMap Images/JS Part-2.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=ER9SspLe4Hg&list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" target="_main"><img src="./images/RoadMap Images/JS Part-3.png" alt="html Third Video"/></a>
-            </div>
         </div>
-        </div>
+
         <h2 className={styles.Steps}>Level 2  Advanced Concepts (Building Expertise) </h2>
-                <div className={styles.Details}>
+
+        <div className={styles.Details}>
         <h3 className={styles.heading}>Git Hub</h3>
         < p className={styles.para} >Git is a distributed version control system that tracks changes in files and coordinates work among multiple developers.</ p >
         <ul className={styles.Infolist}>
@@ -92,20 +60,9 @@ function FrontedRoadmap(){
         <li>Cloning</li>
         <li>Committing</li>
         </ul>
-                <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=Ez8F0nW6S-w&pp=ygUTZ2l0aHViIGxlYXJuIGNvZGluZw%3D%3D" target="_main"><img src="./images/RoadMap Images/Git Part-1.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=ufKRYe8ZPaw&pp=ygUTZ2l0aHViIGxlYXJuIGNvZGluZ9IHCQnbCgGHKiGM7w%3D%3D" target="_main"><img src="./images/RoadMap Images/Git Part-2.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=r8QQOAicu8Y&pp=ygUTZ2l0aHViIGxlYXJuIGNvZGluZw%3D%3D" target="_main"><img src="./images/RoadMap Images/Git Part-3.png" alt="html Third Video"/></a>
-            </div>
         </div>
-        </div>
-                <div className={styles.Details}>
+
+        <div className={styles.Details}>
         <h3 className={styles.heading}>React</h3>
         < p className={styles.para} >React is a JavaScript library for building user interfaces. It allows developers to create reusable UI components and manage the state of an application efficiently.</ p >
         <ul className={styles.Infolist}>
@@ -115,20 +72,9 @@ function FrontedRoadmap(){
         <li>Advanced Hooks</li>
         <li>Context API</li>
         </ul>
-                <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=RGKi6LSPDLU&pp=ygUOcmVhY3QgdHV0b3JpYWw%3D" target="_main"><img src="./images/RoadMap Images/React Part-1.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=3LRZRSIh_KE&t=70s&pp=ygUOcmVhY3QgdHV0b3JpYWw%3D" target="_main"><img src="./images/RoadMap Images/React Part-2.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=F18Rxw6ftcM&pp=ygUOcmVhY3QgdHV0b3JpYWw%3D" target="_main"><img src="./images/RoadMap Images/React Part-3.png" alt="html Third Video"/></a>
-            </div>
         </div>
-        </div>
-                <div className={styles.Details}>
+
+        <div className={styles.Details}>
         <h3 className={styles.heading}>Advanced CSS Library and Frameworks</h3>
         < p className={styles.para} >Advanced CSS libraries and frameworks like Bootstrap, Tailwind CSS, and Material UI help developers build responsive and visually appealing user interfaces more efficiently.</ p >
         <ul className={styles.Infolist}>
@@ -138,20 +84,9 @@ function FrontedRoadmap(){
         <li>UI Design Principles</li>
         <li>Use of CSS Variables</li>
         </ul>
-                <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=_9mTJ84uL1Q&pp=ygUVdGFpbHdpbmQgY3NzIHR1dG9yaWFs" target="_main"><img src="./images/RoadMap Images/tailwind Part-1.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=-g969furGik&pp=ygUVdGFpbHdpbmQgY3NzIHR1dG9yaWFs" target="_main"><img src="./images/RoadMap Images/tailwind Part-2.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=QE5oQh63gGE&pp=ygUgYm9vdHN0cmFwIHR1dG9yaWFsIGZvciBiZWdpbm5lcnM%3D" target="_main"><img src="./images/RoadMap Images/Bootstrap Part-3.png" alt="html Third Video"/></a>
-            </div>
         </div>
-        </div>
-                <div className={styles.Details}>
+
+        <div className={styles.Details}>
         <h3 className={styles.heading}>Frontend Projects</h3>
         < p className={styles.para} >Complete hands-on projects to build a strong portfolio and gain practical experience in frontend development.</ p >
         <ul className={styles.Infolist}>
@@ -163,20 +98,9 @@ function FrontedRoadmap(){
             <li>Weather App</li>
             <li>Tic Tac Toe</li>
             </ul>
-                <span className={styles.Span}>Suggested Video</span>
-        <div className={styles.VideoContainer}>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=ANzPM5-lwXc&list=PLu0W_9lII9aiQiOwthuSvinxoflmhRxM3" target="_main"><img src="./images/RoadMap Images/Frontend Part-1.png" alt="html First Video"/></a>
-            </div>
-            <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=2k-9znWgcbs&pp=ygURRnJvbnRlbmQgUHJvamVjdHPSBwkJ2woBhyohjO8%3D" target="_main"><img src="./images/RoadMap Images/Frontend Part-2.png" alt="html Second Video"/></a>
-            </div>
-             <div className={styles.Video}>  
-                <a href="https://www.youtube.com/watch?v=Hc0Ca7tUn2w&pp=ygURRnJvbnRlbmQgUHJvamVjdHM%3D" target="_main"><img src="./images/RoadMap Images/Frontend Part-3.png" alt="html Third Video"/></a>
-            </div>
         </div>
-        </div>
-                <div className={styles.Details}>
+
+        <div className={styles.Details}>
         <h3 className={styles.heading}>Bonus Learnings</h3>
         < p className={styles.para} >These are additional skills and knowledge areas that complement core frontend development.</ p >
         <ul className={styles.Infolist}>
@@ -187,7 +111,8 @@ function FrontedRoadmap(){
         <li>Accessibility</li>
             </ul>
         </div>
-                <div className={styles.Details}>
+
+        <div className={styles.Details}>
         <h3 className={styles.heading}>3 Month Plan For You</h3>
         <span className={styles.Span}>Month 1</span>
         < p className={styles.para} >JS + Advanced JS + 3 Projects</ p >
@@ -195,6 +120,46 @@ function FrontedRoadmap(){
         < p className={styles.para} >React + GitHub + 3 Projects</ p >
         <span className={styles.Span}>Month 3</span>
         < p className={styles.para} >Advanced React + Portfolio Project</ p >
+        </div>
+
+        {/* ========== 6 Suggested Videos - Bottom Section ========== */}
+        <div className={styles.Details}>
+        <h3 className={styles.heading}>Suggested Videos</h3>
+        <p className={styles.para}>Watch these handpicked videos to strengthen your frontend development journey from basics to advanced concepts.</p>
+        <div className={styles.VideoContainer}>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/watch?v=HcOc7P5BMi4&pp=ygUbaHRtbCB0dXRvcmlhbCBmb3IgYmVnaW5uZXJz" target="_main">
+                    <img src="./images/Roadmaps/Frontend Part-1.png" alt="HTML Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/watch?v=ESnrn1kAD4E&pp=ygUaY3NzIHR1dG9yaWFsIGZvciBiZWdpbm5lcnPSBwkJ2QoBhyohjO8%3D" target="_main">
+                    <img src="./images/Roadmaps/Frontend Part-2.png" alt="CSS Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/watch?v=ajdRvxDWH4w&list=PLGjplNEQ1it_oTvuLRNqXfz_v_0pq6unW" target="_main">
+                    <img src="./images/Roadmaps/Frontend Part-3.png" alt="JavaScript Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/watch?v=eILUmCJhl64&t=16378s&pp=ygUbUmVhY3QgdHV0b3JpYWwgYnkga2cgY29kaW5n0gcJCdkKAYcqIYzv" target="_main">
+                    <img src="./images/Roadmaps/Frontend Part-4.png" alt="Git Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/watch?v=Ez8F0nW6S-w&pp=ygUPZ2l0aHViIHR1dG9yaWFs" target="_main">
+                    <img src="./images/Roadmaps/Frontend Part-5.png" alt="React Tutorial"/>
+                </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/watch?v=_9mTJ84uL1Q&pp=ygURdGFpbHdpbmQgdHV0b3JpYWw%3D" target="_main">
+                    <img src="./images/Roadmaps/Frontend Part-6.png" alt="Tailwind CSS Tutorial"/>
+                </a>
+            </div>
+        </div>
+        </div>
+        {/* ========== Also Try This Section ========== */}
             <div className={styles.OurContainer}>
             <div className={styles.headingContainer}>
             <h2 className={styles.heading}>Also Try This</h2>
@@ -205,7 +170,7 @@ function FrontedRoadmap(){
 <span className={styles.Span}><Link className={styles.Links}to="/FreeCoursePlaylist">Mock InterView</Link></span> 
             </div>
         </div>
-            </div>
+
         </div>
 </div>
         </div>
