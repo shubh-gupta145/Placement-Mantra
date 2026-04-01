@@ -1,40 +1,70 @@
 import { useState } from "react";
 import styles from "./MockEntry.module.css";
 import { useNavigate } from "react-router-dom";
-import UploadFile from "../Sub Components/UploadFile";
-import { useAuth } from "../../Login Components/useAuth"; // 👈 apna path yahan set karo
+import { useAuth } from "../../Login Components/useAuth";
 
 function MockEntry() {
   const navigate = useNavigate();
-  const { user } = useAuth(); // 👈 ya jaise tumhara context return karta ho
+  const { user } = useAuth();
 
   const [userName, setUserName] = useState("");
   const [role, setRole] = useState("Frontend Developer");
   const [timing, setTiming] = useState("2");
+  const [resumeFile, setResumeFile] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
 
+  const resumeRequiredTimings = ["15", "30"];
   const lockedTimings = ["5", "10", "15", "30"];
 
   const handleTimingChange = (e) => {
     const selected = e.target.value;
     if (!user && lockedTimings.includes(selected)) {
-      setTiming("2");         // wapas 2 min pe reset
-      setShowPopup(true);     // popup dikhao
+      setTiming("2");
+      setShowPopup(true);
     } else {
       setTiming(selected);
       setShowPopup(false);
     }
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type === "application/pdf") {
+      setResumeFile(file);
+    } else {
+      alert("Sirf PDF file upload karein.");
+    }
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setDragOver(false);
+    const file = e.dataTransfer.files[0];
+    if (file && file.type === "application/pdf") {
+      setResumeFile(file);
+    } else {
+      alert("Sirf PDF file upload karein.");
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/MockInterview", { state: { userName, role, timing } });
+    navigate("/MockInterview", {
+      state: {
+        userName,
+        role,
+        timing,
+        resumeFile: resumeFile || null,
+      },
+    });
   };
+
+  const isResumeRequired = resumeRequiredTimings.includes(timing);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.card}>
-
         <h1 className={styles.heading}>Explore Our Mock Interviews</h1>
 
         <form onSubmit={handleSubmit} className={styles.Form}>
@@ -50,10 +80,49 @@ function MockEntry() {
           />
 
           {/* Resume Upload */}
-          <span>
-            Please Submit Your Resume
-            <UploadFile />
-          </span>
+          <div className={styles.resumeSection}>
+            <span className={styles.resumeLabel}>
+              {isResumeRequired
+                ? "📄 Resume Upload (Recommended for this timing)"
+                : "📄 Please Submit Your Resume (Optional)"}
+            </span>
+
+            <div
+              className={`${styles.dropZone} ${dragOver ? styles.dragOver : ""} ${resumeFile ? styles.uploaded : ""}`}
+              onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+              onDragLeave={() => setDragOver(false)}
+              onDrop={handleDrop}
+              onClick={() => document.getElementById("resumeInput").click()}
+            >
+              {resumeFile ? (
+                <div className={styles.fileInfo}>
+                  <span className={styles.fileIcon}>✅</span>
+                  <span className={styles.fileName}>{resumeFile.name}</span>
+                  <button
+                    type="button"
+                    className={styles.removeFile}
+                    onClick={(e) => { e.stopPropagation(); setResumeFile(null); }}
+                  >
+                    ✕ Remove
+                  </button>
+                </div>
+              ) : (
+                <div className={styles.uploadPrompt}>
+                  <span className={styles.uploadIcon}>⬆️</span>
+                  <span>PDF drop karein ya click karke upload karein</span>
+                  <span className={styles.uploadHint}>Only PDF supported</span>
+                </div>
+              )}
+            </div>
+
+            <input
+              id="resumeInput"
+              type="file"
+              accept=".pdf"
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+            />
+          </div>
 
           {/* Job Title */}
           <span>Select The Job Title</span>
@@ -82,28 +151,33 @@ function MockEntry() {
             <option value="30">{!user ? "🔒 " : ""}30 Minutes</option>
           </select>
 
-          <button type="submit" className={styles.btn}>Get Started 🚀</button>
+          {isResumeRequired && !resumeFile && (
+            <div className={styles.infoBanner}>
+              ℹ️ 15 aur 30 minute interviews mein resume upload karna recommended hai — AI aapke resume ke basis pe personalized questions poochega.
+            </div>
+          )}
 
+          <button type="submit" className={styles.btn}>
+            Get Started 🚀
+          </button>
         </form>
 
-        {/* Login Popup */}
-{showPopup && (
-  <div className={styles.popup}>
-    <div className={styles.popupBox}>
-      <p>🔒 Login Required</p>
-      <p>Yeh timing sirf logged-in users ke liye hai. Login karke saari timings unlock karo.</p>
-      <div className={styles.popupButtons}>
-        <button onClick={() => navigate("/signin")} className={styles.btn}>
-          Login karo
-        </button>
-        <button onClick={() => setShowPopup(false)} className={styles.closeBtn}>
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
+        {showPopup && (
+          <div className={styles.popup}>
+            <div className={styles.popupBox}>
+              <p>🔒 Login Required</p>
+              <p>Yeh timing sirf logged-in users ke liye hai. Login karke saari timings unlock karo.</p>
+              <div className={styles.popupButtons}>
+                <button onClick={() => navigate("/signin")} className={styles.btn}>
+                  Login karo
+                </button>
+                <button onClick={() => setShowPopup(false)} className={styles.closeBtn}>
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

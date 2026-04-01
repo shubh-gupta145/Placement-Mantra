@@ -101,33 +101,33 @@ function AIDeveloperRoadmap(){
         <p className={styles.para}>Watch these handpicked videos to strengthen your AI development journey from basics to advanced concepts.</p>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Python Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=D1eL1EnxXXQ&pp=ygUMYS5pIHR1dG9yaWFs" target="_main">
+                    <img src="./images/VideoPlaylist/A.I Part-1.png" alt="Python Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Mathematics for AI"/>
+                <a href="https://www.youtube.com/watch?v=9tbaiFIm0HU&pp=ygUMYS5pIHR1dG9yaWFs" target="_main">
+                    <img src="./images/VideoPlaylist/A.I Part-2.png" alt="Mathematics for AI"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Machine Learning Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=S2lj2ckQFhY&pp=ygUMYS5pIHR1dG9yaWFs" target="_main">
+                    <img src="./images/VideoPlaylist/A.I Part-3.png" alt="Machine Learning Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Deep Learning Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=mEsleV16qdo&pp=ygUZYWkgdHV0b3JpYWwgZm9yIGJlZ2lubmVycw%3D%3D" target="_main">
+                    <img src="./images/VideoPlaylist/A.I Part-4.png" alt="Deep Learning Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Neural Networks Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=MqffbpjhriQ&pp=ygUMYS5pIHR1dG9yaWFs0gcJCa4KAYcqIYzv" target="_main">
+                    <img src="./images/VideoPlaylist/A.I Part-5.png" alt="Neural Networks Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="AI Projects Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=4jmsHaJ7xEA&list=PL9ooVrP1hQOGHNaCT7_fwe9AabjZI1RjI" target="_main">
+                    <img src="./images/VideoPlaylist/A.I Part-6.png" alt="AI Projects Tutorial"/>
                 </a>
             </div>
         </div>

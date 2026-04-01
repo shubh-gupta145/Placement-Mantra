@@ -101,33 +101,33 @@ function PythonDeveloperRoadmap(){
         <p className={styles.para}>Watch these handpicked videos to strengthen your Python development journey from basics to advanced concepts.</p>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Core Python Basics"/>
+                <a href="https://www.youtube.com/watch?v=UrsmFxEIp5k&pp=ygUdcHl0aG9uIHR1dG9yaWFsIGZvciBiZWdpbm5lcnM%3D" target="_main">
+                    <img src="./images/Roadmaps/Python Part-1.png" alt="Core Python Basics"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Advanced Python"/>
+                <a href="https://www.youtube.com/watch?v=t2_Q2BRzeEE&list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0&pp=0gcJCbkEOCosWNin" target="_main">
+                    <img src="./images/Roadmaps/Python Part-2.png" alt="Advanced Python"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Django & Flask Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=vLqTf2b6GZw&pp=ygUdcHl0aG9uIHR1dG9yaWFsIGZvciBiZWdpbm5lcnM%3D" target="_main">
+                    <img src="./images/Roadmaps/Python Part-3.png" alt="Django & Flask Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Database Integration"/>
+                <a href="https://www.youtube.com/watch?v=sCOw5y1RQpY&pp=ygUdcHl0aG9uIHR1dG9yaWFsIGZvciBiZWdpbm5lcnM%3D" target="_main">
+                    <img src="./images/Roadmaps/Python Part-4.png" alt="Database Integration"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="REST API Development"/>
+                <a href="https://www.youtube.com/watch?v=DWjEqKLDUXQ&pp=ygUdcHl0aG9uIHR1dG9yaWFsIGZvciBiZWdpbm5lcnM%3D" target="_main">
+                    <img src="./images/Roadmaps/Python Part-5.png" alt="REST API Development"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Python Projects"/>
+                <a href="https://www.youtube.com/watch?v=XnSasPR2KJI&pp=ygUdcHl0aG9uIHR1dG9yaWFsIGZvciBiZWdpbm5lcnM%3D" target="_main">
+                    <img src="./images/Roadmaps/Python Part-6.png" alt="Python Projects"/>
                 </a>
             </div>
         </div>

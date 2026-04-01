@@ -6,13 +6,22 @@ import Mic from "../Sub Components/Mic";
 import CameraView from "../Sub Components/CameraView";
 import SpeechToText from "../Sub Components/SpeechToText";
 import { generateInterviewQuestions } from "../../../data/questionEngine.js";
+import { extractTextFromPDF } from "../../../utils/resumeParser.js";
+import { generateQuestionsFromResume } from "../../../utils/geminiQuestions.js";
 import useFeatureTrack from '../../../utils/useFeatureTrack';
+
 function InterviewPage2() {
-   useFeatureTrack('mock-interview'); 
+  useFeatureTrack('mock-interview');
+
   const location = useLocation();
   const navigate = useNavigate();
-  const { role = "Frontend Developer", timing = 2, userName = "Candidate" } =
-    location.state || {};
+  const {
+    role = "Frontend Developer",
+    timing = 2,
+    userName = "Candidate",
+    resumeFile = null,
+  } = location.state || {};
+
   const initialTime = parseInt(timing) * 60;
 
   const [interviewState, setInterviewState] = useState("stopped");
@@ -21,6 +30,9 @@ function InterviewPage2() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questionText, setQuestionText] = useState("");
   const [isHRSpeaking, setIsHRSpeaking] = useState(false);
+  const [isLoadingQuestions, setIsLoadingQuestions] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("");
+  const [resumeLoaded, setResumeLoaded] = useState(false);
 
   const qaLogRef = useRef([]);
   const videoRef = useRef(null);
@@ -29,11 +41,9 @@ function InterviewPage2() {
   const currentQuestionIdxRef = useRef(0);
   const questionsRef = useRef([]);
 
-  // ── Always-fresh refs ─────────────────────────────────────────────────────
   const interviewStateRef = useRef("stopped");
   const isHRSpeakingRef = useRef(false);
 
-  // Format mm:ss
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -47,12 +57,71 @@ function InterviewPage2() {
     return "#f87171";
   };
 
-  // Generate questions
+  // ── Questions generate karo — resume hai toh Gemini se, warna default ──
   useEffect(() => {
-    const q = generateInterviewQuestions(role, timing);
-    setQuestions(q);
-    questionsRef.current = q;
-  }, [role, timing]);
+    const setupQuestions = async () => {
+      // Resume-based questions sirf 15 aur 30 min ke liye
+      const resumeTimings = [15, 30];
+      const timingNum = parseInt(timing);
+
+      if (resumeFile && resumeTimings.includes(timingNum)) {
+        setIsLoadingQuestions(true);
+        setLoadingMessage("📄 Resume parse ho raha hai...");
+
+        try {
+          // Step 1: PDF se text extract karo
+          const resumeText = await extractTextFromPDF(resumeFile);
+
+          if (resumeText && resumeText.length > 100) {
+            setLoadingMessage("🤖 AI aapke resume ke basis pe questions bana raha hai...");
+            setResumeLoaded(true);
+
+            // Step 2: Gemini se questions generate karo
+            const aiQuestions = await generateQuestionsFromResume(resumeText, role, timingNum);
+
+            if (aiQuestions && aiQuestions.length > 0) {
+              setQuestions(aiQuestions);
+              questionsRef.current = aiQuestions;
+              setLoadingMessage(`✅ ${aiQuestions.length} personalized questions ready!`);
+            } else {
+              // Gemini fail ho gaya — default questions use karo
+              console.warn("Gemini failed, using default questions");
+              const fallback = generateInterviewQuestions(role, timing);
+              setQuestions(fallback);
+              questionsRef.current = fallback;
+              setLoadingMessage("✅ Questions ready! (Default mode)");
+            }
+          } else {
+            // Resume parse nahi hua — default
+            const fallback = generateInterviewQuestions(role, timing);
+            setQuestions(fallback);
+            questionsRef.current = fallback;
+            setLoadingMessage("⚠️ Resume parse nahi hua, default questions use ho rahe hain.");
+          }
+        } catch (err) {
+          console.error("Question setup error:", err);
+          const fallback = generateInterviewQuestions(role, timing);
+          setQuestions(fallback);
+          questionsRef.current = fallback;
+          setLoadingMessage("✅ Questions ready!");
+        }
+
+        // Loading message 2 second baad clear karo
+        setTimeout(() => {
+          setIsLoadingQuestions(false);
+          setLoadingMessage("");
+        }, 2000);
+
+      } else {
+        // No resume ya short timing — default algorithm
+        const q = generateInterviewQuestions(role, timing);
+        setQuestions(q);
+        questionsRef.current = q;
+      }
+    };
+
+    setupQuestions();
+  }, [role, timing, resumeFile]);
 
   // Sync state into refs
   useEffect(() => {
@@ -61,7 +130,6 @@ function InterviewPage2() {
 
   useEffect(() => {
     isHRSpeakingRef.current = isHRSpeaking;
-    // HR bolna shuru ho toh silence timer cancel karo
     if (isHRSpeaking) {
       clearTimeout(silenceTimerRef.current);
       silenceTimerRef.current = null;
@@ -79,17 +147,9 @@ function InterviewPage2() {
     return () => clearInterval(id);
   }, [interviewState, timeLeft]);
 
-  // ── Silence timer — called directly from SpeechToText ────────────────────
-  // ✅ Koi useEffect nahi, koi state dependency nahi
-  // Directly function call hoga jab user bolta hai
   const resetSilenceTimer = useCallback(() => {
-    // Agar HR bol raha hai ya interview nahi chal raha — ignore karo
     if (isHRSpeakingRef.current || interviewStateRef.current !== "running") return;
-
-    // Purana timer cancel karo
     clearTimeout(silenceTimerRef.current);
-
-    // Naya 8 second timer set karo
     silenceTimerRef.current = setTimeout(() => {
       if (interviewStateRef.current === "running" && !isHRSpeakingRef.current) {
         askNextQuestion(currentQuestionIdxRef.current);
@@ -97,7 +157,6 @@ function InterviewPage2() {
     }, 8000);
   }, []);
 
-  // Save answer
   const handleAnswerComplete = useCallback((question, answer) => {
     if (!question) return;
     const alreadyLogged = qaLogRef.current.some((qa) => qa.question === question);
@@ -106,7 +165,6 @@ function InterviewPage2() {
     }
   }, []);
 
-  // Speak HR question
   const speakQuestion = (question) => {
     if (!question) return;
     window.speechSynthesis.cancel();
@@ -145,7 +203,6 @@ function InterviewPage2() {
     window.speechSynthesis.speak(speech);
   };
 
-  // Move to next question
   const askNextQuestion = (currentIdx) => {
     clearTimeout(silenceTimerRef.current);
     silenceTimerRef.current = null;
@@ -161,7 +218,7 @@ function InterviewPage2() {
   };
 
   const handleStart = () => {
-    if (questionsRef.current.length === 0) return;
+    if (questionsRef.current.length === 0 || isLoadingQuestions) return;
     hasEndedRef.current = false;
     qaLogRef.current = [];
     currentQuestionIdxRef.current = 0;
@@ -210,6 +267,7 @@ function InterviewPage2() {
           timing,
           userName,
           reason,
+          resumeBased: resumeLoaded,
         },
       });
     }, 400);
@@ -240,6 +298,13 @@ function InterviewPage2() {
               Q {currentQuestion + 1} / {questions.length}
             </div>
           )}
+
+          {/* Resume badge */}
+          {resumeLoaded && (
+            <div className={styles.resumeBadge}>
+              📄 Resume-Based Interview
+            </div>
+          )}
         </div>
 
         <div className={styles.ControllerPannel}>
@@ -251,7 +316,11 @@ function InterviewPage2() {
               <span className={styles.btnLabel}>End</span>
             </div>
 
-            <div className={styles.Mic} onClick={handleStart}>
+            <div
+              className={styles.Mic}
+              onClick={handleStart}
+              style={{ opacity: isLoadingQuestions ? 0.5 : 1, cursor: isLoadingQuestions ? "not-allowed" : "pointer" }}
+            >
               <Mic isActive={interviewState === "running"} />
             </div>
 
@@ -269,11 +338,20 @@ function InterviewPage2() {
             </div>
           </div>
 
-          {interviewState === "stopped" && (
+          {/* Loading / hint message */}
+          {isLoadingQuestions ? (
+            <p className={styles.startHint} style={{ color: "#60a5fa" }}>
+              {loadingMessage || "⏳ Questions prepare ho rahe hain..."}
+            </p>
+          ) : loadingMessage ? (
+            <p className={styles.startHint} style={{ color: "#4ade80" }}>
+              {loadingMessage}
+            </p>
+          ) : interviewState === "stopped" ? (
             <p className={styles.startHint}>
               Press the mic button to start your interview
             </p>
-          )}
+          ) : null}
         </div>
       </div>
 
@@ -285,7 +363,11 @@ function InterviewPage2() {
 
         <div className={styles.TextPannel}>
           <div className={styles.QuestionBox}>
-            {questionText ? (
+            {isLoadingQuestions ? (
+              <p className={styles.placeholderText} style={{ color: "#60a5fa" }}>
+                {loadingMessage}
+              </p>
+            ) : questionText ? (
               <p>{questionText}</p>
             ) : (
               <p className={styles.placeholderText}>
@@ -294,7 +376,6 @@ function InterviewPage2() {
             )}
           </div>
 
-          {/* ✅ resetSilenceTimer directly pass kiya — no useState involved */}
           <SpeechToText
             interviewState={interviewState}
             isHRSpeaking={isHRSpeaking}

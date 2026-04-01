@@ -1,11 +1,11 @@
 import { useState } from "react";
 import styles from "./Auth.module.css";
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "./useAuth"; // 👈 apna path check karo
+import { useAuth } from "./useAuth";
 
 function SignIn() {
   const navigate = useNavigate();
-  const { login } = useAuth(); // 👈 context se login function
+  const { login } = useAuth();
 
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [emailError, setEmailError] = useState("");
@@ -40,24 +40,17 @@ function SignIn() {
 
       const data = await response.json();
 
-      if (data.message === "Login Successful ✅") {
+      if (data.message === "Login Successful") {
 
-        // 👇 AuthContext update — yahi MockEntry mein user check karega
+        // ✅ Step 1: AuthContext update — user + real JWT token save hoga
         login(data.user, data.token);
 
-        // Purane localStorage keys — existing code ke saath compatibility
+        // ✅ Step 2: Extra keys (admin panel + attendance ke liye)
         localStorage.setItem("email", loginData.email);
-        localStorage.setItem("token", "loggedIn");
+        if (data.token) localStorage.setItem("pm_admin_token", data.token);
+        if (data.user)  localStorage.setItem("pm_admin_user", JSON.stringify(data.user));
 
-        // Admin panel keys
-        if (data.token) {
-          localStorage.setItem("pm_admin_token", data.token);
-        }
-        if (data.user) {
-          localStorage.setItem("pm_admin_user", JSON.stringify(data.user));
-        }
-
-        // Attendance checkin — sirf student ke liye
+        // ✅ Step 3: Attendance checkin — sirf student ke liye
         const userRole = data.user?.role;
         if (userRole !== "admin" && data.token) {
           try {
@@ -76,10 +69,7 @@ function SignIn() {
           // Heartbeat — har 30 second mein
           const heartbeat = setInterval(async () => {
             const token = localStorage.getItem("pm_admin_token");
-            if (!token) {
-              clearInterval(heartbeat);
-              return;
-            }
+            if (!token) { clearInterval(heartbeat); return; }
             try {
               await fetch("http://localhost:5000/api/track/heartbeat", {
                 method: "POST",

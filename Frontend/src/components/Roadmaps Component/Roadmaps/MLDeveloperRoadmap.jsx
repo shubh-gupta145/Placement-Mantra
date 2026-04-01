@@ -115,33 +115,33 @@ function MLDeveloperRoadmap(){
         <p className={styles.para}>Watch these handpicked videos to strengthen your Machine Learning journey from basics to advanced concepts.</p>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Python Programming Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=gmvvaobm7eQ&list=PLeo1K3hjS3uvCeTYTeyfe0-rN5r8zn9rw&pp=0gcJCbUEOCosWNin" target="_main">
+                    <img src="./images/VideoPlaylist/Machine Learning .png" alt="Python Programming Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Mathematics for ML"/>
+                <a href="https://www.youtube.com/watch?v=LvC68w9JS4Y&pp=ygUZbWFjaGluZSBsZWFybmluZyB0dXRvcmlhbA%3D%3D" target="_main">
+                    <img src="./images/VideoPlaylist/MachineLearning2.png" alt="Mathematics for ML"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="ML Algorithms Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=ukzFI9rgwfU&list=PLEiEAq2VkUULYYgj13YHUWmRePqiu8Ddy" target="_main">
+                    <img src="./images/VideoPlaylist/MachineLearning3.png" alt="ML Algorithms Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Model Evaluation & Optimization"/>
+                <a href="https://www.youtube.com/watch?v=ie4oGI85SAE&pp=ygUZbWFjaGluZSBsZWFybmluZyB0dXRvcmlhbA%3D%3Dy" target="_main">
+                    <img src="./images/VideoPlaylist/MachineLearning4.png" alt="Model Evaluation & Optimization"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Deep Learning Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=1L420xXpDTg&pp=ygUZbWFjaGluZSBsZWFybmluZyB0dXRvcmlhbA%3D%3D" target="_main">
+                    <img src="./images/VideoPlaylist/MachineLearning5.png" alt="Deep Learning Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="ML Projects"/>
+                <a href="https://www.youtube.com/watch?v=N8svLoC2eNA&pp=ygUZbWFjaGluZSBsZWFybmluZyB0dXRvcmlhbA%3D%3D" target="_main">
+                    <img src="./images/VideoPlaylist/MachineLearning6.png" alt="ML Projects"/>
                 </a>
             </div>
         </div>

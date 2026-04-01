@@ -99,33 +99,33 @@ function HackerRoadmap(){
         <p className={styles.para}>Watch these handpicked videos to strengthen your Ethical Hacking journey from basics to advanced concepts.</p>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Computer Basics Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=cKEf8H9cQGM&list=PLwO5-rumi8A4J7h4Fm92TEC00gfZUk7ls" target="_main">
+                    <img src="./images/Roadmaps/Hacker Part-1.png" alt="Computer Basics Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Networking Fundamentals"/>
+                <a href="https://www.youtube.com/watch?v=2eLJNBroFrg&pp=ygUPaGFja2VyIHR1dG9yaWFs" target="_main">
+                    <img src="./images/Roadmaps/Hacker Part-2.png" alt="Networking Fundamentals"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Cyber Security Basics"/>
+                <a href="https://www.youtube.com/watch?v=RD4JPW6mKaU&pp=ygUPaGFja2VyIHR1dG9yaWFs" target="_main">
+                    <img src="./images/Roadmaps/Hacker Part-3.png" alt="Cyber Security Basics"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Penetration Testing Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=zlZ_dupXxE0&pp=ygUPaGFja2VyIHR1dG9yaWFs0gcJCdkKAYcqIYzv" target="_main">
+                    <img src="./images/Roadmaps/Hacker Part-4.png" alt="Penetration Testing Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Kali Linux & Tools"/>
+                <a href="https://www.youtube.com/watch?v=3FNYvj2U0HM&list=PLLKT__MCUeixqHJ1TRqrHsEd6_EdEvo47" target="_main">
+                    <img src="./images/Roadmaps/Hacker Part-5.png" alt="Kali Linux & Tools"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Ethical Hacking Projects"/>
+                <a href="https://www.youtube.com/watch?v=h7-N9I1q554&pp=ygUPaGFja2VyIHR1dG9yaWFs" target="_main">
+                    <img src="./images/Roadmaps/Hacker Part-6.png" alt="Ethical Hacking Projects"/>
                 </a>
             </div>
         </div>

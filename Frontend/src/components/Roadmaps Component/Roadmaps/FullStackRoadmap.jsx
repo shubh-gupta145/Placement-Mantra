@@ -115,33 +115,31 @@ function FullStackRoadmap(){
         <p className={styles.para}>Watch these handpicked videos to strengthen your Full Stack development journey from basics to advanced concepts.</p>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="HTML CSS JS Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=eILUmCJhl64&t=16378s&pp=ygUbUmVhY3QgdHV0b3JpYWwgYnkga2cgY29kaW5n0gcJCdkKAYcqIYzv" target="_main">
+                    <img src="./images/Roadmaps/Frontend Part-4.png" alt="Git Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="React.js Tutorial"/>
+                  <a href="https://www.youtube.com/watch?v=Ez8F0nW6S-w&pp=ygUPZ2l0aHViIHR1dG9yaWFs" target="_main">
+                    <img src="./images/Roadmaps/Frontend Part-5.png" alt="React Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Node.js & Express Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=AZzV3wZCvI4&list=PL78RhpUUKSwfeSOOwfE9x6l5jTjn5LbY3" target="_main"><img src="./images/Roadmaps/Backend Part-1.png" alt="Video 1"/></a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/watch?v=ExcRbA7fy_A&list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA&pp=0gcJCbkEOCosWNin" target="_main">
+                    <img src="./images/Roadmaps/FullStack Part-1.png" alt="MongoDB Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="MongoDB Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=ajdRvxDWH4w&list=PLGjplNEQ1it_oTvuLRNqXfz_v_0pq6unW" target="_main">
+                    <img src="./images/Roadmaps/Frontend Part-3.png" alt="JavaScript Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Authentication & Security"/>
-                </a>
-            </div>
-            <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Full Stack Projects"/>
+                <a href="https://www.youtube.com/watch?v=IzZYgMawnpk&pp=ygUZZnVsbCBzdGFjayBwcm9qZWN0cyBpZGVhcw%3D%3D" target="_main">
+                    <img src="./images/Roadmaps/FullStack Part-2.png" alt="Full Stack Projects"/>
                 </a>
             </div>
         </div>

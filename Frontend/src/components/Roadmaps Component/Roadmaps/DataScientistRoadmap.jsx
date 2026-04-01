@@ -99,33 +99,33 @@ function DataScientistRoadmap(){
         <p className={styles.para}>Watch these handpicked videos to strengthen your Data Science journey from basics to advanced concepts.</p>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Python for Data Science"/>
+                <a href="https://www.youtube.com/watch?v=sWhqqiJuypA&pp=ygUWZGF0YSBzY2llbnRpc3QgUm9hZG1hcA%3D%3D" target="_main">
+                    <img src="./images/Roadmaps/Data Science Part-1.png" alt="Python for Data Science"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Mathematics & Statistics"/>
+                <a href="https://www.youtube.com/watch?v=yBcfzZJ-gS8&pp=ygUWZGF0YSBzY2llbnRpc3QgUm9hZG1hcA%3D%3D" target="_main">
+                    <img src="./images/Roadmaps/Data Science Part-2.png" alt="Mathematics & Statistics"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Data Analysis & EDA"/>
+                <a href="https://www.youtube.com/watch?v=05IST7Q1MXY&pp=ygUWZGF0YSBzY2llbnRpc3QgUm9hZG1hcA%3D%3D" target="_main">
+                    <img src="./images/Roadmaps/Data Science Part-3.png" alt="Data Analysis & EDA"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Machine Learning Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=9R3X0JoCLyU&pp=ygUWZGF0YSBzY2llbnRpc3QgUm9hZG1hcNIHCQnZCgGHKiGM7w%3D%3D" target="_main">
+                    <img src="./images/Roadmaps/Data Science Part-4.png" alt="Machine Learning Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Scikit-Learn Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=EdUxqVgZ_lA&pp=ygUWZGF0YSBzY2llbnRpc3QgUm9hZG1hcNIHCQnZCgGHKiGM7w%3D%3D" target="_main">
+                    <img src="./images/Roadmaps/Data Science Part-5.png" alt="Scikit-Learn Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Data Science Projects"/>
+                <a href="https://www.youtube.com/watch?v=NUpNoK_5NVs&pp=ygUWZGF0YSBzY2llbnRpc3QgUm9hZG1hcA%3D%3D" target="_main">
+                    <img src="./images/Roadmaps/Data Science Part-6.png" alt="Data Science Projects"/>
                 </a>
             </div>
         </div>

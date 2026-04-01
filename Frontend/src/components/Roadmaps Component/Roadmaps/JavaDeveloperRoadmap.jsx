@@ -115,33 +115,33 @@ function JavaDeveloperRoadmap(){
         <p className={styles.para}>Watch these handpicked videos to strengthen your Java development journey from basics to advanced concepts.</p>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Java Basics Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=UmnCZ7-9yDY&pp=ygUbamF2YSB0dXRvcmlhbCBmb3IgYmVnaW5uZXJz" target="_main">
+                    <img src="./images/Roadmaps/Java Part-1.png" alt="Java Basics Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="OOP in Java"/>
+                <a href="https://www.youtube.com/watch?v=ntLJmHOJ0ME&list=PLu0W_9lII9agS67Uits0UnJyrYiXhDS6q" target="_main">
+                    <img src="./images/Roadmaps/Java Part-2.png" alt="OOP in Java"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Collections & Exception Handling"/>
+                <a href="https://www.youtube.com/watch?v=walNht-t2DE&pp=ygUbamF2YSB0dXRvcmlhbCBmb3IgYmVnaW5uZXJz" target="_main">
+                    <img src="./images/Roadmaps/Java Part-3.png" alt="Collections & Exception Handling"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Spring Boot Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=bm0OyhwFDuY&list=PLsyeobzWxl7pe_IiTfNyr55kwJPWbgxB5&pp=0gcJCbkEOCosWNin" target="_main">
+                    <img src="./images/Roadmaps/Java Part-4.png" alt="Spring Boot Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Database Integration"/>
+                <a href="https://www.youtube.com/watch?v=q6z_UCBM5Ek&pp=ygUbamF2YSB0dXRvcmlhbCBmb3IgYmVnaW5uZXJz" target="_main">
+                    <img src="./images/Roadmaps/Java Part-5.png" alt="Database Integration"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Java Projects"/>
+                <a href="https://www.youtube.com/watch?v=xTtL8E4LzTQ&pp=ygUbamF2YSB0dXRvcmlhbCBmb3IgYmVnaW5uZXJz" target="_main">
+                    <img src="./images/Roadmaps/Java Part-6.png" alt="Java Projects"/>
                 </a>
             </div>
         </div>

@@ -15,7 +15,6 @@ function SignUp() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    // ✅ Real-time email validation
     if (e.target.name === "email") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(e.target.value)) {
@@ -29,23 +28,22 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Email error check
     if (emailError) {
       alert("Please fix the errors before submitting!");
       return;
     }
 
     try {
-      // ── Signup API call ──
       const response = await fetch("http://localhost:5000/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData), // formData — loginData nahi
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
-      if (data.message === "Signup Successful") {
+      // ✅ FIX: Backend returns "User registered successfully ✅" — yahi check karo
+      if (data.message === "User registered successfully ✅") {
         alert("Account created successfully! Please sign in.");
         navigate("/signin");
       } else {
@@ -63,7 +61,6 @@ function SignUp() {
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2>Create Account</h2>
 
-        {/* Name */}
         <input
           type="text"
           name="name"
@@ -72,7 +69,6 @@ function SignUp() {
           required
         />
 
-        {/* Email */}
         <input
           type="email"
           name="email"
@@ -87,7 +83,6 @@ function SignUp() {
           </p>
         )}
 
-        {/* Password */}
         <input
           type="password"
           name="password"
