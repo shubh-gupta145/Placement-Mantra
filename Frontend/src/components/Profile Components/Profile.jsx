@@ -20,7 +20,7 @@ function Profile() {
           console.log("Email not found in localStorage");
           return;
         }
-        const res = await fetch(`http://localhost:5000/get-profile/${email}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/get-profile/${email}`);
         const data = await res.json();
         if (data) setProfile(data);
       } catch (error) {

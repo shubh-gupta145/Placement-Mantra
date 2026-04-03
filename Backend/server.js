@@ -56,6 +56,8 @@ app.use("/api/notifications", notificationRoutes);
 app.use("/api/attendance",    attendanceRoutes);
 app.use("/api/analytics",     analyticsRoutes);
 app.use("/api/track",         trackingRoutes);
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 app.use("/api/feedback", require("./routing/feedback"));
 /* =========================
    ENV DEBUG

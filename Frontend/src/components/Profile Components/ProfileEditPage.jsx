@@ -30,7 +30,7 @@ function ProfileEditPage() {
     const email = localStorage.getItem("email") || localStorage.getItem("userEmail");
     if(!email) return;
 
-    fetch(`http://localhost:5000/get-profile/${email}`)
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/get-profile/${email}`)
     .then(res=>res.json())
     .then(data=>{
       if(data){
@@ -79,7 +79,7 @@ function ProfileEditPage() {
     const email = localStorage.getItem("email") || localStorage.getItem("userEmail");
 
     try{
-      const res = await fetch(`http://localhost:5000/update-profile/${email}`,{
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/update-profile/${email}`,{
         method:"PUT",
         headers:{ "Content-Type":"application/json" },
         body: JSON.stringify(profileData)

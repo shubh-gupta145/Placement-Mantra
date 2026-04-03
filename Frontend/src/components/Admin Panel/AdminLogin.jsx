@@ -16,7 +16,7 @@ export default function AdminLogin() {
     try {
       // ── Direct axios use karo adminApi nahi ──
       const res = await axios.post(
-        'http://localhost:5000/signin',
+        `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/signin`,
         form
       );
 

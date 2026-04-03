@@ -29,7 +29,7 @@ function NavBar() {
       try {
         const email = user.email || localStorage.getItem("email");
         if (!email) return;
-        const res = await fetch(`http://localhost:5000/get-profile/${email}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/get-profile/${email}`);
         const data = await res.json();
         if (data?.image) {
           setProfileImage(data.image);
@@ -86,7 +86,7 @@ function NavBar() {
     const token = localStorage.getItem("pm_admin_token");
     if (token) {
       try {
-        await fetch("http://localhost:5000/api/attendance/checkout", {
+        await fetch("${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/attendance/checkout", {
           method: "POST",
           headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         });

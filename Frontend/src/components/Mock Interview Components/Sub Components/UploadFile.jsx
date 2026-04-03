@@ -6,7 +6,7 @@ const formData = new FormData();
 
 formData.append("resume", file);
 
-const res = await fetch("http://localhost:5000/api/upload-resume", {
+const res = await fetch("${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/upload-resume", {
 method: "POST",
 body: formData
 });

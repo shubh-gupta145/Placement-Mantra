@@ -28,7 +28,7 @@ export default function NotificationBell() {
       const token = localStorage.getItem("pm_admin_token");
       if (!token) return;
 
-      const res  = await fetch("http://localhost:5000/api/notifications/user", {
+      const res  = await fetch("${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/notifications/user", {
         headers: { "Authorization": `Bearer ${token}` }
       });
 

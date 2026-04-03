@@ -41,7 +41,7 @@ export default function FeedbackForm() {
       const userName = userStr ? JSON.parse(userStr).name : 'Anonymous';
       const userId   = userStr ? JSON.parse(userStr).id   : null;
 
-      const res = await fetch('http://localhost:5000/api/feedback', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/feedback`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -32,7 +32,7 @@ function SignIn() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/signin", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginData),
@@ -54,7 +54,7 @@ function SignIn() {
         const userRole = data.user?.role;
         if (userRole !== "admin" && data.token) {
           try {
-            await fetch("http://localhost:5000/api/attendance/checkin", {
+            await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/attendance/checkin`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -71,7 +71,7 @@ function SignIn() {
             const token = localStorage.getItem("pm_admin_token");
             if (!token) { clearInterval(heartbeat); return; }
             try {
-              await fetch("http://localhost:5000/api/track/heartbeat", {
+              await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/track/heartbeat`, {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",

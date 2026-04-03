@@ -15,7 +15,7 @@ const useFeatureTrack = (featureName) => {
     const startTime = Date.now();
 
     // Feature visit record karo
-    fetch("http://localhost:5000/api/analytics/track-feature", {
+    fetch("${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/analytics/track-feature", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +32,7 @@ const useFeatureTrack = (featureName) => {
       const duration = Math.round((Date.now() - startTime) / 1000);
       if (duration < 2) return;
 
-      fetch("http://localhost:5000/api/analytics/track-feature", {
+      fetch("${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/analytics/track-feature", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

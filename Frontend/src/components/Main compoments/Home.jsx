@@ -9,7 +9,7 @@ import EnglishSpeaking from "../English Speaking page/EnglishSpeaking";
 import Feedbackpopup from '../HomePagecomponent/Feedbackpopup';
 function Home(){ 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/api/test")
+  //   fetch("${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/test")
   //     .then(res => res.json())
   //     .then(data => console.log(data));
   // }, []);
