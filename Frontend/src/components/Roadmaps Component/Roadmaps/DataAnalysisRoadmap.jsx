@@ -99,33 +99,33 @@ function DataAnalyticsRoadmap(){
         <p className={styles.para}>Watch these handpicked videos to strengthen your Data Analytics journey from basics to advanced concepts.</p>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Python Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=dMn2QFTyXUQ&pp=ygUUZGF0YSBhbmFseXN0IHJvYWRtYXA%3D" target="_main">
+                        <img src="./images/Roadmaps/Data Part-1.png" alt="Python Tutorial"/>
+                    </a>
+            </div>
+            <div className={styles.Video}>
+                <a href="https://www.youtube.com/watch?v=YRJbhFLLPyE&pp=ygUUZGF0YSBhbmFseXN0IHJvYWRtYXA%3D" target="_main">
+                    <img src="./images/Roadmaps/Data Part-2.png" alt="Excel Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Excel Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=yA-uSDIJvaQ&pp=ygUUZGF0YSBhbmFseXN0IHJvYWRtYXA%3D" target="_main">
+                    <img src="./images/Roadmaps/Data Part-3.png" alt="SQL Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="SQL Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=rGx1QNdYzvs&list=PLUaB-1hjhk8FE_XZ87vPPSfHqb6OcM0cF" target="_main">
+                    <img src="./images/Roadmaps/Data Part-4.png" alt="Pandas & NumPy Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Pandas & NumPy Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=QcBlhxh7vXM&pp=ygUUZGF0YSBhbmFseXN0IHJvYWRtYXA%3D" target="_main">
+                    <img src="./images/Roadmaps/Data Part-5.png" alt="Power BI Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Power BI Tutorial"/>
-                </a>
-            </div>
-            <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Data Analytics Projects"/>
+                <a href="https://www.youtube.com/watch?v=VaSjiJMrq24&pp=ygUUZGF0YSBhbmFseXN0IHJvYWRtYXA%3D" target="_main">
+                    <img src="./images/Roadmaps/Data Part-6.png" alt="Data Analytics Projects"/>
                 </a>
             </div>
         </div>

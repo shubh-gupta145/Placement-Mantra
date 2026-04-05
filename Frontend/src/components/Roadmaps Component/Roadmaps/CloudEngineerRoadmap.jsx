@@ -101,33 +101,33 @@ function CloudEngineerRoadmap(){
         <p className={styles.para}>Watch these handpicked videos to strengthen your Cloud Engineering journey from basics to advanced concepts.</p>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Networking Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=70oYrSnRgoI&pp=ygUWY2xvdWQgZW5naW5lZXIgcm9hZG1hcNIHCQnZCgGHKiGM7w%3D%3D" target="_main">
+                    <img src="./images/Roadmaps/Cloud Part-1.png" alt="Networking Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Linux Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=YyPLJ-PlvHM&pp=ygUWY2xvdWQgZW5naW5lZXIgcm9hZG1hcA%3D%3D" target="_main">
+                    <img src="./images/Roadmaps/Cloud Part-2.png" alt="Linux Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="AWS Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=w4c88CmYtuw&pp=ygUWY2xvdWQgZW5naW5lZXIgcm9hZG1hcA%3D%3D" target="_main">
+                    <img src="./images/Roadmaps/Cloud Part-3.png" alt="AWS Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Docker Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=dmGybCohHsw&list=PLxCzCOWd7aiHRHVUtR-O52MsrdUSrzuy4" target="_main">
+                    <img src="./images/Roadmaps/Cloud Part-4.png" alt="Docker Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Kubernetes Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=NhDYbskXRgc&pp=ygUVY2xvdWQgZW5naW5lZXIgY291cnNl" target="_main">
+                    <img src="./images/Roadmaps/Cloud Part-5.png" alt="Kubernetes Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Cloud Projects Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=2LaAJq1lB1Q&list=PL9ooVrP1hQOFtZ5oAAeOgi_nH-txMcDMu" target="_main">
+                    <img src="./images/Roadmaps/Cloud Part-6.png" alt="Cloud Projects Tutorial"/>
                 </a>
             </div>
         </div>

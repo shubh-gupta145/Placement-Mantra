@@ -99,33 +99,33 @@ function UIDesignerRoadmap(){
         <p className={styles.para}>Watch these handpicked videos to strengthen your UI Design journey from basics to advanced concepts.</p>
         <div className={styles.VideoContainer}>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Design Principles Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=onyB_X3zk6o&pp=ygULVWkgZGVzZ2luZXI%3D" target="_main">
+                    <img src="./images/Roadmaps/Design Part-1.png" alt="Design Principles Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="Figma and Design Tools"/>
+                <a href="https://www.youtube.com/watch?v=O5IXf8qB9U4&list=PLdvOfoe7PXT0ouChAnR1nHlT8BJIo5hP_&pp=0gcJCbkEOCosWNin" target="_main">
+                    <img src="./images/Roadmaps/Design Part-2.png" alt="Figma and Design Tools"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="Wireframing and Prototyping"/>
+                <a href="https://www.youtube.com/watch?v=truRwcI7-kg&pp=ygULVWkgZGVzZ2luZXI%3D" target="_main">
+                    <img src="./images/Roadmaps/Design Part-3.png" alt="Wireframing and Prototyping"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/ApnaCollege.png" alt="Responsive Design Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=Ll2Hx7hq458&pp=ygULVWkgZGVzZ2luZXI%3D" target="_main">
+                    <img src="./images/Roadmaps/Design Part-4.png" alt="Responsive Design Tutorial"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/CodeWithHarry.png" alt="UI Design Systems"/>
+                <a href="https://www.youtube.com/watch?v=QQv2VlMmBT8&list=PLxgZQoSe9cg288dUrx6IA9EEEWZvDuNp8" target="_main">
+                    <img src="./images/Roadmaps/Design Part-5.png" alt="UI Design Systems"/>
                 </a>
             </div>
             <div className={styles.Video}>
-                <a href="https://www.youtube.com/" target="_main">
-                    <img src="./images/FrontedRoadmap Thumbail/KgCoding.png" alt="UI Projects Tutorial"/>
+                <a href="https://www.youtube.com/watch?v=01g74DjrOl8&list=PLxgZQoSe9cg1o9bW4Xf-doyfouxpaM1rc" target="_main">
+                    <img src="./images/Roadmaps/Design Part-6.png" alt="UI Projects Tutorial"/>
                 </a>
             </div>
         </div>
