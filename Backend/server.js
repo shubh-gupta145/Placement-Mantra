@@ -37,7 +37,10 @@ const app = express();
 /* =========================
    MIDDLEWARE
 ========================= */
-app.use(cors());
+app.use(cors({
+  origin: "https://placment-mantra.vercel.app",
+  credentials: true
+}));
 app.use(express.json({ limit: "10mb" }));        // ✅ JSON limit badha do
 app.use(express.urlencoded({ limit: "10mb", extended: true })); // ✅ Yeh bhi add karo
 
