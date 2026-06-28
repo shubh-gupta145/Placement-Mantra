@@ -7,25 +7,23 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
-// ✅ express-mongo-sanitize Express 5 ke saath incompatible hai (req.query ab read-only getter hai),
-//    isliye apna chhota sanitizer likha hai jo sirf req.body (mutable) clean karta hai.
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { protect } = require("./middleware/auth");
 
-// ── Startup check: JWT_SECRET zaroori hai, missing ho to server start nahi hoga ──
+// ── Startup check: JWT_SECRET zaroori hai ──
 if (!process.env.JWT_SECRET) {
   console.error("FATAL: JWT_SECRET .env mein set nahi hai. Server start nahi hoga.");
   process.exit(1);
 }
 
-// ── Aapki existing routes ──
+// ── Existing routes ──
 const resumeRoutes = require("./routing/resumeRoutes");
 const englishSpeakingRoutes = require("./routing/englishSpeaking");
 const feedbackRoute = require("./routing/feedback");
 
-// ── Admin Panel ki naye routes ──
+// ── Admin Panel routes ──
 const authRoutes = require("./routing/auth");
 const userRoutes = require("./routing/users");
 const notificationRoutes = require("./routing/notifications");
@@ -33,17 +31,13 @@ const attendanceRoutes = require("./routing/attendance");
 const analyticsRoutes = require("./routing/analytics");
 const trackingRoutes = require("./routing/tracking");
 
-// ── Aapke existing models ──
+// ── Models ──
 const Profile = require("./models/ProfileUser");
 const Chat = require("./models/Chat");
-
-// ── Admin Panel ke models ──
 const User = require("./models/User");
-
-// ── Test Result model ──
 const TestResult = require("./models/TestResult");
 
-// ── Questions files ──
+// ── Questions ──
 const dsa = require("./questions/dsaQuestions");
 const web = require("./questions/webQuestions");
 const aptitude = require("./questions/aptitudeQuestions");
@@ -58,11 +52,8 @@ dns.setServers(['8.8.8.8', '8.8.4.4']);
    MIDDLEWARE
 ========================= */
 
-// ── Helmet: secure HTTP headers ──
 app.use(helmet());
 
-// ✅ cors() bina options ke sabhi origins allow karta hai — yeh risky hai production mein.
-//    Allowlist se sirf apne known frontend domains allow karo.
 app.use(cors({
   origin: function (origin, callback) {
     const allowed = [
@@ -84,18 +75,13 @@ app.use(cors({
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-// ── NoSQL injection se bachne ke liye req.body sanitize karo (Express 5 safe) ──
-// MongoDB operators jaise $where, $gt, $ne ya keys mein "." ko remove karta hai
+// ── NoSQL injection sanitizer ──
 function sanitizeObject(obj) {
   if (obj === null || typeof obj !== "object") return obj;
-
-  if (Array.isArray(obj)) {
-    return obj.map(sanitizeObject);
-  }
-
+  if (Array.isArray(obj)) return obj.map(sanitizeObject);
   const clean = {};
   for (const key of Object.keys(obj)) {
-    if (key.startsWith("$") || key.includes(".")) continue; // dangerous key, skip karo
+    if (key.startsWith("$") || key.includes(".")) continue;
     clean[key] = sanitizeObject(obj[key]);
   }
   return clean;
@@ -108,7 +94,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// ── General rate limiter: sabhi /api routes pe ──
+// ── Rate limiters ──
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 200,
@@ -118,7 +104,6 @@ const apiLimiter = rateLimit({
 });
 app.use("/api", apiLimiter);
 
-// ── Strict rate limiter: auth-sensitive routes (signup/signin/otp/password) ──
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 10,
@@ -127,28 +112,25 @@ const authLimiter = rateLimit({
   message: { message: "Bahut zyada attempts ho gaye. 15 minute baad try karo." }
 });
 
-// ── OTP ke liye alag, thoda tight limiter (email spam se bachne ke liye) ──
 const otpLimiter = rateLimit({
-  windowMs: 10 * 60 * 1000, // 10 minute
-  max: 5,                    // har IP se max 5 OTP requests / 10 min
+  windowMs: 10 * 60 * 1000,
+  max: 5,
   standardHeaders: true,
   legacyHeaders: false,
   message: { message: "Bahut zyada OTP requests ho gaye. Kuch der baad try karo." }
 });
 
 /* =========================
-   AAPKI EXISTING ROUTES
+   EXISTING ROUTES
 ========================= */
 app.use("/api", resumeRoutes);
 app.use("/api/english-speaking", englishSpeakingRoutes);
 
 /* =========================
-   TEST RESULTS ROUTES — INLINE
-   ✅ Login zaroori + sirf apna data access kar sakta hai
+   TEST RESULTS ROUTES
 ========================= */
 app.post("/api/results/save", protect, async (req, res) => {
   try {
-    // ✅ email ko request body se trust nahi karte, logged-in user se lete hain
     const resultData = { ...req.body, email: req.user.email };
     const result = new TestResult(resultData);
     await result.save();
@@ -162,12 +144,9 @@ app.post("/api/results/save", protect, async (req, res) => {
 app.get("/api/results/:email", protect, async (req, res) => {
   try {
     const email = decodeURIComponent(req.params.email);
-
-    // ✅ sirf apna ya admin sabka data dekh sakta hai
     if (req.user.role !== "admin" && req.user.email !== email) {
       return res.status(403).json({ error: "Aap sirf apne results dekh sakte ho" });
     }
-
     const results = await TestResult.find({ email }).sort({ createdAt: -1 });
     res.json(results);
   } catch (err) {
@@ -179,16 +158,10 @@ app.get("/api/results/:email", protect, async (req, res) => {
 app.delete("/api/results/:id", protect, async (req, res) => {
   try {
     const result = await TestResult.findById(req.params.id);
-
-    if (!result) {
-      return res.status(404).json({ error: "Result nahi mila" });
-    }
-
-    // ✅ sirf apna result delete kar sakta hai (ya admin)
+    if (!result) return res.status(404).json({ error: "Result nahi mila" });
     if (req.user.role !== "admin" && req.user.email !== result.email) {
       return res.status(403).json({ error: "Aap sirf apna result delete kar sakte ho" });
     }
-
     await TestResult.findByIdAndDelete(req.params.id);
     res.json({ message: "Result deleted ✅" });
   } catch (err) {
@@ -198,7 +171,7 @@ app.delete("/api/results/:id", protect, async (req, res) => {
 });
 
 /* =========================
-   ADMIN PANEL KI NAYE ROUTES
+   ADMIN PANEL ROUTES
 ========================= */
 app.use("/api/auth",          authRoutes);
 app.use("/api/users",         userRoutes);
@@ -206,7 +179,55 @@ app.use("/api/notifications", notificationRoutes);
 app.use("/api/attendance",    attendanceRoutes);
 app.use("/api/analytics",     analyticsRoutes);
 app.use("/api/track",         trackingRoutes);
-app.use("/api/feedback", require("./routing/feedback"));
+app.use("/api/feedback",      require("./routing/feedback"));
+
+/* =========================
+   NEWS PROXY ROUTE
+   ✅ Frontend se directly third-party API call nahi hogi
+      Server-to-server call hogi — no CORS issues
+========================= */
+app.get("/api/news", async (req, res) => {
+  const { q } = req.query;
+
+  if (!q) return res.status(400).json({ error: "Query parameter zaroori hai" });
+
+  try {
+    // ── Primary: GNews API ──
+    const gNewsRes = await fetch(
+      `https://gnews.io/api/v4/search?q=${encodeURIComponent(q)}&lang=en&max=30&apikey=${process.env.GNEWS_API_KEY}`
+    );
+    const gNewsData = await gNewsRes.json();
+
+    if (gNewsData.articles && Array.isArray(gNewsData.articles) && gNewsData.articles.length > 0) {
+      return res.json({ articles: gNewsData.articles });
+    }
+
+    // ── Fallback: NewsData.io ──
+    const newsDataRes = await fetch(
+      `https://newsdata.io/api/1/news?apikey=${process.env.NEWSDATA_API_KEY}&q=${encodeURIComponent(q)}&language=en`
+    );
+    const newsData = await newsDataRes.json();
+
+    if (Array.isArray(newsData.results) && newsData.results.length > 0) {
+      const articles = newsData.results.map(a => ({
+        title:       a.title,
+        description: a.description,
+        url:         a.link,
+        image:       a.image_url,
+        publishedAt: a.pubDate,
+        source:      { name: a.source_id },
+      }));
+      return res.json({ articles });
+    }
+
+    // ── Dono fail ho gaye ──
+    res.json({ articles: [] });
+
+  } catch (err) {
+    console.error("News proxy error:", err);
+    res.status(500).json({ error: "News fetch nahi ho payi, dobara try karo" });
+  }
+});
 
 app.get('/health', (req, res) => res.send('OK'));
 
@@ -214,13 +235,13 @@ app.get('/health', (req, res) => res.send('OK'));
    ENV DEBUG
 ========================= */
 console.log("GROQ KEY:", process.env.GROQ_API_KEY ? "Loaded ✅" : "Missing ❌");
+console.log("GNEWS KEY:", process.env.GNEWS_API_KEY ? "Loaded ✅" : "Missing ❌");
+console.log("NEWSDATA KEY:", process.env.NEWSDATA_API_KEY ? "Loaded ✅" : "Missing ❌");
 
 /* =========================
    GROQ SETUP
 ========================= */
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY
-});
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 /* =========================
    NODEMAILER SETUP
@@ -235,18 +256,11 @@ const transporter = nodemailer.createTransport({
 
 /* =========================
    EMAIL OTP STORE (in-memory)
-   email -> { otp, expiry }
-
-   ⚠️ NOTE: in-memory store sirf single-server setup ke liye theek hai.
-   Agar kabhi multiple server instances (load balancer) use karoge,
-   ya server restart hota rahega, to OTP store karne ke liye Redis
-   ya DB collection use karna better hoga (process restart pe yeh map khali ho jaata hai).
 ========================= */
 const otpStore = new Map();
 
 /* =========================
-   SEND OTP TO EMAIL
-   ✅ Rate limited + email format validated
+   SEND OTP
 ========================= */
 app.post(
   "/send-otp",
@@ -260,16 +274,13 @@ app.post(
       }
 
       const { email } = req.body;
-
       const existingEmail = await User.findOne({ email });
       if (existingEmail) {
-        // ✅ generic message — yeh batane ki zaroorat nahi ki email exist karta hai
         return res.json({ message: "If eligible, an OTP has been sent." });
       }
 
-      const otp = crypto.randomInt(100000, 999999).toString(); // ✅ crypto-safe random
-      const expiry = Date.now() + 5 * 60 * 1000; // 5 minutes
-
+      const otp = crypto.randomInt(100000, 999999).toString();
+      const expiry = Date.now() + 5 * 60 * 1000;
       otpStore.set(email, { otp, expiry, attempts: 0 });
 
       await transporter.sendMail({
@@ -294,7 +305,6 @@ app.post(
       });
 
       res.json({ message: "OTP sent successfully ✅" });
-
     } catch (err) {
       console.error("Send OTP error:", err);
       res.status(500).json({ error: "OTP send nahi ho paya, dobara try karo" });
@@ -303,8 +313,7 @@ app.post(
 );
 
 /* =========================
-   SIGNUP (with OTP verification)
-   ✅ Rate limited + input validated + OTP brute-force protected
+   SIGNUP
 ========================= */
 app.post(
   "/signup",
@@ -323,24 +332,17 @@ app.post(
       }
 
       const { name, email, password, otp } = req.body;
-
       const stored = otpStore.get(email);
 
-      if (!stored) {
-        return res.status(400).json({ message: "OTP expired or not found. Please resend." });
-      }
-
+      if (!stored) return res.status(400).json({ message: "OTP expired or not found. Please resend." });
       if (Date.now() > stored.expiry) {
         otpStore.delete(email);
         return res.status(400).json({ message: "OTP expired. Please resend." });
       }
-
-      // ✅ OTP brute-force protection: 5 galat attempts ke baad OTP invalidate
       if (stored.attempts >= 5) {
         otpStore.delete(email);
         return res.status(400).json({ message: "Bahut zyada galat attempts. Naya OTP lo." });
       }
-
       if (stored.otp !== otp) {
         stored.attempts += 1;
         return res.status(400).json({ message: "Invalid OTP" });
@@ -364,7 +366,6 @@ app.post(
 
       await newUser.save();
       otpStore.delete(email);
-
       res.json({ message: "User registered successfully ✅" });
     } catch (err) {
       console.error(err);
@@ -381,8 +382,7 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.log("MongoDB Error:", err));
 
 /* =========================
-   FRIDAY AI CHAT API
-   ✅ Rate limited — Groq API costly hai, abuse se bachao
+   FRIDAY AI CHAT
 ========================= */
 const aiLimiter = rateLimit({
   windowMs: 60 * 1000,
@@ -399,36 +399,26 @@ app.post("/ask-ai", aiLimiter, async (req, res) => {
     if (!question || typeof question !== "string" || !question.trim()) {
       return res.status(400).json({ error: "Question is required" });
     }
-
     if (question.length > 2000) {
       return res.status(400).json({ error: "Question bahut lambi hai (max 2000 characters)" });
     }
-
-    console.log("User Question:", question);
 
     const completion = await groq.chat.completions.create({
       model: "llama-3.3-70b-versatile",
       messages: [
         {
           role: "system",
-          content:
-            "You are an expert IT and Computer Science tutor. Answer only programming and computer science related questions."
+          content: "You are an expert IT and Computer Science tutor. Answer only programming and computer science related questions."
         },
-        {
-          role: "user",
-          content: question
-        }
+        { role: "user", content: question }
       ]
     });
 
     const answer = completion.choices[0].message.content;
-    console.log("AI Answer:", answer);
-
     const newChat = new Chat({ question, answer });
     await newChat.save();
 
     res.json({ answer });
-
   } catch (error) {
     console.error("GROQ ERROR:", error);
     res.status(500).json({ error: "AI se jawab nahi mil paya, dobara try karo" });
@@ -436,7 +426,7 @@ app.post("/ask-ai", aiLimiter, async (req, res) => {
 });
 
 /* =========================
-   GET CHAT HISTORY
+   CHAT HISTORY
 ========================= */
 app.get("/chat-history", protect, async (req, res) => {
   try {
@@ -449,11 +439,10 @@ app.get("/chat-history", protect, async (req, res) => {
 });
 
 /* =========================
-   SAVE PROFILE
+   PROFILE ROUTES
 ========================= */
 app.post("/save-profile", protect, async (req, res) => {
   try {
-    // ✅ email ko logged-in user se lo, body se trust mat karo
     const profile = new Profile({ ...req.body, email: req.user.email });
     await profile.save();
     res.json({ message: "Profile Saved Successfully" });
@@ -463,16 +452,11 @@ app.post("/save-profile", protect, async (req, res) => {
   }
 });
 
-/* =========================
-   GET PROFILE
-   ✅ Login zaroori + sirf apni profile (admin sabki dekh sakta hai)
-========================= */
 app.get("/get-profile/:email", protect, async (req, res) => {
   try {
     if (req.user.role !== "admin" && req.user.email !== req.params.email) {
       return res.status(403).json({ error: "Aap sirf apni profile dekh sakte ho" });
     }
-
     const profile = await Profile.findOne({ email: req.params.email });
     res.json(profile);
   } catch (error) {
@@ -481,10 +465,6 @@ app.get("/get-profile/:email", protect, async (req, res) => {
   }
 });
 
-/* =========================
-   UPDATE PROFILE
-   ✅ Login zaroori + sirf apni profile update kar sakta hai
-========================= */
 app.put("/update-profile/:email", protect, async (req, res) => {
   try {
     if (req.user.role !== "admin" && req.user.email !== req.params.email) {
@@ -492,7 +472,6 @@ app.put("/update-profile/:email", protect, async (req, res) => {
     }
 
     let profile = await Profile.findOne({ email: req.params.email });
-
     if (!profile) {
       profile = new Profile({ ...req.body, email: req.params.email });
       await profile.save();
@@ -503,7 +482,6 @@ app.put("/update-profile/:email", protect, async (req, res) => {
         { new: true }
       );
     }
-
     res.json(profile);
   } catch (error) {
     console.error(error);
@@ -513,7 +491,6 @@ app.put("/update-profile/:email", protect, async (req, res) => {
 
 /* =========================
    SIGN IN
-   ✅ Rate limited + plain-text fallback hataya + generic error message
 ========================= */
 app.post("/signin", authLimiter, async (req, res) => {
   try {
@@ -524,41 +501,24 @@ app.post("/signin", authLimiter, async (req, res) => {
     }
 
     const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(401).json({ message: "Email ya password galat hai" });
-    }
+    if (!user) return res.status(401).json({ message: "Email ya password galat hai" });
 
     const isMatch = await bcrypt.compare(password, user.password);
-
-    if (!isMatch) {
-      return res.status(401).json({ message: "Email ya password galat hai" });
-    }
+    if (!isMatch) return res.status(401).json({ message: "Email ya password galat hai" });
 
     if (user.isBlocked) {
-      return res.status(403).json({
-        message: `Account blocked: ${user.blockReason}`
-      });
+      return res.status(403).json({ message: `Account blocked: ${user.blockReason}` });
     }
 
     await User.findByIdAndUpdate(user._id, { lastSeen: new Date() });
 
-    const token = jwt.sign(
-      { id: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "1d" }
-    );
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 
     res.json({
       message: "Login Successful",
       token,
-      user: {
-        id:    user._id,
-        name:  user.name,
-        email: user.email,
-        role:  user.role
-      }
+      user: { id: user._id, name: user.name, email: user.email, role: user.role }
     });
-
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Login fail ho gaya, dobara try karo" });
@@ -574,9 +534,7 @@ app.post("/forgot-password", authLimiter, async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.json({
-        message: "If that email is registered, a reset link has been sent."
-      });
+      return res.json({ message: "If that email is registered, a reset link has been sent." });
     }
 
     const token = crypto.randomBytes(32).toString("hex");
@@ -612,10 +570,7 @@ app.post("/forgot-password", authLimiter, async (req, res) => {
       `,
     });
 
-    res.json({
-      message: "If that email is registered, a reset link has been sent."
-    });
-
+    res.json({ message: "If that email is registered, a reset link has been sent." });
   } catch (error) {
     console.error("Forgot Password Error:", error);
     res.status(500).json({ message: "Server error. Please try again." });
@@ -634,16 +589,10 @@ app.post("/reset-password", authLimiter, async (req, res) => {
     }
 
     const user = await User.findOne({ resetToken: token });
-    if (!user) {
-      return res.status(400).json({
-        message: "Invalid or expired reset link."
-      });
-    }
+    if (!user) return res.status(400).json({ message: "Invalid or expired reset link." });
 
     if (new Date() > new Date(user.resetTokenExpiry)) {
-      return res.status(400).json({
-        message: "Reset link has expired. Please request a new one."
-      });
+      return res.status(400).json({ message: "Reset link has expired. Please request a new one." });
     }
 
     user.password = newPassword;
@@ -652,7 +601,6 @@ app.post("/reset-password", authLimiter, async (req, res) => {
     await user.save();
 
     res.json({ message: "Password reset successful! You can now sign in." });
-
   } catch (error) {
     console.error("Reset Password Error:", error);
     res.status(500).json({ message: "Server error. Please try again." });
@@ -669,39 +617,28 @@ const questions = {
   Programming: programming
 };
 
-/* =========================
-   START TEST
-========================= */
 app.post("/start-test", (req, res) => {
   const { topic, difficulty } = req.body;
-
   if (!questions[topic] || !questions[topic][difficulty]) {
     return res.status(400).json({ message: "Invalid topic or difficulty" });
   }
-
-  const selected = questions[topic][difficulty];
-  res.json(selected);
+  res.json(questions[topic][difficulty]);
 });
 
-/* =========================
-   SUBMIT TEST
-========================= */
 app.post("/submit-test", (req, res) => {
   const { answers, questions: qs } = req.body;
-
-  if (!answers || !qs) {
-    return res.status(400).json({ message: "Invalid data" });
-  }
+  if (!answers || !qs) return res.status(400).json({ message: "Invalid data" });
 
   let correct = 0;
   qs.forEach((q, index) => {
     if (answers[index] === q.answer) correct++;
   });
 
-  let wrong = qs.length - correct;
-  let percentage = ((correct / qs.length) * 100).toFixed(2);
-
-  res.json({ correct, wrong, percentage });
+  res.json({
+    correct,
+    wrong: qs.length - correct,
+    percentage: ((correct / qs.length) * 100).toFixed(2)
+  });
 });
 
 /* =========================

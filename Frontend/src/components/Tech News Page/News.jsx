@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import styles from "./News.module.css";
 import useFeatureTrack from '../../utils/useFeatureTrack';
 import Friday from "../Friday A.I/Friday";
-import axios from "../../axios.js";    
+import axios from "../../axios.js";
 
 const CATEGORIES = [
-  { label: "All Tech",   q: "technology",        emoji: "⚡" },
+  { label: "All Tech",   q: "technology",              emoji: "⚡" },
   { label: "AI",         q: "artificial intelligence", emoji: "🤖" },
-  { label: "Startups",   q: "startup funding",   emoji: "🚀" },
-  { label: "Cybersec",   q: "cybersecurity",     emoji: "🔐" },
-  { label: "Dev",        q: "software developer",emoji: "💻" },
-  { label: "Jobs",       q: "tech jobs hiring",  emoji: "💼" },
+  { label: "Startups",   q: "startup funding",         emoji: "🚀" },
+  { label: "Cybersec",   q: "cybersecurity",           emoji: "🔐" },
+  { label: "Dev",        q: "software developer",      emoji: "💻" },
+  { label: "Jobs",       q: "tech jobs hiring",        emoji: "💼" },
 ];
 
 const readTime = (text) => {
@@ -30,44 +30,27 @@ const timeAgo = (dateStr) => {
 
 const News = () => {
   useFeatureTrack('it-news');
-  const [newsData, setNewsData]     = useState([]);
+  const [newsData, setNewsData]         = useState([]);
   const [visibleCount, setVisibleCount] = useState(9);
   const [activeCategory, setActiveCategory] = useState(0);
-  const [loading, setLoading]       = useState(true);
-  const [error, setError]           = useState(false);
+  const [loading, setLoading]           = useState(true);
+  const [error, setError]               = useState(false);
 
   const fetchNews = async (query) => {
     setLoading(true);
     setError(false);
     setVisibleCount(9);
     try {
-      // GNews API — 100 free req/day, no CORS issues
-      const res = await fetch(
-        `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=30&apikey=b090cf2d7dfe4602473eac1eb4918179`
-      );
-      const data = await res.json();
+      // ✅ Ab directly gnews.io call nahi hogi
+      // Frontend → Tera Backend → GNews/NewsData
+      // No CORS issues — local aur production dono pe kaam karega
+      const res = await axios.get(`/api/news?q=${encodeURIComponent(query)}`);
 
-      if (data.articles && Array.isArray(data.articles)) {
-        setNewsData(data.articles);
+      if (res.data.articles && res.data.articles.length > 0) {
+        setNewsData(res.data.articles);
       } else {
-        // Fallback: NewsData.io (existing key)
-        const res2 = await fetch(
-          `https://newsdata.io/api/1/news?apikey=pub_2606e08bafc249ca83b78136a93a0155&q=${encodeURIComponent(query)}&language=en`
-        );
-        const data2 = await res2.json();
-        if (Array.isArray(data2.results)) {
-          setNewsData(data2.results.map(a => ({
-            title:       a.title,
-            description: a.description,
-            url:         a.link,
-            image:       a.image_url,
-            publishedAt: a.pubDate,
-            source:      { name: a.source_id },
-          })));
-        } else {
-          setNewsData([]);
-          setError(true);
-        }
+        setNewsData([]);
+        setError(true);
       }
     } catch (err) {
       console.error("News fetch error:", err);
@@ -119,7 +102,10 @@ const News = () => {
       ) : error ? (
         <div className={styles.errorBox}>
           <p>⚠️ Could not load news. Check your connection and try again.</p>
-          <button className={styles.retryBtn} onClick={() => fetchNews(CATEGORIES[activeCategory].q)}>
+          <button
+            className={styles.retryBtn}
+            onClick={() => fetchNews(CATEGORIES[activeCategory].q)}
+          >
             Retry
           </button>
         </div>
@@ -134,7 +120,6 @@ const News = () => {
                 rel="noopener noreferrer"
                 className={`${styles.card} ${i === 0 ? styles.cardFeatured : ""}`}
               >
-                {/* Image */}
                 {article.image && (
                   <div className={styles.cardImg}>
                     <img src={article.image} alt={article.title} loading="lazy" />
@@ -143,7 +128,6 @@ const News = () => {
                 )}
 
                 <div className={styles.cardBody}>
-                  {/* Meta */}
                   <div className={styles.cardMeta}>
                     <span className={styles.source}>
                       {article.source?.name || "News"}
@@ -154,15 +138,12 @@ const News = () => {
                     <span className={styles.readTime}>⏱ {readTime(article.description)}</span>
                   </div>
 
-                  {/* Title */}
                   <h3 className={styles.cardTitle}>{article.title}</h3>
 
-                  {/* Description */}
                   {article.description && (
                     <p className={styles.cardDesc}>{article.description}</p>
                   )}
 
-                  {/* CTA */}
                   <div className={styles.cardFooter}>
                     <span className={styles.readMore}>Read article →</span>
                   </div>
