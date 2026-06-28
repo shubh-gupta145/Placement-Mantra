@@ -1,13 +1,59 @@
-/* ================= SKILLS CONTAINER ================= */
+/* ================= TOGGLE HEADER =================
+   Desktop pe hidden, mobile pe dikhega
+*/
+
+.ToggleHeader{
+  display:none;
+  width:100%;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:10px 16px;
+  margin-bottom:10px;
+
+  background: linear-gradient(135deg, #6a5cff, #ff4ecd);
+  color:#ffffff;
+
+  border:none;
+  border-radius:14px;
+
+  font-size:14px;
+  font-weight:600;
+
+  cursor:pointer;
+  box-sizing:border-box;
+  flex-shrink:0;
+}
+
+.Arrow{
+  display:inline-block;
+  font-size:16px;
+  transition: transform 0.25s ease;
+}
+
+.ArrowOpen{
+  transform: rotate(180deg);
+}
+
+
+/* ================= SKILLS CONTAINER (outer wrapper) ================= */
 
 .SkillsContainer{
   width:95%;
-  min-height:95%;
+  min-height:99%;
+  box-sizing:border-box;
+}
 
-  display:grid;
-  grid-template-columns: repeat(2, 1fr); /* Desktop 2 per row */
+
+/* ================= SKILL GRID (actual buttons grid) ================= */
+
+.SkillGrid{
+display :Flex;
+flex-direction: column;
+justify-content:space-evenly; 
+align-items:center;
   gap:20px;
-
+   
   padding:15px;
   box-sizing:border-box;
   border-radius:10px;
@@ -42,28 +88,72 @@
 }
 
 
+/* ================= EDGE HANDLE & OVERLAY — desktop pe hidden ================= */
+
+.EdgeHandle{
+  display:none;
+}
+
+.Overlay{
+  display:none;
+}
+
+
 /* ================= TABLET ================= */
 
 @media (max-width:1024px){
 
-  .SkillsContainer{
+  .SkillGrid{
     grid-template-columns: repeat(2,1fr); /* still 2 */
     gap:18px;
   }
 
   .Skill{
-    font-size:13px;
+    font-size:18px;
     padding:8px 14px;
   }
 
 }
 
 
-/* ================= MOBILE ================= */
+/* ================= MOBILE — SLIDE IN/OUT SIDEBAR ================= */
 
 @media (max-width:600px){
 
+  .ToggleHeader{
+    display:flex;
+  }
+
+  /* Outer container ab fixed sidebar ban jata hai */
   .SkillsContainer{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    z-index:250;
+
+    width:80vw;
+    max-width:300px;
+    height:100vh;
+
+    background:#fff;
+    box-shadow:4px 0 18px rgba(0,0,0,0.25);
+
+    padding:12px 0 12px 12px;
+    overflow-y:auto;
+
+    transition: transform 0.28s ease;
+  }
+
+  .SkillsOpen{
+    transform: translateX(0);
+  }
+
+  .SkillsClosed{
+    transform: translateX(-100%);
+  }
+
+  .SkillGrid{
     grid-template-columns:1fr; /* 🔥 1 per row */
     width:100%;
     gap:12px;
@@ -73,6 +163,48 @@
   .Skill{
     font-size:12px;
     padding:8px 12px;
+  }
+
+  /* Edge handle — closed state mein left edge pe chhota tab */
+  .EdgeHandle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:fixed;
+    top:50%;
+    left:0;
+    transform: translateY(-50%);
+
+    width:26px;
+    height:56px;
+
+    background: linear-gradient(135deg, #6a5cff, #ff4ecd);
+    color:#ffffff;
+    border:none;
+    border-radius:0 10px 10px 0;
+    font-size:1rem;
+
+    z-index:249;
+    box-shadow:2px 0 8px rgba(0,0,0,0.3);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .EdgeHandleHidden{
+    opacity:0;
+    pointer-events:none;
+    transform: translateY(-50%) translateX(-10px);
+  }
+
+  /* Overlay — sidebar khule waqt background dim, tap-to-close */
+  .Overlay{
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.45);
+    z-index:240;
   }
 
 }

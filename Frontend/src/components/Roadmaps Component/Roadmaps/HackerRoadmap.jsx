@@ -137,9 +137,9 @@ function HackerRoadmap(){
                 <h2 className={styles.heading}>Also Try This</h2>
             </div>
             <div className={styles.ResourcesContainer}>
-                <span className={styles.Span}><Link className={styles.Links} to="/FreeCoursePlaylist">Our Resources</Link></span>
-                <span className={styles.Span}><Link className={styles.Links} to="/FreeCoursePlaylist">Test Your Skill</Link></span>
-                <span className={styles.Span}><Link className={styles.Links} to="/FreeCoursePlaylist">Mock InterView</Link></span> 
+<span className={styles.Span}><Link className={styles.Links} to="/FreeCoursePlaylist">Our Resources</Link></span>
+<span className={styles.Span}><Link className={styles.Links} to="/TestInterFace">Test Your Skill</Link></span>
+<span className={styles.Span}><Link className={styles.Links}to="/MockInterFace">Mock InterView</Link></span> 
             </div>
         </div>
 

@@ -47,6 +47,7 @@ function SignIn() {
 
         // ✅ Step 2: Extra keys (admin panel + attendance ke liye)
         localStorage.setItem("email", loginData.email);
+        localStorage.setItem("userEmail", loginData.email); // ← added
         if (data.token) localStorage.setItem("pm_admin_token", data.token);
         if (data.user)  localStorage.setItem("pm_admin_user", JSON.stringify(data.user));
 
@@ -127,10 +128,14 @@ function SignIn() {
         />
 
         <p>
-          <Link to="/forgot-password">Forgot Password?</Link>
+          {/* <Link to="/forgot-password">Forgot Password?</Link> */}
         </p>
 
         <button type="submit">Sign In</button>
+
+        <p style={{ textAlign: "center", marginTop: "10px" }}>
+          Don't have an account? <Link to="/signup">Sign Up</Link>
+        </p>
       </form>
     </div>
   );

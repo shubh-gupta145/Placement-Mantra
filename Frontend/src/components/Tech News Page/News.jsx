@@ -1,101 +1,191 @@
 import React, { useState, useEffect } from "react";
 import styles from "./News.module.css";
 import useFeatureTrack from '../../utils/useFeatureTrack';
+import Friday from "../Friday A.I/Friday";
+
+const CATEGORIES = [
+  { label: "All Tech",   q: "technology",        emoji: "⚡" },
+  { label: "AI",         q: "artificial intelligence", emoji: "🤖" },
+  { label: "Startups",   q: "startup funding",   emoji: "🚀" },
+  { label: "Cybersec",   q: "cybersecurity",     emoji: "🔐" },
+  { label: "Dev",        q: "software developer",emoji: "💻" },
+  { label: "Jobs",       q: "tech jobs hiring",  emoji: "💼" },
+];
+
+const readTime = (text) => {
+  if (!text) return "2 min";
+  const words = text.split(" ").length;
+  return Math.max(1, Math.ceil(words / 200)) + " min";
+};
+
+const timeAgo = (dateStr) => {
+  if (!dateStr) return "";
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const h = Math.floor(diff / 3_600_000);
+  if (h < 1) return "Just now";
+  if (h < 24) return `${h}h ago`;
+  return `${Math.floor(h / 24)}d ago`;
+};
+
 const News = () => {
-useFeatureTrack('it-news');
-const [newsData,setNewsData] = useState([]);
-const [visibleCount,setVisibleCount] = useState(6);
+  useFeatureTrack('it-news');
+  const [newsData, setNewsData]     = useState([]);
+  const [visibleCount, setVisibleCount] = useState(9);
+  const [activeCategory, setActiveCategory] = useState(0);
+  const [loading, setLoading]       = useState(true);
+  const [error, setError]           = useState(false);
 
-const fetchNews = async ()=>{
+  const fetchNews = async (query) => {
+    setLoading(true);
+    setError(false);
+    setVisibleCount(9);
+    try {
+      // GNews API — 100 free req/day, no CORS issues
+      const res = await fetch(
+        `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=30&apikey=b090cf2d7dfe4602473eac1eb4918179`
+      );
+      const data = await res.json();
 
-try{
+      if (data.articles && Array.isArray(data.articles)) {
+        setNewsData(data.articles);
+      } else {
+        // Fallback: NewsData.io (existing key)
+        const res2 = await fetch(
+          `https://newsdata.io/api/1/news?apikey=pub_2606e08bafc249ca83b78136a93a0155&q=${encodeURIComponent(query)}&language=en`
+        );
+        const data2 = await res2.json();
+        if (Array.isArray(data2.results)) {
+          setNewsData(data2.results.map(a => ({
+            title:       a.title,
+            description: a.description,
+            url:         a.link,
+            image:       a.image_url,
+            publishedAt: a.pubDate,
+            source:      { name: a.source_id },
+          })));
+        } else {
+          setNewsData([]);
+          setError(true);
+        }
+      }
+    } catch (err) {
+      console.error("News fetch error:", err);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-const res = await fetch(
-"https://newsdata.io/api/1/news?apikey=pub_2606e08bafc249ca83b78136a93a0155&q=technology&language=en"
-);
+  useEffect(() => {
+    fetchNews(CATEGORIES[activeCategory].q);
+  }, [activeCategory]);
 
-const data = await res.json();
+  return (
+    <div className={styles.container}>
 
-if(Array.isArray(data.results)){
-setNewsData(data.results);
-}else{
-setNewsData([]);
-}
+      {/* ── HERO ── */}
+      <div className={styles.hero}>
+        <span className={styles.heroBadge}>LIVE FEED</span>
+        <h1 className={styles.heroTitle}>Tech<span>Pulse</span></h1>
+        <p className={styles.heroSub}>Stay ahead — curated tech news, AI breakthroughs & career intel</p>
+      </div>
 
-}catch(err){
-console.log("API Error:",err);
-}
+      {/* ── CATEGORY TABS ── */}
+      <div className={styles.tabs}>
+        {CATEGORIES.map((cat, i) => (
+          <button
+            key={i}
+            className={`${styles.tab} ${activeCategory === i ? styles.tabActive : ""}`}
+            onClick={() => setActiveCategory(i)}
+          >
+            <span>{cat.emoji}</span> {cat.label}
+          </button>
+        ))}
+      </div>
 
-};
+      {/* ── GRID ── */}
+      {loading ? (
+        <div className={styles.loadingGrid}>
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className={styles.skeleton}>
+              <div className={styles.skelImg} />
+              <div className={styles.skelLine} style={{ width: "80%" }} />
+              <div className={styles.skelLine} style={{ width: "60%" }} />
+              <div className={styles.skelLine} style={{ width: "40%" }} />
+            </div>
+          ))}
+        </div>
+      ) : error ? (
+        <div className={styles.errorBox}>
+          <p>⚠️ Could not load news. Check your connection and try again.</p>
+          <button className={styles.retryBtn} onClick={() => fetchNews(CATEGORIES[activeCategory].q)}>
+            Retry
+          </button>
+        </div>
+      ) : (
+        <>
+          <div className={styles.grid}>
+            {newsData.slice(0, visibleCount).map((article, i) => (
+              <a
+                key={i}
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${styles.card} ${i === 0 ? styles.cardFeatured : ""}`}
+              >
+                {/* Image */}
+                {article.image && (
+                  <div className={styles.cardImg}>
+                    <img src={article.image} alt={article.title} loading="lazy" />
+                    <div className={styles.cardImgOverlay} />
+                  </div>
+                )}
 
-useEffect(()=>{
-fetchNews();
-},[]);
+                <div className={styles.cardBody}>
+                  {/* Meta */}
+                  <div className={styles.cardMeta}>
+                    <span className={styles.source}>
+                      {article.source?.name || "News"}
+                    </span>
+                    <span className={styles.dot}>·</span>
+                    <span className={styles.time}>{timeAgo(article.publishedAt)}</span>
+                    <span className={styles.dot}>·</span>
+                    <span className={styles.readTime}>⏱ {readTime(article.description)}</span>
+                  </div>
 
-const handleViewMore = ()=>{
-setVisibleCount((prev)=>prev + 3);
-};
+                  {/* Title */}
+                  <h3 className={styles.cardTitle}>{article.title}</h3>
 
-return(
+                  {/* Description */}
+                  {article.description && (
+                    <p className={styles.cardDesc}>{article.description}</p>
+                  )}
 
-<div className={styles.container}>
+                  {/* CTA */}
+                  <div className={styles.cardFooter}>
+                    <span className={styles.readMore}>Read article →</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
 
-<h1 className={styles.title}>🚀 Tech News Portal</h1>
+          {visibleCount < newsData.length && (
+            <div className={styles.viewMoreWrap}>
+              <button
+                className={styles.viewMoreBtn}
+                onClick={() => setVisibleCount(v => v + 6)}
+              >
+                Load more stories
+              </button>
+            </div>
+          )}
+        </>
+      )}
 
-<div className={styles.newsContainer}>
-
-{newsData.length === 0 ? (
-
-<p>Loading news...</p>
-
-) : (
-
-newsData.slice(0,visibleCount).map((news,index)=>(
-<div key={index} className={styles.card}>
-
-<h3>{news.title}</h3>
-
-<p>{news.description}</p>
-
-<a
-href={news.link}
-target="_blank"
-rel="noopener noreferrer"
-className={styles.detailBtn}
->
-View Details
-</a>
-
-</div>
-))
-
-)}
-
-</div>
-
-{/* VIEW MORE BUTTON */}
-
-{visibleCount < newsData.length && (
-
-<div className={styles.viewMoreContainer}>
-
-<button
-onClick={handleViewMore}
-className={styles.viewMoreBtn}
->
-
-View More
-
-</button>
-
-</div>
-
-)}
-
-</div>
-
-);
-
+      <Friday />
+    </div>
+  );
 };
 
 export default News;

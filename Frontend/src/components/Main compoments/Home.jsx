@@ -8,11 +8,6 @@ import placementFAQ from "../../data/PlacementPageQues";
 import EnglishSpeaking from "../English Speaking page/EnglishSpeaking";
 import Feedbackpopup from '../HomePagecomponent/Feedbackpopup';
 function Home(){ 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/api/test")
-  //     .then(res => res.json())
-  //     .then(data => console.log(data));
-  // }, []);
     return (
 <>
 <div className={styles.container}>

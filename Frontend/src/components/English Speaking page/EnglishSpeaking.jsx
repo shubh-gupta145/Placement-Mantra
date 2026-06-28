@@ -2,6 +2,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "./EnglishSpeaking.module.css";
 import axios from "axios";
 import useFeatureTrack from '../../utils/useFeatureTrack';
+import Friday from "../Friday A.I/Friday";
+
 // ── Question Bank ──────────────────────────────────────────────────────────────
 const QUESTIONS = {
   hr: [
@@ -143,30 +145,31 @@ function localScore(text) {
 // ── Main Component ─────────────────────────────────────────────────────────────
 function EnglishSpeaking() {
   useFeatureTrack('english-lab');
+
   // Setup
-  const [view, setView]           = useState("setup");
-  const [category, setCategory]   = useState("hr");
-  const [totalQ, setTotalQ]       = useState(10);
+  const [view, setView]             = useState("setup");
+  const [category, setCategory]     = useState("hr");
+  const [totalQ, setTotalQ]         = useState(10);
   const [timerInput, setTimerInput] = useState("60");
   const [timerError, setTimerError] = useState("");
 
   // Session
-  const [questions, setQuestions] = useState([]);
-  const [currentQ, setCurrentQ]   = useState(0);
-  const [transcript, setTranscript] = useState("");
-  const [recording, setRecording]   = useState(false);
-  const [timeLeft, setTimeLeft]     = useState(60);
-  const [timePerQ, setTimePerQ]     = useState(60);
-  const [analyzing, setAnalyzing]   = useState(false);
-  const [result, setResult]         = useState(null);
-  const [scores, setScores]         = useState([]);
+  const [questions, setQuestions]     = useState([]);
+  const [currentQ, setCurrentQ]       = useState(0);
+  const [transcript, setTranscript]   = useState("");
+  const [recording, setRecording]     = useState(false);
+  const [timeLeft, setTimeLeft]       = useState(60);
+  const [timePerQ, setTimePerQ]       = useState(60);
+  const [analyzing, setAnalyzing]     = useState(false);
+  const [result, setResult]           = useState(null);
+  const [scores, setScores]           = useState([]);
 
   // Done
   const [sessionData, setSessionData] = useState(null);
 
-  const recognitionRef  = useRef(null);
-  const timerRef        = useRef(null);
-  const transcriptRef   = useRef("");
+  const recognitionRef   = useRef(null);
+  const timerRef         = useRef(null);
+  const transcriptRef    = useRef("");
   const prevRecordingRef = useRef(false);
 
   useEffect(() => { transcriptRef.current = transcript; }, [transcript]);
@@ -254,6 +257,28 @@ function EnglishSpeaking() {
     }
   };
 
+  // ── AUTO SAVE helper ──────────────────────────────────────────────────────
+  const saveEnglishResult = async (avg, allScores) => {
+    const email = localStorage.getItem("email") || localStorage.getItem("userEmail");
+    if (!email) return;
+    try {
+      await fetch("http://localhost:5000/api/results/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          featureType: "english-lab",
+          category,
+          totalQ,
+          avgScore: avg,
+          scores: allScores,
+        }),
+      });
+    } catch (err) {
+      console.error("English result save error:", err);
+    }
+  };
+
   // Start session
   const handleStartSession = () => {
     const val = parseInt(timerInput, 10);
@@ -282,8 +307,12 @@ function EnglishSpeaking() {
       const avg = allScores.length
         ? Math.round(allScores.reduce((a, b) => a + b, 0) / allScores.length)
         : 0;
-      setSessionData({ avg, scores: allScores });
+      const sessionResult = { avg, scores: allScores };
+      setSessionData(sessionResult);
       setView("done");
+
+      // ── AUTO SAVE ──
+      saveEnglishResult(avg, allScores);
       return;
     }
     setCurrentQ(next);
@@ -303,10 +332,10 @@ function EnglishSpeaking() {
     setScores((prev) => [...prev, 0]);
   };
 
-  const avgScore   = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : null;
+  const avgScore      = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : null;
   const circumference = 213.6;
-  const timerPct   = timePerQ > 0 ? timeLeft / timePerQ : 0;
-  const strokeColor = timeLeft <= 10 ? "#dc2626" : timeLeft <= 20 ? "#d97706" : "#2563eb";
+  const timerPct      = timePerQ > 0 ? timeLeft / timePerQ : 0;
+  const strokeColor   = timeLeft <= 10 ? "#dc2626" : timeLeft <= 20 ? "#d97706" : "#2563eb";
 
   // ── RENDER ─────────────────────────────────────────────────────────────────
   return (
@@ -562,7 +591,9 @@ function EnglishSpeaking() {
           </div>
         </div>
       )}
+      <Friday/>
     </div>
   );
 }
+
 export default EnglishSpeaking;

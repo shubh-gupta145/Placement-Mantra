@@ -7,6 +7,7 @@ import MockFAQ from "../../data/MocksQues";
 import useFeatureTrack from '../../utils/useFeatureTrack';
 import Footer from "../HomePagecomponent/Footar";
 import FeedbackPopup from "../HomePagecomponent/Feedbackpopup";
+import Friday from "../Friday A.I/Friday";
 function MockInterFace(){
      useFeatureTrack('mock-interview'); 
     return(
@@ -18,7 +19,7 @@ function MockInterFace(){
   <MockEntry/>
 <FAQSection data={MockFAQ}/>
 <Footer/>
-
+<Friday/>
 </div>
 </>
     );

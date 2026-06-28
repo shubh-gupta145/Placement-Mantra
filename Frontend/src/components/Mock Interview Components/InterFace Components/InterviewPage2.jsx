@@ -24,25 +24,28 @@ function InterviewPage2() {
 
   const initialTime = parseInt(timing) * 60;
 
-  const [interviewState, setInterviewState] = useState("stopped");
-  const [timeLeft, setTimeLeft] = useState(initialTime);
-  const [questions, setQuestions] = useState([]);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [questionText, setQuestionText] = useState("");
-  const [isHRSpeaking, setIsHRSpeaking] = useState(false);
+  const [interviewState, setInterviewState]       = useState("stopped");
+  const [timeLeft, setTimeLeft]                   = useState(initialTime);
+  const [questions, setQuestions]                 = useState([]);
+  const [currentQuestion, setCurrentQuestion]     = useState(0);
+  const [questionText, setQuestionText]           = useState("");
+  const [isHRSpeaking, setIsHRSpeaking]           = useState(false);
   const [isLoadingQuestions, setIsLoadingQuestions] = useState(false);
-  const [loadingMessage, setLoadingMessage] = useState("");
-  const [resumeLoaded, setResumeLoaded] = useState(false);
+  const [loadingMessage, setLoadingMessage]       = useState("");
+  const [resumeLoaded, setResumeLoaded]           = useState(false);
 
-  const qaLogRef = useRef([]);
-  const videoRef = useRef(null);
-  const silenceTimerRef = useRef(null);
-  const hasEndedRef = useRef(false);
+  const qaLogRef              = useRef([]);
+  const videoRef              = useRef(null);
+  const silenceTimerRef       = useRef(null);
+  const hasEndedRef           = useRef(false);
   const currentQuestionIdxRef = useRef(0);
-  const questionsRef = useRef([]);
+  const questionsRef          = useRef([]);
+  const interviewStateRef     = useRef("stopped");
+  const isHRSpeakingRef       = useRef(false);
+  const resumeLoadedRef       = useRef(false);
 
-  const interviewStateRef = useRef("stopped");
-  const isHRSpeakingRef = useRef(false);
+  // Keep resumeLoadedRef in sync
+  useEffect(() => { resumeLoadedRef.current = resumeLoaded; }, [resumeLoaded]);
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
@@ -57,10 +60,9 @@ function InterviewPage2() {
     return "#f87171";
   };
 
-  // ── Questions generate karo — resume hai toh Gemini se, warna default ──
+  // ── Questions generate karo ───────────────────────────────────────────────
   useEffect(() => {
     const setupQuestions = async () => {
-      // Resume-based questions sirf 15 aur 30 min ke liye
       const resumeTimings = [15, 30];
       const timingNum = parseInt(timing);
 
@@ -69,14 +71,12 @@ function InterviewPage2() {
         setLoadingMessage("📄 Resume parse ho raha hai...");
 
         try {
-          // Step 1: PDF se text extract karo
           const resumeText = await extractTextFromPDF(resumeFile);
 
           if (resumeText && resumeText.length > 100) {
             setLoadingMessage("🤖 AI aapke resume ke basis pe questions bana raha hai...");
             setResumeLoaded(true);
 
-            // Step 2: Gemini se questions generate karo
             const aiQuestions = await generateQuestionsFromResume(resumeText, role, timingNum);
 
             if (aiQuestions && aiQuestions.length > 0) {
@@ -84,15 +84,12 @@ function InterviewPage2() {
               questionsRef.current = aiQuestions;
               setLoadingMessage(`✅ ${aiQuestions.length} personalized questions ready!`);
             } else {
-              // Gemini fail ho gaya — default questions use karo
-              console.warn("Gemini failed, using default questions");
               const fallback = generateInterviewQuestions(role, timing);
               setQuestions(fallback);
               questionsRef.current = fallback;
               setLoadingMessage("✅ Questions ready! (Default mode)");
             }
           } else {
-            // Resume parse nahi hua — default
             const fallback = generateInterviewQuestions(role, timing);
             setQuestions(fallback);
             questionsRef.current = fallback;
@@ -106,14 +103,12 @@ function InterviewPage2() {
           setLoadingMessage("✅ Questions ready!");
         }
 
-        // Loading message 2 second baad clear karo
         setTimeout(() => {
           setIsLoadingQuestions(false);
           setLoadingMessage("");
         }, 2000);
 
       } else {
-        // No resume ya short timing — default algorithm
         const q = generateInterviewQuestions(role, timing);
         setQuestions(q);
         questionsRef.current = q;
@@ -124,9 +119,7 @@ function InterviewPage2() {
   }, [role, timing, resumeFile]);
 
   // Sync state into refs
-  useEffect(() => {
-    interviewStateRef.current = interviewState;
-  }, [interviewState]);
+  useEffect(() => { interviewStateRef.current = interviewState; }, [interviewState]);
 
   useEffect(() => {
     isHRSpeakingRef.current = isHRSpeaking;
@@ -139,10 +132,7 @@ function InterviewPage2() {
   // Timer countdown
   useEffect(() => {
     if (interviewState !== "running") return;
-    if (timeLeft <= 0) {
-      endInterview("timeout");
-      return;
-    }
+    if (timeLeft <= 0) { endInterview("timeout"); return; }
     const id = setInterval(() => setTimeLeft((p) => p - 1), 1000);
     return () => clearInterval(id);
   }, [interviewState, timeLeft]);
@@ -246,7 +236,30 @@ function InterviewPage2() {
 
   const handleStop = () => endInterview("stopped");
 
-  const endInterview = (reason) => {
+  // ── AUTO SAVE helper ──────────────────────────────────────────────────────
+  const saveInterviewResult = async (reason) => {
+    const email = localStorage.getItem("email") || localStorage.getItem("userEmail");
+    if (!email || qaLogRef.current.length === 0) return;
+    try {
+      await fetch("http://localhost:5000/api/results/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          featureType:  "mock-interview",
+          role,
+          timing:       parseInt(timing),
+          reason,
+          qaLog:        qaLogRef.current,
+          resumeBased:  resumeLoadedRef.current,
+        }),
+      });
+    } catch (err) {
+      console.error("Interview result save error:", err);
+    }
+  };
+
+  const endInterview = async (reason) => {
     if (hasEndedRef.current) return;
     hasEndedRef.current = true;
 
@@ -259,15 +272,18 @@ function InterviewPage2() {
     setInterviewState("stopped");
     interviewStateRef.current = "stopped";
 
+    // ── AUTO SAVE ──
+    await saveInterviewResult(reason);
+
     setTimeout(() => {
       navigate("/InterviewResult", {
         state: {
-          qaLog: qaLogRef.current,
+          qaLog:       qaLogRef.current,
           role,
           timing,
           userName,
           reason,
-          resumeBased: resumeLoaded,
+          resumeBased: resumeLoadedRef.current,
         },
       });
     }, 400);
@@ -299,7 +315,6 @@ function InterviewPage2() {
             </div>
           )}
 
-          {/* Resume badge */}
           {resumeLoaded && (
             <div className={styles.resumeBadge}>
               📄 Resume-Based Interview
@@ -319,7 +334,10 @@ function InterviewPage2() {
             <div
               className={styles.Mic}
               onClick={handleStart}
-              style={{ opacity: isLoadingQuestions ? 0.5 : 1, cursor: isLoadingQuestions ? "not-allowed" : "pointer" }}
+              style={{
+                opacity: isLoadingQuestions ? 0.5 : 1,
+                cursor: isLoadingQuestions ? "not-allowed" : "pointer"
+              }}
             >
               <Mic isActive={interviewState === "running"} />
             </div>
@@ -338,7 +356,6 @@ function InterviewPage2() {
             </div>
           </div>
 
-          {/* Loading / hint message */}
           {isLoadingQuestions ? (
             <p className={styles.startHint} style={{ color: "#60a5fa" }}>
               {loadingMessage || "⏳ Questions prepare ho rahe hain..."}

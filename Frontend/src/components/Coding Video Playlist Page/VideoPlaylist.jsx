@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./VideoPlaylist.module.css";
 import videoData from "./videoData";
 import useFeatureTrack from '../../utils/useFeatureTrack';
+import Friday from "../Friday A.I/Friday";
 function VideoPlaylist() {
  useFeatureTrack('free-resources');
   const topics = Object.keys(videoData);
@@ -66,7 +67,7 @@ function VideoPlaylist() {
 )}
 
       </div>
-
+<Friday/>
     </div>
   );
 }

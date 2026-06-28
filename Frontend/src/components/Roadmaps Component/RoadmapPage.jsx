@@ -14,6 +14,7 @@ import UIDesignerRoadmap from "./Roadmaps/UIDesignerRoadmap";
 import PythonDeveloperRoadmap from "./Roadmaps/PythonDeveloperRoadmap";
 import JavaDeveloperRoadmap from "./Roadmaps/JavaDeveloperRoadmap";
 import useFeatureTrack from '../../utils/useFeatureTrack';
+import Friday from "../Friday A.I/Friday";
 
 function RoadmapPage() {
 
@@ -48,7 +49,7 @@ function RoadmapPage() {
         <div className={styles.replyContainer}>
           {roadmapComponents[selectedSkill]}
         </div>
-
+<Friday/>
       </div>
     </>
   );

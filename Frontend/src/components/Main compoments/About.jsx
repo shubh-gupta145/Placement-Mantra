@@ -1,3 +1,4 @@
+import Friday from "../Friday A.I/Friday";
 import Footer from "../HomePagecomponent/Footar";
 import styles from "./About.module.css";
 import { Link } from "react-router-dom";
@@ -60,6 +61,7 @@ Our mission is to make students job-ready by strengthening their technical skill
 
       {/* FOOTER */}
 <Footer/>
+<Friday/>
     </div>
   );
 }
