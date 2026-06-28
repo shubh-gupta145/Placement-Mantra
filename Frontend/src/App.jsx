@@ -42,8 +42,6 @@ function App() {
     <>
       <NavBar />
       <Routes>
-{/* Admin login page — ab seedha /signin se hoga */}
-{/* Agar koi /admin/login pe jaye toh /signin pe bhejo */}
 <Route path="/admin/login" element={<Navigate to="/signin" replace />} />
 
 <Route path="/admin" element={
