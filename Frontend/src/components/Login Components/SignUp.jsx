@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./Auth.module.css";
 import { useNavigate, Link } from "react-router-dom";
+import axios from "../../axios.js"; 
 
 /* ══════════════════════════════
    STEP 1 — Form

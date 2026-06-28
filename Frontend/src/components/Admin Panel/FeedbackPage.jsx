@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis } from 'recharts';
 import adminApi from '../../utils/adminApi';
 import s from './AdminPanel.module.css';
+import axios from "../../axios.js";    
 
 const SENT_COLOR  = { positive: '#10b981', neutral: '#fbbf24', negative: '#ef4444' };
 const SENT_BG     = { positive: 'var(--greenDim)', neutral: 'rgba(251,191,36,.12)', negative: 'var(--redDim)' };

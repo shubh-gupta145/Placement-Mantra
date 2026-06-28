@@ -6,6 +6,7 @@ import Footar from "../HomePagecomponent/Footar";
 import HeroCarousel from "./Carsoul";
 import { useNavigate } from "react-router-dom";
 import useFeatureTrack from '../../utils/useFeatureTrack';
+import axios from "../../axios.js";  
 
 function InterFace() {
   useFeatureTrack('test-page');

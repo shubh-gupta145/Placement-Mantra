@@ -4,6 +4,8 @@ import CGPAFAQ from "../../data/CGPAQues";
 import useFeatureTrack from '../../utils/useFeatureTrack';
 import Footer from "../HomePagecomponent/Footar";
 import Friday from "../Friday A.I/Friday";
+import axios from "../../axios.js";   
+
 function CGPA(){
     useFeatureTrack('cgpa-page');
 return(

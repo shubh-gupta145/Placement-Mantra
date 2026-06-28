@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./MockEntry.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Login Components/useAuth";
+import axios from "../../../axios.js"; 
 
 function MockEntry() {
   const navigate = useNavigate();

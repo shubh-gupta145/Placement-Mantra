@@ -2,6 +2,8 @@ import Friday from "../Friday A.I/Friday";
 import Footer from "../HomePagecomponent/Footar";
 import styles from "./About.module.css";
 import { Link } from "react-router-dom";
+import axios from "../../axios.js"; 
+
 function AboutUs() {
   return (
     <div className={styles.container}>

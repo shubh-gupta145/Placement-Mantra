@@ -65,11 +65,12 @@ app.use(helmet());
 //    Allowlist se sirf apne known frontend domains allow karo.
 app.use(cors({
   origin: function (origin, callback) {
-    if (
-      !origin ||
-      origin.includes("vercel.app") ||
-      origin.includes("localhost")
-    ) {
+    const allowed = [
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "https://placement-mantra.vercel.app",
+    ];
+    if (!origin || allowed.some(o => origin === o)) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));

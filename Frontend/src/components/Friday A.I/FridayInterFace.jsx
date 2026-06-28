@@ -4,6 +4,7 @@ import { FaPlus } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import axios from "../../axios.js";   
 
 // ── FIX 1: No more hardcoded localhost ──
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";

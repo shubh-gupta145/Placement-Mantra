@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { analyzeInterview, SCORE_CATEGORIES } from "../../../data/answerAnalyzer.js";
 import styles from "./InterviewResult.module.css";
+import axios from "../../../axios.js"; 
 import {
   MdCheckCircle,
   MdWarning,

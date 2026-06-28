@@ -3,6 +3,7 @@ import Calendar from "./Calaender";
 import styles from "./InterFaceIntern.module.css";
 import useFeatureTrack from '../../utils/useFeatureTrack';
 import Friday from "../Friday A.I/Friday";
+import axios from "../../axios.js";   
 
 const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 const scrollToBottom = () => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });

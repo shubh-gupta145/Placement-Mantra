@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useFeatureTrack from '../../utils/useFeatureTrack';
 import FeedbackForm from '../Admin Panel/Feedback/FeedbackForm';
+import axios from "../../axios.js"; 
 
 // ── Feature labels & icons ───────────────────────────────────────────────────
 const FEATURE_META = {

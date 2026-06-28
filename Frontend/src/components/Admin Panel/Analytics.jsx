@@ -6,6 +6,7 @@ import {
 } from 'recharts';
 import adminApi from '../../utils/adminApi';
 import s from './AdminPanel.module.css';
+import axios from "../../axios.js"; 
 
 const FEATURES = [
   { key: 'mock-interview',     label: 'Mock Interview',    emoji: '🎤', color: '#f97316' },

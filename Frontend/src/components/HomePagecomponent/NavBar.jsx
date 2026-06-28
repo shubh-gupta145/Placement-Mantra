@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import styles from './NavBar.module.css';
 import NotificationBell from "./NotificationBell";
 import { useAuth } from "../Login Components/useAuth";
+import axios from "../../axios.js";   
 
 const NAV_LINKS = [
   { to: "/",              label: "Home",      icon: "🏠" },

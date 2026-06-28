@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./Footer.module.css";
+import axios from "../../axios.js";   
 
 const contactItems = [
   {

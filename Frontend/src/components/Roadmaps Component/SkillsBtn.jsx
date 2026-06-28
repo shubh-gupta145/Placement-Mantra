@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import styles from "./SkillsBtn.module.css";
-
+import axios from "../../axios.js";    
 const SWIPE_THRESHOLD = 50; // itne pixels swipe pe hi open/close hoga
 
 function SkillsBtn({ setSelectedSkill }) {

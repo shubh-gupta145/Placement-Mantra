@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./NotificationBell.module.css";
+import axios from "../../axios.js";   
 
 const TYPE_EMOJI = {
   general:  '📢',

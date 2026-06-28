@@ -1,5 +1,7 @@
 import styles from "./Friday.module.css";
 import {Link} from "react-router-dom";
+import axios from "../../axios.js";    
+
 function Friday() {
   return (
     <div className={styles.wrapper}>

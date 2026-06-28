@@ -7,6 +7,8 @@ import FAQSection from "../HomePagecomponent/FAQSection";
 import placementFAQ from "../../data/PlacementPageQues";
 import EnglishSpeaking from "../English Speaking page/EnglishSpeaking";
 import Feedbackpopup from '../HomePagecomponent/Feedbackpopup';
+import axios from "../../axios.js"; 
+
 function Home(){ 
     return (
 <>

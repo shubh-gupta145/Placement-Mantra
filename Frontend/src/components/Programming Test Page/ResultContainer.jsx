@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import styles from "./ResultContainer.module.css";
+import axios from "../../axios.js";  
 
 function ResultContainer({ result, topic, difficulty }) {
 

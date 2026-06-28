@@ -9,6 +9,7 @@ import { generateInterviewQuestions } from "../../../data/questionEngine.js";
 import { extractTextFromPDF } from "../../../utils/resumeParser.js";
 import { generateQuestionsFromResume } from "../../../utils/geminiQuestions.js";
 import useFeatureTrack from '../../../utils/useFeatureTrack';
+import axios from "../../../axios.js"; 
 
 function InterviewPage2() {
   useFeatureTrack('mock-interview');

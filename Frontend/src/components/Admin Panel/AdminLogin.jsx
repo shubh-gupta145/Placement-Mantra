@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from "../..axios.js"; 
 
 export default function AdminLogin() {
   const [form,    setForm]    = useState({ email: '', password: '' });

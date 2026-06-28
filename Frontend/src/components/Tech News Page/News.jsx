@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./News.module.css";
 import useFeatureTrack from '../../utils/useFeatureTrack';
 import Friday from "../Friday A.I/Friday";
+import axios from "../../axios.js";    
 
 const CATEGORIES = [
   { label: "All Tech",   q: "technology",        emoji: "⚡" },

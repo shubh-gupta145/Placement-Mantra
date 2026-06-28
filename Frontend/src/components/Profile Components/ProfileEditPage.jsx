@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import styles from "./ProfileEditPage.module.css";
+import axios from "../../axios.js"; 
 
 function ProfileEditPage() {
 

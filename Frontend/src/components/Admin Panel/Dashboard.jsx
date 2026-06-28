@@ -5,6 +5,7 @@ import {
 } from 'recharts';
 import adminApi from '../../utils/adminApi';
 import s from './AdminPanel.module.css';
+import axios from "../../axios.js";   
 
 const COLORS = ['#f97316','#3b82f6','#10b981','#a855f7','#fbbf24','#ef4444','#06b6d4','#ec4899','#14b8a6','#8b5cf6'];
 

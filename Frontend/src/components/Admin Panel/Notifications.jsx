@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import adminApi from '../../utils/adminApi';
 import s from './AdminPanel.module.css';
+import axios from "../../axios.js";   
 
 const TYPE_PILL = {
   general:  s.pillBlue,

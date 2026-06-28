@@ -5,6 +5,7 @@ import {
 } from 'recharts';
 import adminApi from '../../utils/adminApi';
 import s from './AdminPanel.module.css';
+import axios from "../../axios.js";   
 
 const fmtTime = sec => {
   const m = Math.floor(sec / 60);

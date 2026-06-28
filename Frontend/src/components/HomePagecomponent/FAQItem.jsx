@@ -1,4 +1,5 @@
 import styles from "./FAQItem.module.css";
+import axios from "../../axios.js";   
 
 function FAQItem({ faq, index, openIndex, setOpenIndex, isLastVisible, handleArrowClick }) {
   const isOpen = openIndex === index;

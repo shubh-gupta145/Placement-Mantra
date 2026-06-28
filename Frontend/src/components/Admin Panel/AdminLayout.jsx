@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import s from './AdminPanel.module.css';
-
+import axios from "../../axios.js";   
 const NAV = [
   { path: '/admin',               icon: '📊', label: 'Dashboard',        section: 'Main' },
   { path: '/admin/notifications', icon: '🔔', label: 'Notifications',    section: 'Main' },

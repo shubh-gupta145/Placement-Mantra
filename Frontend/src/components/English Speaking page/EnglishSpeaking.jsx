@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "./EnglishSpeaking.module.css";
-import axios from "axios";
+import axios from "../../axios.js";   
 import useFeatureTrack from '../../utils/useFeatureTrack';
 import Friday from "../Friday A.I/Friday";
 

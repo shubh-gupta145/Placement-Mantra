@@ -1,4 +1,5 @@
-import styles from "./Header.module.css"
+import styles from "./Header.module.css";
+import axios from "../../../axios.js"; 
 function Header(){
     return(
         <>

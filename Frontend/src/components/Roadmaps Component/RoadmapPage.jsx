@@ -15,6 +15,7 @@ import PythonDeveloperRoadmap from "./Roadmaps/PythonDeveloperRoadmap";
 import JavaDeveloperRoadmap from "./Roadmaps/JavaDeveloperRoadmap";
 import useFeatureTrack from '../../utils/useFeatureTrack';
 import Friday from "../Friday A.I/Friday";
+import axios from "../../axios.js";   
 
 function RoadmapPage() {
 

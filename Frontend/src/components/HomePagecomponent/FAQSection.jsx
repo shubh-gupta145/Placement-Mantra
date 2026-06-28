@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import FAQItem from "./FAQItem";
 import styles from "./FAQSection.module.css";
+import axios from "../../axios.js";   
 
 function FAQSection({ data = [] }) {
   const [visibleCount, setVisibleCount] = useState(5);

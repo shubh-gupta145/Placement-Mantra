@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./Auth.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import axios from "../../axios.js"; 
+
 function ResetPassword() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();

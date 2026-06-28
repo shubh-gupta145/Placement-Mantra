@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import adminApi from '../../utils/adminApi';
 import s from './AdminPanel.module.css';
+import axios from "../../axios.js";    
 
 const AV_COLORS = ['#f97316','#3b82f6','#10b981','#a855f7','#fbbf24','#ef4444'];
 
