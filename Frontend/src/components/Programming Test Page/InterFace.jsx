@@ -6,7 +6,7 @@ import Footar from "../HomePagecomponent/Footar";
 import HeroCarousel from "./Carsoul";
 import { useNavigate } from "react-router-dom";
 import useFeatureTrack from '../../utils/useFeatureTrack';
-import axios from "../../axios.js";  
+import axios from "../../axios.js";
 
 function InterFace() {
   useFeatureTrack('test-page');
@@ -20,18 +20,13 @@ function InterFace() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/start-test", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, topic, difficulty })
-      });
-
-      const data = await response.json();
+      const response = await axios.post("/start-test", { name, topic, difficulty });
+      const data = response.data;
       console.log(data);
-      navigate("/Tests", { state: data });
-
+      navigate("/Tests", { state: { questions: data, difficulty } });
     } catch (error) {
       console.log("Error:", error);
+      alert(error.response?.data?.message || "Something went wrong. Please try again.");
     }
   };
 
@@ -70,7 +65,7 @@ function InterFace() {
         </div>
       </div>
 
-      {/* ── Test Form — id add kiya ── */}
+      {/* ── Test Form ── */}
       <div className={styles.TestContainer} id="test-form-section">
         <div className={styles.TestContainerContent}>
           <h1>Fill The Following Details</h1>
@@ -100,9 +95,9 @@ function InterFace() {
               onChange={(e) => setDifficulty(e.target.value)}
             >
               <option value="">Select Difficulty</option>
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
             </select>
 
             <button type="submit" className={styles.submitButton}>

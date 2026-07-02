@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./Auth.module.css";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "./useAuth";
-import axios from "../../axios.js"; 
+import axios from "../../axios.js";
 
 function SignIn() {
   const navigate = useNavigate();
@@ -33,22 +33,17 @@ function SignIn() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/signin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(loginData),
-      });
-
-      const data = await response.json();
+      const response = await axios.post("/signin", loginData);
+      const data = response.data;
 
       if (data.message === "Login Successful") {
 
-        // ✅ Step 1: AuthContext update — user + real JWT token save hoga
+        // ✅ Step 1: AuthContext update
         login(data.user, data.token);
 
-        // ✅ Step 2: Extra keys (admin panel + attendance ke liye)
+        // ✅ Step 2: Extra keys
         localStorage.setItem("email", loginData.email);
-        localStorage.setItem("userEmail", loginData.email); // ← added
+        localStorage.setItem("userEmail", loginData.email);
         if (data.token) localStorage.setItem("pm_admin_token", data.token);
         if (data.user)  localStorage.setItem("pm_admin_user", JSON.stringify(data.user));
 
@@ -56,12 +51,8 @@ function SignIn() {
         const userRole = data.user?.role;
         if (userRole !== "admin" && data.token) {
           try {
-            await fetch("http://localhost:5000/api/attendance/checkin", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${data.token}`,
-              },
+            await axios.post("/api/attendance/checkin", {}, {
+              headers: { Authorization: `Bearer ${data.token}` },
             });
             console.log("Attendance checkin ✅");
           } catch (err) {
@@ -73,12 +64,8 @@ function SignIn() {
             const token = localStorage.getItem("pm_admin_token");
             if (!token) { clearInterval(heartbeat); return; }
             try {
-              await fetch("http://localhost:5000/api/track/heartbeat", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${token}`,
-                },
+              await axios.post("/api/track/heartbeat", {}, {
+                headers: { Authorization: `Bearer ${token}` },
               });
             } catch (err) {
               console.log("Heartbeat error:", err);
@@ -97,7 +84,7 @@ function SignIn() {
 
     } catch (error) {
       console.error("Signin error:", error);
-      alert("Something went wrong. Please try again.");
+      alert(error.response?.data?.message || "Something went wrong. Please try again.");
     }
   };
 

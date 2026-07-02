@@ -1,33 +1,21 @@
 import { useState } from "react";
 import styles from "./Auth.module.css";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "../../axios.js"; 
-
-/* ══════════════════════════════
-   STEP 1 — Form
-   STEP 2 — OTP
-══════════════════════════════ */
+import axios from "../../axios.js";
 
 function SignUp() {
   const navigate = useNavigate();
 
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
+  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
   const [emailError, setEmailError] = useState("");
   const [passwordStrength, setPasswordStrength] = useState(0);
-
   const [otp, setOtp] = useState("");
   const [otpError, setOtpError] = useState("");
   const [timer, setTimer] = useState(60);
   const [timerActive, setTimerActive] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  /* ── Password strength ── */
   const checkPasswordStrength = (password) => {
     if (password.length < 10) return 0;
     let score = 0;
@@ -49,7 +37,6 @@ function SignUp() {
 
   const isPasswordAccepted = (p) => p.length >= 10 && checkPasswordStrength(p) >= 3;
 
-  /* ── Countdown timer ── */
   const startTimer = () => {
     setTimer(60);
     setTimerActive(true);
@@ -61,7 +48,6 @@ function SignUp() {
     }, 1000);
   };
 
-  /* ── Input change handler ── */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -76,7 +62,7 @@ function SignUp() {
     }
   };
 
-  /* ── Step 1 Submit — send OTP to email ── */
+  // ── Step 1: Send OTP ──
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -87,14 +73,9 @@ function SignUp() {
     }
 
     setLoading(true);
-
     try {
-      const res = await fetch("http://localhost:5000/send-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: formData.email }),
-      });
-      const data = await res.json();
+      const res = await axios.post("/send-otp", { email: formData.email });
+      const data = res.data;
 
       if (data.message === "User already exists") {
         setEmailError("This email is already registered");
@@ -104,7 +85,6 @@ function SignUp() {
 
       setStep(2);
       startTimer();
-
     } catch (err) {
       console.error("Send OTP error:", err);
       alert("Failed to send OTP. Try again.");
@@ -113,7 +93,7 @@ function SignUp() {
     }
   };
 
-  /* ── Step 2 — Verify OTP + Create Account ── */
+  // ── Step 2: Verify OTP + Create Account ──
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     if (otp.length !== 6) {
@@ -122,20 +102,14 @@ function SignUp() {
     }
 
     setLoading(true);
-
     try {
-      const response = await fetch("http://localhost:5000/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name:     formData.name,
-          email:    formData.email,
-          password: formData.password,
-          otp,
-        }),
+      const response = await axios.post("/signup", {
+        name:     formData.name,
+        email:    formData.email,
+        password: formData.password,
+        otp,
       });
-
-      const data = await response.json();
+      const data = response.data;
 
       if (data.message === "User registered successfully ✅") {
         alert("Account created successfully! Please sign in.");
@@ -143,25 +117,20 @@ function SignUp() {
       } else {
         setOtpError(data.message || "Verification failed");
       }
-
     } catch (err) {
       console.error("OTP verify error:", err);
-      setOtpError("Verification failed. Try resending OTP.");
+      setOtpError(err.response?.data?.message || "Verification failed. Try resending OTP.");
     } finally {
       setLoading(false);
     }
   };
 
-  /* ── Resend OTP ── */
+  // ── Resend OTP ──
   const handleResend = async () => {
     if (timerActive) return;
     setLoading(true);
     try {
-      await fetch("http://localhost:5000/send-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: formData.email }),
-      });
+      await axios.post("/send-otp", { email: formData.email });
       setOtpError("");
       startTimer();
     } catch (err) {
@@ -294,7 +263,6 @@ function SignUp() {
           </button>
         </div>
 
-        {/* OTP Input */}
         <input
           type="text"
           inputMode="numeric"
@@ -322,7 +290,6 @@ function SignUp() {
           </p>
         )}
 
-        {/* Timer + Resend */}
         <div style={{ textAlign: "center", marginTop: "-4px" }}>
           {timerActive ? (
             <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "13px" }}>
