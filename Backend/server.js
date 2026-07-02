@@ -619,10 +619,14 @@ const questions = {
 
 app.post("/start-test", (req, res) => {
   const { topic, difficulty } = req.body;
-  if (!questions[topic] || !questions[topic][difficulty]) {
+  
+  // ✅ Case insensitive match
+  const diffKey = difficulty?.toLowerCase();
+  
+  if (!questions[topic] || !questions[topic][diffKey]) {
     return res.status(400).json({ message: "Invalid topic or difficulty" });
   }
-  res.json(questions[topic][difficulty]);
+  res.json(questions[topic][diffKey]);
 });
 
 app.post("/submit-test", (req, res) => {
