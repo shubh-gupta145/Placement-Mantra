@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import styles from './NavBar.module.css';
 import NotificationBell from "./NotificationBell";
 import { useAuth } from "../Login Components/useAuth";
-import axios from "../../axios.js";   
+import axios from "../../axios.js";
 
 const NAV_LINKS = [
   { to: "/",              label: "Home",      icon: "🏠" },
@@ -14,10 +14,10 @@ const NAV_LINKS = [
 ];
 
 function NavBar() {
-  const [menuOpen, setMenuOpen]       = useState(false);
-  const [isAdmin, setIsAdmin]         = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [profileImage, setProfileImage] = useState(null);
+  const [menuOpen, setMenuOpen]           = useState(false);
+  const [isAdmin, setIsAdmin]             = useState(false);
+  const [dropdownOpen, setDropdownOpen]   = useState(false);
+  const [profileImage, setProfileImage]   = useState(null);
 
   const navigate    = useNavigate();
   const location    = useLocation();
@@ -38,9 +38,12 @@ function NavBar() {
       try {
         const email = user.email || localStorage.getItem("email");
         if (!email) return;
-        const res  = await fetch(`http://localhost:5000/get-profile/${email}`);
-        const data = await res.json();
-        setProfileImage(data?.image || null);
+
+        const token = localStorage.getItem("pm_admin_token");
+        const res = await axios.get(`/get-profile/${email}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setProfileImage(res.data?.image || null);
       } catch { setProfileImage(null); }
     };
     fetchProfileImage();
@@ -85,22 +88,21 @@ function NavBar() {
     const token = localStorage.getItem("pm_admin_token");
     if (token) {
       try {
-        await fetch("http://localhost:5000/api/attendance/checkout", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        await axios.post("/api/attendance/checkout", {}, {
+          headers: { Authorization: `Bearer ${token}` },
         });
       } catch {}
     }
     const heartbeatId = localStorage.getItem("heartbeat_id");
     if (heartbeatId) { clearInterval(heartbeatId); localStorage.removeItem("heartbeat_id"); }
     logout();
-    ["email","pm_admin_token","pm_admin_user","read_notifs"].forEach(k => localStorage.removeItem(k));
+    ["email","userEmail","pm_admin_token","pm_admin_user","read_notifs"].forEach(k => localStorage.removeItem(k));
     setIsAdmin(false);
     setProfileImage(null);
     navigate("/");
   };
 
-  /* ── Avatar circle (reusable) ── */
+  /* ── Avatar circle ── */
   const AvatarCircle = ({ size = 38, fontSize = 15 }) => (
     <div className={styles.avatarCircle} style={{ width: size, height: size, fontSize }}>
       {profileImage
@@ -117,13 +119,13 @@ function NavBar() {
     <nav className={styles.navWrapper}>
       <div className={styles.nav_container}>
 
-        {/* ── LEFT: Logo / Brand ── */}
-<Link to="/" className={styles.brand}>
-  <span className={styles.brandText}>
-    <i className={`ti ti-bolt ${styles.brandBolt}`} aria-hidden="true"></i>
-    Placement<span className={styles.brandAccent}>Mantra</span>
-  </span>
-</Link>
+        {/* ── LEFT: Logo ── */}
+        <Link to="/" className={styles.brand}>
+          <span className={styles.brandText}>
+            <i className={`ti ti-bolt ${styles.brandBolt}`} aria-hidden="true"></i>
+            Placement<span className={styles.brandAccent}>Mantra</span>
+          </span>
+        </Link>
 
         {/* ── CENTER: Desktop nav links ── */}
         <div className={styles.desktopLinks}>
@@ -143,11 +145,10 @@ function NavBar() {
           )}
         </div>
 
-        {/* ── RIGHT: Search + Bell + Profile + Hamburger ── */}
+        {/* ── RIGHT: Bell + Profile + Hamburger ── */}
         <div className={styles.rightSection}>
           {isLoggedIn && !isAdmin && <NotificationBell />}
 
-          {/* Profile dropdown */}
           {isLoggedIn ? (
             <div ref={dropdownRef} className={styles.profileWrapper}>
               <button
@@ -161,7 +162,6 @@ function NavBar() {
 
               {dropdownOpen && (
                 <div className={styles.dropdown}>
-                  {/* User info header */}
                   <div className={styles.dropHeader}>
                     <AvatarCircle size={40} fontSize={16} />
                     <div className={styles.dropUserInfo}>
@@ -187,7 +187,6 @@ function NavBar() {
             <Link to="/signup" className={styles.signUpBtn}>Sign Up</Link>
           )}
 
-          {/* Hamburger — mobile only */}
           <button
             className={styles.hamburger}
             onClick={() => setMenuOpen(o => !o)}
@@ -203,7 +202,6 @@ function NavBar() {
       {/* ══ MOBILE MENU DRAWER ══ */}
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`}>
 
-        {/* Profile row at top of drawer */}
         {isLoggedIn && (
           <Link
             to="/profile"
@@ -220,7 +218,6 @@ function NavBar() {
         )}
         <div className={styles.mobileDivider} />
 
-        {/* Nav links with icons */}
         {NAV_LINKS.map(({ to, label, icon }) => (
           <Link
             key={to}
@@ -250,7 +247,6 @@ function NavBar() {
 
         <div className={styles.mobileDivider} />
 
-        {/* Sign out in drawer */}
         {isLoggedIn ? (
           <button className={`${styles.mobileLink} ${styles.mobileSignOut}`} onClick={handleSignOut}>
             <span className={styles.mobileLinkIcon}>🚪</span>
@@ -263,7 +259,6 @@ function NavBar() {
         )}
       </div>
 
-      {/* Overlay behind drawer */}
       {menuOpen && <div className={styles.overlay} onClick={() => setMenuOpen(false)} />}
     </nav>
   );
