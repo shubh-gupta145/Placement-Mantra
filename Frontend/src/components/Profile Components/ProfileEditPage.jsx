@@ -2,116 +2,103 @@ import { useRef, useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import styles from "./ProfileEditPage.module.css";
-import axios from "../../axios.js"; 
+import axios from "../../axios.js";
 
 function ProfileEditPage() {
 
   const navigate = useNavigate();
 
   const [profileData, setProfileData] = useState({
-    name:"",
-    email:"",
-    phone:"",
-    gender:"",
-    birthday:"",
-    location:"",
-    summary:"",
-    github:"",
-    linkedin:"",
-    leetcode:"",
-    image:""
+    name: "",
+    email: "",
+    phone: "",
+    gender: "",
+    birthday: "",
+    location: "",
+    summary: "",
+    github: "",
+    linkedin: "",
+    leetcode: "",
+    image: ""
   });
 
   const fileInputRef = useRef(null);
   const [image, setImage] = useState(null);
 
-  /* ================= LOAD PROFILE DATA ================= */
-
-  useEffect(()=>{
+  /* ── Load Profile ── */
+  useEffect(() => {
     const email = localStorage.getItem("email") || localStorage.getItem("userEmail");
-    if(!email) return;
+    const token = localStorage.getItem("pm_admin_token");
+    if (!email || !token) return;
 
-    fetch(`http://localhost:5000/get-profile/${email}`)
-    .then(res=>res.json())
-    .then(data=>{
-      if(data){
-        setProfileData({ ...data, email: email });
+    axios.get(`/get-profile/${email}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then(res => {
+      const data = res.data;
+      if (data) {
+        setProfileData({ ...data, email });
         setImage(data.image);
       }
-    });
-  },[]);
+    })
+    .catch(err => console.error("Profile load error:", err));
+  }, []);
 
-  /* ================= INPUT CHANGE ================= */
-
-  const handleChange = (e)=>{
+  /* ── Input Change ── */
+  const handleChange = (e) => {
     setProfileData({ ...profileData, [e.target.name]: e.target.value });
   };
 
-  /* ================= IMAGE ================= */
-
+  /* ── Image ── */
   const handleImageClick = () => {
     fileInputRef.current.click();
   };
 
-  // ✅ FIXED - Base64 conversion
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-
     if (file) {
       const reader = new FileReader();
-
       reader.onloadend = () => {
-        const base64Image = reader.result; // ✅ Permanent base64 string
-
+        const base64Image = reader.result;
         setImage(base64Image);
-        setProfileData(prev => ({
-          ...prev,
-          image: base64Image // ✅ Server pe save hoga
-        }));
+        setProfileData(prev => ({ ...prev, image: base64Image }));
       };
-
-      reader.readAsDataURL(file); // ✅ File ko base64 mein convert karo
+      reader.readAsDataURL(file);
     }
   };
 
-  /* ================= SAVE PROFILE ================= */
-
-  const handleSubmit = async ()=>{
+  /* ── Save Profile ── */
+  const handleSubmit = async () => {
     const email = localStorage.getItem("email") || localStorage.getItem("userEmail");
+    const token = localStorage.getItem("pm_admin_token");
 
-    try{
-      const res = await fetch(`http://localhost:5000/update-profile/${email}`,{
-        method:"PUT",
-        headers:{ "Content-Type":"application/json" },
-        body: JSON.stringify(profileData)
+    try {
+      await axios.put(`/update-profile/${email}`, profileData, {
+        headers: { Authorization: `Bearer ${token}` },
       });
-
-      await res.json();
       alert("Profile Updated Successfully ✅");
+      window.dispatchEvent(new Event("profileUpdated"));
       navigate("/profile");
-    }
-    catch(error){
-      console.log(error);
+    } catch (error) {
+      console.error("Profile update error:", error);
+      alert("Profile update fail ho gaya, dobara try karo");
     }
   };
 
   return (
     <div className={styles.Container}>
-      
+
       {/* PROFILE HEADER */}
       <div className={styles.ProfileCarsoul}>
-
         <div className={styles.ImageWrapper}>
           <img
             src={image || "/default-profile.png"}
             alt="Profile"
             className={styles.ProfileImage}
           />
-
           <div className={styles.PlusIcon} onClick={handleImageClick}>
             <FaPlus />
           </div>
-
           <input
             type="file"
             ref={fileInputRef}
@@ -125,14 +112,12 @@ function ProfileEditPage() {
           <span className={styles.ProfileName}>{profileData.name}</span>
           <span className={styles.ProfileId}>Profile ID</span>
         </div>
-
       </div>
 
       {/* MAIN CONTENT */}
       <div className={styles.MainInfoWrapper}>
 
         <div className={styles.UserInfoContainer}>
-
           <div className={styles.subContainer}>
             <h4>Basic Info</h4>
           </div>
@@ -178,15 +163,13 @@ function ProfileEditPage() {
               />
             </div>
           </div>
-
         </div>
 
         <div className={styles.EditContainer}>
-
-          {["name","email","phone","location","summary"].map((field)=>(
+          {["name", "email", "phone", "location", "summary"].map((field) => (
             <div key={field} className={styles.subContainer2}>
               <span className={styles.InfoHeaders}>
-                {field.charAt(0).toUpperCase()+field.slice(1)}
+                {field.charAt(0).toUpperCase() + field.slice(1)}
               </span>
               <div className={styles.valueContainer}>
                 <input
@@ -233,11 +216,9 @@ function ProfileEditPage() {
           <button onClick={handleSubmit} className={styles.saveBtn}>
             Save Profile
           </button>
-
         </div>
 
       </div>
-
     </div>
   );
 }

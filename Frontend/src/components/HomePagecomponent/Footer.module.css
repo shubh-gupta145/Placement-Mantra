@@ -192,7 +192,9 @@
    BOTTOM BAR
    ─────────────────────────────── */
 .bottomBar {
-text-align: center;
+  display: flex;        /* ← yeh add karo */
+  justify-content: center;
+  text-align: center;
   flex-wrap: wrap;
   gap: 14px;
   padding: 22px 0;

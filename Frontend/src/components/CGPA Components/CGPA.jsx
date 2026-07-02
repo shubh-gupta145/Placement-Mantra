@@ -98,7 +98,9 @@ return(
 </div>
 </div>
 <Friday/>
-<Footer/>
+<div className={styles.FooterContainer}>
+    <Footer/>
+</div>
 </div>
 </>
 );

@@ -6,30 +6,26 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useFeatureTrack from '../../utils/useFeatureTrack';
 import FeedbackForm from '../Admin Panel/Feedback/FeedbackForm';
-import axios from "../../axios.js"; 
+import axios from "../../axios.js";
 
-// ── Feature labels & icons ───────────────────────────────────────────────────
 const FEATURE_META = {
   "programming":    { label: "Programming Test",   icon: "💻", color: "#6366f1" },
   "english-lab":    { label: "English Speak Lab",  icon: "🎤", color: "#0ea5e9" },
   "mock-interview": { label: "Mock Interview",      icon: "🧑‍💼", color: "#10b981" },
 };
 
-// ── Score badge color ────────────────────────────────────────────────────────
 function scoreColor(pct) {
   if (pct >= 75) return "#10b981";
   if (pct >= 50) return "#f59e0b";
   return "#ef4444";
 }
 
-// ── Format date ──────────────────────────────────────────────────────────────
 function fmtDate(iso) {
   return new Date(iso).toLocaleDateString("en-IN", {
     day: "2-digit", month: "short", year: "numeric",
   });
 }
 
-// ── View Modal content per feature ──────────────────────────────────────────
 function ResultDetail({ result }) {
   const { featureType } = result;
 
@@ -109,24 +105,26 @@ function Stat({ label, value, color }) {
   );
 }
 
-// ── Main Profile ─────────────────────────────────────────────────────────────
 function Profile() {
   useFeatureTrack('mock-interview');
 
-  const [profile, setProfile]         = useState({});
+  const [profile, setProfile]           = useState({});
   const [showFeedback, setShowFeedback] = useState(false);
-  const [results, setResults]         = useState([]);
-  const [viewResult, setViewResult]   = useState(null); // selected result for modal
+  const [results, setResults]           = useState([]);
+  const [viewResult, setViewResult]     = useState(null);
 
-  // Fetch profile
+  // ── Fetch profile ──
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const email = localStorage.getItem("email") || localStorage.getItem("userEmail");
-        if (!email) return;
-        const res  = await fetch(`http://localhost:5000/get-profile/${email}`);
-        const data = await res.json();
-        if (data) setProfile(data);
+        const token = localStorage.getItem("pm_admin_token");
+        if (!email || !token) return;
+
+        const res = await axios.get(`/get-profile/${email}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (res.data) setProfile(res.data);
       } catch (err) {
         console.error("Profile fetch error:", err);
       }
@@ -136,15 +134,17 @@ function Profile() {
     return () => window.removeEventListener("focus", fetchProfile);
   }, []);
 
-  // Fetch results
+  // ── Fetch results ──
   useEffect(() => {
     const fetchResults = async () => {
       const email = localStorage.getItem("email") || localStorage.getItem("userEmail");
-      if (!email) return;
+      const token = localStorage.getItem("pm_admin_token");
+      if (!email || !token) return;
       try {
-        const res = await fetch(`http://localhost:5000/api/results/${encodeURIComponent(email)}`);
-        const data = await res.json();
-        if (Array.isArray(data)) setResults(data);
+        const res = await axios.get(`/api/results/${encodeURIComponent(email)}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (Array.isArray(res.data)) setResults(res.data);
       } catch (err) {
         console.error("Results fetch error:", err);
       }
@@ -152,18 +152,20 @@ function Profile() {
     fetchResults();
   }, []);
 
-  // Delete result
+  // ── Delete result ──
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this result?")) return;
+    const token = localStorage.getItem("pm_admin_token");
     try {
-      await fetch(`http://localhost:5000/api/results/${id}`, { method: "DELETE" });
+      await axios.delete(`/api/results/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       setResults((prev) => prev.filter((r) => r._id !== id));
     } catch (err) {
       console.error("Delete error:", err);
     }
   };
 
-  // Score to show in circle (percentage field varies by feature)
   const getScore = (r) => {
     if (r.featureType === "programming")    return Math.round(r.percentage);
     if (r.featureType === "english-lab")    return r.avgScore;
@@ -226,8 +228,6 @@ function Profile() {
 
                 return (
                   <div key={r._id} className={styles.TaskCard}>
-
-                    {/* Score circle */}
                     <div className={styles.LeftSection}>
                       <div
                         className={styles.ProgressCircle}
@@ -239,7 +239,6 @@ function Profile() {
                       </div>
                     </div>
 
-                    {/* Info */}
                     <div className={styles.MiddleSection}>
                       <h3>
                         <span style={{ marginRight: "6px" }}>{meta.icon}</span>
@@ -255,22 +254,10 @@ function Profile() {
                       </p>
                     </div>
 
-                    {/* Actions */}
                     <div className={styles.RightSection}>
-                      <button
-                        className={styles.ViewBtn}
-                        onClick={() => setViewResult(r)}
-                      >
-                        View
-                      </button>
-                      <button
-                        className={styles.DeleteBtn}
-                        onClick={() => handleDelete(r._id)}
-                      >
-                        Delete
-                      </button>
+                      <button className={styles.ViewBtn} onClick={() => setViewResult(r)}>View</button>
+                      <button className={styles.DeleteBtn} onClick={() => handleDelete(r._id)}>Delete</button>
                     </div>
-
                   </div>
                 );
               })}
@@ -284,7 +271,6 @@ function Profile() {
         <div className={styles.ModalOverlay} onClick={() => setViewResult(null)}>
           <div className={styles.ModalContent} onClick={(e) => e.stopPropagation()}>
             <button className={styles.CloseBtn} onClick={() => setViewResult(null)}>✕</button>
-
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem" }}>
               <span style={{ fontSize: "1.5rem" }}>{FEATURE_META[viewResult.featureType]?.icon}</span>
               <h2 style={{ margin: 0 }}>{FEATURE_META[viewResult.featureType]?.label}</h2>
@@ -292,7 +278,6 @@ function Profile() {
             <p style={{ color: "#94a3b8", fontSize: "0.85rem", marginBottom: "1rem" }}>
               {fmtDate(viewResult.createdAt)}
             </p>
-
             <ResultDetail result={viewResult} />
           </div>
         </div>
