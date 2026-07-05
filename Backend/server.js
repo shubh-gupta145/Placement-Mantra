@@ -347,12 +347,11 @@ app.post(
         stored.attempts += 1;
         return res.status(400).json({ message: "Invalid OTP" });
       }
-
-      const existingEmail = await User.findOne({ email });
-      if (existingEmail) {
-        otpStore.delete(email);
-        return res.status(409).json({ message: "User already exists" });
-      }
+const existingEmail = await User.findOne({ email });
+if (existingEmail) {
+  // Same response shape/timing as success, but with an explicit flag
+  return res.json({ message: "If eligible, an OTP has been sent.", alreadyRegistered: true });
+}
 
       const newUser = new User({
         name,

@@ -25,7 +25,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
     sparse: true,        // null allowed — unique sirf non-null pe apply hoga
-    default: null
   },
 
   isPhoneVerified: {

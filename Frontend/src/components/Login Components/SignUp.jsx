@@ -74,14 +74,16 @@ function SignUp() {
 
     setLoading(true);
     try {
-      const res = await axios.post("/send-otp", { email: formData.email });
-      const data = res.data;
+ const res = await axios.post("/send-otp", { email: formData.email });
+const data = res.data;
 
-      if (data.message === "User already exists") {
-        setEmailError("This email is already registered");
-        setLoading(false);
-        return;
-      }
+if (data.alreadyRegistered) {
+  setEmailError("This email is already registered");
+  setLoading(false);
+  return;
+}
+setStep(2);
+startTimer();
 
       setStep(2);
       startTimer();
