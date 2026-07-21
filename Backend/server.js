@@ -45,6 +45,12 @@ const programming = require("./questions/programmingQuestions");
 
 const app = express();
 
+// ✅ FIX: Production mein app reverse proxy (Render/Railway/Vercel/Nginx) ke peeche
+// hoti hai. Isके bina express-rate-limit galat IP detect karta hai ya crash karta
+// hai (X-Forwarded-For header ke saath), jisse signup/signin/otp routes sirf
+// deployment mein fail hote hain, localhost pe nahi.
+app.set("trust proxy", 1);
+
 const dns = require('dns');
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 
@@ -64,6 +70,7 @@ app.use(cors({
     if (!origin || allowed.some(o => origin === o)) {
       callback(null, true);
     } else {
+      console.warn("CORS blocked origin:", origin); // ✅ FIX: debug ke liye log
       callback(new Error("Not allowed by CORS"));
     }
   },
@@ -237,6 +244,7 @@ app.get('/health', (req, res) => res.send('OK'));
 console.log("GROQ KEY:", process.env.GROQ_API_KEY ? "Loaded ✅" : "Missing ❌");
 console.log("GNEWS KEY:", process.env.GNEWS_API_KEY ? "Loaded ✅" : "Missing ❌");
 console.log("NEWSDATA KEY:", process.env.NEWSDATA_API_KEY ? "Loaded ✅" : "Missing ❌");
+console.log("FRONTEND_URL:", process.env.FRONTEND_URL ? process.env.FRONTEND_URL : "Missing ❌"); // ✅ FIX: added for debugging reset-password links in prod
 
 /* =========================
    GROQ SETUP
@@ -257,6 +265,11 @@ const transporter = nodemailer.createTransport({
 /* =========================
    EMAIL OTP STORE (in-memory)
 ========================= */
+// ⚠️ NOTE: Yeh in-memory Map hai. Agar deployment platform pe multiple instances/
+// containers chal rahe hain (e.g. auto-scaling) ya server restart hota hai
+// (Render free tier sleep/wake), toh OTP data lost ho sakta hai kyunki har
+// instance ki apni alag memory hoti hai. Production ke liye Redis ya DB-backed
+// store better hoga. Abhi ke liye single-instance deployment maan ke chhoda hai.
 const otpStore = new Map();
 
 /* =========================
@@ -347,11 +360,12 @@ app.post(
         stored.attempts += 1;
         return res.status(400).json({ message: "Invalid OTP" });
       }
-const existingEmail = await User.findOne({ email });
-if (existingEmail) {
-  // Same response shape/timing as success, but with an explicit flag
-  return res.json({ message: "If eligible, an OTP has been sent.", alreadyRegistered: true });
-}
+
+      const existingEmail = await User.findOne({ email });
+      if (existingEmail) {
+        // Same response shape/timing as success, but with an explicit flag
+        return res.json({ message: "If eligible, an OTP has been sent.", alreadyRegistered: true });
+      }
 
       const newUser = new User({
         name,
@@ -376,6 +390,11 @@ if (existingEmail) {
 /* =========================
    MONGODB CONNECTION
 ========================= */
+// ✅ FIX: production mein connection fail hone par server chalta rehta tha
+// (sirf console.log) — ab clear warning aur .env variable name check.
+if (!process.env.MONGO_URI) {
+  console.error("FATAL: MONGO_URI .env mein set nahi hai.");
+}
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected ✅"))
   .catch(err => console.log("MongoDB Error:", err));
@@ -618,10 +637,10 @@ const questions = {
 
 app.post("/start-test", (req, res) => {
   const { topic, difficulty } = req.body;
-  
+
   // ✅ Case insensitive match
   const diffKey = difficulty?.toLowerCase();
-  
+
   if (!questions[topic] || !questions[topic][diffKey]) {
     return res.status(400).json({ message: "Invalid topic or difficulty" });
   }

@@ -74,22 +74,22 @@ function SignUp() {
 
     setLoading(true);
     try {
- const res = await axios.post("/send-otp", { email: formData.email });
-const data = res.data;
+      const res = await axios.post("/send-otp", { email: formData.email });
+      const data = res.data;
 
-if (data.alreadyRegistered) {
-  setEmailError("This email is already registered");
-  setLoading(false);
-  return;
-}
-setStep(2);
-startTimer();
+      if (data.alreadyRegistered) {
+        setEmailError("This email is already registered");
+        setLoading(false);
+        return;
+      }
 
+      // ✅ FIX: pehle yeh do lines neeche bhi duplicate thi (double setStep/startTimer
+      // call ho raha tha), jisse resend-timer do baar reset ho sakta tha. Ab sirf ek baar.
       setStep(2);
       startTimer();
     } catch (err) {
       console.error("Send OTP error:", err);
-      alert("Failed to send OTP. Try again.");
+      alert(err.response?.data?.message || "Failed to send OTP. Try again.");
     } finally {
       setLoading(false);
     }

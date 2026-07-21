@@ -10,6 +10,7 @@ function SignIn() {
 
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [emailError, setEmailError] = useState("");
+  const [loading, setLoading] = useState(false); // ✅ FIX: submit button double-click se bachaane ke liye
 
   const handleChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
@@ -32,6 +33,7 @@ function SignIn() {
       return;
     }
 
+    setLoading(true);
     try {
       const response = await axios.post("/signin", loginData);
       const data = response.data;
@@ -85,6 +87,8 @@ function SignIn() {
     } catch (error) {
       console.error("Signin error:", error);
       alert(error.response?.data?.message || "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false); // ✅ FIX: loading state ko reset karna zaroori tha
     }
   };
 
@@ -119,7 +123,9 @@ function SignIn() {
           {/* <Link to="/forgot-password">Forgot Password?</Link> */}
         </p>
 
-        <button type="submit">Sign In</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Signing In..." : "Sign In"}
+        </button>
 
         <p style={{ textAlign: "center", marginTop: "10px" }}>
           Don't have an account? <Link to="/signup">Sign Up</Link>

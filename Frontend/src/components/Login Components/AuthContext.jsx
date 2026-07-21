@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect } from "react";
-import axios from "../../axios.js"; 
 
 export const AuthContext = createContext();
 
@@ -14,8 +13,17 @@ export function AuthProvider({ children }) {
     const savedUser  = localStorage.getItem("user");
 
     if (savedToken && savedUser) {
-      setToken(savedToken);
-      setUser(JSON.parse(savedUser));
+      try {
+        setToken(savedToken);
+        setUser(JSON.parse(savedUser));
+      } catch (err) {
+        // ✅ FIX: agar localStorage mein corrupt/invalid JSON hai (purane version
+        // ka data, manual edit, etc.) toh JSON.parse crash karke poori app ko
+        // white-screen kar sakta hai. Ab safely clear karke aage badhta hai.
+        console.error("Corrupt auth data in localStorage, clearing:", err);
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+      }
     }
     setLoading(false);
   }, []);
@@ -34,6 +42,18 @@ export function AuthProvider({ children }) {
     setToken(null);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    // ✅ FIX: SignIn.jsx mein "pm_admin_token" / "pm_admin_user" / "heartbeat_id"
+    // bhi set hote hain, logout par unhe bhi clean karna zaroori hai warna
+    // heartbeat interval chalta reh sakta hai aur stale token localStorage mein reh jaata hai.
+    localStorage.removeItem("pm_admin_token");
+    localStorage.removeItem("pm_admin_user");
+    localStorage.removeItem("email");
+    localStorage.removeItem("userEmail");
+    const heartbeatId = localStorage.getItem("heartbeat_id");
+    if (heartbeatId) {
+      clearInterval(Number(heartbeatId));
+      localStorage.removeItem("heartbeat_id");
+    }
   };
 
   return (
