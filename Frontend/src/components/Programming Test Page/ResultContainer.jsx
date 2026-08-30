@@ -1,8 +1,10 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./ResultContainer.module.css";
 import axios from "../../axios.js";  
 
 function ResultContainer({ result, topic, difficulty }) {
+  const navigate = useNavigate();
 
   useEffect(() => {
     const saveResult = async () => {
@@ -53,7 +55,7 @@ function ResultContainer({ result, topic, difficulty }) {
 
         <button
           className={styles.RestartButton}
-          onClick={() => window.location.reload()}
+          onClick={() => navigate("/TestInterFace")}
         >
           Start New Test
         </button>

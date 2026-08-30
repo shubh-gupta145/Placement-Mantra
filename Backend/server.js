@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const Groq = require("groq-sdk");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const helmet = require("helmet");
@@ -45,10 +45,6 @@ const programming = require("./questions/programmingQuestions");
 
 const app = express();
 
-// ✅ FIX: Production mein app reverse proxy (Render/Railway/Vercel/Nginx) ke peeche
-// hoti hai. Isके bina express-rate-limit galat IP detect karta hai ya crash karta
-// hai (X-Forwarded-For header ke saath), jisse signup/signin/otp routes sirf
-// deployment mein fail hote hain, localhost pe nahi.
 app.set("trust proxy", 1);
 
 const dns = require('dns');
@@ -70,7 +66,7 @@ app.use(cors({
     if (!origin || allowed.some(o => origin === o)) {
       callback(null, true);
     } else {
-      console.warn("CORS blocked origin:", origin); // ✅ FIX: debug ke liye log
+      console.warn("CORS blocked origin:", origin);
       callback(new Error("Not allowed by CORS"));
     }
   },
@@ -82,7 +78,6 @@ app.use(cors({
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-// ── NoSQL injection sanitizer ──
 function sanitizeObject(obj) {
   if (obj === null || typeof obj !== "object") return obj;
   if (Array.isArray(obj)) return obj.map(sanitizeObject);
@@ -101,7 +96,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// ── Rate limiters ──
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 200,
@@ -190,8 +184,6 @@ app.use("/api/feedback",      require("./routing/feedback"));
 
 /* =========================
    NEWS PROXY ROUTE
-   ✅ Frontend se directly third-party API call nahi hogi
-      Server-to-server call hogi — no CORS issues
 ========================= */
 app.get("/api/news", async (req, res) => {
   const { q } = req.query;
@@ -199,7 +191,6 @@ app.get("/api/news", async (req, res) => {
   if (!q) return res.status(400).json({ error: "Query parameter zaroori hai" });
 
   try {
-    // ── Primary: GNews API ──
     const gNewsRes = await fetch(
       `https://gnews.io/api/v4/search?q=${encodeURIComponent(q)}&lang=en&max=30&apikey=${process.env.GNEWS_API_KEY}`
     );
@@ -209,7 +200,6 @@ app.get("/api/news", async (req, res) => {
       return res.json({ articles: gNewsData.articles });
     }
 
-    // ── Fallback: NewsData.io ──
     const newsDataRes = await fetch(
       `https://newsdata.io/api/1/news?apikey=${process.env.NEWSDATA_API_KEY}&q=${encodeURIComponent(q)}&language=en`
     );
@@ -227,7 +217,6 @@ app.get("/api/news", async (req, res) => {
       return res.json({ articles });
     }
 
-    // ── Dono fail ho gaye ──
     res.json({ articles: [] });
 
   } catch (err) {
@@ -241,15 +230,15 @@ app.get('/health', (req, res) => res.send('OK'));
 /* =========================
    ENV DEBUG
 ========================= */
-console.log("GROQ KEY:", process.env.GROQ_API_KEY ? "Loaded ✅" : "Missing ❌");
+console.log("GEMINI KEY:", process.env.GEMINI_API_KEY ? "Loaded ✅" : "Missing ❌");
 console.log("GNEWS KEY:", process.env.GNEWS_API_KEY ? "Loaded ✅" : "Missing ❌");
 console.log("NEWSDATA KEY:", process.env.NEWSDATA_API_KEY ? "Loaded ✅" : "Missing ❌");
-console.log("FRONTEND_URL:", process.env.FRONTEND_URL ? process.env.FRONTEND_URL : "Missing ❌"); // ✅ FIX: added for debugging reset-password links in prod
+console.log("FRONTEND_URL:", process.env.FRONTEND_URL ? process.env.FRONTEND_URL : "Missing ❌");
 
 /* =========================
-   GROQ SETUP
+   GEMINI SETUP
 ========================= */
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 /* =========================
    NODEMAILER SETUP
@@ -265,11 +254,6 @@ const transporter = nodemailer.createTransport({
 /* =========================
    EMAIL OTP STORE (in-memory)
 ========================= */
-// ⚠️ NOTE: Yeh in-memory Map hai. Agar deployment platform pe multiple instances/
-// containers chal rahe hain (e.g. auto-scaling) ya server restart hota hai
-// (Render free tier sleep/wake), toh OTP data lost ho sakta hai kyunki har
-// instance ki apni alag memory hoti hai. Production ke liye Redis ya DB-backed
-// store better hoga. Abhi ke liye single-instance deployment maan ke chhoda hai.
 const otpStore = new Map();
 
 /* =========================
@@ -363,7 +347,6 @@ app.post(
 
       const existingEmail = await User.findOne({ email });
       if (existingEmail) {
-        // Same response shape/timing as success, but with an explicit flag
         return res.json({ message: "If eligible, an OTP has been sent.", alreadyRegistered: true });
       }
 
@@ -390,8 +373,6 @@ app.post(
 /* =========================
    MONGODB CONNECTION
 ========================= */
-// ✅ FIX: production mein connection fail hone par server chalta rehta tha
-// (sirf console.log) — ab clear warning aur .env variable name check.
 if (!process.env.MONGO_URI) {
   console.error("FATAL: MONGO_URI .env mein set nahi hai.");
 }
@@ -400,7 +381,7 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.log("MongoDB Error:", err));
 
 /* =========================
-   FRIDAY AI CHAT
+   FRIDAY AI CHAT (Gemini)
 ========================= */
 const aiLimiter = rateLimit({
   windowMs: 60 * 1000,
@@ -421,24 +402,21 @@ app.post("/ask-ai", aiLimiter, async (req, res) => {
       return res.status(400).json({ error: "Question bahut lambi hai (max 2000 characters)" });
     }
 
-    const completion = await groq.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
-      messages: [
-        {
-          role: "system",
-          content: "You are an expert IT and Computer Science tutor. Answer only programming and computer science related questions."
-        },
-        { role: "user", content: question }
-      ]
+    const model = genAI.getGenerativeModel({
+      model: "gemini-3.6-flash",
+      systemInstruction:
+        "You are an expert IT and Computer Science tutor. Answer only programming and computer science related questions."
     });
 
-    const answer = completion.choices[0].message.content;
+    const result = await model.generateContent(question);
+    const answer = result.response.text();
+
     const newChat = new Chat({ question, answer });
     await newChat.save();
 
     res.json({ answer });
   } catch (error) {
-    console.error("GROQ ERROR:", error);
+    console.error("GEMINI ERROR:", error);
     res.status(500).json({ error: "AI se jawab nahi mil paya, dobara try karo" });
   }
 });
@@ -637,8 +615,6 @@ const questions = {
 
 app.post("/start-test", (req, res) => {
   const { topic, difficulty } = req.body;
-
-  // ✅ Case insensitive match
   const diffKey = difficulty?.toLowerCase();
 
   if (!questions[topic] || !questions[topic][diffKey]) {

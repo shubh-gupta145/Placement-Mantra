@@ -1,10 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Groq = require("groq-sdk");
-
-const client = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
-});
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 const CATEGORY_LABEL = {
   hr:   "HR Interview",
@@ -55,40 +52,31 @@ Scoring rubric:
 Keep all tips short, practical, and encouraging. Return ONLY the JSON object.`;
 
   try {
-    const completion = await client.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
-      max_tokens: 700,
-      messages: [
-        {
-          role: "system",
-          content: "You are an English speaking evaluator. Always respond with valid JSON only.",
-        },
-        {
-          role: "user",
-          content: prompt,
-        },
-      ],
+    const model = genAI.getGenerativeModel({
+      model: "gemini-3.6-flash",
+      systemInstruction: "You are an English speaking evaluator. Always respond with valid JSON only.",
     });
 
-    const raw = completion.choices[0].message.content.trim();
+    const result = await model.generateContent(prompt);
+    const raw = result.response.text().trim();
     const clean = raw.replace(/```json|```/g, "").trim();
-    const result = JSON.parse(clean);
+    const parsed = JSON.parse(clean);
 
     // Sanitize & clamp all scores
     const numFields = ["pronunciation", "fluency", "grammar", "vocab", "confidence", "overall"];
     numFields.forEach((k) => {
-      result[k] = Math.max(0, Math.min(100, Math.round(Number(result[k]) || 0)));
+      parsed[k] = Math.max(0, Math.min(100, Math.round(Number(parsed[k]) || 0)));
     });
 
-    if (!Array.isArray(result.suggestions))   result.suggestions   = [];
-    if (!Array.isArray(result.aiSuggestions)) result.aiSuggestions = [];
-    if (typeof result.feedback !== "string")  result.feedback      = "";
+    if (!Array.isArray(parsed.suggestions))   parsed.suggestions   = [];
+    if (!Array.isArray(parsed.aiSuggestions)) parsed.aiSuggestions = [];
+    if (typeof parsed.feedback !== "string")  parsed.feedback      = "";
 
-    console.log("✅ Groq AI evaluation success!");
-    return res.json({ result });
+    console.log("✅ Gemini AI evaluation success!");
+    return res.json({ result: parsed });
 
   } catch (err) {
-    console.error("❌ Groq evaluation failed:", err.message);
+    console.error("❌ Gemini evaluation failed:", err.message);
 
     // Fallback local scoring
     const words     = answer.trim().split(/\s+/).length;

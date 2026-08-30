@@ -2,6 +2,10 @@ import React from 'react';
 import styles from './ResumeHero.module.css';
 
 const ResumeHero = () => {
+  const handleComingSoon = () => {
+    alert("This Feature is coming soon 🚀");
+  };
+
   return (
     <section className={styles.heroContainer}>
       {/* Background Ambient Glow */}
@@ -22,7 +26,7 @@ const ResumeHero = () => {
 
         {/* Primary CTA Button */}
         <div className={styles.ctaWrapper}>
-          <button className={styles.primaryButton}>
+          <button className={styles.primaryButton} onClick={handleComingSoon}>
             Craft Your Resume Now
             <span className={styles.arrowIcon}>→</span>
           </button>

@@ -9,6 +9,7 @@ import EnglishSpeaking from "../English Speaking page/EnglishSpeaking";
 import Feedbackpopup from '../HomePagecomponent/Feedbackpopup';
 import axios from "../../axios.js"; 
 import ResumeHero from "../HomePagecomponent/ResumeHero.jsx";
+import ResumeAnalyse from "../../ResumeAnalyse.jsx";
 
 function Home(){ 
     return (
@@ -20,6 +21,7 @@ function Home(){
 <Friday/>
 <FAQSection data={placementFAQ}/>
 <Feedbackpopup currentFeature="aptitude" />
+<ResumeAnalyse/>
 <ResumeHero/>
 <Footar/>
 </div>

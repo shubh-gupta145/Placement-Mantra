@@ -1,0 +1,45 @@
+.main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 64px) 24px 40px;
+}
+
+.hero {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto clamp(36px, 6vw, 56px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--accent-cyan);
+}
+
+.heading {
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+.headingAccent {
+  color: var(--accent-cyan);
+}
+
+.subtext {
+  font-size: clamp(14.5px, 2vw, 16.5px);
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.6;
+}
+
+.content {
+  max-width: 760px;
+  margin: 0 auto;
+}
