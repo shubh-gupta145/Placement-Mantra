@@ -1,9 +1,9 @@
 import { useState } from "react";
-import axios from "../../axios.js";
-import UploadForm from "../../components/UploadForm/UploadForm";
-import Loader from "../../components/Loader/Loader";
-import ResultsPanel from "../../components/ResultsPanel/ResultsPanel";
-import styles from "./Home.module.css";
+import axios from "./axios";
+import UploadForm from "../../Frontend/src/components/UploadForm/UploadForm";
+import Loader from "../../Frontend/src/components/Loader/Loader";
+import ResultsPanel from "../../Frontend/src/components/ResultsPanel/ResultsPanel";
+import styles from "./ResumeAnalyse.module.css";
 
 function ResumeAnalyse() {
   const [loading, setLoading] = useState(false);
